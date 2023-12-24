@@ -1,7 +1,7 @@
 class AppStrings {
   static const askForPhoneNumber = "What is your phone number?";
   static const askForPhoneNumberHint =
-      "please enter your phone number to verify your account 123";
+      "please enter your phone number to verify your account";
   static const enterYourNumber = "enter your number..";
   static const next = "Next";
   static const verifyNumber = "Verify your phone number";

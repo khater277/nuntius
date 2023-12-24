@@ -21,7 +21,8 @@ mixin _$SearchState {
     required TResult Function() initial,
     required TResult Function() initControllers,
     required TResult Function() disposeControllers,
-    required TResult Function(List<UserData> users) onChangeSearchTextField,
+    required TResult Function(String value) onChangeSearchTextField,
+    required TResult Function() clearSearchTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +30,8 @@ mixin _$SearchState {
     TResult? Function()? initial,
     TResult? Function()? initControllers,
     TResult? Function()? disposeControllers,
-    TResult? Function(List<UserData> users)? onChangeSearchTextField,
+    TResult? Function(String value)? onChangeSearchTextField,
+    TResult? Function()? clearSearchTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +39,8 @@ mixin _$SearchState {
     TResult Function()? initial,
     TResult Function()? initControllers,
     TResult Function()? disposeControllers,
-    TResult Function(List<UserData> users)? onChangeSearchTextField,
+    TResult Function(String value)? onChangeSearchTextField,
+    TResult Function()? clearSearchTextField,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$SearchState {
     required TResult Function(_DisposeControllers value) disposeControllers,
     required TResult Function(_OnChangeSearchTextField value)
         onChangeSearchTextField,
+    required TResult Function(_ClearSearchTextField value) clearSearchTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$SearchState {
     TResult? Function(_InitControllers value)? initControllers,
     TResult? Function(_DisposeControllers value)? disposeControllers,
     TResult? Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult? Function(_ClearSearchTextField value)? clearSearchTextField,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$SearchState {
     TResult Function(_InitControllers value)? initControllers,
     TResult Function(_DisposeControllers value)? disposeControllers,
     TResult Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult Function(_ClearSearchTextField value)? clearSearchTextField,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,7 +134,8 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() initControllers,
     required TResult Function() disposeControllers,
-    required TResult Function(List<UserData> users) onChangeSearchTextField,
+    required TResult Function(String value) onChangeSearchTextField,
+    required TResult Function() clearSearchTextField,
   }) {
     return initial();
   }
@@ -139,7 +146,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? initControllers,
     TResult? Function()? disposeControllers,
-    TResult? Function(List<UserData> users)? onChangeSearchTextField,
+    TResult? Function(String value)? onChangeSearchTextField,
+    TResult? Function()? clearSearchTextField,
   }) {
     return initial?.call();
   }
@@ -150,7 +158,8 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? initControllers,
     TResult Function()? disposeControllers,
-    TResult Function(List<UserData> users)? onChangeSearchTextField,
+    TResult Function(String value)? onChangeSearchTextField,
+    TResult Function()? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -167,6 +176,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_DisposeControllers value) disposeControllers,
     required TResult Function(_OnChangeSearchTextField value)
         onChangeSearchTextField,
+    required TResult Function(_ClearSearchTextField value) clearSearchTextField,
   }) {
     return initial(this);
   }
@@ -178,6 +188,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_InitControllers value)? initControllers,
     TResult? Function(_DisposeControllers value)? disposeControllers,
     TResult? Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult? Function(_ClearSearchTextField value)? clearSearchTextField,
   }) {
     return initial?.call(this);
   }
@@ -189,6 +200,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_InitControllers value)? initControllers,
     TResult Function(_DisposeControllers value)? disposeControllers,
     TResult Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult Function(_ClearSearchTextField value)? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -243,7 +255,8 @@ class _$InitControllersImpl implements _InitControllers {
     required TResult Function() initial,
     required TResult Function() initControllers,
     required TResult Function() disposeControllers,
-    required TResult Function(List<UserData> users) onChangeSearchTextField,
+    required TResult Function(String value) onChangeSearchTextField,
+    required TResult Function() clearSearchTextField,
   }) {
     return initControllers();
   }
@@ -254,7 +267,8 @@ class _$InitControllersImpl implements _InitControllers {
     TResult? Function()? initial,
     TResult? Function()? initControllers,
     TResult? Function()? disposeControllers,
-    TResult? Function(List<UserData> users)? onChangeSearchTextField,
+    TResult? Function(String value)? onChangeSearchTextField,
+    TResult? Function()? clearSearchTextField,
   }) {
     return initControllers?.call();
   }
@@ -265,7 +279,8 @@ class _$InitControllersImpl implements _InitControllers {
     TResult Function()? initial,
     TResult Function()? initControllers,
     TResult Function()? disposeControllers,
-    TResult Function(List<UserData> users)? onChangeSearchTextField,
+    TResult Function(String value)? onChangeSearchTextField,
+    TResult Function()? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (initControllers != null) {
@@ -282,6 +297,7 @@ class _$InitControllersImpl implements _InitControllers {
     required TResult Function(_DisposeControllers value) disposeControllers,
     required TResult Function(_OnChangeSearchTextField value)
         onChangeSearchTextField,
+    required TResult Function(_ClearSearchTextField value) clearSearchTextField,
   }) {
     return initControllers(this);
   }
@@ -293,6 +309,7 @@ class _$InitControllersImpl implements _InitControllers {
     TResult? Function(_InitControllers value)? initControllers,
     TResult? Function(_DisposeControllers value)? disposeControllers,
     TResult? Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult? Function(_ClearSearchTextField value)? clearSearchTextField,
   }) {
     return initControllers?.call(this);
   }
@@ -304,6 +321,7 @@ class _$InitControllersImpl implements _InitControllers {
     TResult Function(_InitControllers value)? initControllers,
     TResult Function(_DisposeControllers value)? disposeControllers,
     TResult Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult Function(_ClearSearchTextField value)? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (initControllers != null) {
@@ -358,7 +376,8 @@ class _$DisposeControllersImpl implements _DisposeControllers {
     required TResult Function() initial,
     required TResult Function() initControllers,
     required TResult Function() disposeControllers,
-    required TResult Function(List<UserData> users) onChangeSearchTextField,
+    required TResult Function(String value) onChangeSearchTextField,
+    required TResult Function() clearSearchTextField,
   }) {
     return disposeControllers();
   }
@@ -369,7 +388,8 @@ class _$DisposeControllersImpl implements _DisposeControllers {
     TResult? Function()? initial,
     TResult? Function()? initControllers,
     TResult? Function()? disposeControllers,
-    TResult? Function(List<UserData> users)? onChangeSearchTextField,
+    TResult? Function(String value)? onChangeSearchTextField,
+    TResult? Function()? clearSearchTextField,
   }) {
     return disposeControllers?.call();
   }
@@ -380,7 +400,8 @@ class _$DisposeControllersImpl implements _DisposeControllers {
     TResult Function()? initial,
     TResult Function()? initControllers,
     TResult Function()? disposeControllers,
-    TResult Function(List<UserData> users)? onChangeSearchTextField,
+    TResult Function(String value)? onChangeSearchTextField,
+    TResult Function()? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (disposeControllers != null) {
@@ -397,6 +418,7 @@ class _$DisposeControllersImpl implements _DisposeControllers {
     required TResult Function(_DisposeControllers value) disposeControllers,
     required TResult Function(_OnChangeSearchTextField value)
         onChangeSearchTextField,
+    required TResult Function(_ClearSearchTextField value) clearSearchTextField,
   }) {
     return disposeControllers(this);
   }
@@ -408,6 +430,7 @@ class _$DisposeControllersImpl implements _DisposeControllers {
     TResult? Function(_InitControllers value)? initControllers,
     TResult? Function(_DisposeControllers value)? disposeControllers,
     TResult? Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult? Function(_ClearSearchTextField value)? clearSearchTextField,
   }) {
     return disposeControllers?.call(this);
   }
@@ -419,6 +442,7 @@ class _$DisposeControllersImpl implements _DisposeControllers {
     TResult Function(_InitControllers value)? initControllers,
     TResult Function(_DisposeControllers value)? disposeControllers,
     TResult Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult Function(_ClearSearchTextField value)? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (disposeControllers != null) {
@@ -439,7 +463,7 @@ abstract class _$$OnChangeSearchTextFieldImplCopyWith<$Res> {
           $Res Function(_$OnChangeSearchTextFieldImpl) then) =
       __$$OnChangeSearchTextFieldImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<UserData> users});
+  $Res call({String value});
 }
 
 /// @nodoc
@@ -454,13 +478,13 @@ class __$$OnChangeSearchTextFieldImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? users = null,
+    Object? value = null,
   }) {
     return _then(_$OnChangeSearchTextFieldImpl(
-      null == users
-          ? _value._users
-          : users // ignore: cast_nullable_to_non_nullable
-              as List<UserData>,
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -468,20 +492,14 @@ class __$$OnChangeSearchTextFieldImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
-  const _$OnChangeSearchTextFieldImpl(final List<UserData> users)
-      : _users = users;
+  const _$OnChangeSearchTextFieldImpl(this.value);
 
-  final List<UserData> _users;
   @override
-  List<UserData> get users {
-    if (_users is EqualUnmodifiableListView) return _users;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
-  }
+  final String value;
 
   @override
   String toString() {
-    return 'SearchState.onChangeSearchTextField(users: $users)';
+    return 'SearchState.onChangeSearchTextField(value: $value)';
   }
 
   @override
@@ -489,12 +507,11 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OnChangeSearchTextFieldImpl &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            (identical(other.value, value) || other.value == value));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_users));
+  int get hashCode => Object.hash(runtimeType, value);
 
   @JsonKey(ignore: true)
   @override
@@ -509,9 +526,10 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     required TResult Function() initial,
     required TResult Function() initControllers,
     required TResult Function() disposeControllers,
-    required TResult Function(List<UserData> users) onChangeSearchTextField,
+    required TResult Function(String value) onChangeSearchTextField,
+    required TResult Function() clearSearchTextField,
   }) {
-    return onChangeSearchTextField(users);
+    return onChangeSearchTextField(value);
   }
 
   @override
@@ -520,9 +538,10 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     TResult? Function()? initial,
     TResult? Function()? initControllers,
     TResult? Function()? disposeControllers,
-    TResult? Function(List<UserData> users)? onChangeSearchTextField,
+    TResult? Function(String value)? onChangeSearchTextField,
+    TResult? Function()? clearSearchTextField,
   }) {
-    return onChangeSearchTextField?.call(users);
+    return onChangeSearchTextField?.call(value);
   }
 
   @override
@@ -531,11 +550,12 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     TResult Function()? initial,
     TResult Function()? initControllers,
     TResult Function()? disposeControllers,
-    TResult Function(List<UserData> users)? onChangeSearchTextField,
+    TResult Function(String value)? onChangeSearchTextField,
+    TResult Function()? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (onChangeSearchTextField != null) {
-      return onChangeSearchTextField(users);
+      return onChangeSearchTextField(value);
     }
     return orElse();
   }
@@ -548,6 +568,7 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     required TResult Function(_DisposeControllers value) disposeControllers,
     required TResult Function(_OnChangeSearchTextField value)
         onChangeSearchTextField,
+    required TResult Function(_ClearSearchTextField value) clearSearchTextField,
   }) {
     return onChangeSearchTextField(this);
   }
@@ -559,6 +580,7 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     TResult? Function(_InitControllers value)? initControllers,
     TResult? Function(_DisposeControllers value)? disposeControllers,
     TResult? Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult? Function(_ClearSearchTextField value)? clearSearchTextField,
   }) {
     return onChangeSearchTextField?.call(this);
   }
@@ -570,6 +592,7 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
     TResult Function(_InitControllers value)? initControllers,
     TResult Function(_DisposeControllers value)? disposeControllers,
     TResult Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult Function(_ClearSearchTextField value)? clearSearchTextField,
     required TResult orElse(),
   }) {
     if (onChangeSearchTextField != null) {
@@ -580,11 +603,133 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
 }
 
 abstract class _OnChangeSearchTextField implements SearchState {
-  const factory _OnChangeSearchTextField(final List<UserData> users) =
+  const factory _OnChangeSearchTextField(final String value) =
       _$OnChangeSearchTextFieldImpl;
 
-  List<UserData> get users;
+  String get value;
   @JsonKey(ignore: true)
   _$$OnChangeSearchTextFieldImplCopyWith<_$OnChangeSearchTextFieldImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ClearSearchTextFieldImplCopyWith<$Res> {
+  factory _$$ClearSearchTextFieldImplCopyWith(_$ClearSearchTextFieldImpl value,
+          $Res Function(_$ClearSearchTextFieldImpl) then) =
+      __$$ClearSearchTextFieldImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ClearSearchTextFieldImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$ClearSearchTextFieldImpl>
+    implements _$$ClearSearchTextFieldImplCopyWith<$Res> {
+  __$$ClearSearchTextFieldImplCopyWithImpl(_$ClearSearchTextFieldImpl _value,
+      $Res Function(_$ClearSearchTextFieldImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ClearSearchTextFieldImpl implements _ClearSearchTextField {
+  const _$ClearSearchTextFieldImpl();
+
+  @override
+  String toString() {
+    return 'SearchState.clearSearchTextField()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ClearSearchTextFieldImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initControllers,
+    required TResult Function() disposeControllers,
+    required TResult Function(String value) onChangeSearchTextField,
+    required TResult Function() clearSearchTextField,
+  }) {
+    return clearSearchTextField();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initControllers,
+    TResult? Function()? disposeControllers,
+    TResult? Function(String value)? onChangeSearchTextField,
+    TResult? Function()? clearSearchTextField,
+  }) {
+    return clearSearchTextField?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initControllers,
+    TResult Function()? disposeControllers,
+    TResult Function(String value)? onChangeSearchTextField,
+    TResult Function()? clearSearchTextField,
+    required TResult orElse(),
+  }) {
+    if (clearSearchTextField != null) {
+      return clearSearchTextField();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitControllers value) initControllers,
+    required TResult Function(_DisposeControllers value) disposeControllers,
+    required TResult Function(_OnChangeSearchTextField value)
+        onChangeSearchTextField,
+    required TResult Function(_ClearSearchTextField value) clearSearchTextField,
+  }) {
+    return clearSearchTextField(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitControllers value)? initControllers,
+    TResult? Function(_DisposeControllers value)? disposeControllers,
+    TResult? Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult? Function(_ClearSearchTextField value)? clearSearchTextField,
+  }) {
+    return clearSearchTextField?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitControllers value)? initControllers,
+    TResult Function(_DisposeControllers value)? disposeControllers,
+    TResult Function(_OnChangeSearchTextField value)? onChangeSearchTextField,
+    TResult Function(_ClearSearchTextField value)? clearSearchTextField,
+    required TResult orElse(),
+  }) {
+    if (clearSearchTextField != null) {
+      return clearSearchTextField(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ClearSearchTextField implements SearchState {
+  const factory _ClearSearchTextField() = _$ClearSearchTextFieldImpl;
 }

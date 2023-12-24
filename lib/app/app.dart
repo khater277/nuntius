@@ -5,12 +5,14 @@ import 'package:nuntius_/features/auth/cubit/auth_cubit.dart';
 import 'package:nuntius_/features/auth/presentation/screens/login_screen.dart';
 import 'package:nuntius_/features/chats/cubit/chats_cubit.dart';
 import 'package:nuntius_/features/contacts/cubit/contacts_cubit.dart';
+import 'package:nuntius_/features/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 import 'package:nuntius_/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuntius_/features/messages/cubit/messages_cubit.dart';
+import 'package:nuntius_/features/search/cubit/search_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -40,6 +42,12 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (BuildContext context) => di<ChatsCubit>()..getChats(),
               ),
+              BlocProvider(
+                create: (BuildContext context) => di<SearchCubit>(),
+              ),
+              BlocProvider(
+                create: (BuildContext context) => di<EditProfileCubit>(),
+              ),
               // BlocProvider(
               //   create: (BuildContext context) => di<StoriesCubit>()
               //     ..getPhones(
@@ -55,13 +63,6 @@ class MyApp extends StatelessWidget {
               // BlocProvider(
               //   create: (BuildContext context) =>
               //       di<ContactsCubit>()..getContacts(context),
-              // ),
-
-              // BlocProvider(
-              //   create: (BuildContext context) => di<SearchCubit>(),
-              // ),
-              // BlocProvider(
-              //   create: (BuildContext context) => di<EditProfileCubit>(),
               // ),
             ],
             child: MaterialApp(

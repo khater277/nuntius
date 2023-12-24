@@ -36,15 +36,17 @@ class SearchCubit extends Cubit<SearchState> {
     }).toList();
 
     searchResult = (nameResult + contactsPhoneResult).toSet().toList();
+
     searchResult.sort(
       (a, b) => a.name!.toLowerCase().compareTo(b.name!.toLowerCase()),
     );
-    emit(SearchState.onChangeSearchTextField(searchResult));
+
+    emit(SearchState.onChangeSearchTextField(value));
   }
 
   void clearSearchTextField() {
     searchController!.clear();
     searchResult = [];
-    emit(SearchState.onChangeSearchTextField(searchResult));
+    emit(const SearchState.clearSearchTextField());
   }
 }

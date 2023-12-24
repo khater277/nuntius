@@ -31,9 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchCubit, SearchState>(
-      builder: (context, state) {
-        return SafeArea(
+    return SafeArea(
           child: Scaffold(
             body: Padding(
               padding: EdgeInsets.only(
@@ -72,7 +70,5 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
         );
-      },
-    );
   }
 }
