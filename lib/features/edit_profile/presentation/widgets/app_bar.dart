@@ -28,6 +28,7 @@ class EditProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
             updateProfileImageLoading: () => true,
             updateProfileImageError: (errorMsg) => true,
             updateProfileImage: () => true,
+            pickProfileImage: () => true,
             orElse: () => false,
           ),
           listener: (context, state) {

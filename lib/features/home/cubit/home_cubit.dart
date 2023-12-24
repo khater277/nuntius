@@ -64,7 +64,7 @@ class HomeCubit extends Cubit<HomeState> {
   //   emit(const HomeState.disposeUser());
   // }
 
-  void getContacts({bool? isAddContact}) async {
+  Future<void> getContacts({bool? isAddContact}) async {
     if (isAddContact != true) emit(const HomeState.getContactsLoading());
     try {
       contacts = await ContactsService.getContacts(withThumbnails: false);

@@ -23,7 +23,7 @@ class ChatsCubit extends Cubit<ChatsState> {
   List<LastMessageModel> lastMessages = [];
   List<UserData> users = [];
 
-  void getChats() async {
+  Future<void> getChats() async {
     emit(const ChatsState.getChatsLoading());
     final response = await _getChatsUsecase.call(NoParams());
     response.fold(

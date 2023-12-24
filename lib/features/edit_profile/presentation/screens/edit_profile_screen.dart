@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nuntius_/app/injector.dart';
-import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/features/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:nuntius_/features/edit_profile/presentation/widgets/app_bar.dart';
@@ -39,7 +38,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              MyProfileImage(image: di<UserStorage>().getData()!.image!),
+              const MyProfileImage(),
               SizedBox(height: AppHeight.h6),
               const ProfileImageLinearIndicator(),
               SizedBox(height: AppHeight.h8),

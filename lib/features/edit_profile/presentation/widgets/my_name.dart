@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/shared_widgets/text.dart';
@@ -6,6 +7,7 @@ import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_fonts.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/core/utils/icons_broken.dart';
+import 'package:nuntius_/features/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:nuntius_/features/edit_profile/presentation/widgets/edit_my_name.dart';
 
 class MyName extends StatelessWidget {
@@ -31,10 +33,14 @@ class MyName extends StatelessWidget {
                 LargeHeadText(
                     text: "Name", size: FontSize.s13, color: AppColors.white),
                 SizedBox(height: AppHeight.h1),
-                LargeHeadText(
-                    text: di<UserStorage>().getData()!.name!,
-                    size: FontSize.s13,
-                    color: Colors.blue),
+                BlocBuilder<EditProfileCubit, EditProfileState>(
+                  builder: (context, state) {
+                    return LargeHeadText(
+                        text: di<UserStorage>().getData()!.name!,
+                        size: FontSize.s13,
+                        color: Colors.blue);
+                  },
+                ),
                 SizedBox(height: AppHeight.h2),
                 LargeHeadText(
                   text:
@@ -46,7 +52,7 @@ class MyName extends StatelessWidget {
               ],
             ),
           ),
-          EditMyName(),
+          const EditMyName(),
         ],
       ),
     );
