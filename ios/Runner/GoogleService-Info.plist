@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBSmSIyHZnhglMLfVwIDL7vdRdg9uVy08Q</string>
+	<key>GCM_SENDER_ID</key>
+	<string>508654410511</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.nuntius</string>
+	<key>PROJECT_ID</key>
+	<string>nuntius-b9cca</string>
+	<key>STORAGE_BUCKET</key>
+	<string>nuntius-b9cca.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:508654410511:ios:2bc92b8efda9cb82e5bc7a</string>
+</dict>
+</plist>
