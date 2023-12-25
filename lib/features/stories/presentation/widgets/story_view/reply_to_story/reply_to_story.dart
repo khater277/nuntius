@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/shared_widgets/text.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
@@ -7,11 +8,8 @@ import 'package:nuntius_/features/stories/presentation/widgets/story_view/reply_
 import 'package:flutter/material.dart';
 
 class ReplyToStory extends StatefulWidget {
-  final StoriesCubit cubit;
-
   const ReplyToStory({
     super.key,
-    required this.cubit,
   });
 
   @override
@@ -21,7 +19,7 @@ class ReplyToStory extends StatefulWidget {
 class _ReplyToStoryState extends State<ReplyToStory> {
   @override
   void initState() {
-    widget.cubit.initReplyToStory();
+    di<StoriesCubit>().initReplyToStory();
     super.initState();
   }
 
@@ -29,7 +27,7 @@ class _ReplyToStoryState extends State<ReplyToStory> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.cubit.storyController!.pause();
+        di<StoriesCubit>().storyController!.pause();
         showModalBottomSheet(
           context: context,
           isScrollControlled: true,
@@ -81,8 +79,8 @@ class _ReplyToStoryState extends State<ReplyToStory> {
             );
           },
         ).whenComplete(() {
-          widget.cubit.replyController!.clear();
-          widget.cubit.storyController!.play();
+          di<StoriesCubit>().replyController!.clear();
+          di<StoriesCubit>().storyController!.play();
         });
       },
       child: Padding(

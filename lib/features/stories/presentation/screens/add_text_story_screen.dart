@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/config/navigation.dart';
 import 'package:nuntius_/core/shared_widgets/back_button.dart';
 import 'package:nuntius_/core/shared_widgets/circle_indicator.dart';
@@ -18,23 +19,27 @@ class AddTextStoryScreen extends StatefulWidget {
 }
 
 class _AddTextStoryScreenState extends State<AddTextStoryScreen> {
-  late StoriesCubit storiesCubit;
   @override
   void initState() {
-    storiesCubit = StoriesCubit.get(context);
-    storiesCubit.initAddTextStory();
+    di<StoriesCubit>().initAddTextStory();
     super.initState();
   }
 
   @override
   void dispose() {
-    storiesCubit.disposeAddTextStory();
+    di<StoriesCubit>().disposeAddTextStory();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<StoriesCubit, StoriesState>(
+      buildWhen: (previous, current) => current.maybeWhen(
+        sendStoryLoading: () => true,
+        sendStoryError: (errorMsg) => true,
+        sendStory: () => true,
+        orElse: () => false,
+      ),
       listener: (context, state) {
         state.maybeWhen(
           sendStoryError: (errorMsg) =>
@@ -44,22 +49,18 @@ class _AddTextStoryScreenState extends State<AddTextStoryScreen> {
         );
       },
       builder: (context, state) {
-        final cubit = StoriesCubit.get(context);
         return SafeArea(
           child: Scaffold(
             appBar: AppBar(leading: const CustomBackButton()),
             body: state.maybeWhen(
               sendStoryLoading: () =>
                   const Center(child: CustomCircleIndicator()),
-              getFilePercentage: () =>
-                  const Center(child: CustomCircleIndicator()),
               orElse: () => Padding(
                 padding: EdgeInsets.only(top: AppHeight.h6),
-                child: StoryTextField(controller: cubit.controller!),
+                child: StoryTextField(),
               ),
             ),
-            floatingActionButton: SendStoryButton(
-              controller: cubit.controller!,
+            floatingActionButton: const SendStoryButton(
               storyType: MessageType.text,
             ),
           ),

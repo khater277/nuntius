@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/features/stories/cubit/stories_cubit.dart';
 import 'package:flutter/material.dart';
@@ -16,15 +17,14 @@ class _VideoStoryState extends State<VideoStory> {
   @override
   void initState() {
     super.initState();
-    _controller =
-        VideoPlayerController.file(StoriesCubit.get(context).storyFile!)
-          ..initialize().then((_) {
-            StoriesCubit.get(context)
-                .setVideoDuration(_controller!.value.duration.toString());
-            // print("==============>${_controller!.value.duration}");
-            // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-            setState(() {});
-          });
+    _controller = VideoPlayerController.file(di<StoriesCubit>().storyFile!)
+      ..initialize().then((_) {
+        di<StoriesCubit>()
+            .setVideoDuration(_controller!.value.duration.toString());
+        // print("==============>${_controller!.value.duration}");
+        // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
+        setState(() {});
+      });
     _controller!.play();
   }
 

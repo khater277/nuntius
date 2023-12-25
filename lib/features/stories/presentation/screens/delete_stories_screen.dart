@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/config/navigation.dart';
 import 'package:nuntius_/core/shared_widgets/back_button.dart';
 import 'package:nuntius_/core/shared_widgets/circle_indicator.dart';
@@ -22,7 +23,7 @@ class DeleteStoriesScreen extends StatefulWidget {
 class _DeleteStoriesScreenState extends State<DeleteStoriesScreen> {
   @override
   void initState() {
-    StoriesCubit.get(context).createVideosThumbnails();
+    di<StoriesCubit>().createVideosThumbnails();
     super.initState();
   }
 
@@ -35,56 +36,65 @@ class _DeleteStoriesScreenState extends State<DeleteStoriesScreen> {
         title: const LargeHeadText(text: "My Stories"),
       ),
       body: BlocConsumer<StoriesCubit, StoriesState>(
+        buildWhen: (previous, current) => current.maybeWhen(
+          deleteStoryLoading: (storyId) => true,
+          deleteStoryError: (errorMsg) => true,
+          deleteStory: () => true,
+          orElse: () => false,
+        ),
         listener: (context, state) {
           state.maybeWhen(
             deleteStoryError: (errorMsg) =>
                 errorSnackBar(context: context, errorMsg: errorMsg),
             deleteStory: () {
-              StoriesCubit.get(context).cancelLoading();
+              di<StoriesCubit>().cancelLoading();
               Go.back(context: context);
             },
             orElse: () {},
           );
         },
         builder: (context, state) {
-          final cubit = StoriesCubit.get(context);
           return ListView.separated(
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
-            itemCount: cubit.myStories.length,
+            itemCount: di<StoriesCubit>().myStories.length,
             separatorBuilder: (BuildContext context, int index) =>
                 SizedBox(height: AppHeight.h8),
             itemBuilder: (BuildContext context, int index) => Padding(
               padding: EdgeInsets.symmetric(horizontal: AppWidth.w8),
-              child: state ==
-                      StoriesState.deleteStoryLoading(
-                          cubit.myStories[index].id!)
-                  ? Center(
-                      child: CustomCircleIndicator(
-                        size: AppSize.s22,
-                        strokeWidth: 1.2,
-                      ),
-                    )
-                  : Row(
-                      children: [
-                        StoryContent(
-                          storyModel: cubit.myStories[index],
-                          videoThumbnail:
-                              cubit.videosThumbnails[cubit.myStories[index].id],
-                        ),
-                        SizedBox(width: AppWidth.w8),
-                        StoryTypeAndTime(
-                          date: cubit.myStories[index].date!,
-                          storyType: cubit.myStories[index].isImage == true
-                              ? MessageType.image
-                              : cubit.myStories[index].isVideo == true
-                                  ? MessageType.video
-                                  : MessageType.doc,
-                        ),
-                        const Spacer(),
-                        DeleteStoryButton(storyModel: cubit.myStories[index])
-                      ],
+              child: state.maybeWhen(
+                deleteStoryLoading: (storyId) =>
+                    storyId == di<StoriesCubit>().myStories[index].id
+                        ? Center(
+                            child: CustomCircleIndicator(
+                              size: AppSize.s22,
+                              strokeWidth: 1.2,
+                            ),
+                          )
+                        : const SizedBox(),
+                orElse: () => Row(
+                  children: [
+                    StoryContent(
+                      storyModel: di<StoriesCubit>().myStories[index],
+                      videoThumbnail: di<StoriesCubit>().videosThumbnails[
+                          di<StoriesCubit>().myStories[index].id],
                     ),
+                    SizedBox(width: AppWidth.w8),
+                    StoryTypeAndTime(
+                      date: di<StoriesCubit>().myStories[index].date!,
+                      storyType: di<StoriesCubit>().myStories[index].isImage ==
+                              true
+                          ? MessageType.image
+                          : di<StoriesCubit>().myStories[index].isVideo == true
+                              ? MessageType.video
+                              : MessageType.doc,
+                    ),
+                    const Spacer(),
+                    DeleteStoryButton(
+                        storyModel: di<StoriesCubit>().myStories[index])
+                  ],
+                ),
+              ),
             ),
           );
         },

@@ -4,11 +4,11 @@ import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
 import 'package:nuntius_/features/stories/data/models/contact_story_model/contact_story_model.dart';
 import 'package:nuntius_/features/stories/data/models/story_model/story_model.dart';
+import 'package:nuntius_/features/stories/domain/parameters/update_story_params.dart';
 
 abstract class StoriesDatabase {
   Future<void> sendStory({required StoryModel storyModel});
-  Future<void> updateStory(
-      {required StoryModel storyModel, required String phoneNumber});
+  Future<void> updateStory({required UpdateStoryParams updateStoryParams});
   Future<void> deleteStory({required String storyId});
 
   Future<void> setLastStory({required StoryModel storyModel});
@@ -39,13 +39,13 @@ class StoriesDatabaseImpl implements StoriesDatabase {
 
   @override
   Future<void> updateStory(
-      {required StoryModel storyModel, required String phoneNumber}) async {
+      {required UpdateStoryParams updateStoryParams}) async {
     _db
         .collection(Collections.stories)
-        .doc(phoneNumber)
+        .doc(updateStoryParams.phoneNumber)
         .collection(Collections.currentStories)
-        .doc(storyModel.id)
-        .update(storyModel.toJson());
+        .doc(updateStoryParams.storyModel.id)
+        .update(updateStoryParams.storyModel.toJson());
   }
 
   @override

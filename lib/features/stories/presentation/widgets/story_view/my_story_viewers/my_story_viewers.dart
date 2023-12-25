@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/shared_widgets/text.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_fonts.dart';
@@ -14,8 +15,7 @@ class MyStoryViewers extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        StoriesCubit.get(context)
-            .showStoryViewers(context: context, viewers: viewers);
+        di<StoriesCubit>().showStoryViewers(context: context, viewers: viewers);
       },
       child: Padding(
         padding: EdgeInsets.only(bottom: AppHeight.h5),

@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/shared_widgets/alert_dialog.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
@@ -19,7 +20,7 @@ class DeleteStoryButton extends StatelessWidget {
           context: context,
           text: "Are you sure you want to delete this story?",
           okPressed: () =>
-              StoriesCubit.get(context).deleteStory(storyId: storyModel.id!),
+              di<StoriesCubit>().deleteStory(storyId: storyModel.id!),
         );
       },
       child: Icon(

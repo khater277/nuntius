@@ -25,8 +25,8 @@ import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/network/network_info.dart';
 import 'package:nuntius_/features/auth/cubit/auth_cubit.dart';
 import 'package:nuntius_/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:nuntius_/features/auth/domain/repository/auth_repository.dart';
 import 'package:nuntius_/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:nuntius_/features/auth/domain/repository/auth_repository.dart';
 import 'package:nuntius_/features/auth/domain/usecases/add_user_to_firestore_usecase.dart';
 import 'package:nuntius_/features/auth/domain/usecases/get_all_users_from_firestore_usecase.dart';
 import 'package:nuntius_/features/auth/domain/usecases/sign_in_with_phone_number_usecase.dart';
@@ -38,20 +38,20 @@ import 'package:nuntius_/features/calls/data/datasources/calls_remote_data_sourc
 import 'package:nuntius_/features/calls/data/repositories/calls_repository.dart';
 import 'package:nuntius_/features/calls/data/repositories/calls_repository_impl.dart';
 import 'package:nuntius_/features/chats/data/datasources/chats_remote_data_source.dart';
-import 'package:nuntius_/features/chats/domain/repositories/chats_repository.dart';
 import 'package:nuntius_/features/chats/data/repositories/chats_repository_impl.dart';
+import 'package:nuntius_/features/chats/domain/repositories/chats_repository.dart';
 import 'package:nuntius_/features/chats/domain/usecases/get_chats_usecase.dart';
 import 'package:nuntius_/features/contacts/cubit/contacts_cubit.dart';
 import 'package:nuntius_/features/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:nuntius_/features/edit_profile/data/datasources/edit_profile_remote_data_source.dart';
-import 'package:nuntius_/features/edit_profile/domain/repositories/edit_profile_repository.dart';
 import 'package:nuntius_/features/edit_profile/data/repositories/edit_profile_repository_impl.dart';
+import 'package:nuntius_/features/edit_profile/domain/repositories/edit_profile_repository.dart';
 import 'package:nuntius_/features/edit_profile/domain/usecases/update_profile_data_usecase.dart';
 import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 import 'package:nuntius_/features/messages/cubit/messages_cubit.dart';
 import 'package:nuntius_/features/messages/data/datasources/messages_remote_data_source.dart';
-import 'package:nuntius_/features/messages/domain/repository/messages_repository.dart';
 import 'package:nuntius_/features/messages/data/repositories/messages_repository_impl.dart';
+import 'package:nuntius_/features/messages/domain/repository/messages_repository.dart';
 import 'package:nuntius_/features/messages/domain/usecases/delete_last_message_usecase.dart';
 import 'package:nuntius_/features/messages/domain/usecases/delete_message_usecase.dart';
 import 'package:nuntius_/features/messages/domain/usecases/get_messages_usecase.dart';
@@ -61,8 +61,17 @@ import 'package:nuntius_/features/messages/domain/usecases/see_message_usecase.d
 import 'package:nuntius_/features/messages/domain/usecases/send_message_usecase.dart';
 import 'package:nuntius_/features/search/cubit/search_cubit.dart';
 import 'package:nuntius_/features/stories/data/datasources/stories_remote_data_source.dart';
-import 'package:nuntius_/features/stories/data/repositories/stories_repository.dart';
 import 'package:nuntius_/features/stories/data/repositories/stories_repository_impl.dart';
+import 'package:nuntius_/features/stories/domain/repositories/stories_repository.dart';
+import 'package:nuntius_/features/stories/domain/usecases/delete_last_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/delete_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/get_contacts_current_stories_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/get_contacts_last_stories_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/get_stories_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/send_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/set_last_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/update_last_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/update_story_usecase.dart';
 
 import '../features/chats/cubit/chats_cubit.dart';
 import '../features/stories/cubit/stories_cubit.dart';
@@ -96,12 +105,23 @@ void setupGetIt() {
         homeCubit: di(),
       ));
   di.registerLazySingleton<StoriesCubit>(() => StoriesCubit(
-        authRepository: di(),
-        storiesRepository: di(),
-        messagesRepository: di(),
+        sendStoryUsecase: di(),
+        deleteStoryUsecase: di(),
+        updateStoryUsecase: di(),
+        getStoriesUsecase: di(),
+        setLastStoryUsecase: di(),
+        updateLastStoryUsecase: di(),
+        deleteLastStoryUsecase: di(),
+        getContactsCurrentStoriesUsecase: di(),
+        getContactsLastStoriesUsecase: di(),
+        sendMessageUsecase: di(),
+        uploadFileToStorageUsecase: di(),
         userStorage: di(),
       ));
-  di.registerLazySingleton<ContactsCubit>(() => ContactsCubit());
+  di.registerLazySingleton<ContactsCubit>(() => ContactsCubit(
+        homeCubit: di(),
+        chatsCubit: di(),
+      ));
   di.registerLazySingleton<MessagesCubit>(() => MessagesCubit(
         userStorage: di(),
         callsRepository: di(),
@@ -220,6 +240,26 @@ void setupGetIt() {
   /// EDIT PROFILE
   di.registerLazySingleton<UpdateProfileDataUsecase>(
       () => UpdateProfileDataUsecase(editProfileRepository: di()));
+
+  /// STORIES
+  di.registerLazySingleton<SendStoryUsecase>(
+      () => SendStoryUsecase(storiesRepository: di()));
+  di.registerLazySingleton<UpdateStoryUsecase>(
+      () => UpdateStoryUsecase(storiesRepository: di()));
+  di.registerLazySingleton<DeleteStoryUsecase>(
+      () => DeleteStoryUsecase(storiesRepository: di()));
+  di.registerLazySingleton<GetStoriesUsecase>(
+      () => GetStoriesUsecase(storiesRepository: di()));
+  di.registerLazySingleton<SetLastStoryUsecase>(
+      () => SetLastStoryUsecase(storiesRepository: di()));
+  di.registerLazySingleton<UpdateLastStoryUsecase>(
+      () => UpdateLastStoryUsecase(storiesRepository: di()));
+  di.registerLazySingleton<DeleteLastStoryUsecase>(
+      () => DeleteLastStoryUsecase(storiesRepository: di()));
+  di.registerLazySingleton<GetContactsCurrentStoriesUsecase>(
+      () => GetContactsCurrentStoriesUsecase(storiesRepository: di()));
+  di.registerLazySingleton<GetContactsLastStoriesUsecase>(
+      () => GetContactsLastStoriesUsecase(storiesRepository: di()));
 
   ///LOCAL STORAGE
   di.registerLazySingleton<UserStorage>(() => UserStorage());

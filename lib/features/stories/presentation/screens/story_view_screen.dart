@@ -20,20 +20,15 @@ class StoryViewScreen extends StatefulWidget {
 }
 
 class _StoryViewScreenState extends State<StoryViewScreen> {
-  late StoriesCubit storiesCubit;
   @override
   void initState() {
-    storiesCubit = StoriesCubit.get(context);
-    storiesCubit.initStoryView(
-      context: context,
-      stories: widget.stories,
-    );
+    di<StoriesCubit>().initStoryView(stories: widget.stories);
     super.initState();
   }
 
   @override
   void dispose() {
-    storiesCubit.disposeStoryView();
+    di<StoriesCubit>().disposeStoryView();
     super.dispose();
   }
 
@@ -49,17 +44,17 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
         );
       },
       builder: (context, state) {
-        final cubit = StoriesCubit.get(context);
-
         return Scaffold(
           body: SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 StoryViewHead(
-                    stories: widget.stories, user: widget.user, cubit: cubit),
+                  storyDate:
+                      widget.stories[di<StoriesCubit>().storyIndex].date!,
+                  user: widget.user,
+                ),
                 StoryViewBody(
-                  cubit: cubit,
                   stories: widget.stories,
                   myStory: widget.user.uId == di<UserStorage>().getData()!.uId,
                 ),

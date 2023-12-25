@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_fonts.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
@@ -15,14 +16,13 @@ class ReplyStoryTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<StoriesCubit, StoriesState>(
       builder: (context, state) {
-        final cubit = StoriesCubit.get(context);
         return Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: TextField(
             autofocus: true,
             cursorColor: AppColors.grey.withOpacity(0.7),
-            controller: cubit.replyController,
+            controller: di<StoriesCubit>().replyController,
             keyboardType: TextInputType.text,
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                   fontSize: FontSize.s14,
@@ -33,17 +33,18 @@ class ReplyStoryTextField extends StatelessWidget {
                   fontSize: FontSize.s12,
                   color: AppColors.grey.withOpacity(0.6)),
               suffixIcon: ValueListenableBuilder<TextEditingValue>(
-                valueListenable: cubit.replyController!,
+                valueListenable: di<StoriesCubit>().replyController!,
                 builder: (BuildContext context, value, Widget? child) {
                   return IconButton(
                     onPressed: value.text.isNotEmpty
                         ? () {
-                            cubit.replyToStory(
-                              user: cubit.contactStoryModel!.user!,
-                              story: cubit.contactStoryModel!
-                                  .stories![cubit.storyIndex],
+                            di<StoriesCubit>().replyToStory(
+                              user: di<StoriesCubit>().contactStoryModel!.user!,
+                              story: di<StoriesCubit>()
+                                  .contactStoryModel!
+                                  .stories![di<StoriesCubit>().storyIndex],
                             );
-                            // cubit.sendMessage(
+                            // di<StoriesCubit>().sendMessage(
                             //   friendToken: userToken,
                             //   friendID: userID,
                             //   message: finalMessage,
@@ -54,7 +55,7 @@ class ReplyStoryTextField extends StatelessWidget {
                             //   storyDate: storyDate,
                             // );
 
-                            cubit.replyController!.clear();
+                            di<StoriesCubit>().replyController!.clear();
                           }
                         : null,
                     icon: state.maybeWhen(

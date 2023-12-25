@@ -11,12 +11,10 @@ import 'package:story_view/story_view.dart';
 class StoryViewBody extends StatelessWidget {
   const StoryViewBody({
     super.key,
-    required this.cubit,
     required this.stories,
     required this.myStory,
   });
 
-  final StoriesCubit cubit;
   final List<StoryModel> stories;
   final bool myStory;
 
@@ -27,25 +25,22 @@ class StoryViewBody extends StatelessWidget {
         alignment: AlignmentDirectional.bottomCenter,
         children: [
           StoryView(
-              storyItems: cubit.storyItems,
-              controller: cubit.storyController!,
+              storyItems: di<StoriesCubit>().storyItems,
+              controller: di<StoriesCubit>().storyController!,
               onStoryShow: (story) {
-                final index = cubit.storyItems.indexOf(story);
-                cubit.changeStoryIndex(index: index);
+                final index = di<StoriesCubit>().storyItems.indexOf(story);
+                di<StoriesCubit>().changeStoryIndex(index: index);
                 final storyModel = stories[index];
                 if (!storyModel.viewersPhones!
                         .contains(di<UserStorage>().getData()!.phone) &&
-                    cubit.contactStoryModel != null &&
+                    di<StoriesCubit>().contactStoryModel != null &&
                     !myStory) {
-                  cubit.viewContactStory(
-                    storyModel: storyModel,
-                    phoneNumber: di<UserStorage>().getData()!.phone!,
-                  );
+                  di<StoriesCubit>().viewContactStory(storyModel: storyModel);
                 }
 
-                print("index=========>${cubit.storyIndex}");
+                print("index=========>${di<StoriesCubit>().storyIndex}");
 
-                print("index=========>${cubit.storyItems.length}");
+                print("index=========>${di<StoriesCubit>().storyItems.length}");
               },
               onComplete: () {
                 debugPrint("COMPLETED");
@@ -57,9 +52,12 @@ class StoryViewBody extends StatelessWidget {
                 }
               }),
           if (myStory)
-            MyStoryViewers(viewers: cubit.myStories[cubit.storyIndex].viewers!)
+            MyStoryViewers(
+                viewers: di<StoriesCubit>()
+                    .myStories[di<StoriesCubit>().storyIndex]
+                    .viewers!)
           else
-            ReplyToStory(cubit: cubit),
+            ReplyToStory(),
           // ,
         ],
       ),

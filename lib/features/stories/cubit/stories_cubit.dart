@@ -7,22 +7,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/firebase/collections_keys.dart';
 import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_enums.dart';
 import 'package:nuntius_/core/utils/app_functions.dart';
 import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
+import 'package:nuntius_/features/auth/domain/parameters/no_params.dart';
 import 'package:nuntius_/features/auth/domain/parameters/upload_file_to_storage_params.dart';
-import 'package:nuntius_/features/auth/domain/repository/auth_repository.dart';
+import 'package:nuntius_/features/auth/domain/usecases/upload_file_to_storage_usecase.dart';
+import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 import 'package:nuntius_/features/messages/data/models/last_message/last_message_model.dart';
 import 'package:nuntius_/features/messages/data/models/message/message_model.dart';
 import 'package:nuntius_/features/messages/domain/parameters/send_message_params.dart';
-import 'package:nuntius_/features/messages/domain/repository/messages_repository.dart';
+import 'package:nuntius_/features/messages/domain/usecases/send_message_usecase.dart';
 import 'package:nuntius_/features/stories/data/models/contact_story_model/contact_story_model.dart';
 import 'package:nuntius_/features/stories/data/models/story_model/story_model.dart';
 import 'package:nuntius_/features/stories/data/models/viewer_model/viewer_model.dart';
-import 'package:nuntius_/features/stories/data/repositories/stories_repository.dart';
+import 'package:nuntius_/features/stories/domain/parameters/update_story_params.dart';
+import 'package:nuntius_/features/stories/domain/usecases/delete_last_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/delete_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/get_contacts_current_stories_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/get_contacts_last_stories_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/get_stories_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/send_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/set_last_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/update_last_story_usecase.dart';
+import 'package:nuntius_/features/stories/domain/usecases/update_story_usecase.dart';
 import 'package:nuntius_/features/stories/presentation/widgets/story_view/my_story_viewers/viewers_bottom_sheet.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:story_view/story_view.dart';
@@ -33,36 +45,55 @@ part 'stories_cubit.freezed.dart';
 part 'stories_state.dart';
 
 class StoriesCubit extends Cubit<StoriesState> {
-  final StoriesRepository storiesRepository;
-  final MessagesRepository messagesRepository;
-  final AuthRepository authRepository;
-  final UserStorage userStorage;
+  final SendStoryUsecase _sendStoryUsecase;
+  final DeleteStoryUsecase _deleteStoryUsecase;
+  final UpdateStoryUsecase _updateStoryUsecase;
+  final GetStoriesUsecase _getStoriesUsecase;
+  final SetLastStoryUsecase _setLastStoryUsecase;
+  final UpdateLastStoryUsecase _updateLastStoryUsecase;
+  final DeleteLastStoryUsecase _deleteLastStoryUsecase;
+  final GetContactsCurrentStoriesUsecase _getContactsCurrentStoriesUsecase;
+  final GetContactsLastStoriesUsecase _getContactsLastStoriesUsecase;
+  final SendMessageUsecase _sendMessageUsecase;
+  final UploadFileToStorageUsecase _uploadFileToStorageUsecase;
+  final UserStorage _userStorage;
 
   StoriesCubit({
-    required this.storiesRepository,
-    required this.authRepository,
-    required this.messagesRepository,
-    required this.userStorage,
-  }) : super(const StoriesState.initial());
+    required SendStoryUsecase sendStoryUsecase,
+    required DeleteStoryUsecase deleteStoryUsecase,
+    required UpdateStoryUsecase updateStoryUsecase,
+    required GetStoriesUsecase getStoriesUsecase,
+    required SetLastStoryUsecase setLastStoryUsecase,
+    required UpdateLastStoryUsecase updateLastStoryUsecase,
+    required DeleteLastStoryUsecase deleteLastStoryUsecase,
+    required GetContactsCurrentStoriesUsecase getContactsCurrentStoriesUsecase,
+    required GetContactsLastStoriesUsecase getContactsLastStoriesUsecase,
+    required SendMessageUsecase sendMessageUsecase,
+    required UploadFileToStorageUsecase uploadFileToStorageUsecase,
+    required UserStorage userStorage,
+  })  : _sendStoryUsecase = sendStoryUsecase,
+        _deleteStoryUsecase = deleteStoryUsecase,
+        _updateStoryUsecase = updateStoryUsecase,
+        _getStoriesUsecase = getStoriesUsecase,
+        _setLastStoryUsecase = setLastStoryUsecase,
+        _updateLastStoryUsecase = updateLastStoryUsecase,
+        _deleteLastStoryUsecase = deleteLastStoryUsecase,
+        _getContactsCurrentStoriesUsecase = getContactsCurrentStoriesUsecase,
+        _getContactsLastStoriesUsecase = getContactsLastStoriesUsecase,
+        _sendMessageUsecase = sendMessageUsecase,
+        _uploadFileToStorageUsecase = uploadFileToStorageUsecase,
+        _userStorage = userStorage,
+        super(const StoriesState.initial());
 
-  static StoriesCubit get(context) => BlocProvider.of(context);
-
-  List<String> phones = [];
-  List<UserData> users = [];
-  void getPhones(List<String> phones, List<UserData> users) {
-    this.phones = phones;
-    this.users = users;
-    emit(const StoriesState.getPhones());
-  }
-
-  TextEditingController? controller;
+  TextEditingController? storyTextController;
   void initAddTextStory() {
-    controller = TextEditingController();
+    storyTextController = TextEditingController();
     emit(const StoriesState.initAddTextStory());
   }
 
   void disposeAddTextStory() {
-    controller!.dispose();
+    storyTextController!.dispose();
+    storyFile = null;
     emit(const StoriesState.disposeAddTextStory());
   }
 
@@ -72,30 +103,20 @@ class StoriesCubit extends Cubit<StoriesState> {
   double width = 0.0;
   double height = 0.0;
 
-  Future<void> pickStoryImage() async {
-    emit(const StoriesState.pickStoryMediaLoading());
+  Future<void> pickStoryMedia({required MessageType type}) async {
+    emit(StoriesState.pickStoryMediaLoading(type));
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       storyFile = File(pickedFile.path);
-      final image = await decodeImageFromList(storyFile!.readAsBytesSync());
-      width = image.width + 0.0;
-      height = image.height + 0.0;
-      emit(const StoriesState.pickStoryImage());
+      if (type == MessageType.image) {
+        final image = await decodeImageFromList(storyFile!.readAsBytesSync());
+        width = image.width.roundToDouble();
+        height = image.height.roundToDouble();
+      }
+      emit(const StoriesState.pickStoryMedia());
     } else {
       debugPrint("NOT SELECTED");
-      emit(const StoriesState.pickStoryImageError());
-    }
-  }
-
-  Future<void> pickStoryVideo() async {
-    emit(const StoriesState.pickStoryMediaLoading());
-    final pickedFile = await picker.pickVideo(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      storyFile = File(pickedFile.path);
-      emit(const StoriesState.pickStoryVideo());
-    } else {
-      debugPrint("NOT SELECTED");
-      emit(const StoriesState.pickStoryVideoError());
+      emit(const StoriesState.pickStoryMediaError());
     }
   }
 
@@ -105,13 +126,6 @@ class StoriesCubit extends Cubit<StoriesState> {
     videoDuration = duration;
     emit(const StoriesState.setVideoDuration());
   }
-
-  // void setImageDimensions() async {
-  //   final image = await decodeImageFromList(storyFile!.readAsBytesSync());
-  //   width = image.width + 0.0;
-  //   height = image.height + 0.0;
-  //   emit(const StoriesState.setImageDimensions());
-  // }
 
   void sendStory({String? media, MessageType? mediaType}) async {
     emit(const StoriesState.sendStoryLoading());
@@ -124,28 +138,22 @@ class StoriesCubit extends Cubit<StoriesState> {
       isRead: false,
       videoDuration: videoDuration,
       media: media ?? "",
-      phone: userStorage.getData()!.phone,
-      text: controller!.text,
+      phone: _userStorage.getData()!.phone,
+      text: storyTextController!.text,
       viewers: [],
       viewersPhones: [],
-      canView: phones,
+      canView: di<HomeCubit>().phones.values.toList(),
     );
-    final response =
-        await storiesRepository.setLastStory(storyModel: storyModel);
+    final response = await _setLastStoryUsecase.call(storyModel);
 
     response.fold(
-      (failure) {
-        emit(StoriesState.sendStoryError(failure.getMessage()));
-      },
+      (failure) => emit(StoriesState.sendStoryError(failure.getMessage())),
       (result) async {
-        final response =
-            await storiesRepository.sendStory(storyModel: storyModel);
+        final response = await _sendStoryUsecase.call(storyModel);
         response.fold(
-          (failure) {
-            emit(StoriesState.sendStoryError(failure.getMessage()));
-          },
+          (failure) => emit(StoriesState.sendStoryError(failure.getMessage())),
           (result) {
-            controller!.clear();
+            storyTextController!.clear();
             width = 0.0;
             height = 0.0;
             emit(const StoriesState.sendStory());
@@ -157,8 +165,8 @@ class StoriesCubit extends Cubit<StoriesState> {
 
   void sendMediaStory({required MessageType mediaType}) async {
     emit(const StoriesState.sendStoryLoading());
-    final response = await authRepository.uploadFileToStorage(
-        uploadFileToStorageParams: UploadFileToStorageParams(
+    final response = await _uploadFileToStorageUsecase.call(
+        UploadFileToStorageParams(
             collectionName: Collections.messageImages, file: storyFile!));
     response.fold(
       (failure) {
@@ -171,10 +179,8 @@ class StoriesCubit extends Cubit<StoriesState> {
             taskSnapshot.listen((event) async {
               switch (event.state) {
                 case TaskState.running:
-                  emit(const StoriesState.sendStoryLoading());
                   filePercentage = event.bytesTransferred / event.totalBytes;
-                  debugPrint("===============> $filePercentage");
-                  emit(const StoriesState.getFilePercentage());
+                  emit(StoriesState.getFilePercentage(filePercentage));
                   break;
                 case TaskState.paused:
                   break;
@@ -205,13 +211,11 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.initAddTextStory());
   }
 
-  void getStories({required BuildContext context}) async {
+  void getMyStories() async {
     emit(const StoriesState.getMyStoriesLoading());
-    final response = await storiesRepository.getStories();
+    final response = await _getStoriesUsecase.call(NoParams());
     response.fold(
-      (failure) {
-        emit(StoriesState.getMyStoriesError(failure.getMessage()));
-      },
+      (failure) => emit(StoriesState.getMyStoriesError(failure.getMessage())),
       (snapshots) {
         snapshots.listen((event) async {
           List<StoryModel> myStories = [];
@@ -226,11 +230,7 @@ class StoriesCubit extends Cubit<StoriesState> {
             }
           }
           this.myStories = myStories;
-          print("================>${this.myStories.length}");
-          emit(const StoriesState.initAddTextStory());
-          emit(const StoriesState.getMyStories());
-          // }
-          // stopLoading = false;
+          emit(StoriesState.getMyStories(myStories));
         });
       },
     );
@@ -240,12 +240,11 @@ class StoriesCubit extends Cubit<StoriesState> {
   List<StoryItem> storyItems = [];
 
   void initStoryView({
-    required BuildContext context,
     required List<StoryModel> stories,
     bool isDeleted = false,
   }) {
     storyController = StoryController();
-    handleStoryItems(context: context, stories: stories);
+    handleStoryItems(stories: stories);
     emit(const StoriesState.initStoryView());
   }
 
@@ -255,10 +254,7 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.disposeStoryView());
   }
 
-  void handleStoryItems({
-    required BuildContext context,
-    required List<StoryModel> stories,
-  }) {
+  void handleStoryItems({required List<StoryModel> stories}) {
     storyItems = [];
     for (int i = 0; i < stories.length; i++) {
       if (stories[i].media != "") {
@@ -287,14 +283,13 @@ class StoriesCubit extends Cubit<StoriesState> {
   }
 
   int storyIndex = 0;
-  void changeStoryIndex({required int index, bool? isDeleted}) {
-    emit(const StoriesState.changeStoryIndexLoading());
+  void changeStoryIndex({required int index}) {
     storyIndex = index;
     // if (index == 0 && isDeleted == true) {
     //   print("A7A");
     // }
     // print("==================>$index ${myStories.length}");
-    emit(const StoriesState.changeStoryIndex());
+    emit(StoriesState.changeStoryIndex(index));
   }
 
   void resetStoryIndex() {
@@ -341,7 +336,7 @@ class StoriesCubit extends Cubit<StoriesState> {
 
   void deleteStory({required String storyId}) async {
     emit(StoriesState.deleteStoryLoading(storyId));
-    final response = await storiesRepository.deleteStory(storyId: storyId);
+    final response = await _deleteStoryUsecase.call(storyId);
     response.fold(
       (failure) => emit(StoriesState.deleteStoryError(failure.getMessage())),
       (result) {
@@ -356,7 +351,7 @@ class StoriesCubit extends Cubit<StoriesState> {
   List<ContactStoryModel> recentStories = [];
   List<ContactStoryModel> viewedStories = [];
   List<String> contactsStoriesPhones = [];
-  bool empty = true;
+  // bool empty = true;
   void openContactStory({required ContactStoryModel contactStoryModel}) {
     this.contactStoryModel = contactStoryModel;
     emit(const StoriesState.openContactStory());
@@ -367,19 +362,12 @@ class StoriesCubit extends Cubit<StoriesState> {
     if (isStream != true) {
       emit(const StoriesState.getContactsCurrentStoriesLoading());
     }
-    final response =
-        await storiesRepository.getContactsCurrentStories(users: users);
+    final response = await _getContactsCurrentStoriesUsecase.call(users);
     response.fold(
       (failure) => emit(
           StoriesState.getContactsCurrentStoriesError(failure.getMessage())),
       (stories) {
-        if (stories!.isEmpty) {
-          empty = true;
-        } else {
-          empty = false;
-        }
-
-        contactsStories = stories;
+        contactsStories = stories!;
         viewedStories = [];
         recentStories = [];
         for (var contactStory in stories) {
@@ -392,7 +380,7 @@ class StoriesCubit extends Cubit<StoriesState> {
               .toList();
           if (validStories.isNotEmpty) {
             if (validStories.last.viewersPhones!
-                .contains(userStorage.getData()!.phone)) {
+                .contains(_userStorage.getData()!.phone)) {
               viewedStories.add(contactStory.copyWith(stories: validStories));
             } else {
               recentStories.add(contactStory.copyWith(stories: validStories));
@@ -418,16 +406,14 @@ class StoriesCubit extends Cubit<StoriesState> {
   }
 
   void contactsStoriesChanged() async {
-    final response = await storiesRepository.getContactsLastStories();
+    final response = await _getContactsLastStoriesUsecase.call(NoParams());
     response.fold(
       (failure) =>
           emit(StoriesState.contactsStoriesChangedError(failure.getMessage())),
       (stream) {
         stream.listen((event) {
-          // if (!empty) {
-          //   emit(const StoriesState.contactsStoriesChanged());
-          // }
-          getContactsCurrentStories(users: users, isStream: true);
+          getContactsCurrentStories(
+              users: di<HomeCubit>().users, isStream: true);
         });
       },
     );
@@ -439,22 +425,21 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.initReplyToStory());
   }
 
-  void viewContactStory(
-      {required StoryModel storyModel, required String phoneNumber}) async {
+  void viewContactStory({required StoryModel storyModel}) async {
     emit(const StoriesState.viewContactStoryLoading());
     storyModel.viewers!.add(ViewerModel(
-      id: userStorage.getData()!.uId,
-      phoneNumber: userStorage.getData()!.phone,
+      id: _userStorage.getData()!.uId,
+      phoneNumber: _userStorage.getData()!.phone,
       dateTime: DateTime.now().toString(),
     ).toJson());
 
-    storyModel.viewersPhones!.add(userStorage.getData()!.phone!);
+    storyModel.viewersPhones!.add(_userStorage.getData()!.phone!);
 
     // print("=========>${storyModel.toJson()}");
-    final response = await storiesRepository.updateStory(
+    final response = await _updateStoryUsecase.call(UpdateStoryParams(
       storyModel: storyModel,
       phoneNumber: contactStoryModel!.user!.phone!,
-    );
+    ));
 
     response.fold(
       (failure) => null,
@@ -473,7 +458,7 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.replyToStoryLoading());
 
     MessageModel messageModel = MessageModel(
-      senderId: userStorage.getData()!.uId,
+      senderId: _userStorage.getData()!.uId,
       receiverId: user.uId,
       message: replyController!.text,
       date: DateTime.now().toUtc().toString(),
@@ -503,8 +488,8 @@ class StoriesCubit extends Cubit<StoriesState> {
       isRead: false,
     );
 
-    final response = await messagesRepository.sendMessage(
-      sendMessageParams: SendMessageParams(
+    final response = await _sendMessageUsecase.call(
+      SendMessageParams(
         phoneNumber: user.phone!,
         lastMessageModel: lastMessageModel,
         messageModel: messageModel,

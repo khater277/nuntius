@@ -6,7 +6,8 @@ import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
 import 'package:nuntius_/features/stories/data/datasources/stories_remote_data_source.dart';
 import 'package:nuntius_/features/stories/data/models/contact_story_model/contact_story_model.dart';
 import 'package:nuntius_/features/stories/data/models/story_model/story_model.dart';
-import 'package:nuntius_/features/stories/data/repositories/stories_repository.dart';
+import 'package:nuntius_/features/stories/domain/parameters/update_story_params.dart';
+import 'package:nuntius_/features/stories/domain/repositories/stories_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class StoriesRepositoryImpl implements StoriesRepository {
@@ -153,12 +154,10 @@ class StoriesRepositoryImpl implements StoriesRepository {
 
   @override
   Future<Either<Failure, void>> updateStory(
-      {required StoryModel storyModel, required String phoneNumber}) async {
+      {required UpdateStoryParams updateStoryParams}) async {
     try {
       final response = storiesRemoteDataSource.updateStory(
-        storyModel: storyModel,
-        phoneNumber: phoneNumber,
-      );
+          updateStoryParams: updateStoryParams);
       return Right(response);
     } on FirebaseException catch (error) {
       return Left(

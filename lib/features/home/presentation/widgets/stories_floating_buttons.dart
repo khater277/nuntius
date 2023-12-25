@@ -1,4 +1,5 @@
 import 'package:nuntius_/config/navigation.dart';
+import 'package:nuntius_/core/utils/app_enums.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/core/utils/icons_broken.dart';
 import 'package:nuntius_/features/home/presentation/widgets/stories_fab.dart';
@@ -20,25 +21,20 @@ class StoriesFloatingButtons extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         StoriesFab(
-          onPressed: () {
-            Go.to(context: context, screen: const AddTextStoryScreen());
-          },
+          onPressed: () =>
+              Go.to(context: context, screen: const AddTextStoryScreen()),
           icon: IconBroken.Edit,
           tag: "btn1",
         ),
         SizedBox(height: AppHeight.h6),
         StoriesFab(
-          onPressed: () {
-            storiesCubit.pickStoryImage();
-          },
+          onPressed: () => storiesCubit.pickStoryMedia(type: MessageType.image),
           icon: IconBroken.Image,
           tag: "btn2",
         ),
         SizedBox(height: AppHeight.h6),
         StoriesFab(
-          onPressed: () {
-            storiesCubit.pickStoryVideo();
-          },
+          onPressed: () => storiesCubit.pickStoryMedia(type: MessageType.video),
           icon: IconBroken.Video,
           tag: "btn3",
         ),

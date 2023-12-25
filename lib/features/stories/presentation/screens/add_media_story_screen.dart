@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/config/navigation.dart';
 import 'package:nuntius_/core/shared_widgets/circle_indicator.dart';
 import 'package:nuntius_/core/shared_widgets/snack_bar.dart';
@@ -23,17 +24,15 @@ class AddMediaStoryScreen extends StatefulWidget {
 }
 
 class _AddMediaStoryScreenState extends State<AddMediaStoryScreen> {
-  late StoriesCubit storiesCubit;
   @override
   void initState() {
-    storiesCubit = StoriesCubit.get(context);
-    storiesCubit.initAddTextStory();
+    di<StoriesCubit>().initAddTextStory();
     super.initState();
   }
 
   @override
   void dispose() {
-    storiesCubit.disposeAddTextStory();
+    di<StoriesCubit>().disposeAddTextStory();
     super.dispose();
   }
 
@@ -42,6 +41,7 @@ class _AddMediaStoryScreenState extends State<AddMediaStoryScreen> {
     return BlocConsumer<StoriesCubit, StoriesState>(
       listener: (context, state) {
         state.maybeWhen(
+          pickStoryMediaError: () => Go.back(context: context),
           sendStoryError: (errorMsg) =>
               errorSnackBar(context: context, errorMsg: errorMsg),
           sendStory: () => Go.back(context: context),
@@ -49,13 +49,10 @@ class _AddMediaStoryScreenState extends State<AddMediaStoryScreen> {
         );
       },
       builder: (context, state) {
-        final cubit = StoriesCubit.get(context);
         return SafeArea(
           child: Scaffold(
             body: state.maybeWhen(
-              sendStoryLoading: () =>
-                  const Center(child: CustomCircleIndicator()),
-              getFilePercentage: () =>
+              pickStoryMediaLoading: (type) =>
                   const Center(child: CustomCircleIndicator()),
               orElse: () => Stack(
                 children: [
@@ -64,31 +61,46 @@ class _AddMediaStoryScreenState extends State<AddMediaStoryScreen> {
                   if (widget.messageType == MessageType.video)
                     const VideoStory(),
                   const CloseButton(),
-                  Align(
-                    alignment: AlignmentDirectional.bottomCenter,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: AppHeight.h6, horizontal: AppWidth.w6),
-                      child: Row(
-                        children: [
-                          CaptionTextField(controller: cubit.controller!),
-                          SizedBox(
-                            width: AppWidth.w5,
-                          ),
-                          SendStoryButton(
-                            controller: cubit.controller!,
-                            storyType: widget.messageType,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
+                  // Align(
+                  //     alignment: AlignmentDirectional.center,
+                  //     child: CustomCircleIndicator()),
+                  AddMediaStoryTextFieldAndButton(
+                      storyType: widget.messageType),
                 ],
               ),
             ),
           ),
         );
       },
+    );
+  }
+}
+
+class AddMediaStoryTextFieldAndButton extends StatelessWidget {
+  const AddMediaStoryTextFieldAndButton({
+    super.key,
+    required this.storyType,
+  });
+
+  final MessageType storyType;
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: AlignmentDirectional.bottomCenter,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+            vertical: AppHeight.h6, horizontal: AppWidth.w6),
+        child: Row(
+          children: [
+            const CaptionTextField(),
+            SizedBox(width: AppWidth.w5),
+            SendStoryButton(
+              storyType: storyType,
+            )
+          ],
+        ),
+      ),
     );
   }
 }

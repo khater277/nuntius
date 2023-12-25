@@ -1,17 +1,17 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/utils/font_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:nuntius_/features/stories/cubit/stories_cubit.dart';
 
 class StoryTextField extends StatelessWidget {
-  final TextEditingController controller;
   const StoryTextField({
     super.key,
-    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: controller,
+      controller: di<StoriesCubit>().storyTextController!,
       keyboardType: TextInputType.text,
       maxLines: 20,
       autofocus: true,

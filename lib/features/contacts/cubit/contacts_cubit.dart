@@ -2,7 +2,6 @@ import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/features/chats/cubit/chats_cubit.dart';
 import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 
@@ -10,7 +9,14 @@ part 'contacts_cubit.freezed.dart';
 part 'contacts_state.dart';
 
 class ContactsCubit extends Cubit<ContactsState> {
-  ContactsCubit() : super(const ContactsState.initial());
+  final HomeCubit _homeCubit;
+  final ChatsCubit _chatsCubit;
+  ContactsCubit({
+    required HomeCubit homeCubit,
+    required ChatsCubit chatsCubit,
+  })  : _homeCubit = homeCubit,
+        _chatsCubit = chatsCubit,
+        super(const ContactsState.initial());
 
   TextEditingController? firstNameController;
   TextEditingController? lastNameController;
@@ -51,8 +57,8 @@ class ContactsCubit extends Cubit<ContactsState> {
             Item(label: emailController!.text, value: emailController!.text)
           ]);
       await ContactsService.addContact(contact);
-      await di<HomeCubit>().getContacts(isAddContact: true);
-      await di<ChatsCubit>().getChats();
+      await _homeCubit.getContacts(isAddContact: true);
+      await _chatsCubit.getChats();
       firstNameController!.clear();
       lastNameController!.clear();
       companyController!.clear();

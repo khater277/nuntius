@@ -4,6 +4,7 @@ import 'package:nuntius_/core/errors/failures.dart';
 import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
 import 'package:nuntius_/features/stories/data/models/contact_story_model/contact_story_model.dart';
 import 'package:nuntius_/features/stories/data/models/story_model/story_model.dart';
+import 'package:nuntius_/features/stories/domain/parameters/update_story_params.dart';
 
 abstract class StoriesRepository {
   Future<Either<Failure, void>> setLastStory({required StoryModel storyModel});
@@ -20,5 +21,5 @@ abstract class StoriesRepository {
       {required StoryModel storyModel});
   Future<Either<Failure, void>> deleteLastStory();
   Future<Either<Failure, void>> updateStory(
-      {required StoryModel storyModel, required String phoneNumber});
+      {required UpdateStoryParams updateStoryParams});
 }

@@ -14,14 +14,12 @@ import '../../../../auth/data/models/user_data/user_data.dart';
 class StoryViewHead extends StatelessWidget {
   const StoryViewHead({
     super.key,
-    required this.stories,
+    required this.storyDate,
     required this.user,
-    required this.cubit,
   });
 
-  final List<StoryModel> stories;
+  final String storyDate;
   final UserData user;
-  final StoriesCubit cubit;
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +43,7 @@ class StoryViewHead extends StatelessWidget {
                 size: FontSize.s14,
               ),
               SizedBox(height: AppHeight.h2),
-              StoryDate(storyDate: stories[cubit.storyIndex].date!)
+              StoryDate(storyDate: storyDate)
             ],
           ),
         ],

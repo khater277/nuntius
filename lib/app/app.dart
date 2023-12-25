@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuntius_/features/messages/cubit/messages_cubit.dart';
 import 'package:nuntius_/features/search/cubit/search_cubit.dart';
+import 'package:nuntius_/features/stories/cubit/stories_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -48,15 +49,14 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (BuildContext context) => di<EditProfileCubit>(),
               ),
-              // BlocProvider(
-              //   create: (BuildContext context) => di<StoriesCubit>()
-              //     ..getPhones(
-              //       HomeCubit.get(context).phones.keys.toList(),
-              //       HomeCubit.get(context).users,
-              //     )
-              //     ..getContactsCurrentStories(
-              //         users: HomeCubit.get(context).users),
-              // ),
+              BlocProvider(create: (BuildContext context) => di<StoriesCubit>()
+                  // ..getPhones(
+                  //   HomeCubit.get(context).phones.keys.toList(),
+                  //   HomeCubit.get(context).users,
+                  // )
+                  // ..getContactsCurrentStories(
+                  //     users: HomeCubit.get(context).users),
+                  ),
               // BlocProvider(
               //   create: (BuildContext context) => di<CallsCubit>(),
               // ),

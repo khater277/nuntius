@@ -3,6 +3,7 @@ import 'package:nuntius_/core/firebase/firestore/stories_database.dart';
 import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
 import 'package:nuntius_/features/stories/data/models/contact_story_model/contact_story_model.dart';
 import 'package:nuntius_/features/stories/data/models/story_model/story_model.dart';
+import 'package:nuntius_/features/stories/domain/parameters/update_story_params.dart';
 
 abstract class StoriesRemoteDataSource {
   Future<void> setLastStory({required StoryModel storyModel});
@@ -14,8 +15,7 @@ abstract class StoriesRemoteDataSource {
       {required List<UserData> users});
   Future<void> updateLastStory({required StoryModel storyModel});
   Future<void> deleteLastStory();
-  Future<void> updateStory(
-      {required StoryModel storyModel, required String phoneNumber});
+  Future<void> updateStory({required UpdateStoryParams updateStoryParams});
 }
 
 class StoriesRemoteDataSourceImpl implements StoriesRemoteDataSource {
@@ -64,9 +64,7 @@ class StoriesRemoteDataSourceImpl implements StoriesRemoteDataSource {
   }
 
   @override
-  Future<void> updateStory(
-      {required StoryModel storyModel, required String phoneNumber}) {
-    return storiesDatabase.updateStory(
-        storyModel: storyModel, phoneNumber: phoneNumber);
+  Future<void> updateStory({required UpdateStoryParams updateStoryParams}) {
+    return storiesDatabase.updateStory(updateStoryParams: updateStoryParams);
   }
 }

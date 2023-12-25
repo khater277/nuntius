@@ -1,3 +1,4 @@
+import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/config/navigation.dart';
 import 'package:nuntius_/core/shared_widgets/circle_indicator.dart';
 import 'package:nuntius_/core/shared_widgets/text.dart';
@@ -34,14 +35,13 @@ class _ContactStoryState extends State<ContactStory> {
   Widget build(BuildContext context) {
     return BlocBuilder<StoriesCubit, StoriesState>(
       builder: (context, state) {
-        final cubit = StoriesCubit.get(context);
         return state.maybeWhen(
           getContactsCurrentStoriesLoading: () => const Center(
             child: CustomCircleIndicator(),
           ),
           orElse: () => GestureDetector(
             onTap: () {
-              cubit.openContactStory(
+              di<StoriesCubit>().openContactStory(
                   contactStoryModel: widget.contactStoryModel);
               Go.to(
                 context: context,
