@@ -70,12 +70,11 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme(),
-              home:
-                  //  di<UserStorage>().getData() != null
-                  //     ? const HomeScreen()
-                  //     : const LoginScreen(),
-                  // const HomeScreen(),
-                  const LoginScreen(),
+              home: di<UserStorage>().getData() != null
+                  ? const HomeScreen()
+                  : const LoginScreen(),
+              // const HomeScreen(),
+              // const LoginScreen(),
             ),
           );
         });
