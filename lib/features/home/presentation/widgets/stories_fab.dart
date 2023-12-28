@@ -15,8 +15,8 @@ class StoriesFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: AppSize.s45,
-      height: AppSize.s45,
+      width: AppSize.s40,
+      height: AppSize.s40,
       child: FloatingActionButton(
         heroTag: tag,
         onPressed: onPressed,
@@ -24,7 +24,7 @@ class StoriesFab extends StatelessWidget {
         child: Icon(
           icon,
           color: AppColors.white,
-          size: AppSize.s22,
+          size: AppSize.s18,
         ),
       ),
     );

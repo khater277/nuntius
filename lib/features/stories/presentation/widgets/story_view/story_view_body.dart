@@ -57,7 +57,7 @@ class StoryViewBody extends StatelessWidget {
                     .myStories[di<StoriesCubit>().storyIndex]
                     .viewers!)
           else
-            ReplyToStory(),
+            const ReplyToStory(),
           // ,
         ],
       ),

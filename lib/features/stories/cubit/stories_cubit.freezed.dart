@@ -19,7 +19,13 @@ mixin _$StoriesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -34,13 +40,16 @@ mixin _$StoriesState {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -51,7 +60,6 @@ mixin _$StoriesState {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -60,12 +68,19 @@ mixin _$StoriesState {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -80,13 +95,16 @@ mixin _$StoriesState {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -97,7 +115,6 @@ mixin _$StoriesState {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -106,12 +123,19 @@ mixin _$StoriesState {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -126,13 +150,16 @@ mixin _$StoriesState {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -143,7 +170,6 @@ mixin _$StoriesState {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -152,13 +178,19 @@ mixin _$StoriesState {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -174,6 +206,11 @@ mixin _$StoriesState {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -185,8 +222,6 @@ mixin _$StoriesState {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -200,8 +235,6 @@ mixin _$StoriesState {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -213,12 +246,18 @@ mixin _$StoriesState {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -233,6 +272,10 @@ mixin _$StoriesState {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -243,8 +286,6 @@ mixin _$StoriesState {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -256,8 +297,6 @@ mixin _$StoriesState {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -267,12 +306,17 @@ mixin _$StoriesState {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -287,6 +331,10 @@ mixin _$StoriesState {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -297,8 +345,6 @@ mixin _$StoriesState {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -310,8 +356,6 @@ mixin _$StoriesState {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -321,6 +365,7 @@ mixin _$StoriesState {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -389,7 +434,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -404,13 +455,16 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -421,7 +475,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -430,6 +483,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return initial();
   }
@@ -438,7 +492,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -453,13 +513,16 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -470,7 +533,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -479,6 +541,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return initial?.call();
   }
@@ -487,7 +550,13 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -502,13 +571,16 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -519,7 +591,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -528,6 +599,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -540,7 +612,12 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -556,6 +633,11 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -567,8 +649,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -582,8 +662,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -595,6 +673,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return initial(this);
   }
@@ -603,7 +682,12 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -618,6 +702,10 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -628,8 +716,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -641,8 +727,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -652,6 +736,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return initial?.call(this);
   }
@@ -660,7 +745,11 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -675,6 +764,10 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -685,8 +778,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -698,8 +789,6 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -709,6 +798,7 @@ class _$InitialImpl with DiagnosticableTreeMixin implements _Initial {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -723,41 +813,47 @@ abstract class _Initial implements StoriesState {
 }
 
 /// @nodoc
-abstract class _$$GetPhonesImplCopyWith<$Res> {
-  factory _$$GetPhonesImplCopyWith(
-          _$GetPhonesImpl value, $Res Function(_$GetPhonesImpl) then) =
-      __$$GetPhonesImplCopyWithImpl<$Res>;
+abstract class _$$InitStoriesScreenLoadingImplCopyWith<$Res> {
+  factory _$$InitStoriesScreenLoadingImplCopyWith(
+          _$InitStoriesScreenLoadingImpl value,
+          $Res Function(_$InitStoriesScreenLoadingImpl) then) =
+      __$$InitStoriesScreenLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetPhonesImplCopyWithImpl<$Res>
-    extends _$StoriesStateCopyWithImpl<$Res, _$GetPhonesImpl>
-    implements _$$GetPhonesImplCopyWith<$Res> {
-  __$$GetPhonesImplCopyWithImpl(
-      _$GetPhonesImpl _value, $Res Function(_$GetPhonesImpl) _then)
+class __$$InitStoriesScreenLoadingImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$InitStoriesScreenLoadingImpl>
+    implements _$$InitStoriesScreenLoadingImplCopyWith<$Res> {
+  __$$InitStoriesScreenLoadingImplCopyWithImpl(
+      _$InitStoriesScreenLoadingImpl _value,
+      $Res Function(_$InitStoriesScreenLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
-  const _$GetPhonesImpl();
+class _$InitStoriesScreenLoadingImpl
+    with DiagnosticableTreeMixin
+    implements _InitStoriesScreenLoading {
+  const _$InitStoriesScreenLoadingImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StoriesState.getPhones()';
+    return 'StoriesState.initStoriesScreenLoading()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'StoriesState.getPhones'));
+    properties.add(
+        DiagnosticsProperty('type', 'StoriesState.initStoriesScreenLoading'));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetPhonesImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$InitStoriesScreenLoadingImpl);
   }
 
   @override
@@ -767,7 +863,13 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -782,13 +884,16 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -799,7 +904,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -808,15 +912,22 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
-    return getPhones();
+    return initStoriesScreenLoading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -831,13 +942,16 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -848,7 +962,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -857,15 +970,22 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
-    return getPhones?.call();
+    return initStoriesScreenLoading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -880,13 +1000,16 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -897,7 +1020,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -906,10 +1028,11 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
-    if (getPhones != null) {
-      return getPhones();
+    if (initStoriesScreenLoading != null) {
+      return initStoriesScreenLoading();
     }
     return orElse();
   }
@@ -918,7 +1041,12 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -934,6 +1062,11 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -945,8 +1078,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -960,8 +1091,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -973,15 +1102,21 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
-    return getPhones(this);
+    return initStoriesScreenLoading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -996,6 +1131,10 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -1006,8 +1145,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -1019,8 +1156,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -1030,15 +1165,20 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
-    return getPhones?.call(this);
+    return initStoriesScreenLoading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -1053,6 +1193,10 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -1063,8 +1207,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -1076,8 +1218,6 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -1087,17 +1227,1828 @@ class _$GetPhonesImpl with DiagnosticableTreeMixin implements _GetPhones {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
-    if (getPhones != null) {
-      return getPhones(this);
+    if (initStoriesScreenLoading != null) {
+      return initStoriesScreenLoading(this);
     }
     return orElse();
   }
 }
 
-abstract class _GetPhones implements StoriesState {
-  const factory _GetPhones() = _$GetPhonesImpl;
+abstract class _InitStoriesScreenLoading implements StoriesState {
+  const factory _InitStoriesScreenLoading() = _$InitStoriesScreenLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$TestLoadingImplCopyWith<$Res> {
+  factory _$$TestLoadingImplCopyWith(
+          _$TestLoadingImpl value, $Res Function(_$TestLoadingImpl) then) =
+      __$$TestLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$TestLoadingImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$TestLoadingImpl>
+    implements _$$TestLoadingImplCopyWith<$Res> {
+  __$$TestLoadingImplCopyWithImpl(
+      _$TestLoadingImpl _value, $Res Function(_$TestLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$TestLoadingImpl with DiagnosticableTreeMixin implements _TestLoading {
+  const _$TestLoadingImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.testLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'StoriesState.testLoading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$TestLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return testLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return testLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (testLoading != null) {
+      return testLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return testLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return testLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (testLoading != null) {
+      return testLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TestLoading implements StoriesState {
+  const factory _TestLoading() = _$TestLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$TestSuccessImplCopyWith<$Res> {
+  factory _$$TestSuccessImplCopyWith(
+          _$TestSuccessImpl value, $Res Function(_$TestSuccessImpl) then) =
+      __$$TestSuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call(
+      {List<StoryModel> myStories,
+      List<ContactStoryModel> contactStories,
+      String? errorMsg});
+}
+
+/// @nodoc
+class __$$TestSuccessImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$TestSuccessImpl>
+    implements _$$TestSuccessImplCopyWith<$Res> {
+  __$$TestSuccessImplCopyWithImpl(
+      _$TestSuccessImpl _value, $Res Function(_$TestSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? myStories = null,
+    Object? contactStories = null,
+    Object? errorMsg = freezed,
+  }) {
+    return _then(_$TestSuccessImpl(
+      null == myStories
+          ? _value._myStories
+          : myStories // ignore: cast_nullable_to_non_nullable
+              as List<StoryModel>,
+      null == contactStories
+          ? _value._contactStories
+          : contactStories // ignore: cast_nullable_to_non_nullable
+              as List<ContactStoryModel>,
+      freezed == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TestSuccessImpl with DiagnosticableTreeMixin implements _TestSuccess {
+  const _$TestSuccessImpl(final List<StoryModel> myStories,
+      final List<ContactStoryModel> contactStories, this.errorMsg)
+      : _myStories = myStories,
+        _contactStories = contactStories;
+
+  final List<StoryModel> _myStories;
+  @override
+  List<StoryModel> get myStories {
+    if (_myStories is EqualUnmodifiableListView) return _myStories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_myStories);
+  }
+
+  final List<ContactStoryModel> _contactStories;
+  @override
+  List<ContactStoryModel> get contactStories {
+    if (_contactStories is EqualUnmodifiableListView) return _contactStories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_contactStories);
+  }
+
+  @override
+  final String? errorMsg;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.testSuccess(myStories: $myStories, contactStories: $contactStories, errorMsg: $errorMsg)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'StoriesState.testSuccess'))
+      ..add(DiagnosticsProperty('myStories', myStories))
+      ..add(DiagnosticsProperty('contactStories', contactStories))
+      ..add(DiagnosticsProperty('errorMsg', errorMsg));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TestSuccessImpl &&
+            const DeepCollectionEquality()
+                .equals(other._myStories, _myStories) &&
+            const DeepCollectionEquality()
+                .equals(other._contactStories, _contactStories) &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_myStories),
+      const DeepCollectionEquality().hash(_contactStories),
+      errorMsg);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TestSuccessImplCopyWith<_$TestSuccessImpl> get copyWith =>
+      __$$TestSuccessImplCopyWithImpl<_$TestSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return testSuccess(myStories, contactStories, errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return testSuccess?.call(myStories, contactStories, errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (testSuccess != null) {
+      return testSuccess(myStories, contactStories, errorMsg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return testSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return testSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (testSuccess != null) {
+      return testSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TestSuccess implements StoriesState {
+  const factory _TestSuccess(
+      final List<StoryModel> myStories,
+      final List<ContactStoryModel> contactStories,
+      final String? errorMsg) = _$TestSuccessImpl;
+
+  List<StoryModel> get myStories;
+  List<ContactStoryModel> get contactStories;
+  String? get errorMsg;
+  @JsonKey(ignore: true)
+  _$$TestSuccessImplCopyWith<_$TestSuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TestErrorImplCopyWith<$Res> {
+  factory _$$TestErrorImplCopyWith(
+          _$TestErrorImpl value, $Res Function(_$TestErrorImpl) then) =
+      __$$TestErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMsg});
+}
+
+/// @nodoc
+class __$$TestErrorImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$TestErrorImpl>
+    implements _$$TestErrorImplCopyWith<$Res> {
+  __$$TestErrorImplCopyWithImpl(
+      _$TestErrorImpl _value, $Res Function(_$TestErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMsg = null,
+  }) {
+    return _then(_$TestErrorImpl(
+      null == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$TestErrorImpl with DiagnosticableTreeMixin implements _TestError {
+  const _$TestErrorImpl(this.errorMsg);
+
+  @override
+  final String errorMsg;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.testError(errorMsg: $errorMsg)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'StoriesState.testError'))
+      ..add(DiagnosticsProperty('errorMsg', errorMsg));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TestErrorImpl &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMsg);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TestErrorImplCopyWith<_$TestErrorImpl> get copyWith =>
+      __$$TestErrorImplCopyWithImpl<_$TestErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return testError(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return testError?.call(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (testError != null) {
+      return testError(errorMsg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return testError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return testError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (testError != null) {
+      return testError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TestError implements StoriesState {
+  const factory _TestError(final String errorMsg) = _$TestErrorImpl;
+
+  String get errorMsg;
+  @JsonKey(ignore: true)
+  _$$TestErrorImplCopyWith<_$TestErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$InitStoriesScreenImplCopyWith<$Res> {
+  factory _$$InitStoriesScreenImplCopyWith(_$InitStoriesScreenImpl value,
+          $Res Function(_$InitStoriesScreenImpl) then) =
+      __$$InitStoriesScreenImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitStoriesScreenImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$InitStoriesScreenImpl>
+    implements _$$InitStoriesScreenImplCopyWith<$Res> {
+  __$$InitStoriesScreenImplCopyWithImpl(_$InitStoriesScreenImpl _value,
+      $Res Function(_$InitStoriesScreenImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitStoriesScreenImpl
+    with DiagnosticableTreeMixin
+    implements _InitStoriesScreen {
+  const _$InitStoriesScreenImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.initStoriesScreen()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'StoriesState.initStoriesScreen'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitStoriesScreenImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return initStoriesScreen();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return initStoriesScreen?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (initStoriesScreen != null) {
+      return initStoriesScreen();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return initStoriesScreen(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return initStoriesScreen?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (initStoriesScreen != null) {
+      return initStoriesScreen(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InitStoriesScreen implements StoriesState {
+  const factory _InitStoriesScreen() = _$InitStoriesScreenImpl;
 }
 
 /// @nodoc
@@ -1148,7 +3099,13 @@ class _$InitAddTextStoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -1163,13 +3120,16 @@ class _$InitAddTextStoryImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -1180,7 +3140,6 @@ class _$InitAddTextStoryImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -1189,6 +3148,7 @@ class _$InitAddTextStoryImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return initAddTextStory();
   }
@@ -1197,7 +3157,13 @@ class _$InitAddTextStoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -1212,13 +3178,16 @@ class _$InitAddTextStoryImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -1229,7 +3198,6 @@ class _$InitAddTextStoryImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -1238,6 +3206,7 @@ class _$InitAddTextStoryImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return initAddTextStory?.call();
   }
@@ -1246,7 +3215,13 @@ class _$InitAddTextStoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -1261,13 +3236,16 @@ class _$InitAddTextStoryImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -1278,7 +3256,6 @@ class _$InitAddTextStoryImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -1287,6 +3264,7 @@ class _$InitAddTextStoryImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initAddTextStory != null) {
@@ -1299,7 +3277,12 @@ class _$InitAddTextStoryImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -1315,6 +3298,11 @@ class _$InitAddTextStoryImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -1326,8 +3314,6 @@ class _$InitAddTextStoryImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -1341,8 +3327,6 @@ class _$InitAddTextStoryImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -1354,6 +3338,7 @@ class _$InitAddTextStoryImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return initAddTextStory(this);
   }
@@ -1362,7 +3347,12 @@ class _$InitAddTextStoryImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -1377,6 +3367,10 @@ class _$InitAddTextStoryImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -1387,8 +3381,6 @@ class _$InitAddTextStoryImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -1400,8 +3392,6 @@ class _$InitAddTextStoryImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -1411,6 +3401,7 @@ class _$InitAddTextStoryImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return initAddTextStory?.call(this);
   }
@@ -1419,7 +3410,11 @@ class _$InitAddTextStoryImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -1434,6 +3429,10 @@ class _$InitAddTextStoryImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -1444,8 +3443,6 @@ class _$InitAddTextStoryImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -1457,8 +3454,6 @@ class _$InitAddTextStoryImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -1468,6 +3463,7 @@ class _$InitAddTextStoryImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initAddTextStory != null) {
@@ -1530,7 +3526,13 @@ class _$DisposeAddTextStoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -1545,13 +3547,16 @@ class _$DisposeAddTextStoryImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -1562,7 +3567,6 @@ class _$DisposeAddTextStoryImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -1571,6 +3575,7 @@ class _$DisposeAddTextStoryImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return disposeAddTextStory();
   }
@@ -1579,7 +3584,13 @@ class _$DisposeAddTextStoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -1594,13 +3605,16 @@ class _$DisposeAddTextStoryImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -1611,7 +3625,6 @@ class _$DisposeAddTextStoryImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -1620,6 +3633,7 @@ class _$DisposeAddTextStoryImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return disposeAddTextStory?.call();
   }
@@ -1628,7 +3642,13 @@ class _$DisposeAddTextStoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -1643,13 +3663,16 @@ class _$DisposeAddTextStoryImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -1660,7 +3683,6 @@ class _$DisposeAddTextStoryImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -1669,6 +3691,7 @@ class _$DisposeAddTextStoryImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (disposeAddTextStory != null) {
@@ -1681,7 +3704,12 @@ class _$DisposeAddTextStoryImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -1697,6 +3725,11 @@ class _$DisposeAddTextStoryImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -1708,8 +3741,6 @@ class _$DisposeAddTextStoryImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -1723,8 +3754,6 @@ class _$DisposeAddTextStoryImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -1736,6 +3765,7 @@ class _$DisposeAddTextStoryImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return disposeAddTextStory(this);
   }
@@ -1744,7 +3774,12 @@ class _$DisposeAddTextStoryImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -1759,6 +3794,10 @@ class _$DisposeAddTextStoryImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -1769,8 +3808,6 @@ class _$DisposeAddTextStoryImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -1782,8 +3819,6 @@ class _$DisposeAddTextStoryImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -1793,6 +3828,7 @@ class _$DisposeAddTextStoryImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return disposeAddTextStory?.call(this);
   }
@@ -1801,7 +3837,11 @@ class _$DisposeAddTextStoryImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -1816,6 +3856,10 @@ class _$DisposeAddTextStoryImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -1826,8 +3870,6 @@ class _$DisposeAddTextStoryImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -1839,8 +3881,6 @@ class _$DisposeAddTextStoryImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -1850,6 +3890,7 @@ class _$DisposeAddTextStoryImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (disposeAddTextStory != null) {
@@ -1940,7 +3981,13 @@ class _$PickStoryMediaLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -1955,13 +4002,16 @@ class _$PickStoryMediaLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -1972,7 +4022,6 @@ class _$PickStoryMediaLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -1981,6 +4030,7 @@ class _$PickStoryMediaLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return pickStoryMediaLoading(type);
   }
@@ -1989,7 +4039,13 @@ class _$PickStoryMediaLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -2004,13 +4060,16 @@ class _$PickStoryMediaLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -2021,7 +4080,6 @@ class _$PickStoryMediaLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -2030,6 +4088,7 @@ class _$PickStoryMediaLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return pickStoryMediaLoading?.call(type);
   }
@@ -2038,7 +4097,13 @@ class _$PickStoryMediaLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -2053,13 +4118,16 @@ class _$PickStoryMediaLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -2070,7 +4138,6 @@ class _$PickStoryMediaLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -2079,6 +4146,7 @@ class _$PickStoryMediaLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (pickStoryMediaLoading != null) {
@@ -2091,7 +4159,12 @@ class _$PickStoryMediaLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -2107,6 +4180,11 @@ class _$PickStoryMediaLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -2118,8 +4196,6 @@ class _$PickStoryMediaLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -2133,8 +4209,6 @@ class _$PickStoryMediaLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -2146,6 +4220,7 @@ class _$PickStoryMediaLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return pickStoryMediaLoading(this);
   }
@@ -2154,7 +4229,12 @@ class _$PickStoryMediaLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -2169,6 +4249,10 @@ class _$PickStoryMediaLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -2179,8 +4263,6 @@ class _$PickStoryMediaLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -2192,8 +4274,6 @@ class _$PickStoryMediaLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -2203,6 +4283,7 @@ class _$PickStoryMediaLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return pickStoryMediaLoading?.call(this);
   }
@@ -2211,7 +4292,11 @@ class _$PickStoryMediaLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -2226,6 +4311,10 @@ class _$PickStoryMediaLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -2236,8 +4325,6 @@ class _$PickStoryMediaLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -2249,8 +4336,6 @@ class _$PickStoryMediaLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -2260,6 +4345,7 @@ class _$PickStoryMediaLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (pickStoryMediaLoading != null) {
@@ -2326,7 +4412,13 @@ class _$PickStoryMediaImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -2341,13 +4433,16 @@ class _$PickStoryMediaImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -2358,7 +4453,6 @@ class _$PickStoryMediaImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -2367,6 +4461,7 @@ class _$PickStoryMediaImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return pickStoryMedia();
   }
@@ -2375,7 +4470,13 @@ class _$PickStoryMediaImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -2390,13 +4491,16 @@ class _$PickStoryMediaImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -2407,7 +4511,6 @@ class _$PickStoryMediaImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -2416,6 +4519,7 @@ class _$PickStoryMediaImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return pickStoryMedia?.call();
   }
@@ -2424,7 +4528,13 @@ class _$PickStoryMediaImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -2439,13 +4549,16 @@ class _$PickStoryMediaImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -2456,7 +4569,6 @@ class _$PickStoryMediaImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -2465,6 +4577,7 @@ class _$PickStoryMediaImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (pickStoryMedia != null) {
@@ -2477,7 +4590,12 @@ class _$PickStoryMediaImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -2493,6 +4611,11 @@ class _$PickStoryMediaImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -2504,8 +4627,6 @@ class _$PickStoryMediaImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -2519,8 +4640,6 @@ class _$PickStoryMediaImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -2532,6 +4651,7 @@ class _$PickStoryMediaImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return pickStoryMedia(this);
   }
@@ -2540,7 +4660,12 @@ class _$PickStoryMediaImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -2555,6 +4680,10 @@ class _$PickStoryMediaImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -2565,8 +4694,6 @@ class _$PickStoryMediaImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -2578,8 +4705,6 @@ class _$PickStoryMediaImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -2589,6 +4714,7 @@ class _$PickStoryMediaImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return pickStoryMedia?.call(this);
   }
@@ -2597,7 +4723,11 @@ class _$PickStoryMediaImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -2612,6 +4742,10 @@ class _$PickStoryMediaImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -2622,8 +4756,6 @@ class _$PickStoryMediaImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -2635,8 +4767,6 @@ class _$PickStoryMediaImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -2646,6 +4776,7 @@ class _$PickStoryMediaImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (pickStoryMedia != null) {
@@ -2708,7 +4839,13 @@ class _$PickStoryMediaErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -2723,13 +4860,16 @@ class _$PickStoryMediaErrorImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -2740,7 +4880,6 @@ class _$PickStoryMediaErrorImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -2749,6 +4888,7 @@ class _$PickStoryMediaErrorImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return pickStoryMediaError();
   }
@@ -2757,7 +4897,13 @@ class _$PickStoryMediaErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -2772,13 +4918,16 @@ class _$PickStoryMediaErrorImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -2789,7 +4938,6 @@ class _$PickStoryMediaErrorImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -2798,6 +4946,7 @@ class _$PickStoryMediaErrorImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return pickStoryMediaError?.call();
   }
@@ -2806,7 +4955,13 @@ class _$PickStoryMediaErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -2821,13 +4976,16 @@ class _$PickStoryMediaErrorImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -2838,7 +4996,6 @@ class _$PickStoryMediaErrorImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -2847,6 +5004,7 @@ class _$PickStoryMediaErrorImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (pickStoryMediaError != null) {
@@ -2859,7 +5017,12 @@ class _$PickStoryMediaErrorImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -2875,6 +5038,11 @@ class _$PickStoryMediaErrorImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -2886,8 +5054,6 @@ class _$PickStoryMediaErrorImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -2901,8 +5067,6 @@ class _$PickStoryMediaErrorImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -2914,6 +5078,7 @@ class _$PickStoryMediaErrorImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return pickStoryMediaError(this);
   }
@@ -2922,7 +5087,12 @@ class _$PickStoryMediaErrorImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -2937,6 +5107,10 @@ class _$PickStoryMediaErrorImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -2947,8 +5121,6 @@ class _$PickStoryMediaErrorImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -2960,8 +5132,6 @@ class _$PickStoryMediaErrorImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -2971,6 +5141,7 @@ class _$PickStoryMediaErrorImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return pickStoryMediaError?.call(this);
   }
@@ -2979,7 +5150,11 @@ class _$PickStoryMediaErrorImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -2994,6 +5169,10 @@ class _$PickStoryMediaErrorImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -3004,8 +5183,6 @@ class _$PickStoryMediaErrorImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -3017,8 +5194,6 @@ class _$PickStoryMediaErrorImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -3028,6 +5203,7 @@ class _$PickStoryMediaErrorImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (pickStoryMediaError != null) {
@@ -3089,7 +5265,13 @@ class _$SetVideoDurationImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -3104,13 +5286,16 @@ class _$SetVideoDurationImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -3121,7 +5306,6 @@ class _$SetVideoDurationImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -3130,6 +5314,7 @@ class _$SetVideoDurationImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return setVideoDuration();
   }
@@ -3138,7 +5323,13 @@ class _$SetVideoDurationImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -3153,13 +5344,16 @@ class _$SetVideoDurationImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -3170,7 +5364,6 @@ class _$SetVideoDurationImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -3179,6 +5372,7 @@ class _$SetVideoDurationImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return setVideoDuration?.call();
   }
@@ -3187,7 +5381,13 @@ class _$SetVideoDurationImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -3202,13 +5402,16 @@ class _$SetVideoDurationImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -3219,7 +5422,6 @@ class _$SetVideoDurationImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -3228,6 +5430,7 @@ class _$SetVideoDurationImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (setVideoDuration != null) {
@@ -3240,7 +5443,12 @@ class _$SetVideoDurationImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -3256,6 +5464,11 @@ class _$SetVideoDurationImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -3267,8 +5480,6 @@ class _$SetVideoDurationImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -3282,8 +5493,6 @@ class _$SetVideoDurationImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -3295,6 +5504,7 @@ class _$SetVideoDurationImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return setVideoDuration(this);
   }
@@ -3303,7 +5513,12 @@ class _$SetVideoDurationImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -3318,6 +5533,10 @@ class _$SetVideoDurationImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -3328,8 +5547,6 @@ class _$SetVideoDurationImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -3341,8 +5558,6 @@ class _$SetVideoDurationImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -3352,6 +5567,7 @@ class _$SetVideoDurationImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return setVideoDuration?.call(this);
   }
@@ -3360,7 +5576,11 @@ class _$SetVideoDurationImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -3375,6 +5595,10 @@ class _$SetVideoDurationImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -3385,8 +5609,6 @@ class _$SetVideoDurationImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -3398,8 +5620,6 @@ class _$SetVideoDurationImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -3409,6 +5629,7 @@ class _$SetVideoDurationImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (setVideoDuration != null) {
@@ -3470,7 +5691,13 @@ class _$SendStoryLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -3485,13 +5712,16 @@ class _$SendStoryLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -3502,7 +5732,6 @@ class _$SendStoryLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -3511,6 +5740,7 @@ class _$SendStoryLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return sendStoryLoading();
   }
@@ -3519,7 +5749,13 @@ class _$SendStoryLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -3534,13 +5770,16 @@ class _$SendStoryLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -3551,7 +5790,6 @@ class _$SendStoryLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -3560,6 +5798,7 @@ class _$SendStoryLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return sendStoryLoading?.call();
   }
@@ -3568,7 +5807,13 @@ class _$SendStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -3583,13 +5828,16 @@ class _$SendStoryLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -3600,7 +5848,6 @@ class _$SendStoryLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -3609,6 +5856,7 @@ class _$SendStoryLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (sendStoryLoading != null) {
@@ -3621,7 +5869,12 @@ class _$SendStoryLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -3637,6 +5890,11 @@ class _$SendStoryLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -3648,8 +5906,6 @@ class _$SendStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -3663,8 +5919,6 @@ class _$SendStoryLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -3676,6 +5930,7 @@ class _$SendStoryLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return sendStoryLoading(this);
   }
@@ -3684,7 +5939,12 @@ class _$SendStoryLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -3699,6 +5959,10 @@ class _$SendStoryLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -3709,8 +5973,6 @@ class _$SendStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -3722,8 +5984,6 @@ class _$SendStoryLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -3733,6 +5993,7 @@ class _$SendStoryLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return sendStoryLoading?.call(this);
   }
@@ -3741,7 +6002,11 @@ class _$SendStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -3756,6 +6021,10 @@ class _$SendStoryLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -3766,8 +6035,6 @@ class _$SendStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -3779,8 +6046,6 @@ class _$SendStoryLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -3790,6 +6055,7 @@ class _$SendStoryLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (sendStoryLoading != null) {
@@ -3848,7 +6114,13 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -3863,13 +6135,16 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -3880,7 +6155,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -3889,6 +6163,7 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return sendStory();
   }
@@ -3897,7 +6172,13 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -3912,13 +6193,16 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -3929,7 +6213,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -3938,6 +6221,7 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return sendStory?.call();
   }
@@ -3946,7 +6230,13 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -3961,13 +6251,16 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -3978,7 +6271,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -3987,6 +6279,7 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (sendStory != null) {
@@ -3999,7 +6292,12 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -4015,6 +6313,11 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -4026,8 +6329,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -4041,8 +6342,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -4054,6 +6353,7 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return sendStory(this);
   }
@@ -4062,7 +6362,12 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -4077,6 +6382,10 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -4087,8 +6396,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -4100,8 +6407,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -4111,6 +6416,7 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return sendStory?.call(this);
   }
@@ -4119,7 +6425,11 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -4134,6 +6444,10 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -4144,8 +6458,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -4157,8 +6469,6 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -4168,6 +6478,7 @@ class _$SendStoryImpl with DiagnosticableTreeMixin implements _SendStory {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (sendStory != null) {
@@ -4258,7 +6569,13 @@ class _$SendStoryErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -4273,13 +6590,16 @@ class _$SendStoryErrorImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -4290,7 +6610,6 @@ class _$SendStoryErrorImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -4299,6 +6618,7 @@ class _$SendStoryErrorImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return sendStoryError(errorMsg);
   }
@@ -4307,7 +6627,13 @@ class _$SendStoryErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -4322,13 +6648,16 @@ class _$SendStoryErrorImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -4339,7 +6668,6 @@ class _$SendStoryErrorImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -4348,6 +6676,7 @@ class _$SendStoryErrorImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return sendStoryError?.call(errorMsg);
   }
@@ -4356,7 +6685,13 @@ class _$SendStoryErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -4371,13 +6706,16 @@ class _$SendStoryErrorImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -4388,7 +6726,6 @@ class _$SendStoryErrorImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -4397,6 +6734,7 @@ class _$SendStoryErrorImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (sendStoryError != null) {
@@ -4409,7 +6747,12 @@ class _$SendStoryErrorImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -4425,6 +6768,11 @@ class _$SendStoryErrorImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -4436,8 +6784,6 @@ class _$SendStoryErrorImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -4451,8 +6797,6 @@ class _$SendStoryErrorImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -4464,6 +6808,7 @@ class _$SendStoryErrorImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return sendStoryError(this);
   }
@@ -4472,7 +6817,12 @@ class _$SendStoryErrorImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -4487,6 +6837,10 @@ class _$SendStoryErrorImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -4497,8 +6851,6 @@ class _$SendStoryErrorImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -4510,8 +6862,6 @@ class _$SendStoryErrorImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -4521,6 +6871,7 @@ class _$SendStoryErrorImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return sendStoryError?.call(this);
   }
@@ -4529,7 +6880,11 @@ class _$SendStoryErrorImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -4544,6 +6899,10 @@ class _$SendStoryErrorImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -4554,8 +6913,6 @@ class _$SendStoryErrorImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -4567,8 +6924,6 @@ class _$SendStoryErrorImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -4578,6 +6933,7 @@ class _$SendStoryErrorImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (sendStoryError != null) {
@@ -4673,7 +7029,13 @@ class _$GetFilePercentageImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -4688,13 +7050,16 @@ class _$GetFilePercentageImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -4705,7 +7070,6 @@ class _$GetFilePercentageImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -4714,6 +7078,7 @@ class _$GetFilePercentageImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getFilePercentage(filePercentage);
   }
@@ -4722,7 +7087,13 @@ class _$GetFilePercentageImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -4737,13 +7108,16 @@ class _$GetFilePercentageImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -4754,7 +7128,6 @@ class _$GetFilePercentageImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -4763,6 +7136,7 @@ class _$GetFilePercentageImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getFilePercentage?.call(filePercentage);
   }
@@ -4771,7 +7145,13 @@ class _$GetFilePercentageImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -4786,13 +7166,16 @@ class _$GetFilePercentageImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -4803,7 +7186,6 @@ class _$GetFilePercentageImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -4812,6 +7194,7 @@ class _$GetFilePercentageImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getFilePercentage != null) {
@@ -4824,7 +7207,12 @@ class _$GetFilePercentageImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -4840,6 +7228,11 @@ class _$GetFilePercentageImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -4851,8 +7244,6 @@ class _$GetFilePercentageImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -4866,8 +7257,6 @@ class _$GetFilePercentageImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -4879,6 +7268,7 @@ class _$GetFilePercentageImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getFilePercentage(this);
   }
@@ -4887,7 +7277,12 @@ class _$GetFilePercentageImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -4902,6 +7297,10 @@ class _$GetFilePercentageImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -4912,8 +7311,6 @@ class _$GetFilePercentageImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -4925,8 +7322,6 @@ class _$GetFilePercentageImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -4936,6 +7331,7 @@ class _$GetFilePercentageImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getFilePercentage?.call(this);
   }
@@ -4944,7 +7340,11 @@ class _$GetFilePercentageImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -4959,6 +7359,10 @@ class _$GetFilePercentageImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -4969,8 +7373,6 @@ class _$GetFilePercentageImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -4982,8 +7384,6 @@ class _$GetFilePercentageImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -4993,6 +7393,7 @@ class _$GetFilePercentageImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getFilePercentage != null) {
@@ -5060,7 +7461,13 @@ class _$SetImageDimensionsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -5075,13 +7482,16 @@ class _$SetImageDimensionsImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -5092,7 +7502,6 @@ class _$SetImageDimensionsImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -5101,6 +7510,7 @@ class _$SetImageDimensionsImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return setImageDimensions();
   }
@@ -5109,7 +7519,13 @@ class _$SetImageDimensionsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -5124,13 +7540,16 @@ class _$SetImageDimensionsImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -5141,7 +7560,6 @@ class _$SetImageDimensionsImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -5150,6 +7568,7 @@ class _$SetImageDimensionsImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return setImageDimensions?.call();
   }
@@ -5158,7 +7577,13 @@ class _$SetImageDimensionsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -5173,13 +7598,16 @@ class _$SetImageDimensionsImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -5190,7 +7618,6 @@ class _$SetImageDimensionsImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -5199,6 +7626,7 @@ class _$SetImageDimensionsImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (setImageDimensions != null) {
@@ -5211,7 +7639,12 @@ class _$SetImageDimensionsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -5227,6 +7660,11 @@ class _$SetImageDimensionsImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -5238,8 +7676,6 @@ class _$SetImageDimensionsImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -5253,8 +7689,6 @@ class _$SetImageDimensionsImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -5266,6 +7700,7 @@ class _$SetImageDimensionsImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return setImageDimensions(this);
   }
@@ -5274,7 +7709,12 @@ class _$SetImageDimensionsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -5289,6 +7729,10 @@ class _$SetImageDimensionsImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -5299,8 +7743,6 @@ class _$SetImageDimensionsImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -5312,8 +7754,6 @@ class _$SetImageDimensionsImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -5323,6 +7763,7 @@ class _$SetImageDimensionsImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return setImageDimensions?.call(this);
   }
@@ -5331,7 +7772,11 @@ class _$SetImageDimensionsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -5346,6 +7791,10 @@ class _$SetImageDimensionsImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -5356,8 +7805,6 @@ class _$SetImageDimensionsImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -5369,8 +7816,6 @@ class _$SetImageDimensionsImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -5380,6 +7825,7 @@ class _$SetImageDimensionsImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (setImageDimensions != null) {
@@ -5442,7 +7888,13 @@ class _$GetMyStoriesLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -5457,13 +7909,16 @@ class _$GetMyStoriesLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -5474,7 +7929,6 @@ class _$GetMyStoriesLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -5483,6 +7937,7 @@ class _$GetMyStoriesLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getMyStoriesLoading();
   }
@@ -5491,7 +7946,13 @@ class _$GetMyStoriesLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -5506,13 +7967,16 @@ class _$GetMyStoriesLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -5523,7 +7987,6 @@ class _$GetMyStoriesLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -5532,6 +7995,7 @@ class _$GetMyStoriesLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getMyStoriesLoading?.call();
   }
@@ -5540,7 +8004,13 @@ class _$GetMyStoriesLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -5555,13 +8025,16 @@ class _$GetMyStoriesLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -5572,7 +8045,6 @@ class _$GetMyStoriesLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -5581,6 +8053,7 @@ class _$GetMyStoriesLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getMyStoriesLoading != null) {
@@ -5593,7 +8066,12 @@ class _$GetMyStoriesLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -5609,6 +8087,11 @@ class _$GetMyStoriesLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -5620,8 +8103,6 @@ class _$GetMyStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -5635,8 +8116,6 @@ class _$GetMyStoriesLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -5648,6 +8127,7 @@ class _$GetMyStoriesLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getMyStoriesLoading(this);
   }
@@ -5656,7 +8136,12 @@ class _$GetMyStoriesLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -5671,6 +8156,10 @@ class _$GetMyStoriesLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -5681,8 +8170,6 @@ class _$GetMyStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -5694,8 +8181,6 @@ class _$GetMyStoriesLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -5705,6 +8190,7 @@ class _$GetMyStoriesLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getMyStoriesLoading?.call(this);
   }
@@ -5713,7 +8199,11 @@ class _$GetMyStoriesLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -5728,6 +8218,10 @@ class _$GetMyStoriesLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -5738,8 +8232,6 @@ class _$GetMyStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -5751,8 +8243,6 @@ class _$GetMyStoriesLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -5762,6 +8252,7 @@ class _$GetMyStoriesLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getMyStoriesLoading != null) {
@@ -5856,7 +8347,13 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -5871,13 +8368,16 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -5888,7 +8388,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -5897,6 +8396,7 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getMyStories(myStories);
   }
@@ -5905,7 +8405,13 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -5920,13 +8426,16 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -5937,7 +8446,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -5946,6 +8454,7 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getMyStories?.call(myStories);
   }
@@ -5954,7 +8463,13 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -5969,13 +8484,16 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -5986,7 +8504,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -5995,6 +8512,7 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getMyStories != null) {
@@ -6007,7 +8525,12 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -6023,6 +8546,11 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -6034,8 +8562,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -6049,8 +8575,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -6062,6 +8586,7 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getMyStories(this);
   }
@@ -6070,7 +8595,12 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -6085,6 +8615,10 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -6095,8 +8629,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -6108,8 +8640,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -6119,6 +8649,7 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getMyStories?.call(this);
   }
@@ -6127,7 +8658,11 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -6142,6 +8677,10 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -6152,8 +8691,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -6165,8 +8702,6 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -6176,6 +8711,7 @@ class _$GetMyStoriesImpl with DiagnosticableTreeMixin implements _GetMyStories {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getMyStories != null) {
@@ -6272,7 +8808,13 @@ class _$GetMyStoriesErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -6287,13 +8829,16 @@ class _$GetMyStoriesErrorImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -6304,7 +8849,6 @@ class _$GetMyStoriesErrorImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -6313,6 +8857,7 @@ class _$GetMyStoriesErrorImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getMyStoriesError(errorMsg);
   }
@@ -6321,7 +8866,13 @@ class _$GetMyStoriesErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -6336,13 +8887,16 @@ class _$GetMyStoriesErrorImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -6353,7 +8907,6 @@ class _$GetMyStoriesErrorImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -6362,6 +8915,7 @@ class _$GetMyStoriesErrorImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getMyStoriesError?.call(errorMsg);
   }
@@ -6370,7 +8924,13 @@ class _$GetMyStoriesErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -6385,13 +8945,16 @@ class _$GetMyStoriesErrorImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -6402,7 +8965,6 @@ class _$GetMyStoriesErrorImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -6411,6 +8973,7 @@ class _$GetMyStoriesErrorImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getMyStoriesError != null) {
@@ -6423,7 +8986,12 @@ class _$GetMyStoriesErrorImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -6439,6 +9007,11 @@ class _$GetMyStoriesErrorImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -6450,8 +9023,6 @@ class _$GetMyStoriesErrorImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -6465,8 +9036,6 @@ class _$GetMyStoriesErrorImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -6478,6 +9047,7 @@ class _$GetMyStoriesErrorImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getMyStoriesError(this);
   }
@@ -6486,7 +9056,12 @@ class _$GetMyStoriesErrorImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -6501,6 +9076,10 @@ class _$GetMyStoriesErrorImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -6511,8 +9090,6 @@ class _$GetMyStoriesErrorImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -6524,8 +9101,6 @@ class _$GetMyStoriesErrorImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -6535,6 +9110,7 @@ class _$GetMyStoriesErrorImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getMyStoriesError?.call(this);
   }
@@ -6543,7 +9119,11 @@ class _$GetMyStoriesErrorImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -6558,6 +9138,10 @@ class _$GetMyStoriesErrorImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -6568,8 +9152,6 @@ class _$GetMyStoriesErrorImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -6581,8 +9163,6 @@ class _$GetMyStoriesErrorImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -6592,6 +9172,7 @@ class _$GetMyStoriesErrorImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getMyStoriesError != null) {
@@ -6609,6 +9190,1366 @@ abstract class _GetMyStoriesError implements StoriesState {
   @JsonKey(ignore: true)
   _$$GetMyStoriesErrorImplCopyWith<_$GetMyStoriesErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetContactsStoriesLoadingImplCopyWith<$Res> {
+  factory _$$GetContactsStoriesLoadingImplCopyWith(
+          _$GetContactsStoriesLoadingImpl value,
+          $Res Function(_$GetContactsStoriesLoadingImpl) then) =
+      __$$GetContactsStoriesLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetContactsStoriesLoadingImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$GetContactsStoriesLoadingImpl>
+    implements _$$GetContactsStoriesLoadingImplCopyWith<$Res> {
+  __$$GetContactsStoriesLoadingImplCopyWithImpl(
+      _$GetContactsStoriesLoadingImpl _value,
+      $Res Function(_$GetContactsStoriesLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetContactsStoriesLoadingImpl
+    with DiagnosticableTreeMixin
+    implements _GetContactsStoriesLoading {
+  const _$GetContactsStoriesLoadingImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.getContactsStoriesLoading()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(
+        DiagnosticsProperty('type', 'StoriesState.getContactsStoriesLoading'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetContactsStoriesLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return getContactsStoriesLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return getContactsStoriesLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (getContactsStoriesLoading != null) {
+      return getContactsStoriesLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return getContactsStoriesLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return getContactsStoriesLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (getContactsStoriesLoading != null) {
+      return getContactsStoriesLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetContactsStoriesLoading implements StoriesState {
+  const factory _GetContactsStoriesLoading() = _$GetContactsStoriesLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$GetContactsStoriesImplCopyWith<$Res> {
+  factory _$$GetContactsStoriesImplCopyWith(_$GetContactsStoriesImpl value,
+          $Res Function(_$GetContactsStoriesImpl) then) =
+      __$$GetContactsStoriesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<ContactStoryModel> contactsStories});
+}
+
+/// @nodoc
+class __$$GetContactsStoriesImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$GetContactsStoriesImpl>
+    implements _$$GetContactsStoriesImplCopyWith<$Res> {
+  __$$GetContactsStoriesImplCopyWithImpl(_$GetContactsStoriesImpl _value,
+      $Res Function(_$GetContactsStoriesImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? contactsStories = null,
+  }) {
+    return _then(_$GetContactsStoriesImpl(
+      null == contactsStories
+          ? _value._contactsStories
+          : contactsStories // ignore: cast_nullable_to_non_nullable
+              as List<ContactStoryModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetContactsStoriesImpl
+    with DiagnosticableTreeMixin
+    implements _GetContactsStories {
+  const _$GetContactsStoriesImpl(final List<ContactStoryModel> contactsStories)
+      : _contactsStories = contactsStories;
+
+  final List<ContactStoryModel> _contactsStories;
+  @override
+  List<ContactStoryModel> get contactsStories {
+    if (_contactsStories is EqualUnmodifiableListView) return _contactsStories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_contactsStories);
+  }
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.getContactsStories(contactsStories: $contactsStories)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'StoriesState.getContactsStories'))
+      ..add(DiagnosticsProperty('contactsStories', contactsStories));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetContactsStoriesImpl &&
+            const DeepCollectionEquality()
+                .equals(other._contactsStories, _contactsStories));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_contactsStories));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetContactsStoriesImplCopyWith<_$GetContactsStoriesImpl> get copyWith =>
+      __$$GetContactsStoriesImplCopyWithImpl<_$GetContactsStoriesImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return getContactsStories(contactsStories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return getContactsStories?.call(contactsStories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (getContactsStories != null) {
+      return getContactsStories(contactsStories);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return getContactsStories(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return getContactsStories?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (getContactsStories != null) {
+      return getContactsStories(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetContactsStories implements StoriesState {
+  const factory _GetContactsStories(
+      final List<ContactStoryModel> contactsStories) = _$GetContactsStoriesImpl;
+
+  List<ContactStoryModel> get contactsStories;
+  @JsonKey(ignore: true)
+  _$$GetContactsStoriesImplCopyWith<_$GetContactsStoriesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetContactsStoriesErrorImplCopyWith<$Res> {
+  factory _$$GetContactsStoriesErrorImplCopyWith(
+          _$GetContactsStoriesErrorImpl value,
+          $Res Function(_$GetContactsStoriesErrorImpl) then) =
+      __$$GetContactsStoriesErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMsg});
+}
+
+/// @nodoc
+class __$$GetContactsStoriesErrorImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$GetContactsStoriesErrorImpl>
+    implements _$$GetContactsStoriesErrorImplCopyWith<$Res> {
+  __$$GetContactsStoriesErrorImplCopyWithImpl(
+      _$GetContactsStoriesErrorImpl _value,
+      $Res Function(_$GetContactsStoriesErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMsg = null,
+  }) {
+    return _then(_$GetContactsStoriesErrorImpl(
+      null == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetContactsStoriesErrorImpl
+    with DiagnosticableTreeMixin
+    implements _GetContactsStoriesError {
+  const _$GetContactsStoriesErrorImpl(this.errorMsg);
+
+  @override
+  final String errorMsg;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.getContactsStoriesError(errorMsg: $errorMsg)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'StoriesState.getContactsStoriesError'))
+      ..add(DiagnosticsProperty('errorMsg', errorMsg));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetContactsStoriesErrorImpl &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMsg);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetContactsStoriesErrorImplCopyWith<_$GetContactsStoriesErrorImpl>
+      get copyWith => __$$GetContactsStoriesErrorImplCopyWithImpl<
+          _$GetContactsStoriesErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return getContactsStoriesError(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return getContactsStoriesError?.call(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (getContactsStoriesError != null) {
+      return getContactsStoriesError(errorMsg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return getContactsStoriesError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return getContactsStoriesError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (getContactsStoriesError != null) {
+      return getContactsStoriesError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetContactsStoriesError implements StoriesState {
+  const factory _GetContactsStoriesError(final String errorMsg) =
+      _$GetContactsStoriesErrorImpl;
+
+  String get errorMsg;
+  @JsonKey(ignore: true)
+  _$$GetContactsStoriesErrorImplCopyWith<_$GetContactsStoriesErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -6663,7 +10604,13 @@ class _$GetContactsLastStoriesLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -6678,13 +10625,16 @@ class _$GetContactsLastStoriesLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -6695,7 +10645,6 @@ class _$GetContactsLastStoriesLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -6704,6 +10653,7 @@ class _$GetContactsLastStoriesLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getContactsLastStoriesLoading();
   }
@@ -6712,7 +10662,13 @@ class _$GetContactsLastStoriesLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -6727,13 +10683,16 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -6744,7 +10703,6 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -6753,6 +10711,7 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getContactsLastStoriesLoading?.call();
   }
@@ -6761,7 +10720,13 @@ class _$GetContactsLastStoriesLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -6776,13 +10741,16 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -6793,7 +10761,6 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -6802,6 +10769,7 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsLastStoriesLoading != null) {
@@ -6814,7 +10782,12 @@ class _$GetContactsLastStoriesLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -6830,6 +10803,11 @@ class _$GetContactsLastStoriesLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -6841,8 +10819,6 @@ class _$GetContactsLastStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -6856,8 +10832,6 @@ class _$GetContactsLastStoriesLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -6869,6 +10843,7 @@ class _$GetContactsLastStoriesLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getContactsLastStoriesLoading(this);
   }
@@ -6877,7 +10852,12 @@ class _$GetContactsLastStoriesLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -6892,6 +10872,10 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -6902,8 +10886,6 @@ class _$GetContactsLastStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -6915,8 +10897,6 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -6926,6 +10906,7 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getContactsLastStoriesLoading?.call(this);
   }
@@ -6934,7 +10915,11 @@ class _$GetContactsLastStoriesLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -6949,6 +10934,10 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -6959,8 +10948,6 @@ class _$GetContactsLastStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -6972,8 +10959,6 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -6983,6 +10968,7 @@ class _$GetContactsLastStoriesLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsLastStoriesLoading != null) {
@@ -7048,7 +11034,13 @@ class _$GetContactsLastStoriesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -7063,13 +11055,16 @@ class _$GetContactsLastStoriesImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -7080,7 +11075,6 @@ class _$GetContactsLastStoriesImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -7089,6 +11083,7 @@ class _$GetContactsLastStoriesImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getContactsLastStories();
   }
@@ -7097,7 +11092,13 @@ class _$GetContactsLastStoriesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -7112,13 +11113,16 @@ class _$GetContactsLastStoriesImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -7129,7 +11133,6 @@ class _$GetContactsLastStoriesImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -7138,6 +11141,7 @@ class _$GetContactsLastStoriesImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getContactsLastStories?.call();
   }
@@ -7146,7 +11150,13 @@ class _$GetContactsLastStoriesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -7161,13 +11171,16 @@ class _$GetContactsLastStoriesImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -7178,7 +11191,6 @@ class _$GetContactsLastStoriesImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -7187,6 +11199,7 @@ class _$GetContactsLastStoriesImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsLastStories != null) {
@@ -7199,7 +11212,12 @@ class _$GetContactsLastStoriesImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -7215,6 +11233,11 @@ class _$GetContactsLastStoriesImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -7226,8 +11249,6 @@ class _$GetContactsLastStoriesImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -7241,8 +11262,6 @@ class _$GetContactsLastStoriesImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -7254,6 +11273,7 @@ class _$GetContactsLastStoriesImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getContactsLastStories(this);
   }
@@ -7262,7 +11282,12 @@ class _$GetContactsLastStoriesImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -7277,6 +11302,10 @@ class _$GetContactsLastStoriesImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -7287,8 +11316,6 @@ class _$GetContactsLastStoriesImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -7300,8 +11327,6 @@ class _$GetContactsLastStoriesImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -7311,6 +11336,7 @@ class _$GetContactsLastStoriesImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getContactsLastStories?.call(this);
   }
@@ -7319,7 +11345,11 @@ class _$GetContactsLastStoriesImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -7334,6 +11364,10 @@ class _$GetContactsLastStoriesImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -7344,8 +11378,6 @@ class _$GetContactsLastStoriesImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -7357,8 +11389,6 @@ class _$GetContactsLastStoriesImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -7368,6 +11398,7 @@ class _$GetContactsLastStoriesImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsLastStories != null) {
@@ -7461,7 +11492,13 @@ class _$GetContactsLastStoriesErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -7476,13 +11513,16 @@ class _$GetContactsLastStoriesErrorImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -7493,7 +11533,6 @@ class _$GetContactsLastStoriesErrorImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -7502,6 +11541,7 @@ class _$GetContactsLastStoriesErrorImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getContactsLastStoriesError(errorMsg);
   }
@@ -7510,7 +11550,13 @@ class _$GetContactsLastStoriesErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -7525,13 +11571,16 @@ class _$GetContactsLastStoriesErrorImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -7542,7 +11591,6 @@ class _$GetContactsLastStoriesErrorImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -7551,6 +11599,7 @@ class _$GetContactsLastStoriesErrorImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getContactsLastStoriesError?.call(errorMsg);
   }
@@ -7559,7 +11608,13 @@ class _$GetContactsLastStoriesErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -7574,13 +11629,16 @@ class _$GetContactsLastStoriesErrorImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -7591,7 +11649,6 @@ class _$GetContactsLastStoriesErrorImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -7600,6 +11657,7 @@ class _$GetContactsLastStoriesErrorImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsLastStoriesError != null) {
@@ -7612,7 +11670,12 @@ class _$GetContactsLastStoriesErrorImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -7628,6 +11691,11 @@ class _$GetContactsLastStoriesErrorImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -7639,8 +11707,6 @@ class _$GetContactsLastStoriesErrorImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -7654,8 +11720,6 @@ class _$GetContactsLastStoriesErrorImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -7667,6 +11731,7 @@ class _$GetContactsLastStoriesErrorImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getContactsLastStoriesError(this);
   }
@@ -7675,7 +11740,12 @@ class _$GetContactsLastStoriesErrorImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -7690,6 +11760,10 @@ class _$GetContactsLastStoriesErrorImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -7700,8 +11774,6 @@ class _$GetContactsLastStoriesErrorImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -7713,8 +11785,6 @@ class _$GetContactsLastStoriesErrorImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -7724,6 +11794,7 @@ class _$GetContactsLastStoriesErrorImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getContactsLastStoriesError?.call(this);
   }
@@ -7732,7 +11803,11 @@ class _$GetContactsLastStoriesErrorImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -7747,6 +11822,10 @@ class _$GetContactsLastStoriesErrorImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -7757,8 +11836,6 @@ class _$GetContactsLastStoriesErrorImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -7770,8 +11847,6 @@ class _$GetContactsLastStoriesErrorImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -7781,6 +11856,7 @@ class _$GetContactsLastStoriesErrorImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsLastStoriesError != null) {
@@ -7848,7 +11924,13 @@ class _$OpenContactStoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -7863,13 +11945,16 @@ class _$OpenContactStoryImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -7880,7 +11965,6 @@ class _$OpenContactStoryImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -7889,6 +11973,7 @@ class _$OpenContactStoryImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return openContactStory();
   }
@@ -7897,7 +11982,13 @@ class _$OpenContactStoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -7912,13 +12003,16 @@ class _$OpenContactStoryImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -7929,7 +12023,6 @@ class _$OpenContactStoryImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -7938,6 +12031,7 @@ class _$OpenContactStoryImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return openContactStory?.call();
   }
@@ -7946,7 +12040,13 @@ class _$OpenContactStoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -7961,13 +12061,16 @@ class _$OpenContactStoryImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -7978,7 +12081,6 @@ class _$OpenContactStoryImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -7987,6 +12089,7 @@ class _$OpenContactStoryImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (openContactStory != null) {
@@ -7999,7 +12102,12 @@ class _$OpenContactStoryImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -8015,6 +12123,11 @@ class _$OpenContactStoryImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -8026,8 +12139,6 @@ class _$OpenContactStoryImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -8041,8 +12152,6 @@ class _$OpenContactStoryImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -8054,6 +12163,7 @@ class _$OpenContactStoryImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return openContactStory(this);
   }
@@ -8062,7 +12172,12 @@ class _$OpenContactStoryImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -8077,6 +12192,10 @@ class _$OpenContactStoryImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -8087,8 +12206,6 @@ class _$OpenContactStoryImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -8100,8 +12217,6 @@ class _$OpenContactStoryImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -8111,6 +12226,7 @@ class _$OpenContactStoryImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return openContactStory?.call(this);
   }
@@ -8119,7 +12235,11 @@ class _$OpenContactStoryImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -8134,6 +12254,10 @@ class _$OpenContactStoryImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -8144,8 +12268,6 @@ class _$OpenContactStoryImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -8157,8 +12279,6 @@ class _$OpenContactStoryImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -8168,6 +12288,7 @@ class _$OpenContactStoryImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (openContactStory != null) {
@@ -8233,7 +12354,13 @@ class _$GetContactsCurrentStoriesLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -8248,13 +12375,16 @@ class _$GetContactsCurrentStoriesLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -8265,7 +12395,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -8274,6 +12403,7 @@ class _$GetContactsCurrentStoriesLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getContactsCurrentStoriesLoading();
   }
@@ -8282,7 +12412,13 @@ class _$GetContactsCurrentStoriesLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -8297,13 +12433,16 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -8314,7 +12453,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -8323,6 +12461,7 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getContactsCurrentStoriesLoading?.call();
   }
@@ -8331,7 +12470,13 @@ class _$GetContactsCurrentStoriesLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -8346,13 +12491,16 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -8363,7 +12511,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -8372,6 +12519,7 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsCurrentStoriesLoading != null) {
@@ -8384,7 +12532,12 @@ class _$GetContactsCurrentStoriesLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -8400,6 +12553,11 @@ class _$GetContactsCurrentStoriesLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -8411,8 +12569,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -8426,8 +12582,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -8439,6 +12593,7 @@ class _$GetContactsCurrentStoriesLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getContactsCurrentStoriesLoading(this);
   }
@@ -8447,7 +12602,12 @@ class _$GetContactsCurrentStoriesLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -8462,6 +12622,10 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -8472,8 +12636,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -8485,8 +12647,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -8496,6 +12656,7 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getContactsCurrentStoriesLoading?.call(this);
   }
@@ -8504,7 +12665,11 @@ class _$GetContactsCurrentStoriesLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -8519,6 +12684,10 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -8529,8 +12698,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -8542,8 +12709,6 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -8553,6 +12718,7 @@ class _$GetContactsCurrentStoriesLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsCurrentStoriesLoading != null) {
@@ -8618,7 +12784,13 @@ class _$GetContactsCurrentStoriesImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -8633,13 +12805,16 @@ class _$GetContactsCurrentStoriesImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -8650,7 +12825,6 @@ class _$GetContactsCurrentStoriesImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -8659,6 +12833,7 @@ class _$GetContactsCurrentStoriesImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return getContactsCurrentStories();
   }
@@ -8667,7 +12842,13 @@ class _$GetContactsCurrentStoriesImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -8682,13 +12863,16 @@ class _$GetContactsCurrentStoriesImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -8699,7 +12883,6 @@ class _$GetContactsCurrentStoriesImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -8708,6 +12891,7 @@ class _$GetContactsCurrentStoriesImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return getContactsCurrentStories?.call();
   }
@@ -8716,7 +12900,13 @@ class _$GetContactsCurrentStoriesImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -8731,13 +12921,16 @@ class _$GetContactsCurrentStoriesImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -8748,7 +12941,6 @@ class _$GetContactsCurrentStoriesImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -8757,6 +12949,7 @@ class _$GetContactsCurrentStoriesImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsCurrentStories != null) {
@@ -8769,7 +12962,12 @@ class _$GetContactsCurrentStoriesImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -8785,6 +12983,11 @@ class _$GetContactsCurrentStoriesImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -8796,8 +12999,6 @@ class _$GetContactsCurrentStoriesImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -8811,8 +13012,6 @@ class _$GetContactsCurrentStoriesImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -8824,6 +13023,7 @@ class _$GetContactsCurrentStoriesImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return getContactsCurrentStories(this);
   }
@@ -8832,7 +13032,12 @@ class _$GetContactsCurrentStoriesImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -8847,6 +13052,10 @@ class _$GetContactsCurrentStoriesImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -8857,8 +13066,6 @@ class _$GetContactsCurrentStoriesImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -8870,8 +13077,6 @@ class _$GetContactsCurrentStoriesImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -8881,6 +13086,7 @@ class _$GetContactsCurrentStoriesImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return getContactsCurrentStories?.call(this);
   }
@@ -8889,7 +13095,11 @@ class _$GetContactsCurrentStoriesImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -8904,6 +13114,10 @@ class _$GetContactsCurrentStoriesImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -8914,8 +13128,6 @@ class _$GetContactsCurrentStoriesImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -8927,8 +13139,6 @@ class _$GetContactsCurrentStoriesImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -8938,6 +13148,7 @@ class _$GetContactsCurrentStoriesImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (getContactsCurrentStories != null) {
@@ -8949,428 +13160,6 @@ class _$GetContactsCurrentStoriesImpl
 
 abstract class _GetContactsCurrentStories implements StoriesState {
   const factory _GetContactsCurrentStories() = _$GetContactsCurrentStoriesImpl;
-}
-
-/// @nodoc
-abstract class _$$GetContactsCurrentStoriesErrorImplCopyWith<$Res> {
-  factory _$$GetContactsCurrentStoriesErrorImplCopyWith(
-          _$GetContactsCurrentStoriesErrorImpl value,
-          $Res Function(_$GetContactsCurrentStoriesErrorImpl) then) =
-      __$$GetContactsCurrentStoriesErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMsg});
-}
-
-/// @nodoc
-class __$$GetContactsCurrentStoriesErrorImplCopyWithImpl<$Res>
-    extends _$StoriesStateCopyWithImpl<$Res,
-        _$GetContactsCurrentStoriesErrorImpl>
-    implements _$$GetContactsCurrentStoriesErrorImplCopyWith<$Res> {
-  __$$GetContactsCurrentStoriesErrorImplCopyWithImpl(
-      _$GetContactsCurrentStoriesErrorImpl _value,
-      $Res Function(_$GetContactsCurrentStoriesErrorImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMsg = null,
-  }) {
-    return _then(_$GetContactsCurrentStoriesErrorImpl(
-      null == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$GetContactsCurrentStoriesErrorImpl
-    with DiagnosticableTreeMixin
-    implements _GetContactsCurrentStoriesError {
-  const _$GetContactsCurrentStoriesErrorImpl(this.errorMsg);
-
-  @override
-  final String errorMsg;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StoriesState.getContactsCurrentStoriesError(errorMsg: $errorMsg)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'StoriesState.getContactsCurrentStoriesError'))
-      ..add(DiagnosticsProperty('errorMsg', errorMsg));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetContactsCurrentStoriesErrorImpl &&
-            (identical(other.errorMsg, errorMsg) ||
-                other.errorMsg == errorMsg));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMsg);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GetContactsCurrentStoriesErrorImplCopyWith<
-          _$GetContactsCurrentStoriesErrorImpl>
-      get copyWith => __$$GetContactsCurrentStoriesErrorImplCopyWithImpl<
-          _$GetContactsCurrentStoriesErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() getPhones,
-    required TResult Function() initAddTextStory,
-    required TResult Function() disposeAddTextStory,
-    required TResult Function(MessageType type) pickStoryMediaLoading,
-    required TResult Function() pickStoryMedia,
-    required TResult Function() pickStoryMediaError,
-    required TResult Function() setVideoDuration,
-    required TResult Function() sendStoryLoading,
-    required TResult Function() sendStory,
-    required TResult Function(String errorMsg) sendStoryError,
-    required TResult Function(double filePercentage) getFilePercentage,
-    required TResult Function() setImageDimensions,
-    required TResult Function() getMyStoriesLoading,
-    required TResult Function(List<StoryModel> myStories) getMyStories,
-    required TResult Function(String errorMsg) getMyStoriesError,
-    required TResult Function() getContactsLastStoriesLoading,
-    required TResult Function() getContactsLastStories,
-    required TResult Function(String errorMsg) getContactsLastStoriesError,
-    required TResult Function() openContactStory,
-    required TResult Function() getContactsCurrentStoriesLoading,
-    required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
-    required TResult Function() initStoryView,
-    required TResult Function() disposeStoryView,
-    required TResult Function() changeStoryIndexLoading,
-    required TResult Function(int index) changeStoryIndex,
-    required TResult Function() resetStoryIndex,
-    required TResult Function(String storyId) deleteStoryLoading,
-    required TResult Function() deleteStory,
-    required TResult Function(String errorMsg) deleteStoryError,
-    required TResult Function() contactsStoriesChangedLoading,
-    required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
-    required TResult Function() initReplyToStory,
-    required TResult Function() viewContactStoryLoading,
-    required TResult Function() viewContactStory,
-    required TResult Function() replyToStoryLoading,
-    required TResult Function() replyToStory,
-    required TResult Function(String errorMsg) replyToStoryError,
-    required TResult Function() createVideosThumbnailsLoading,
-    required TResult Function() createVideosThumbnails,
-  }) {
-    return getContactsCurrentStoriesError(errorMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? getPhones,
-    TResult? Function()? initAddTextStory,
-    TResult? Function()? disposeAddTextStory,
-    TResult? Function(MessageType type)? pickStoryMediaLoading,
-    TResult? Function()? pickStoryMedia,
-    TResult? Function()? pickStoryMediaError,
-    TResult? Function()? setVideoDuration,
-    TResult? Function()? sendStoryLoading,
-    TResult? Function()? sendStory,
-    TResult? Function(String errorMsg)? sendStoryError,
-    TResult? Function(double filePercentage)? getFilePercentage,
-    TResult? Function()? setImageDimensions,
-    TResult? Function()? getMyStoriesLoading,
-    TResult? Function(List<StoryModel> myStories)? getMyStories,
-    TResult? Function(String errorMsg)? getMyStoriesError,
-    TResult? Function()? getContactsLastStoriesLoading,
-    TResult? Function()? getContactsLastStories,
-    TResult? Function(String errorMsg)? getContactsLastStoriesError,
-    TResult? Function()? openContactStory,
-    TResult? Function()? getContactsCurrentStoriesLoading,
-    TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
-    TResult? Function()? initStoryView,
-    TResult? Function()? disposeStoryView,
-    TResult? Function()? changeStoryIndexLoading,
-    TResult? Function(int index)? changeStoryIndex,
-    TResult? Function()? resetStoryIndex,
-    TResult? Function(String storyId)? deleteStoryLoading,
-    TResult? Function()? deleteStory,
-    TResult? Function(String errorMsg)? deleteStoryError,
-    TResult? Function()? contactsStoriesChangedLoading,
-    TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
-    TResult? Function()? initReplyToStory,
-    TResult? Function()? viewContactStoryLoading,
-    TResult? Function()? viewContactStory,
-    TResult? Function()? replyToStoryLoading,
-    TResult? Function()? replyToStory,
-    TResult? Function(String errorMsg)? replyToStoryError,
-    TResult? Function()? createVideosThumbnailsLoading,
-    TResult? Function()? createVideosThumbnails,
-  }) {
-    return getContactsCurrentStoriesError?.call(errorMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? getPhones,
-    TResult Function()? initAddTextStory,
-    TResult Function()? disposeAddTextStory,
-    TResult Function(MessageType type)? pickStoryMediaLoading,
-    TResult Function()? pickStoryMedia,
-    TResult Function()? pickStoryMediaError,
-    TResult Function()? setVideoDuration,
-    TResult Function()? sendStoryLoading,
-    TResult Function()? sendStory,
-    TResult Function(String errorMsg)? sendStoryError,
-    TResult Function(double filePercentage)? getFilePercentage,
-    TResult Function()? setImageDimensions,
-    TResult Function()? getMyStoriesLoading,
-    TResult Function(List<StoryModel> myStories)? getMyStories,
-    TResult Function(String errorMsg)? getMyStoriesError,
-    TResult Function()? getContactsLastStoriesLoading,
-    TResult Function()? getContactsLastStories,
-    TResult Function(String errorMsg)? getContactsLastStoriesError,
-    TResult Function()? openContactStory,
-    TResult Function()? getContactsCurrentStoriesLoading,
-    TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
-    TResult Function()? initStoryView,
-    TResult Function()? disposeStoryView,
-    TResult Function()? changeStoryIndexLoading,
-    TResult Function(int index)? changeStoryIndex,
-    TResult Function()? resetStoryIndex,
-    TResult Function(String storyId)? deleteStoryLoading,
-    TResult Function()? deleteStory,
-    TResult Function(String errorMsg)? deleteStoryError,
-    TResult Function()? contactsStoriesChangedLoading,
-    TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
-    TResult Function()? initReplyToStory,
-    TResult Function()? viewContactStoryLoading,
-    TResult Function()? viewContactStory,
-    TResult Function()? replyToStoryLoading,
-    TResult Function()? replyToStory,
-    TResult Function(String errorMsg)? replyToStoryError,
-    TResult Function()? createVideosThumbnailsLoading,
-    TResult Function()? createVideosThumbnails,
-    required TResult orElse(),
-  }) {
-    if (getContactsCurrentStoriesError != null) {
-      return getContactsCurrentStoriesError(errorMsg);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
-    required TResult Function(_InitAddTextStory value) initAddTextStory,
-    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
-    required TResult Function(_PickStoryMediaLoading value)
-        pickStoryMediaLoading,
-    required TResult Function(_PickStoryMedia value) pickStoryMedia,
-    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
-    required TResult Function(_SetVideoDuration value) setVideoDuration,
-    required TResult Function(_SendStoryLoading value) sendStoryLoading,
-    required TResult Function(_SendStory value) sendStory,
-    required TResult Function(_SendStoryError value) sendStoryError,
-    required TResult Function(_GetFilePercentage value) getFilePercentage,
-    required TResult Function(_SetImageDimensions value) setImageDimensions,
-    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
-    required TResult Function(_GetMyStories value) getMyStories,
-    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
-    required TResult Function(_GetContactsLastStoriesLoading value)
-        getContactsLastStoriesLoading,
-    required TResult Function(_GetContactsLastStories value)
-        getContactsLastStories,
-    required TResult Function(_GetContactsLastStoriesError value)
-        getContactsLastStoriesError,
-    required TResult Function(_OpenContactStory value) openContactStory,
-    required TResult Function(_GetContactsCurrentStoriesLoading value)
-        getContactsCurrentStoriesLoading,
-    required TResult Function(_GetContactsCurrentStories value)
-        getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
-    required TResult Function(_InitStoryView value) initStoryView,
-    required TResult Function(_DisposeStoryView value) disposeStoryView,
-    required TResult Function(_ChangeStoryIndexLoading value)
-        changeStoryIndexLoading,
-    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
-    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
-    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
-    required TResult Function(_DeleteStory value) deleteStory,
-    required TResult Function(_DeleteStoryError value) deleteStoryError,
-    required TResult Function(_ContactsStoriesChangedLoading value)
-        contactsStoriesChangedLoading,
-    required TResult Function(_ContactsStoriesChanged value)
-        contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
-    required TResult Function(_InitReplyToStory value) initReplyToStory,
-    required TResult Function(_viewContactStoryLoading value)
-        viewContactStoryLoading,
-    required TResult Function(_viewContactStory value) viewContactStory,
-    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
-    required TResult Function(_ReplyToStory value) replyToStory,
-    required TResult Function(_ReplyToStoryError value) replyToStoryError,
-    required TResult Function(_CreateVideosThumbnailsLoading value)
-        createVideosThumbnailsLoading,
-    required TResult Function(_CreateVideosThumbnails value)
-        createVideosThumbnails,
-  }) {
-    return getContactsCurrentStoriesError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
-    TResult? Function(_InitAddTextStory value)? initAddTextStory,
-    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
-    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
-    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
-    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
-    TResult? Function(_SetVideoDuration value)? setVideoDuration,
-    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
-    TResult? Function(_SendStory value)? sendStory,
-    TResult? Function(_SendStoryError value)? sendStoryError,
-    TResult? Function(_GetFilePercentage value)? getFilePercentage,
-    TResult? Function(_SetImageDimensions value)? setImageDimensions,
-    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
-    TResult? Function(_GetMyStories value)? getMyStories,
-    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
-    TResult? Function(_GetContactsLastStoriesLoading value)?
-        getContactsLastStoriesLoading,
-    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
-    TResult? Function(_GetContactsLastStoriesError value)?
-        getContactsLastStoriesError,
-    TResult? Function(_OpenContactStory value)? openContactStory,
-    TResult? Function(_GetContactsCurrentStoriesLoading value)?
-        getContactsCurrentStoriesLoading,
-    TResult? Function(_GetContactsCurrentStories value)?
-        getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
-    TResult? Function(_InitStoryView value)? initStoryView,
-    TResult? Function(_DisposeStoryView value)? disposeStoryView,
-    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
-    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
-    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
-    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
-    TResult? Function(_DeleteStory value)? deleteStory,
-    TResult? Function(_DeleteStoryError value)? deleteStoryError,
-    TResult? Function(_ContactsStoriesChangedLoading value)?
-        contactsStoriesChangedLoading,
-    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
-    TResult? Function(_InitReplyToStory value)? initReplyToStory,
-    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
-    TResult? Function(_viewContactStory value)? viewContactStory,
-    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
-    TResult? Function(_ReplyToStory value)? replyToStory,
-    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
-    TResult? Function(_CreateVideosThumbnailsLoading value)?
-        createVideosThumbnailsLoading,
-    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
-  }) {
-    return getContactsCurrentStoriesError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
-    TResult Function(_InitAddTextStory value)? initAddTextStory,
-    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
-    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
-    TResult Function(_PickStoryMedia value)? pickStoryMedia,
-    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
-    TResult Function(_SetVideoDuration value)? setVideoDuration,
-    TResult Function(_SendStoryLoading value)? sendStoryLoading,
-    TResult Function(_SendStory value)? sendStory,
-    TResult Function(_SendStoryError value)? sendStoryError,
-    TResult Function(_GetFilePercentage value)? getFilePercentage,
-    TResult Function(_SetImageDimensions value)? setImageDimensions,
-    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
-    TResult Function(_GetMyStories value)? getMyStories,
-    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
-    TResult Function(_GetContactsLastStoriesLoading value)?
-        getContactsLastStoriesLoading,
-    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
-    TResult Function(_GetContactsLastStoriesError value)?
-        getContactsLastStoriesError,
-    TResult Function(_OpenContactStory value)? openContactStory,
-    TResult Function(_GetContactsCurrentStoriesLoading value)?
-        getContactsCurrentStoriesLoading,
-    TResult Function(_GetContactsCurrentStories value)?
-        getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
-    TResult Function(_InitStoryView value)? initStoryView,
-    TResult Function(_DisposeStoryView value)? disposeStoryView,
-    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
-    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
-    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
-    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
-    TResult Function(_DeleteStory value)? deleteStory,
-    TResult Function(_DeleteStoryError value)? deleteStoryError,
-    TResult Function(_ContactsStoriesChangedLoading value)?
-        contactsStoriesChangedLoading,
-    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
-    TResult Function(_InitReplyToStory value)? initReplyToStory,
-    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
-    TResult Function(_viewContactStory value)? viewContactStory,
-    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
-    TResult Function(_ReplyToStory value)? replyToStory,
-    TResult Function(_ReplyToStoryError value)? replyToStoryError,
-    TResult Function(_CreateVideosThumbnailsLoading value)?
-        createVideosThumbnailsLoading,
-    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
-    required TResult orElse(),
-  }) {
-    if (getContactsCurrentStoriesError != null) {
-      return getContactsCurrentStoriesError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetContactsCurrentStoriesError implements StoriesState {
-  const factory _GetContactsCurrentStoriesError(final String errorMsg) =
-      _$GetContactsCurrentStoriesErrorImpl;
-
-  String get errorMsg;
-  @JsonKey(ignore: true)
-  _$$GetContactsCurrentStoriesErrorImplCopyWith<
-          _$GetContactsCurrentStoriesErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -9420,7 +13209,13 @@ class _$InitStoryViewImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -9435,13 +13230,16 @@ class _$InitStoryViewImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -9452,7 +13250,6 @@ class _$InitStoryViewImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -9461,6 +13258,7 @@ class _$InitStoryViewImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return initStoryView();
   }
@@ -9469,7 +13267,13 @@ class _$InitStoryViewImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -9484,13 +13288,16 @@ class _$InitStoryViewImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -9501,7 +13308,6 @@ class _$InitStoryViewImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -9510,6 +13316,7 @@ class _$InitStoryViewImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return initStoryView?.call();
   }
@@ -9518,7 +13325,13 @@ class _$InitStoryViewImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -9533,13 +13346,16 @@ class _$InitStoryViewImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -9550,7 +13366,6 @@ class _$InitStoryViewImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -9559,6 +13374,7 @@ class _$InitStoryViewImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initStoryView != null) {
@@ -9571,7 +13387,12 @@ class _$InitStoryViewImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -9587,6 +13408,11 @@ class _$InitStoryViewImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -9598,8 +13424,6 @@ class _$InitStoryViewImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -9613,8 +13437,6 @@ class _$InitStoryViewImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -9626,6 +13448,7 @@ class _$InitStoryViewImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return initStoryView(this);
   }
@@ -9634,7 +13457,12 @@ class _$InitStoryViewImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -9649,6 +13477,10 @@ class _$InitStoryViewImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -9659,8 +13491,6 @@ class _$InitStoryViewImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -9672,8 +13502,6 @@ class _$InitStoryViewImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -9683,6 +13511,7 @@ class _$InitStoryViewImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return initStoryView?.call(this);
   }
@@ -9691,7 +13520,11 @@ class _$InitStoryViewImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -9706,6 +13539,10 @@ class _$InitStoryViewImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -9716,8 +13553,6 @@ class _$InitStoryViewImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -9729,8 +13564,6 @@ class _$InitStoryViewImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -9740,6 +13573,7 @@ class _$InitStoryViewImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initStoryView != null) {
@@ -9801,7 +13635,13 @@ class _$DisposeStoryViewImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -9816,13 +13656,16 @@ class _$DisposeStoryViewImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -9833,7 +13676,6 @@ class _$DisposeStoryViewImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -9842,6 +13684,7 @@ class _$DisposeStoryViewImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return disposeStoryView();
   }
@@ -9850,7 +13693,13 @@ class _$DisposeStoryViewImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -9865,13 +13714,16 @@ class _$DisposeStoryViewImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -9882,7 +13734,6 @@ class _$DisposeStoryViewImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -9891,6 +13742,7 @@ class _$DisposeStoryViewImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return disposeStoryView?.call();
   }
@@ -9899,7 +13751,13 @@ class _$DisposeStoryViewImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -9914,13 +13772,16 @@ class _$DisposeStoryViewImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -9931,7 +13792,6 @@ class _$DisposeStoryViewImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -9940,6 +13800,7 @@ class _$DisposeStoryViewImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (disposeStoryView != null) {
@@ -9952,7 +13813,12 @@ class _$DisposeStoryViewImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -9968,6 +13834,11 @@ class _$DisposeStoryViewImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -9979,8 +13850,6 @@ class _$DisposeStoryViewImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -9994,8 +13863,6 @@ class _$DisposeStoryViewImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -10007,6 +13874,7 @@ class _$DisposeStoryViewImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return disposeStoryView(this);
   }
@@ -10015,7 +13883,12 @@ class _$DisposeStoryViewImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -10030,6 +13903,10 @@ class _$DisposeStoryViewImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -10040,8 +13917,6 @@ class _$DisposeStoryViewImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -10053,8 +13928,6 @@ class _$DisposeStoryViewImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -10064,6 +13937,7 @@ class _$DisposeStoryViewImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return disposeStoryView?.call(this);
   }
@@ -10072,7 +13946,11 @@ class _$DisposeStoryViewImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -10087,6 +13965,10 @@ class _$DisposeStoryViewImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -10097,8 +13979,6 @@ class _$DisposeStoryViewImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -10110,8 +13990,6 @@ class _$DisposeStoryViewImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -10121,6 +13999,7 @@ class _$DisposeStoryViewImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (disposeStoryView != null) {
@@ -10185,7 +14064,13 @@ class _$ChangeStoryIndexLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -10200,13 +14085,16 @@ class _$ChangeStoryIndexLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -10217,7 +14105,6 @@ class _$ChangeStoryIndexLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -10226,6 +14113,7 @@ class _$ChangeStoryIndexLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return changeStoryIndexLoading();
   }
@@ -10234,7 +14122,13 @@ class _$ChangeStoryIndexLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -10249,13 +14143,16 @@ class _$ChangeStoryIndexLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -10266,7 +14163,6 @@ class _$ChangeStoryIndexLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -10275,6 +14171,7 @@ class _$ChangeStoryIndexLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return changeStoryIndexLoading?.call();
   }
@@ -10283,7 +14180,13 @@ class _$ChangeStoryIndexLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -10298,13 +14201,16 @@ class _$ChangeStoryIndexLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -10315,7 +14221,6 @@ class _$ChangeStoryIndexLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -10324,6 +14229,7 @@ class _$ChangeStoryIndexLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (changeStoryIndexLoading != null) {
@@ -10336,7 +14242,12 @@ class _$ChangeStoryIndexLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -10352,6 +14263,11 @@ class _$ChangeStoryIndexLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -10363,8 +14279,6 @@ class _$ChangeStoryIndexLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -10378,8 +14292,6 @@ class _$ChangeStoryIndexLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -10391,6 +14303,7 @@ class _$ChangeStoryIndexLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return changeStoryIndexLoading(this);
   }
@@ -10399,7 +14312,12 @@ class _$ChangeStoryIndexLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -10414,6 +14332,10 @@ class _$ChangeStoryIndexLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -10424,8 +14346,6 @@ class _$ChangeStoryIndexLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -10437,8 +14357,6 @@ class _$ChangeStoryIndexLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -10448,6 +14366,7 @@ class _$ChangeStoryIndexLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return changeStoryIndexLoading?.call(this);
   }
@@ -10456,7 +14375,11 @@ class _$ChangeStoryIndexLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -10471,6 +14394,10 @@ class _$ChangeStoryIndexLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -10481,8 +14408,6 @@ class _$ChangeStoryIndexLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -10494,8 +14419,6 @@ class _$ChangeStoryIndexLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -10505,6 +14428,7 @@ class _$ChangeStoryIndexLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (changeStoryIndexLoading != null) {
@@ -10594,7 +14518,13 @@ class _$ChangeStoryIndexImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -10609,13 +14539,16 @@ class _$ChangeStoryIndexImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -10626,7 +14559,6 @@ class _$ChangeStoryIndexImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -10635,6 +14567,7 @@ class _$ChangeStoryIndexImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return changeStoryIndex(index);
   }
@@ -10643,7 +14576,13 @@ class _$ChangeStoryIndexImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -10658,13 +14597,16 @@ class _$ChangeStoryIndexImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -10675,7 +14617,6 @@ class _$ChangeStoryIndexImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -10684,6 +14625,7 @@ class _$ChangeStoryIndexImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return changeStoryIndex?.call(index);
   }
@@ -10692,7 +14634,13 @@ class _$ChangeStoryIndexImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -10707,13 +14655,16 @@ class _$ChangeStoryIndexImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -10724,7 +14675,6 @@ class _$ChangeStoryIndexImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -10733,6 +14683,7 @@ class _$ChangeStoryIndexImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (changeStoryIndex != null) {
@@ -10745,7 +14696,12 @@ class _$ChangeStoryIndexImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -10761,6 +14717,11 @@ class _$ChangeStoryIndexImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -10772,8 +14733,6 @@ class _$ChangeStoryIndexImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -10787,8 +14746,6 @@ class _$ChangeStoryIndexImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -10800,6 +14757,7 @@ class _$ChangeStoryIndexImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return changeStoryIndex(this);
   }
@@ -10808,7 +14766,12 @@ class _$ChangeStoryIndexImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -10823,6 +14786,10 @@ class _$ChangeStoryIndexImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -10833,8 +14800,6 @@ class _$ChangeStoryIndexImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -10846,8 +14811,6 @@ class _$ChangeStoryIndexImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -10857,6 +14820,7 @@ class _$ChangeStoryIndexImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return changeStoryIndex?.call(this);
   }
@@ -10865,7 +14829,11 @@ class _$ChangeStoryIndexImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -10880,6 +14848,10 @@ class _$ChangeStoryIndexImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -10890,8 +14862,6 @@ class _$ChangeStoryIndexImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -10903,8 +14873,6 @@ class _$ChangeStoryIndexImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -10914,6 +14882,7 @@ class _$ChangeStoryIndexImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (changeStoryIndex != null) {
@@ -10979,7 +14948,13 @@ class _$ResetStoryIndexImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -10994,13 +14969,16 @@ class _$ResetStoryIndexImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -11011,7 +14989,6 @@ class _$ResetStoryIndexImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -11020,6 +14997,7 @@ class _$ResetStoryIndexImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return resetStoryIndex();
   }
@@ -11028,7 +15006,13 @@ class _$ResetStoryIndexImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -11043,13 +15027,16 @@ class _$ResetStoryIndexImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -11060,7 +15047,6 @@ class _$ResetStoryIndexImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -11069,6 +15055,7 @@ class _$ResetStoryIndexImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return resetStoryIndex?.call();
   }
@@ -11077,7 +15064,13 @@ class _$ResetStoryIndexImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -11092,13 +15085,16 @@ class _$ResetStoryIndexImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -11109,7 +15105,6 @@ class _$ResetStoryIndexImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -11118,6 +15113,7 @@ class _$ResetStoryIndexImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (resetStoryIndex != null) {
@@ -11130,7 +15126,12 @@ class _$ResetStoryIndexImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -11146,6 +15147,11 @@ class _$ResetStoryIndexImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -11157,8 +15163,6 @@ class _$ResetStoryIndexImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -11172,8 +15176,6 @@ class _$ResetStoryIndexImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -11185,6 +15187,7 @@ class _$ResetStoryIndexImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return resetStoryIndex(this);
   }
@@ -11193,7 +15196,12 @@ class _$ResetStoryIndexImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -11208,6 +15216,10 @@ class _$ResetStoryIndexImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -11218,8 +15230,6 @@ class _$ResetStoryIndexImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -11231,8 +15241,6 @@ class _$ResetStoryIndexImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -11242,6 +15250,7 @@ class _$ResetStoryIndexImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return resetStoryIndex?.call(this);
   }
@@ -11250,7 +15259,11 @@ class _$ResetStoryIndexImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -11265,6 +15278,10 @@ class _$ResetStoryIndexImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -11275,8 +15292,6 @@ class _$ResetStoryIndexImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -11288,8 +15303,6 @@ class _$ResetStoryIndexImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -11299,6 +15312,7 @@ class _$ResetStoryIndexImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (resetStoryIndex != null) {
@@ -11388,7 +15402,13 @@ class _$DeleteStoryLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -11403,13 +15423,16 @@ class _$DeleteStoryLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -11420,7 +15443,6 @@ class _$DeleteStoryLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -11429,6 +15451,7 @@ class _$DeleteStoryLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return deleteStoryLoading(storyId);
   }
@@ -11437,7 +15460,13 @@ class _$DeleteStoryLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -11452,13 +15481,16 @@ class _$DeleteStoryLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -11469,7 +15501,6 @@ class _$DeleteStoryLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -11478,6 +15509,7 @@ class _$DeleteStoryLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return deleteStoryLoading?.call(storyId);
   }
@@ -11486,7 +15518,13 @@ class _$DeleteStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -11501,13 +15539,16 @@ class _$DeleteStoryLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -11518,7 +15559,6 @@ class _$DeleteStoryLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -11527,6 +15567,7 @@ class _$DeleteStoryLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (deleteStoryLoading != null) {
@@ -11539,7 +15580,12 @@ class _$DeleteStoryLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -11555,6 +15601,11 @@ class _$DeleteStoryLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -11566,8 +15617,6 @@ class _$DeleteStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -11581,8 +15630,6 @@ class _$DeleteStoryLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -11594,6 +15641,7 @@ class _$DeleteStoryLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return deleteStoryLoading(this);
   }
@@ -11602,7 +15650,12 @@ class _$DeleteStoryLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -11617,6 +15670,10 @@ class _$DeleteStoryLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -11627,8 +15684,6 @@ class _$DeleteStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -11640,8 +15695,6 @@ class _$DeleteStoryLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -11651,6 +15704,7 @@ class _$DeleteStoryLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return deleteStoryLoading?.call(this);
   }
@@ -11659,7 +15713,11 @@ class _$DeleteStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -11674,6 +15732,10 @@ class _$DeleteStoryLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -11684,8 +15746,6 @@ class _$DeleteStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -11697,8 +15757,6 @@ class _$DeleteStoryLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -11708,6 +15766,7 @@ class _$DeleteStoryLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (deleteStoryLoading != null) {
@@ -11772,7 +15831,13 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -11787,13 +15852,16 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -11804,7 +15872,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -11813,6 +15880,7 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return deleteStory();
   }
@@ -11821,7 +15889,13 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -11836,13 +15910,16 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -11853,7 +15930,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -11862,6 +15938,7 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return deleteStory?.call();
   }
@@ -11870,7 +15947,13 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -11885,13 +15968,16 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -11902,7 +15988,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -11911,6 +15996,7 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (deleteStory != null) {
@@ -11923,7 +16009,12 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -11939,6 +16030,11 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -11950,8 +16046,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -11965,8 +16059,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -11978,6 +16070,7 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return deleteStory(this);
   }
@@ -11986,7 +16079,12 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -12001,6 +16099,10 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -12011,8 +16113,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -12024,8 +16124,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -12035,6 +16133,7 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return deleteStory?.call(this);
   }
@@ -12043,7 +16142,11 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -12058,6 +16161,10 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -12068,8 +16175,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -12081,8 +16186,6 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -12092,6 +16195,7 @@ class _$DeleteStoryImpl with DiagnosticableTreeMixin implements _DeleteStory {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (deleteStory != null) {
@@ -12182,7 +16286,13 @@ class _$DeleteStoryErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -12197,13 +16307,16 @@ class _$DeleteStoryErrorImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -12214,7 +16327,6 @@ class _$DeleteStoryErrorImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -12223,6 +16335,7 @@ class _$DeleteStoryErrorImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return deleteStoryError(errorMsg);
   }
@@ -12231,7 +16344,13 @@ class _$DeleteStoryErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -12246,13 +16365,16 @@ class _$DeleteStoryErrorImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -12263,7 +16385,6 @@ class _$DeleteStoryErrorImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -12272,6 +16393,7 @@ class _$DeleteStoryErrorImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return deleteStoryError?.call(errorMsg);
   }
@@ -12280,7 +16402,13 @@ class _$DeleteStoryErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -12295,13 +16423,16 @@ class _$DeleteStoryErrorImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -12312,7 +16443,6 @@ class _$DeleteStoryErrorImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -12321,6 +16451,7 @@ class _$DeleteStoryErrorImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (deleteStoryError != null) {
@@ -12333,7 +16464,12 @@ class _$DeleteStoryErrorImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -12349,6 +16485,11 @@ class _$DeleteStoryErrorImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -12360,8 +16501,6 @@ class _$DeleteStoryErrorImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -12375,8 +16514,6 @@ class _$DeleteStoryErrorImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -12388,6 +16525,7 @@ class _$DeleteStoryErrorImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return deleteStoryError(this);
   }
@@ -12396,7 +16534,12 @@ class _$DeleteStoryErrorImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -12411,6 +16554,10 @@ class _$DeleteStoryErrorImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -12421,8 +16568,6 @@ class _$DeleteStoryErrorImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -12434,8 +16579,6 @@ class _$DeleteStoryErrorImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -12445,6 +16588,7 @@ class _$DeleteStoryErrorImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return deleteStoryError?.call(this);
   }
@@ -12453,7 +16597,11 @@ class _$DeleteStoryErrorImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -12468,6 +16616,10 @@ class _$DeleteStoryErrorImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -12478,8 +16630,6 @@ class _$DeleteStoryErrorImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -12491,8 +16641,6 @@ class _$DeleteStoryErrorImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -12502,6 +16650,7 @@ class _$DeleteStoryErrorImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (deleteStoryError != null) {
@@ -12573,7 +16722,13 @@ class _$ContactsStoriesChangedLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -12588,13 +16743,16 @@ class _$ContactsStoriesChangedLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -12605,7 +16763,6 @@ class _$ContactsStoriesChangedLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -12614,6 +16771,7 @@ class _$ContactsStoriesChangedLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return contactsStoriesChangedLoading();
   }
@@ -12622,7 +16780,13 @@ class _$ContactsStoriesChangedLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -12637,13 +16801,16 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -12654,7 +16821,6 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -12663,6 +16829,7 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return contactsStoriesChangedLoading?.call();
   }
@@ -12671,7 +16838,13 @@ class _$ContactsStoriesChangedLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -12686,13 +16859,16 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -12703,7 +16879,6 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -12712,6 +16887,7 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (contactsStoriesChangedLoading != null) {
@@ -12724,7 +16900,12 @@ class _$ContactsStoriesChangedLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -12740,6 +16921,11 @@ class _$ContactsStoriesChangedLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -12751,8 +16937,6 @@ class _$ContactsStoriesChangedLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -12766,8 +16950,6 @@ class _$ContactsStoriesChangedLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -12779,6 +16961,7 @@ class _$ContactsStoriesChangedLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return contactsStoriesChangedLoading(this);
   }
@@ -12787,7 +16970,12 @@ class _$ContactsStoriesChangedLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -12802,6 +16990,10 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -12812,8 +17004,6 @@ class _$ContactsStoriesChangedLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -12825,8 +17015,6 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -12836,6 +17024,7 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return contactsStoriesChangedLoading?.call(this);
   }
@@ -12844,7 +17033,11 @@ class _$ContactsStoriesChangedLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -12859,6 +17052,10 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -12869,8 +17066,6 @@ class _$ContactsStoriesChangedLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -12882,8 +17077,6 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -12893,6 +17086,7 @@ class _$ContactsStoriesChangedLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (contactsStoriesChangedLoading != null) {
@@ -12958,7 +17152,13 @@ class _$ContactsStoriesChangedImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -12973,13 +17173,16 @@ class _$ContactsStoriesChangedImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -12990,7 +17193,6 @@ class _$ContactsStoriesChangedImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -12999,6 +17201,7 @@ class _$ContactsStoriesChangedImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return contactsStoriesChanged();
   }
@@ -13007,7 +17210,13 @@ class _$ContactsStoriesChangedImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -13022,13 +17231,16 @@ class _$ContactsStoriesChangedImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -13039,7 +17251,6 @@ class _$ContactsStoriesChangedImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -13048,6 +17259,7 @@ class _$ContactsStoriesChangedImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return contactsStoriesChanged?.call();
   }
@@ -13056,7 +17268,13 @@ class _$ContactsStoriesChangedImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -13071,13 +17289,16 @@ class _$ContactsStoriesChangedImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -13088,7 +17309,6 @@ class _$ContactsStoriesChangedImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -13097,6 +17317,7 @@ class _$ContactsStoriesChangedImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (contactsStoriesChanged != null) {
@@ -13109,7 +17330,12 @@ class _$ContactsStoriesChangedImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -13125,6 +17351,11 @@ class _$ContactsStoriesChangedImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -13136,8 +17367,6 @@ class _$ContactsStoriesChangedImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -13151,8 +17380,6 @@ class _$ContactsStoriesChangedImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -13164,6 +17391,7 @@ class _$ContactsStoriesChangedImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return contactsStoriesChanged(this);
   }
@@ -13172,7 +17400,12 @@ class _$ContactsStoriesChangedImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -13187,6 +17420,10 @@ class _$ContactsStoriesChangedImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -13197,8 +17434,6 @@ class _$ContactsStoriesChangedImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -13210,8 +17445,6 @@ class _$ContactsStoriesChangedImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -13221,6 +17454,7 @@ class _$ContactsStoriesChangedImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return contactsStoriesChanged?.call(this);
   }
@@ -13229,7 +17463,11 @@ class _$ContactsStoriesChangedImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -13244,6 +17482,10 @@ class _$ContactsStoriesChangedImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -13254,8 +17496,6 @@ class _$ContactsStoriesChangedImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -13267,8 +17507,6 @@ class _$ContactsStoriesChangedImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -13278,6 +17516,7 @@ class _$ContactsStoriesChangedImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (contactsStoriesChanged != null) {
@@ -13289,425 +17528,6 @@ class _$ContactsStoriesChangedImpl
 
 abstract class _ContactsStoriesChanged implements StoriesState {
   const factory _ContactsStoriesChanged() = _$ContactsStoriesChangedImpl;
-}
-
-/// @nodoc
-abstract class _$$ContactsStoriesChangedErrorImplCopyWith<$Res> {
-  factory _$$ContactsStoriesChangedErrorImplCopyWith(
-          _$ContactsStoriesChangedErrorImpl value,
-          $Res Function(_$ContactsStoriesChangedErrorImpl) then) =
-      __$$ContactsStoriesChangedErrorImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errorMsg});
-}
-
-/// @nodoc
-class __$$ContactsStoriesChangedErrorImplCopyWithImpl<$Res>
-    extends _$StoriesStateCopyWithImpl<$Res, _$ContactsStoriesChangedErrorImpl>
-    implements _$$ContactsStoriesChangedErrorImplCopyWith<$Res> {
-  __$$ContactsStoriesChangedErrorImplCopyWithImpl(
-      _$ContactsStoriesChangedErrorImpl _value,
-      $Res Function(_$ContactsStoriesChangedErrorImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? errorMsg = null,
-  }) {
-    return _then(_$ContactsStoriesChangedErrorImpl(
-      null == errorMsg
-          ? _value.errorMsg
-          : errorMsg // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ContactsStoriesChangedErrorImpl
-    with DiagnosticableTreeMixin
-    implements _ContactsStoriesChangedError {
-  const _$ContactsStoriesChangedErrorImpl(this.errorMsg);
-
-  @override
-  final String errorMsg;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'StoriesState.contactsStoriesChangedError(errorMsg: $errorMsg)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty(
-          'type', 'StoriesState.contactsStoriesChangedError'))
-      ..add(DiagnosticsProperty('errorMsg', errorMsg));
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ContactsStoriesChangedErrorImpl &&
-            (identical(other.errorMsg, errorMsg) ||
-                other.errorMsg == errorMsg));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, errorMsg);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ContactsStoriesChangedErrorImplCopyWith<_$ContactsStoriesChangedErrorImpl>
-      get copyWith => __$$ContactsStoriesChangedErrorImplCopyWithImpl<
-          _$ContactsStoriesChangedErrorImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() getPhones,
-    required TResult Function() initAddTextStory,
-    required TResult Function() disposeAddTextStory,
-    required TResult Function(MessageType type) pickStoryMediaLoading,
-    required TResult Function() pickStoryMedia,
-    required TResult Function() pickStoryMediaError,
-    required TResult Function() setVideoDuration,
-    required TResult Function() sendStoryLoading,
-    required TResult Function() sendStory,
-    required TResult Function(String errorMsg) sendStoryError,
-    required TResult Function(double filePercentage) getFilePercentage,
-    required TResult Function() setImageDimensions,
-    required TResult Function() getMyStoriesLoading,
-    required TResult Function(List<StoryModel> myStories) getMyStories,
-    required TResult Function(String errorMsg) getMyStoriesError,
-    required TResult Function() getContactsLastStoriesLoading,
-    required TResult Function() getContactsLastStories,
-    required TResult Function(String errorMsg) getContactsLastStoriesError,
-    required TResult Function() openContactStory,
-    required TResult Function() getContactsCurrentStoriesLoading,
-    required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
-    required TResult Function() initStoryView,
-    required TResult Function() disposeStoryView,
-    required TResult Function() changeStoryIndexLoading,
-    required TResult Function(int index) changeStoryIndex,
-    required TResult Function() resetStoryIndex,
-    required TResult Function(String storyId) deleteStoryLoading,
-    required TResult Function() deleteStory,
-    required TResult Function(String errorMsg) deleteStoryError,
-    required TResult Function() contactsStoriesChangedLoading,
-    required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
-    required TResult Function() initReplyToStory,
-    required TResult Function() viewContactStoryLoading,
-    required TResult Function() viewContactStory,
-    required TResult Function() replyToStoryLoading,
-    required TResult Function() replyToStory,
-    required TResult Function(String errorMsg) replyToStoryError,
-    required TResult Function() createVideosThumbnailsLoading,
-    required TResult Function() createVideosThumbnails,
-  }) {
-    return contactsStoriesChangedError(errorMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? getPhones,
-    TResult? Function()? initAddTextStory,
-    TResult? Function()? disposeAddTextStory,
-    TResult? Function(MessageType type)? pickStoryMediaLoading,
-    TResult? Function()? pickStoryMedia,
-    TResult? Function()? pickStoryMediaError,
-    TResult? Function()? setVideoDuration,
-    TResult? Function()? sendStoryLoading,
-    TResult? Function()? sendStory,
-    TResult? Function(String errorMsg)? sendStoryError,
-    TResult? Function(double filePercentage)? getFilePercentage,
-    TResult? Function()? setImageDimensions,
-    TResult? Function()? getMyStoriesLoading,
-    TResult? Function(List<StoryModel> myStories)? getMyStories,
-    TResult? Function(String errorMsg)? getMyStoriesError,
-    TResult? Function()? getContactsLastStoriesLoading,
-    TResult? Function()? getContactsLastStories,
-    TResult? Function(String errorMsg)? getContactsLastStoriesError,
-    TResult? Function()? openContactStory,
-    TResult? Function()? getContactsCurrentStoriesLoading,
-    TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
-    TResult? Function()? initStoryView,
-    TResult? Function()? disposeStoryView,
-    TResult? Function()? changeStoryIndexLoading,
-    TResult? Function(int index)? changeStoryIndex,
-    TResult? Function()? resetStoryIndex,
-    TResult? Function(String storyId)? deleteStoryLoading,
-    TResult? Function()? deleteStory,
-    TResult? Function(String errorMsg)? deleteStoryError,
-    TResult? Function()? contactsStoriesChangedLoading,
-    TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
-    TResult? Function()? initReplyToStory,
-    TResult? Function()? viewContactStoryLoading,
-    TResult? Function()? viewContactStory,
-    TResult? Function()? replyToStoryLoading,
-    TResult? Function()? replyToStory,
-    TResult? Function(String errorMsg)? replyToStoryError,
-    TResult? Function()? createVideosThumbnailsLoading,
-    TResult? Function()? createVideosThumbnails,
-  }) {
-    return contactsStoriesChangedError?.call(errorMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? getPhones,
-    TResult Function()? initAddTextStory,
-    TResult Function()? disposeAddTextStory,
-    TResult Function(MessageType type)? pickStoryMediaLoading,
-    TResult Function()? pickStoryMedia,
-    TResult Function()? pickStoryMediaError,
-    TResult Function()? setVideoDuration,
-    TResult Function()? sendStoryLoading,
-    TResult Function()? sendStory,
-    TResult Function(String errorMsg)? sendStoryError,
-    TResult Function(double filePercentage)? getFilePercentage,
-    TResult Function()? setImageDimensions,
-    TResult Function()? getMyStoriesLoading,
-    TResult Function(List<StoryModel> myStories)? getMyStories,
-    TResult Function(String errorMsg)? getMyStoriesError,
-    TResult Function()? getContactsLastStoriesLoading,
-    TResult Function()? getContactsLastStories,
-    TResult Function(String errorMsg)? getContactsLastStoriesError,
-    TResult Function()? openContactStory,
-    TResult Function()? getContactsCurrentStoriesLoading,
-    TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
-    TResult Function()? initStoryView,
-    TResult Function()? disposeStoryView,
-    TResult Function()? changeStoryIndexLoading,
-    TResult Function(int index)? changeStoryIndex,
-    TResult Function()? resetStoryIndex,
-    TResult Function(String storyId)? deleteStoryLoading,
-    TResult Function()? deleteStory,
-    TResult Function(String errorMsg)? deleteStoryError,
-    TResult Function()? contactsStoriesChangedLoading,
-    TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
-    TResult Function()? initReplyToStory,
-    TResult Function()? viewContactStoryLoading,
-    TResult Function()? viewContactStory,
-    TResult Function()? replyToStoryLoading,
-    TResult Function()? replyToStory,
-    TResult Function(String errorMsg)? replyToStoryError,
-    TResult Function()? createVideosThumbnailsLoading,
-    TResult Function()? createVideosThumbnails,
-    required TResult orElse(),
-  }) {
-    if (contactsStoriesChangedError != null) {
-      return contactsStoriesChangedError(errorMsg);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
-    required TResult Function(_InitAddTextStory value) initAddTextStory,
-    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
-    required TResult Function(_PickStoryMediaLoading value)
-        pickStoryMediaLoading,
-    required TResult Function(_PickStoryMedia value) pickStoryMedia,
-    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
-    required TResult Function(_SetVideoDuration value) setVideoDuration,
-    required TResult Function(_SendStoryLoading value) sendStoryLoading,
-    required TResult Function(_SendStory value) sendStory,
-    required TResult Function(_SendStoryError value) sendStoryError,
-    required TResult Function(_GetFilePercentage value) getFilePercentage,
-    required TResult Function(_SetImageDimensions value) setImageDimensions,
-    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
-    required TResult Function(_GetMyStories value) getMyStories,
-    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
-    required TResult Function(_GetContactsLastStoriesLoading value)
-        getContactsLastStoriesLoading,
-    required TResult Function(_GetContactsLastStories value)
-        getContactsLastStories,
-    required TResult Function(_GetContactsLastStoriesError value)
-        getContactsLastStoriesError,
-    required TResult Function(_OpenContactStory value) openContactStory,
-    required TResult Function(_GetContactsCurrentStoriesLoading value)
-        getContactsCurrentStoriesLoading,
-    required TResult Function(_GetContactsCurrentStories value)
-        getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
-    required TResult Function(_InitStoryView value) initStoryView,
-    required TResult Function(_DisposeStoryView value) disposeStoryView,
-    required TResult Function(_ChangeStoryIndexLoading value)
-        changeStoryIndexLoading,
-    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
-    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
-    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
-    required TResult Function(_DeleteStory value) deleteStory,
-    required TResult Function(_DeleteStoryError value) deleteStoryError,
-    required TResult Function(_ContactsStoriesChangedLoading value)
-        contactsStoriesChangedLoading,
-    required TResult Function(_ContactsStoriesChanged value)
-        contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
-    required TResult Function(_InitReplyToStory value) initReplyToStory,
-    required TResult Function(_viewContactStoryLoading value)
-        viewContactStoryLoading,
-    required TResult Function(_viewContactStory value) viewContactStory,
-    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
-    required TResult Function(_ReplyToStory value) replyToStory,
-    required TResult Function(_ReplyToStoryError value) replyToStoryError,
-    required TResult Function(_CreateVideosThumbnailsLoading value)
-        createVideosThumbnailsLoading,
-    required TResult Function(_CreateVideosThumbnails value)
-        createVideosThumbnails,
-  }) {
-    return contactsStoriesChangedError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
-    TResult? Function(_InitAddTextStory value)? initAddTextStory,
-    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
-    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
-    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
-    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
-    TResult? Function(_SetVideoDuration value)? setVideoDuration,
-    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
-    TResult? Function(_SendStory value)? sendStory,
-    TResult? Function(_SendStoryError value)? sendStoryError,
-    TResult? Function(_GetFilePercentage value)? getFilePercentage,
-    TResult? Function(_SetImageDimensions value)? setImageDimensions,
-    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
-    TResult? Function(_GetMyStories value)? getMyStories,
-    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
-    TResult? Function(_GetContactsLastStoriesLoading value)?
-        getContactsLastStoriesLoading,
-    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
-    TResult? Function(_GetContactsLastStoriesError value)?
-        getContactsLastStoriesError,
-    TResult? Function(_OpenContactStory value)? openContactStory,
-    TResult? Function(_GetContactsCurrentStoriesLoading value)?
-        getContactsCurrentStoriesLoading,
-    TResult? Function(_GetContactsCurrentStories value)?
-        getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
-    TResult? Function(_InitStoryView value)? initStoryView,
-    TResult? Function(_DisposeStoryView value)? disposeStoryView,
-    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
-    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
-    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
-    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
-    TResult? Function(_DeleteStory value)? deleteStory,
-    TResult? Function(_DeleteStoryError value)? deleteStoryError,
-    TResult? Function(_ContactsStoriesChangedLoading value)?
-        contactsStoriesChangedLoading,
-    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
-    TResult? Function(_InitReplyToStory value)? initReplyToStory,
-    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
-    TResult? Function(_viewContactStory value)? viewContactStory,
-    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
-    TResult? Function(_ReplyToStory value)? replyToStory,
-    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
-    TResult? Function(_CreateVideosThumbnailsLoading value)?
-        createVideosThumbnailsLoading,
-    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
-  }) {
-    return contactsStoriesChangedError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
-    TResult Function(_InitAddTextStory value)? initAddTextStory,
-    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
-    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
-    TResult Function(_PickStoryMedia value)? pickStoryMedia,
-    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
-    TResult Function(_SetVideoDuration value)? setVideoDuration,
-    TResult Function(_SendStoryLoading value)? sendStoryLoading,
-    TResult Function(_SendStory value)? sendStory,
-    TResult Function(_SendStoryError value)? sendStoryError,
-    TResult Function(_GetFilePercentage value)? getFilePercentage,
-    TResult Function(_SetImageDimensions value)? setImageDimensions,
-    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
-    TResult Function(_GetMyStories value)? getMyStories,
-    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
-    TResult Function(_GetContactsLastStoriesLoading value)?
-        getContactsLastStoriesLoading,
-    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
-    TResult Function(_GetContactsLastStoriesError value)?
-        getContactsLastStoriesError,
-    TResult Function(_OpenContactStory value)? openContactStory,
-    TResult Function(_GetContactsCurrentStoriesLoading value)?
-        getContactsCurrentStoriesLoading,
-    TResult Function(_GetContactsCurrentStories value)?
-        getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
-    TResult Function(_InitStoryView value)? initStoryView,
-    TResult Function(_DisposeStoryView value)? disposeStoryView,
-    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
-    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
-    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
-    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
-    TResult Function(_DeleteStory value)? deleteStory,
-    TResult Function(_DeleteStoryError value)? deleteStoryError,
-    TResult Function(_ContactsStoriesChangedLoading value)?
-        contactsStoriesChangedLoading,
-    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
-    TResult Function(_InitReplyToStory value)? initReplyToStory,
-    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
-    TResult Function(_viewContactStory value)? viewContactStory,
-    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
-    TResult Function(_ReplyToStory value)? replyToStory,
-    TResult Function(_ReplyToStoryError value)? replyToStoryError,
-    TResult Function(_CreateVideosThumbnailsLoading value)?
-        createVideosThumbnailsLoading,
-    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
-    required TResult orElse(),
-  }) {
-    if (contactsStoriesChangedError != null) {
-      return contactsStoriesChangedError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ContactsStoriesChangedError implements StoriesState {
-  const factory _ContactsStoriesChangedError(final String errorMsg) =
-      _$ContactsStoriesChangedErrorImpl;
-
-  String get errorMsg;
-  @JsonKey(ignore: true)
-  _$$ContactsStoriesChangedErrorImplCopyWith<_$ContactsStoriesChangedErrorImpl>
-      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -13758,7 +17578,13 @@ class _$InitReplyToStoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -13773,13 +17599,16 @@ class _$InitReplyToStoryImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -13790,7 +17619,6 @@ class _$InitReplyToStoryImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -13799,6 +17627,7 @@ class _$InitReplyToStoryImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return initReplyToStory();
   }
@@ -13807,7 +17636,13 @@ class _$InitReplyToStoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -13822,13 +17657,16 @@ class _$InitReplyToStoryImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -13839,7 +17677,6 @@ class _$InitReplyToStoryImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -13848,6 +17685,7 @@ class _$InitReplyToStoryImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return initReplyToStory?.call();
   }
@@ -13856,7 +17694,13 @@ class _$InitReplyToStoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -13871,13 +17715,16 @@ class _$InitReplyToStoryImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -13888,7 +17735,6 @@ class _$InitReplyToStoryImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -13897,6 +17743,7 @@ class _$InitReplyToStoryImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initReplyToStory != null) {
@@ -13909,7 +17756,12 @@ class _$InitReplyToStoryImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -13925,6 +17777,11 @@ class _$InitReplyToStoryImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -13936,8 +17793,6 @@ class _$InitReplyToStoryImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -13951,8 +17806,6 @@ class _$InitReplyToStoryImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -13964,6 +17817,7 @@ class _$InitReplyToStoryImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return initReplyToStory(this);
   }
@@ -13972,7 +17826,12 @@ class _$InitReplyToStoryImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -13987,6 +17846,10 @@ class _$InitReplyToStoryImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -13997,8 +17860,6 @@ class _$InitReplyToStoryImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -14010,8 +17871,6 @@ class _$InitReplyToStoryImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -14021,6 +17880,7 @@ class _$InitReplyToStoryImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return initReplyToStory?.call(this);
   }
@@ -14029,7 +17889,11 @@ class _$InitReplyToStoryImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -14044,6 +17908,10 @@ class _$InitReplyToStoryImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -14054,8 +17922,6 @@ class _$InitReplyToStoryImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -14067,8 +17933,6 @@ class _$InitReplyToStoryImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -14078,6 +17942,7 @@ class _$InitReplyToStoryImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (initReplyToStory != null) {
@@ -14142,7 +18007,13 @@ class _$viewContactStoryLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -14157,13 +18028,16 @@ class _$viewContactStoryLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -14174,7 +18048,6 @@ class _$viewContactStoryLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -14183,6 +18056,7 @@ class _$viewContactStoryLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return viewContactStoryLoading();
   }
@@ -14191,7 +18065,13 @@ class _$viewContactStoryLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -14206,13 +18086,16 @@ class _$viewContactStoryLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -14223,7 +18106,6 @@ class _$viewContactStoryLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -14232,6 +18114,7 @@ class _$viewContactStoryLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return viewContactStoryLoading?.call();
   }
@@ -14240,7 +18123,13 @@ class _$viewContactStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -14255,13 +18144,16 @@ class _$viewContactStoryLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -14272,7 +18164,6 @@ class _$viewContactStoryLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -14281,6 +18172,7 @@ class _$viewContactStoryLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (viewContactStoryLoading != null) {
@@ -14293,7 +18185,12 @@ class _$viewContactStoryLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -14309,6 +18206,11 @@ class _$viewContactStoryLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -14320,8 +18222,6 @@ class _$viewContactStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -14335,8 +18235,6 @@ class _$viewContactStoryLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -14348,6 +18246,7 @@ class _$viewContactStoryLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return viewContactStoryLoading(this);
   }
@@ -14356,7 +18255,12 @@ class _$viewContactStoryLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -14371,6 +18275,10 @@ class _$viewContactStoryLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -14381,8 +18289,6 @@ class _$viewContactStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -14394,8 +18300,6 @@ class _$viewContactStoryLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -14405,6 +18309,7 @@ class _$viewContactStoryLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return viewContactStoryLoading?.call(this);
   }
@@ -14413,7 +18318,11 @@ class _$viewContactStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -14428,6 +18337,10 @@ class _$viewContactStoryLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -14438,8 +18351,6 @@ class _$viewContactStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -14451,8 +18362,6 @@ class _$viewContactStoryLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -14462,6 +18371,7 @@ class _$viewContactStoryLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (viewContactStoryLoading != null) {
@@ -14523,7 +18433,13 @@ class _$viewContactStoryImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -14538,13 +18454,16 @@ class _$viewContactStoryImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -14555,7 +18474,6 @@ class _$viewContactStoryImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -14564,6 +18482,7 @@ class _$viewContactStoryImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return viewContactStory();
   }
@@ -14572,7 +18491,13 @@ class _$viewContactStoryImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -14587,13 +18512,16 @@ class _$viewContactStoryImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -14604,7 +18532,6 @@ class _$viewContactStoryImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -14613,6 +18540,7 @@ class _$viewContactStoryImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return viewContactStory?.call();
   }
@@ -14621,7 +18549,13 @@ class _$viewContactStoryImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -14636,13 +18570,16 @@ class _$viewContactStoryImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -14653,7 +18590,6 @@ class _$viewContactStoryImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -14662,6 +18598,7 @@ class _$viewContactStoryImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (viewContactStory != null) {
@@ -14674,7 +18611,12 @@ class _$viewContactStoryImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -14690,6 +18632,11 @@ class _$viewContactStoryImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -14701,8 +18648,6 @@ class _$viewContactStoryImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -14716,8 +18661,6 @@ class _$viewContactStoryImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -14729,6 +18672,7 @@ class _$viewContactStoryImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return viewContactStory(this);
   }
@@ -14737,7 +18681,12 @@ class _$viewContactStoryImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -14752,6 +18701,10 @@ class _$viewContactStoryImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -14762,8 +18715,6 @@ class _$viewContactStoryImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -14775,8 +18726,6 @@ class _$viewContactStoryImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -14786,6 +18735,7 @@ class _$viewContactStoryImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return viewContactStory?.call(this);
   }
@@ -14794,7 +18744,11 @@ class _$viewContactStoryImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -14809,6 +18763,10 @@ class _$viewContactStoryImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -14819,8 +18777,6 @@ class _$viewContactStoryImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -14832,8 +18788,6 @@ class _$viewContactStoryImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -14843,6 +18797,7 @@ class _$viewContactStoryImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (viewContactStory != null) {
@@ -14905,7 +18860,13 @@ class _$ReplyToStoryLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -14920,13 +18881,16 @@ class _$ReplyToStoryLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -14937,7 +18901,6 @@ class _$ReplyToStoryLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -14946,6 +18909,7 @@ class _$ReplyToStoryLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return replyToStoryLoading();
   }
@@ -14954,7 +18918,13 @@ class _$ReplyToStoryLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -14969,13 +18939,16 @@ class _$ReplyToStoryLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -14986,7 +18959,6 @@ class _$ReplyToStoryLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -14995,6 +18967,7 @@ class _$ReplyToStoryLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return replyToStoryLoading?.call();
   }
@@ -15003,7 +18976,13 @@ class _$ReplyToStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -15018,13 +18997,16 @@ class _$ReplyToStoryLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -15035,7 +19017,6 @@ class _$ReplyToStoryLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -15044,6 +19025,7 @@ class _$ReplyToStoryLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (replyToStoryLoading != null) {
@@ -15056,7 +19038,12 @@ class _$ReplyToStoryLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -15072,6 +19059,11 @@ class _$ReplyToStoryLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -15083,8 +19075,6 @@ class _$ReplyToStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -15098,8 +19088,6 @@ class _$ReplyToStoryLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -15111,6 +19099,7 @@ class _$ReplyToStoryLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return replyToStoryLoading(this);
   }
@@ -15119,7 +19108,12 @@ class _$ReplyToStoryLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -15134,6 +19128,10 @@ class _$ReplyToStoryLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -15144,8 +19142,6 @@ class _$ReplyToStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -15157,8 +19153,6 @@ class _$ReplyToStoryLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -15168,6 +19162,7 @@ class _$ReplyToStoryLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return replyToStoryLoading?.call(this);
   }
@@ -15176,7 +19171,11 @@ class _$ReplyToStoryLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -15191,6 +19190,10 @@ class _$ReplyToStoryLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -15201,8 +19204,6 @@ class _$ReplyToStoryLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -15214,8 +19215,6 @@ class _$ReplyToStoryLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -15225,6 +19224,7 @@ class _$ReplyToStoryLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (replyToStoryLoading != null) {
@@ -15283,7 +19283,13 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -15298,13 +19304,16 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -15315,7 +19324,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -15324,6 +19332,7 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return replyToStory();
   }
@@ -15332,7 +19341,13 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -15347,13 +19362,16 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -15364,7 +19382,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -15373,6 +19390,7 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return replyToStory?.call();
   }
@@ -15381,7 +19399,13 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -15396,13 +19420,16 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -15413,7 +19440,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -15422,6 +19448,7 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (replyToStory != null) {
@@ -15434,7 +19461,12 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -15450,6 +19482,11 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -15461,8 +19498,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -15476,8 +19511,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -15489,6 +19522,7 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return replyToStory(this);
   }
@@ -15497,7 +19531,12 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -15512,6 +19551,10 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -15522,8 +19565,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -15535,8 +19576,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -15546,6 +19585,7 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return replyToStory?.call(this);
   }
@@ -15554,7 +19594,11 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -15569,6 +19613,10 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -15579,8 +19627,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -15592,8 +19638,6 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -15603,6 +19647,7 @@ class _$ReplyToStoryImpl with DiagnosticableTreeMixin implements _ReplyToStory {
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (replyToStory != null) {
@@ -15693,7 +19738,13 @@ class _$ReplyToStoryErrorImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -15708,13 +19759,16 @@ class _$ReplyToStoryErrorImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -15725,7 +19779,6 @@ class _$ReplyToStoryErrorImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -15734,6 +19787,7 @@ class _$ReplyToStoryErrorImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return replyToStoryError(errorMsg);
   }
@@ -15742,7 +19796,13 @@ class _$ReplyToStoryErrorImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -15757,13 +19817,16 @@ class _$ReplyToStoryErrorImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -15774,7 +19837,6 @@ class _$ReplyToStoryErrorImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -15783,6 +19845,7 @@ class _$ReplyToStoryErrorImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return replyToStoryError?.call(errorMsg);
   }
@@ -15791,7 +19854,13 @@ class _$ReplyToStoryErrorImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -15806,13 +19875,16 @@ class _$ReplyToStoryErrorImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -15823,7 +19895,6 @@ class _$ReplyToStoryErrorImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -15832,6 +19903,7 @@ class _$ReplyToStoryErrorImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (replyToStoryError != null) {
@@ -15844,7 +19916,12 @@ class _$ReplyToStoryErrorImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -15860,6 +19937,11 @@ class _$ReplyToStoryErrorImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -15871,8 +19953,6 @@ class _$ReplyToStoryErrorImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -15886,8 +19966,6 @@ class _$ReplyToStoryErrorImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -15899,6 +19977,7 @@ class _$ReplyToStoryErrorImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return replyToStoryError(this);
   }
@@ -15907,7 +19986,12 @@ class _$ReplyToStoryErrorImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -15922,6 +20006,10 @@ class _$ReplyToStoryErrorImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -15932,8 +20020,6 @@ class _$ReplyToStoryErrorImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -15945,8 +20031,6 @@ class _$ReplyToStoryErrorImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -15956,6 +20040,7 @@ class _$ReplyToStoryErrorImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return replyToStoryError?.call(this);
   }
@@ -15964,7 +20049,11 @@ class _$ReplyToStoryErrorImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -15979,6 +20068,10 @@ class _$ReplyToStoryErrorImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -15989,8 +20082,6 @@ class _$ReplyToStoryErrorImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -16002,8 +20093,6 @@ class _$ReplyToStoryErrorImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -16013,6 +20102,7 @@ class _$ReplyToStoryErrorImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (replyToStoryError != null) {
@@ -16084,7 +20174,13 @@ class _$CreateVideosThumbnailsLoadingImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -16099,13 +20195,16 @@ class _$CreateVideosThumbnailsLoadingImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -16116,7 +20215,6 @@ class _$CreateVideosThumbnailsLoadingImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -16125,6 +20223,7 @@ class _$CreateVideosThumbnailsLoadingImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return createVideosThumbnailsLoading();
   }
@@ -16133,7 +20232,13 @@ class _$CreateVideosThumbnailsLoadingImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -16148,13 +20253,16 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -16165,7 +20273,6 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -16174,6 +20281,7 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return createVideosThumbnailsLoading?.call();
   }
@@ -16182,7 +20290,13 @@ class _$CreateVideosThumbnailsLoadingImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -16197,13 +20311,16 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -16214,7 +20331,6 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -16223,6 +20339,7 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (createVideosThumbnailsLoading != null) {
@@ -16235,7 +20352,12 @@ class _$CreateVideosThumbnailsLoadingImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -16251,6 +20373,11 @@ class _$CreateVideosThumbnailsLoadingImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -16262,8 +20389,6 @@ class _$CreateVideosThumbnailsLoadingImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -16277,8 +20402,6 @@ class _$CreateVideosThumbnailsLoadingImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -16290,6 +20413,7 @@ class _$CreateVideosThumbnailsLoadingImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return createVideosThumbnailsLoading(this);
   }
@@ -16298,7 +20422,12 @@ class _$CreateVideosThumbnailsLoadingImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -16313,6 +20442,10 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -16323,8 +20456,6 @@ class _$CreateVideosThumbnailsLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -16336,8 +20467,6 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -16347,6 +20476,7 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return createVideosThumbnailsLoading?.call(this);
   }
@@ -16355,7 +20485,11 @@ class _$CreateVideosThumbnailsLoadingImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -16370,6 +20504,10 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -16380,8 +20518,6 @@ class _$CreateVideosThumbnailsLoadingImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -16393,8 +20529,6 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -16404,6 +20538,7 @@ class _$CreateVideosThumbnailsLoadingImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (createVideosThumbnailsLoading != null) {
@@ -16469,7 +20604,13 @@ class _$CreateVideosThumbnailsImpl
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() getPhones,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
     required TResult Function() initAddTextStory,
     required TResult Function() disposeAddTextStory,
     required TResult Function(MessageType type) pickStoryMediaLoading,
@@ -16484,13 +20625,16 @@ class _$CreateVideosThumbnailsImpl
     required TResult Function() getMyStoriesLoading,
     required TResult Function(List<StoryModel> myStories) getMyStories,
     required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
     required TResult Function() getContactsLastStoriesLoading,
     required TResult Function() getContactsLastStories,
     required TResult Function(String errorMsg) getContactsLastStoriesError,
     required TResult Function() openContactStory,
     required TResult Function() getContactsCurrentStoriesLoading,
     required TResult Function() getContactsCurrentStories,
-    required TResult Function(String errorMsg) getContactsCurrentStoriesError,
     required TResult Function() initStoryView,
     required TResult Function() disposeStoryView,
     required TResult Function() changeStoryIndexLoading,
@@ -16501,7 +20645,6 @@ class _$CreateVideosThumbnailsImpl
     required TResult Function(String errorMsg) deleteStoryError,
     required TResult Function() contactsStoriesChangedLoading,
     required TResult Function() contactsStoriesChanged,
-    required TResult Function(String errorMsg) contactsStoriesChangedError,
     required TResult Function() initReplyToStory,
     required TResult Function() viewContactStoryLoading,
     required TResult Function() viewContactStory,
@@ -16510,6 +20653,7 @@ class _$CreateVideosThumbnailsImpl
     required TResult Function(String errorMsg) replyToStoryError,
     required TResult Function() createVideosThumbnailsLoading,
     required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
   }) {
     return createVideosThumbnails();
   }
@@ -16518,7 +20662,13 @@ class _$CreateVideosThumbnailsImpl
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? getPhones,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
     TResult? Function()? initAddTextStory,
     TResult? Function()? disposeAddTextStory,
     TResult? Function(MessageType type)? pickStoryMediaLoading,
@@ -16533,13 +20683,16 @@ class _$CreateVideosThumbnailsImpl
     TResult? Function()? getMyStoriesLoading,
     TResult? Function(List<StoryModel> myStories)? getMyStories,
     TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
     TResult? Function()? getContactsLastStoriesLoading,
     TResult? Function()? getContactsLastStories,
     TResult? Function(String errorMsg)? getContactsLastStoriesError,
     TResult? Function()? openContactStory,
     TResult? Function()? getContactsCurrentStoriesLoading,
     TResult? Function()? getContactsCurrentStories,
-    TResult? Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult? Function()? initStoryView,
     TResult? Function()? disposeStoryView,
     TResult? Function()? changeStoryIndexLoading,
@@ -16550,7 +20703,6 @@ class _$CreateVideosThumbnailsImpl
     TResult? Function(String errorMsg)? deleteStoryError,
     TResult? Function()? contactsStoriesChangedLoading,
     TResult? Function()? contactsStoriesChanged,
-    TResult? Function(String errorMsg)? contactsStoriesChangedError,
     TResult? Function()? initReplyToStory,
     TResult? Function()? viewContactStoryLoading,
     TResult? Function()? viewContactStory,
@@ -16559,6 +20711,7 @@ class _$CreateVideosThumbnailsImpl
     TResult? Function(String errorMsg)? replyToStoryError,
     TResult? Function()? createVideosThumbnailsLoading,
     TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
   }) {
     return createVideosThumbnails?.call();
   }
@@ -16567,7 +20720,13 @@ class _$CreateVideosThumbnailsImpl
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? getPhones,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
     TResult Function()? initAddTextStory,
     TResult Function()? disposeAddTextStory,
     TResult Function(MessageType type)? pickStoryMediaLoading,
@@ -16582,13 +20741,16 @@ class _$CreateVideosThumbnailsImpl
     TResult Function()? getMyStoriesLoading,
     TResult Function(List<StoryModel> myStories)? getMyStories,
     TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
     TResult Function()? getContactsLastStoriesLoading,
     TResult Function()? getContactsLastStories,
     TResult Function(String errorMsg)? getContactsLastStoriesError,
     TResult Function()? openContactStory,
     TResult Function()? getContactsCurrentStoriesLoading,
     TResult Function()? getContactsCurrentStories,
-    TResult Function(String errorMsg)? getContactsCurrentStoriesError,
     TResult Function()? initStoryView,
     TResult Function()? disposeStoryView,
     TResult Function()? changeStoryIndexLoading,
@@ -16599,7 +20761,6 @@ class _$CreateVideosThumbnailsImpl
     TResult Function(String errorMsg)? deleteStoryError,
     TResult Function()? contactsStoriesChangedLoading,
     TResult Function()? contactsStoriesChanged,
-    TResult Function(String errorMsg)? contactsStoriesChangedError,
     TResult Function()? initReplyToStory,
     TResult Function()? viewContactStoryLoading,
     TResult Function()? viewContactStory,
@@ -16608,6 +20769,7 @@ class _$CreateVideosThumbnailsImpl
     TResult Function(String errorMsg)? replyToStoryError,
     TResult Function()? createVideosThumbnailsLoading,
     TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
     required TResult orElse(),
   }) {
     if (createVideosThumbnails != null) {
@@ -16620,7 +20782,12 @@ class _$CreateVideosThumbnailsImpl
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_GetPhones value) getPhones,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
     required TResult Function(_InitAddTextStory value) initAddTextStory,
     required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
     required TResult Function(_PickStoryMediaLoading value)
@@ -16636,6 +20803,11 @@ class _$CreateVideosThumbnailsImpl
     required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
     required TResult Function(_GetMyStories value) getMyStories,
     required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
     required TResult Function(_GetContactsLastStoriesLoading value)
         getContactsLastStoriesLoading,
     required TResult Function(_GetContactsLastStories value)
@@ -16647,8 +20819,6 @@ class _$CreateVideosThumbnailsImpl
         getContactsCurrentStoriesLoading,
     required TResult Function(_GetContactsCurrentStories value)
         getContactsCurrentStories,
-    required TResult Function(_GetContactsCurrentStoriesError value)
-        getContactsCurrentStoriesError,
     required TResult Function(_InitStoryView value) initStoryView,
     required TResult Function(_DisposeStoryView value) disposeStoryView,
     required TResult Function(_ChangeStoryIndexLoading value)
@@ -16662,8 +20832,6 @@ class _$CreateVideosThumbnailsImpl
         contactsStoriesChangedLoading,
     required TResult Function(_ContactsStoriesChanged value)
         contactsStoriesChanged,
-    required TResult Function(_ContactsStoriesChangedError value)
-        contactsStoriesChangedError,
     required TResult Function(_InitReplyToStory value) initReplyToStory,
     required TResult Function(_viewContactStoryLoading value)
         viewContactStoryLoading,
@@ -16675,6 +20843,7 @@ class _$CreateVideosThumbnailsImpl
         createVideosThumbnailsLoading,
     required TResult Function(_CreateVideosThumbnails value)
         createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
   }) {
     return createVideosThumbnails(this);
   }
@@ -16683,7 +20852,12 @@ class _$CreateVideosThumbnailsImpl
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_GetPhones value)? getPhones,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult? Function(_InitAddTextStory value)? initAddTextStory,
     TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -16698,6 +20872,10 @@ class _$CreateVideosThumbnailsImpl
     TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult? Function(_GetMyStories value)? getMyStories,
     TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult? Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -16708,8 +20886,6 @@ class _$CreateVideosThumbnailsImpl
         getContactsCurrentStoriesLoading,
     TResult? Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult? Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult? Function(_InitStoryView value)? initStoryView,
     TResult? Function(_DisposeStoryView value)? disposeStoryView,
     TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -16721,8 +20897,6 @@ class _$CreateVideosThumbnailsImpl
     TResult? Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult? Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult? Function(_InitReplyToStory value)? initReplyToStory,
     TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult? Function(_viewContactStory value)? viewContactStory,
@@ -16732,6 +20906,7 @@ class _$CreateVideosThumbnailsImpl
     TResult? Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
   }) {
     return createVideosThumbnails?.call(this);
   }
@@ -16740,7 +20915,11 @@ class _$CreateVideosThumbnailsImpl
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_GetPhones value)? getPhones,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
     TResult Function(_InitAddTextStory value)? initAddTextStory,
     TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
     TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
@@ -16755,6 +20934,10 @@ class _$CreateVideosThumbnailsImpl
     TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
     TResult Function(_GetMyStories value)? getMyStories,
     TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
     TResult Function(_GetContactsLastStoriesLoading value)?
         getContactsLastStoriesLoading,
     TResult Function(_GetContactsLastStories value)? getContactsLastStories,
@@ -16765,8 +20948,6 @@ class _$CreateVideosThumbnailsImpl
         getContactsCurrentStoriesLoading,
     TResult Function(_GetContactsCurrentStories value)?
         getContactsCurrentStories,
-    TResult Function(_GetContactsCurrentStoriesError value)?
-        getContactsCurrentStoriesError,
     TResult Function(_InitStoryView value)? initStoryView,
     TResult Function(_DisposeStoryView value)? disposeStoryView,
     TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
@@ -16778,8 +20959,6 @@ class _$CreateVideosThumbnailsImpl
     TResult Function(_ContactsStoriesChangedLoading value)?
         contactsStoriesChangedLoading,
     TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
-    TResult Function(_ContactsStoriesChangedError value)?
-        contactsStoriesChangedError,
     TResult Function(_InitReplyToStory value)? initReplyToStory,
     TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
     TResult Function(_viewContactStory value)? viewContactStory,
@@ -16789,6 +20968,7 @@ class _$CreateVideosThumbnailsImpl
     TResult Function(_CreateVideosThumbnailsLoading value)?
         createVideosThumbnailsLoading,
     TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
     required TResult orElse(),
   }) {
     if (createVideosThumbnails != null) {
@@ -16800,4 +20980,430 @@ class _$CreateVideosThumbnailsImpl
 
 abstract class _CreateVideosThumbnails implements StoriesState {
   const factory _CreateVideosThumbnails() = _$CreateVideosThumbnailsImpl;
+}
+
+/// @nodoc
+abstract class _$$ShowRefreshButtonImplCopyWith<$Res> {
+  factory _$$ShowRefreshButtonImplCopyWith(_$ShowRefreshButtonImpl value,
+          $Res Function(_$ShowRefreshButtonImpl) then) =
+      __$$ShowRefreshButtonImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ShowRefreshButtonImplCopyWithImpl<$Res>
+    extends _$StoriesStateCopyWithImpl<$Res, _$ShowRefreshButtonImpl>
+    implements _$$ShowRefreshButtonImplCopyWith<$Res> {
+  __$$ShowRefreshButtonImplCopyWithImpl(_$ShowRefreshButtonImpl _value,
+      $Res Function(_$ShowRefreshButtonImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ShowRefreshButtonImpl
+    with DiagnosticableTreeMixin
+    implements _ShowRefreshButton {
+  const _$ShowRefreshButtonImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'StoriesState.showRefreshButton()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+        .add(DiagnosticsProperty('type', 'StoriesState.showRefreshButton'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ShowRefreshButtonImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initStoriesScreenLoading,
+    required TResult Function() testLoading,
+    required TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)
+        testSuccess,
+    required TResult Function(String errorMsg) testError,
+    required TResult Function() initStoriesScreen,
+    required TResult Function() initAddTextStory,
+    required TResult Function() disposeAddTextStory,
+    required TResult Function(MessageType type) pickStoryMediaLoading,
+    required TResult Function() pickStoryMedia,
+    required TResult Function() pickStoryMediaError,
+    required TResult Function() setVideoDuration,
+    required TResult Function() sendStoryLoading,
+    required TResult Function() sendStory,
+    required TResult Function(String errorMsg) sendStoryError,
+    required TResult Function(double filePercentage) getFilePercentage,
+    required TResult Function() setImageDimensions,
+    required TResult Function() getMyStoriesLoading,
+    required TResult Function(List<StoryModel> myStories) getMyStories,
+    required TResult Function(String errorMsg) getMyStoriesError,
+    required TResult Function() getContactsStoriesLoading,
+    required TResult Function(List<ContactStoryModel> contactsStories)
+        getContactsStories,
+    required TResult Function(String errorMsg) getContactsStoriesError,
+    required TResult Function() getContactsLastStoriesLoading,
+    required TResult Function() getContactsLastStories,
+    required TResult Function(String errorMsg) getContactsLastStoriesError,
+    required TResult Function() openContactStory,
+    required TResult Function() getContactsCurrentStoriesLoading,
+    required TResult Function() getContactsCurrentStories,
+    required TResult Function() initStoryView,
+    required TResult Function() disposeStoryView,
+    required TResult Function() changeStoryIndexLoading,
+    required TResult Function(int index) changeStoryIndex,
+    required TResult Function() resetStoryIndex,
+    required TResult Function(String storyId) deleteStoryLoading,
+    required TResult Function() deleteStory,
+    required TResult Function(String errorMsg) deleteStoryError,
+    required TResult Function() contactsStoriesChangedLoading,
+    required TResult Function() contactsStoriesChanged,
+    required TResult Function() initReplyToStory,
+    required TResult Function() viewContactStoryLoading,
+    required TResult Function() viewContactStory,
+    required TResult Function() replyToStoryLoading,
+    required TResult Function() replyToStory,
+    required TResult Function(String errorMsg) replyToStoryError,
+    required TResult Function() createVideosThumbnailsLoading,
+    required TResult Function() createVideosThumbnails,
+    required TResult Function() showRefreshButton,
+  }) {
+    return showRefreshButton();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initStoriesScreenLoading,
+    TResult? Function()? testLoading,
+    TResult? Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult? Function(String errorMsg)? testError,
+    TResult? Function()? initStoriesScreen,
+    TResult? Function()? initAddTextStory,
+    TResult? Function()? disposeAddTextStory,
+    TResult? Function(MessageType type)? pickStoryMediaLoading,
+    TResult? Function()? pickStoryMedia,
+    TResult? Function()? pickStoryMediaError,
+    TResult? Function()? setVideoDuration,
+    TResult? Function()? sendStoryLoading,
+    TResult? Function()? sendStory,
+    TResult? Function(String errorMsg)? sendStoryError,
+    TResult? Function(double filePercentage)? getFilePercentage,
+    TResult? Function()? setImageDimensions,
+    TResult? Function()? getMyStoriesLoading,
+    TResult? Function(List<StoryModel> myStories)? getMyStories,
+    TResult? Function(String errorMsg)? getMyStoriesError,
+    TResult? Function()? getContactsStoriesLoading,
+    TResult? Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult? Function(String errorMsg)? getContactsStoriesError,
+    TResult? Function()? getContactsLastStoriesLoading,
+    TResult? Function()? getContactsLastStories,
+    TResult? Function(String errorMsg)? getContactsLastStoriesError,
+    TResult? Function()? openContactStory,
+    TResult? Function()? getContactsCurrentStoriesLoading,
+    TResult? Function()? getContactsCurrentStories,
+    TResult? Function()? initStoryView,
+    TResult? Function()? disposeStoryView,
+    TResult? Function()? changeStoryIndexLoading,
+    TResult? Function(int index)? changeStoryIndex,
+    TResult? Function()? resetStoryIndex,
+    TResult? Function(String storyId)? deleteStoryLoading,
+    TResult? Function()? deleteStory,
+    TResult? Function(String errorMsg)? deleteStoryError,
+    TResult? Function()? contactsStoriesChangedLoading,
+    TResult? Function()? contactsStoriesChanged,
+    TResult? Function()? initReplyToStory,
+    TResult? Function()? viewContactStoryLoading,
+    TResult? Function()? viewContactStory,
+    TResult? Function()? replyToStoryLoading,
+    TResult? Function()? replyToStory,
+    TResult? Function(String errorMsg)? replyToStoryError,
+    TResult? Function()? createVideosThumbnailsLoading,
+    TResult? Function()? createVideosThumbnails,
+    TResult? Function()? showRefreshButton,
+  }) {
+    return showRefreshButton?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initStoriesScreenLoading,
+    TResult Function()? testLoading,
+    TResult Function(List<StoryModel> myStories,
+            List<ContactStoryModel> contactStories, String? errorMsg)?
+        testSuccess,
+    TResult Function(String errorMsg)? testError,
+    TResult Function()? initStoriesScreen,
+    TResult Function()? initAddTextStory,
+    TResult Function()? disposeAddTextStory,
+    TResult Function(MessageType type)? pickStoryMediaLoading,
+    TResult Function()? pickStoryMedia,
+    TResult Function()? pickStoryMediaError,
+    TResult Function()? setVideoDuration,
+    TResult Function()? sendStoryLoading,
+    TResult Function()? sendStory,
+    TResult Function(String errorMsg)? sendStoryError,
+    TResult Function(double filePercentage)? getFilePercentage,
+    TResult Function()? setImageDimensions,
+    TResult Function()? getMyStoriesLoading,
+    TResult Function(List<StoryModel> myStories)? getMyStories,
+    TResult Function(String errorMsg)? getMyStoriesError,
+    TResult Function()? getContactsStoriesLoading,
+    TResult Function(List<ContactStoryModel> contactsStories)?
+        getContactsStories,
+    TResult Function(String errorMsg)? getContactsStoriesError,
+    TResult Function()? getContactsLastStoriesLoading,
+    TResult Function()? getContactsLastStories,
+    TResult Function(String errorMsg)? getContactsLastStoriesError,
+    TResult Function()? openContactStory,
+    TResult Function()? getContactsCurrentStoriesLoading,
+    TResult Function()? getContactsCurrentStories,
+    TResult Function()? initStoryView,
+    TResult Function()? disposeStoryView,
+    TResult Function()? changeStoryIndexLoading,
+    TResult Function(int index)? changeStoryIndex,
+    TResult Function()? resetStoryIndex,
+    TResult Function(String storyId)? deleteStoryLoading,
+    TResult Function()? deleteStory,
+    TResult Function(String errorMsg)? deleteStoryError,
+    TResult Function()? contactsStoriesChangedLoading,
+    TResult Function()? contactsStoriesChanged,
+    TResult Function()? initReplyToStory,
+    TResult Function()? viewContactStoryLoading,
+    TResult Function()? viewContactStory,
+    TResult Function()? replyToStoryLoading,
+    TResult Function()? replyToStory,
+    TResult Function(String errorMsg)? replyToStoryError,
+    TResult Function()? createVideosThumbnailsLoading,
+    TResult Function()? createVideosThumbnails,
+    TResult Function()? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (showRefreshButton != null) {
+      return showRefreshButton();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitStoriesScreenLoading value)
+        initStoriesScreenLoading,
+    required TResult Function(_TestLoading value) testLoading,
+    required TResult Function(_TestSuccess value) testSuccess,
+    required TResult Function(_TestError value) testError,
+    required TResult Function(_InitStoriesScreen value) initStoriesScreen,
+    required TResult Function(_InitAddTextStory value) initAddTextStory,
+    required TResult Function(_DisposeAddTextStory value) disposeAddTextStory,
+    required TResult Function(_PickStoryMediaLoading value)
+        pickStoryMediaLoading,
+    required TResult Function(_PickStoryMedia value) pickStoryMedia,
+    required TResult Function(_PickStoryMediaError value) pickStoryMediaError,
+    required TResult Function(_SetVideoDuration value) setVideoDuration,
+    required TResult Function(_SendStoryLoading value) sendStoryLoading,
+    required TResult Function(_SendStory value) sendStory,
+    required TResult Function(_SendStoryError value) sendStoryError,
+    required TResult Function(_GetFilePercentage value) getFilePercentage,
+    required TResult Function(_SetImageDimensions value) setImageDimensions,
+    required TResult Function(_GetMyStoriesLoading value) getMyStoriesLoading,
+    required TResult Function(_GetMyStories value) getMyStories,
+    required TResult Function(_GetMyStoriesError value) getMyStoriesError,
+    required TResult Function(_GetContactsStoriesLoading value)
+        getContactsStoriesLoading,
+    required TResult Function(_GetContactsStories value) getContactsStories,
+    required TResult Function(_GetContactsStoriesError value)
+        getContactsStoriesError,
+    required TResult Function(_GetContactsLastStoriesLoading value)
+        getContactsLastStoriesLoading,
+    required TResult Function(_GetContactsLastStories value)
+        getContactsLastStories,
+    required TResult Function(_GetContactsLastStoriesError value)
+        getContactsLastStoriesError,
+    required TResult Function(_OpenContactStory value) openContactStory,
+    required TResult Function(_GetContactsCurrentStoriesLoading value)
+        getContactsCurrentStoriesLoading,
+    required TResult Function(_GetContactsCurrentStories value)
+        getContactsCurrentStories,
+    required TResult Function(_InitStoryView value) initStoryView,
+    required TResult Function(_DisposeStoryView value) disposeStoryView,
+    required TResult Function(_ChangeStoryIndexLoading value)
+        changeStoryIndexLoading,
+    required TResult Function(_ChangeStoryIndex value) changeStoryIndex,
+    required TResult Function(_ResetStoryIndex value) resetStoryIndex,
+    required TResult Function(_DeleteStoryLoading value) deleteStoryLoading,
+    required TResult Function(_DeleteStory value) deleteStory,
+    required TResult Function(_DeleteStoryError value) deleteStoryError,
+    required TResult Function(_ContactsStoriesChangedLoading value)
+        contactsStoriesChangedLoading,
+    required TResult Function(_ContactsStoriesChanged value)
+        contactsStoriesChanged,
+    required TResult Function(_InitReplyToStory value) initReplyToStory,
+    required TResult Function(_viewContactStoryLoading value)
+        viewContactStoryLoading,
+    required TResult Function(_viewContactStory value) viewContactStory,
+    required TResult Function(_ReplyToStoryLoading value) replyToStoryLoading,
+    required TResult Function(_ReplyToStory value) replyToStory,
+    required TResult Function(_ReplyToStoryError value) replyToStoryError,
+    required TResult Function(_CreateVideosThumbnailsLoading value)
+        createVideosThumbnailsLoading,
+    required TResult Function(_CreateVideosThumbnails value)
+        createVideosThumbnails,
+    required TResult Function(_ShowRefreshButton value) showRefreshButton,
+  }) {
+    return showRefreshButton(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitStoriesScreenLoading value)?
+        initStoriesScreenLoading,
+    TResult? Function(_TestLoading value)? testLoading,
+    TResult? Function(_TestSuccess value)? testSuccess,
+    TResult? Function(_TestError value)? testError,
+    TResult? Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult? Function(_InitAddTextStory value)? initAddTextStory,
+    TResult? Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult? Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult? Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult? Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult? Function(_SetVideoDuration value)? setVideoDuration,
+    TResult? Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult? Function(_SendStory value)? sendStory,
+    TResult? Function(_SendStoryError value)? sendStoryError,
+    TResult? Function(_GetFilePercentage value)? getFilePercentage,
+    TResult? Function(_SetImageDimensions value)? setImageDimensions,
+    TResult? Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult? Function(_GetMyStories value)? getMyStories,
+    TResult? Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult? Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult? Function(_GetContactsStories value)? getContactsStories,
+    TResult? Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult? Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult? Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult? Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult? Function(_OpenContactStory value)? openContactStory,
+    TResult? Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult? Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult? Function(_InitStoryView value)? initStoryView,
+    TResult? Function(_DisposeStoryView value)? disposeStoryView,
+    TResult? Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult? Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult? Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult? Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult? Function(_DeleteStory value)? deleteStory,
+    TResult? Function(_DeleteStoryError value)? deleteStoryError,
+    TResult? Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult? Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult? Function(_InitReplyToStory value)? initReplyToStory,
+    TResult? Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult? Function(_viewContactStory value)? viewContactStory,
+    TResult? Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult? Function(_ReplyToStory value)? replyToStory,
+    TResult? Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult? Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult? Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult? Function(_ShowRefreshButton value)? showRefreshButton,
+  }) {
+    return showRefreshButton?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitStoriesScreenLoading value)? initStoriesScreenLoading,
+    TResult Function(_TestLoading value)? testLoading,
+    TResult Function(_TestSuccess value)? testSuccess,
+    TResult Function(_TestError value)? testError,
+    TResult Function(_InitStoriesScreen value)? initStoriesScreen,
+    TResult Function(_InitAddTextStory value)? initAddTextStory,
+    TResult Function(_DisposeAddTextStory value)? disposeAddTextStory,
+    TResult Function(_PickStoryMediaLoading value)? pickStoryMediaLoading,
+    TResult Function(_PickStoryMedia value)? pickStoryMedia,
+    TResult Function(_PickStoryMediaError value)? pickStoryMediaError,
+    TResult Function(_SetVideoDuration value)? setVideoDuration,
+    TResult Function(_SendStoryLoading value)? sendStoryLoading,
+    TResult Function(_SendStory value)? sendStory,
+    TResult Function(_SendStoryError value)? sendStoryError,
+    TResult Function(_GetFilePercentage value)? getFilePercentage,
+    TResult Function(_SetImageDimensions value)? setImageDimensions,
+    TResult Function(_GetMyStoriesLoading value)? getMyStoriesLoading,
+    TResult Function(_GetMyStories value)? getMyStories,
+    TResult Function(_GetMyStoriesError value)? getMyStoriesError,
+    TResult Function(_GetContactsStoriesLoading value)?
+        getContactsStoriesLoading,
+    TResult Function(_GetContactsStories value)? getContactsStories,
+    TResult Function(_GetContactsStoriesError value)? getContactsStoriesError,
+    TResult Function(_GetContactsLastStoriesLoading value)?
+        getContactsLastStoriesLoading,
+    TResult Function(_GetContactsLastStories value)? getContactsLastStories,
+    TResult Function(_GetContactsLastStoriesError value)?
+        getContactsLastStoriesError,
+    TResult Function(_OpenContactStory value)? openContactStory,
+    TResult Function(_GetContactsCurrentStoriesLoading value)?
+        getContactsCurrentStoriesLoading,
+    TResult Function(_GetContactsCurrentStories value)?
+        getContactsCurrentStories,
+    TResult Function(_InitStoryView value)? initStoryView,
+    TResult Function(_DisposeStoryView value)? disposeStoryView,
+    TResult Function(_ChangeStoryIndexLoading value)? changeStoryIndexLoading,
+    TResult Function(_ChangeStoryIndex value)? changeStoryIndex,
+    TResult Function(_ResetStoryIndex value)? resetStoryIndex,
+    TResult Function(_DeleteStoryLoading value)? deleteStoryLoading,
+    TResult Function(_DeleteStory value)? deleteStory,
+    TResult Function(_DeleteStoryError value)? deleteStoryError,
+    TResult Function(_ContactsStoriesChangedLoading value)?
+        contactsStoriesChangedLoading,
+    TResult Function(_ContactsStoriesChanged value)? contactsStoriesChanged,
+    TResult Function(_InitReplyToStory value)? initReplyToStory,
+    TResult Function(_viewContactStoryLoading value)? viewContactStoryLoading,
+    TResult Function(_viewContactStory value)? viewContactStory,
+    TResult Function(_ReplyToStoryLoading value)? replyToStoryLoading,
+    TResult Function(_ReplyToStory value)? replyToStory,
+    TResult Function(_ReplyToStoryError value)? replyToStoryError,
+    TResult Function(_CreateVideosThumbnailsLoading value)?
+        createVideosThumbnailsLoading,
+    TResult Function(_CreateVideosThumbnails value)? createVideosThumbnails,
+    TResult Function(_ShowRefreshButton value)? showRefreshButton,
+    required TResult orElse(),
+  }) {
+    if (showRefreshButton != null) {
+      return showRefreshButton(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ShowRefreshButton implements StoriesState {
+  const factory _ShowRefreshButton() = _$ShowRefreshButtonImpl;
 }

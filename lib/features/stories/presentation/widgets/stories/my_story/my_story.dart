@@ -20,6 +20,12 @@ class MyStory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<StoriesCubit, StoriesState>(
+      buildWhen: (previous, current) => current.maybeWhen(
+        testLoading: () => true,
+        testSuccess: (myStories, contactsStories, errorMsg) => true,
+        testError: (errorMsg) => true,
+        orElse: () => false,
+      ),
       builder: (context, state) {
         return GestureDetector(
           onTap: () {
@@ -38,10 +44,7 @@ class MyStory extends StatelessWidget {
             color: Colors.transparent,
             child: Row(
               children: [
-                AddMyStoryProfileImage(
-                  image: di<UserStorage>().getData()!.image,
-                  stories: di<StoriesCubit>().myStories,
-                ),
+                AddMyStoryProfileImage(stories: di<StoriesCubit>().myStories),
                 SizedBox(width: AppWidth.w10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

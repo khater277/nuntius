@@ -10,6 +10,7 @@ _$StoryModelImpl _$$StoryModelImplFromJson(Map<String, dynamic> json) =>
     _$StoryModelImpl(
       id: json['id'] as String?,
       date: json['date'] as String?,
+      validateTo: json['validateTo'] as String?,
       isImage: json['isImage'] as bool?,
       isRead: json['isRead'] as bool?,
       isVideo: json['isVideo'] as bool?,
@@ -31,6 +32,7 @@ Map<String, dynamic> _$$StoryModelImplToJson(_$StoryModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'date': instance.date,
+      'validateTo': instance.validateTo,
       'isImage': instance.isImage,
       'isRead': instance.isRead,
       'isVideo': instance.isVideo,

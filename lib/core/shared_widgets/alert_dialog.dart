@@ -11,65 +11,65 @@ Future<T?> showAlertDialog<T>({
   required String text,
   required void Function()? okPressed,
 }) {
-  AlertDialog alert({required bool loading, required StateSetter setState}) {
-    return AlertDialog(
-      backgroundColor: AppColors.lightBlack,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSize.s10),
-      ),
-      content: SmallHeadText(
-        text: text,
-        size: FontSize.s13,
-        maxLines: 3,
-        center: true,
-      ),
-      contentPadding: EdgeInsets.only(
-        top: AppHeight.h20,
-        bottom: AppHeight.h5,
-        right: AppWidth.w15,
-        left: AppWidth.w15,
-      ),
-      actionsPadding: EdgeInsets.only(bottom: AppHeight.h8, top: AppHeight.h5),
-      actions: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: TextButton(
-                child: const Text("Cancel"),
-                onPressed: () => Go.back(context: context),
-              ),
-            ),
-            Expanded(
-              child: loading
-                  ? Center(
-                      child: CustomCircleIndicator(
-                      size: AppSize.s15,
-                      strokeWidth: 1.2,
-                    ))
-                  : TextButton(
-                      onPressed: () async {
-                        setState(() {
-                          loading = !loading;
-                        });
-                        okPressed!();
-                      },
-                      child: const Text("Ok"),
-                    ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-
   return showDialog(
     context: context,
     builder: (BuildContext context) {
       bool loading = false;
       return StatefulBuilder(
-        builder: (context, setState) =>
-            alert(loading: loading, setState: setState),
+        builder: (_, setState) => PopScope(
+          canPop: false,
+          child: AlertDialog(
+            backgroundColor: AppColors.lightBlack,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSize.s10),
+            ),
+            content: SmallHeadText(
+              text: text,
+              size: FontSize.s13,
+              maxLines: 3,
+              center: true,
+            ),
+            contentPadding: EdgeInsets.only(
+              top: AppHeight.h20,
+              bottom: AppHeight.h5,
+              right: AppWidth.w15,
+              left: AppWidth.w15,
+            ),
+            actionsPadding:
+                EdgeInsets.only(bottom: AppHeight.h8, top: AppHeight.h5),
+            actions: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      child: const Text("Cancel"),
+                      onPressed: () =>
+                          loading ? () {} : Go.back(context: context),
+                    ),
+                  ),
+                  Expanded(
+                    child: loading
+                        ? Center(
+                            child: CustomCircleIndicator(
+                            size: AppSize.s15,
+                            strokeWidth: 1.2,
+                          ))
+                        : TextButton(
+                            onPressed: () {
+                              setState(() {
+                                loading = !loading;
+                              });
+                              okPressed!();
+                            },
+                            child: const Text("Ok"),
+                          ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
       );
     },
   );

@@ -8,6 +8,7 @@ import 'package:nuntius_/core/local_notification/streams/select_notification_str
 import 'package:nuntius_/core/shared_widgets/circle_indicator.dart';
 import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 import 'package:nuntius_/features/home/presentation/widgets/app_nav_bar.dart';
+import 'package:nuntius_/features/home/presentation/widgets/stories_floating_buttons.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -63,14 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
             body: di<HomeCubit>().screens[_index],
             extendBody: true,
             bottomNavigationBar: AppBottomNavBar(index: _index),
-            // floatingActionButton: cubit.navBarIndex == 1
-            //     ? BlocBuilder<StoriesCubit, StoriesState>(
-            //         builder: (context, state) {
-            //           final storiesCubit = StoriesCubit.get(context);
-            //           return StoriesFloatingButtons(storiesCubit: storiesCubit);
-            //         },
-            //       )
-            //     : null,
+            floatingActionButton: const StoriesFloatingButtons(),
           ),
         );
       },

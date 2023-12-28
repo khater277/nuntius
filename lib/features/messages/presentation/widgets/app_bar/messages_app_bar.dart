@@ -31,7 +31,7 @@ class MessagesAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         builder: (context, state) {
           return LargeHeadText(
-            text: di<MessagesCubit>().user!.name!,
+            text: di<MessagesCubit>().user!.token!,
             size: FontSize.s15,
           );
         },

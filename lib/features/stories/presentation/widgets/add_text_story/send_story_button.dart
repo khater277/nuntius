@@ -1,5 +1,7 @@
 import 'package:nuntius_/app/injector.dart';
+import 'package:nuntius_/config/navigation.dart';
 import 'package:nuntius_/core/shared_widgets/circle_indicator.dart';
+import 'package:nuntius_/core/shared_widgets/snack_bar.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_enums.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
@@ -17,11 +19,19 @@ class SendStoryButton extends StatelessWidget {
     return Container(
       decoration:
           const BoxDecoration(color: AppColors.blue, shape: BoxShape.circle),
-      child: BlocBuilder<StoriesCubit, StoriesState>(
+      child: BlocConsumer<StoriesCubit, StoriesState>(
         buildWhen: (previous, current) => current.maybeWhen(
           getFilePercentage: (filePercentage) => false,
           orElse: () => true,
         ),
+        listener: (context, state) {
+          state.maybeWhen(
+            sendStoryError: (errorMsg) =>
+                errorSnackBar(context: context, errorMsg: errorMsg),
+            sendStory: () => Go.back(context: context),
+            orElse: () {},
+          );
+        },
         builder: (context, state) {
           return IconButton(
               onPressed: state.maybeWhen(
