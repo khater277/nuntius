@@ -17,10 +17,8 @@ class ChatsScreen extends StatefulWidget {
 }
 
 class _ChatsScreenState extends State<ChatsScreen> {
-  // @override
+  @override
   // void initState() {
-  //   ChatsCubit.get(context).getChats(context);
-  //   ChatsCubit.get(context).initChats(users: HomeCubit.get(context).users);
 
   //   super.initState();
   // }

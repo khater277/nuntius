@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/shared_widgets/text.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/core/utils/icons_broken.dart';
 import 'package:nuntius_/features/stories/cubit/stories_cubit.dart';
-import 'package:nuntius_/features/stories/presentation/widgets/story_view/reply_to_story/reply_story_textfield.dart';
-import 'package:flutter/material.dart';
+import 'package:nuntius_/features/stories/presentation/widgets/story_view/reply_to_story/reply_story_text_field.dart';
 
 class ReplyToStory extends StatefulWidget {
   const ReplyToStory({
@@ -50,29 +50,7 @@ class _ReplyToStoryState extends State<ReplyToStory> {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      // if (widget.mediaSource == null)
-                      //   ReplyToTextStory(
-                      //     name: widget.name,
-                      //     text: widget.text,
-                      //   )
-                      // else if (widget.mediaSource == MediaSource.image)
-                      //   ReplyToMediaStory(
-                      //     name: widget.name,
-                      //     storyMedia: widget.storyMedia,
-                      //     isVideo: false,
-                      //   )
-                      // else
-                      //   ReplyToMediaStory(
-                      //     name: widget.name,
-                      //     storyMedia: widget.storyMedia,
-                      //     isVideo: true,
-                      //   ),
-                      // SizedBox(
-                      //   height: AppHeight.h5,
-                      // ),
-                      ReplyStoryTextField()
-                    ],
+                    children: [ReplyStoryTextField()],
                   ),
                 ),
               ),

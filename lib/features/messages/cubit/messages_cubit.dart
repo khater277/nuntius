@@ -105,6 +105,21 @@ class MessagesCubit extends Cubit<MessagesState> {
         emit(MessagesState.getUser(user!));
       },
       (stream) {
+        // await for (final event in stream) {
+        //   final existedUser = di<HomeCubit>()
+        //       .users
+        //       .firstWhereOrNull((element) => element.phone == phoneNumber);
+        //   if (existedUser != null) {
+        //     user = existedUser.copyWith(
+        //       token: UserData.fromJson(event.data()!).token,
+        //       inCall: UserData.fromJson(event.data()!).inCall,
+        //     );
+        //   } else {
+        //     user = UserData.fromJson(event.data()!)
+        //         .copyWith(name: UserData.fromJson(event.data()!).phone);
+        //   }
+        //   emit(MessagesState.getUser(user!));
+        // }
         stream.listen((event) {
           final existedUser = di<HomeCubit>()
               .users
@@ -134,6 +149,7 @@ class MessagesCubit extends Cubit<MessagesState> {
       },
       (snapshots) {
         snapshots.listen((event) {
+          print("==========>${event.docs.length}");
           List<MessageModel> messages = [];
           for (var doc in event.docs) {
             messages.add(MessageModel.fromJson(doc.data()));

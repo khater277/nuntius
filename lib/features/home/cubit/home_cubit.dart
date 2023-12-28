@@ -79,6 +79,7 @@ class HomeCubit extends Cubit<HomeState> {
         },
         (result) => emit(const HomeState.getContacts()),
       );
+      print("=================>${phones}");
       print(contacts.length);
     } catch (error) {
       users = _allUsersStorage.hasData()

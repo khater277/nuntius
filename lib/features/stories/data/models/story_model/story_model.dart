@@ -8,6 +8,7 @@ class StoryModel with _$StoryModel {
   factory StoryModel({
     String? id,
     String? date,
+    String? validateTo,
     bool? isImage,
     bool? isRead,
     bool? isVideo,

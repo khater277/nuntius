@@ -49,10 +49,18 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                StoryViewHead(
-                  storyDate:
-                      widget.stories[di<StoriesCubit>().storyIndex].date!,
-                  user: widget.user,
+                BlocBuilder<StoriesCubit, StoriesState>(
+                  buildWhen: (previous, current) => current.maybeWhen(
+                    changeStoryIndex: (index) => true,
+                    orElse: () => false,
+                  ),
+                  builder: (context, state) {
+                    return StoryViewHead(
+                      storyDate:
+                          widget.stories[di<StoriesCubit>().storyIndex].date!,
+                      user: widget.user,
+                    );
+                  },
                 ),
                 StoryViewBody(
                   stories: widget.stories,

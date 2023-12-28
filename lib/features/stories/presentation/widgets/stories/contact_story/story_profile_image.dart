@@ -30,7 +30,12 @@ class StoryProfileImage extends StatelessWidget {
               : AppColors.blue.withOpacity(0.2),
           backgroundImage:
               image != "" ? CachedNetworkImageProvider(image) : null,
-          child: image == "" ? const Icon(IconBroken.Profile) : null,
+          child: image == ""
+              ? const Icon(
+                  IconBroken.Profile,
+                  color: AppColors.blue,
+                )
+              : null,
         ),
       ),
     );

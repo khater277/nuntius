@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
@@ -105,7 +106,9 @@ class StoriesCubit extends Cubit<StoriesState> {
 
   Future<void> pickStoryMedia({required MessageType type}) async {
     emit(StoriesState.pickStoryMediaLoading(type));
-    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = type == MessageType.image
+        ? await picker.pickImage(source: ImageSource.gallery)
+        : await picker.pickVideo(source: ImageSource.gallery);
     if (pickedFile != null) {
       storyFile = File(pickedFile.path);
       if (type == MessageType.image) {
@@ -133,6 +136,8 @@ class StoriesCubit extends Cubit<StoriesState> {
     final storyModel = StoryModel(
       id: const Uuid().v4(),
       date: DateTime.now().toUtc().toString(),
+      validateTo:
+          DateTime.now().toUtc().add(const Duration(hours: 24)).toString(),
       isImage: mediaType == MessageType.image ? true : false,
       isVideo: mediaType == MessageType.video ? true : false,
       isRead: false,
@@ -142,8 +147,9 @@ class StoriesCubit extends Cubit<StoriesState> {
       text: storyTextController!.text,
       viewers: [],
       viewersPhones: [],
-      canView: di<HomeCubit>().phones.values.toList(),
+      canView: di<HomeCubit>().phones.keys.toList(),
     );
+    print("=================>${di<HomeCubit>().phones}");
     final response = await _setLastStoryUsecase.call(storyModel);
 
     response.fold(
@@ -211,21 +217,26 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.initAddTextStory());
   }
 
-  void getMyStories() async {
-    emit(const StoriesState.getMyStoriesLoading());
+  Future<void> executeAsyncFunctions() async {
+    await getMyStories();
+    await getContactsStories();
+  }
+
+  Future<void> getMyStories() async {
+    // emit(const StoriesState.getMyStoriesLoading());
+    emit(const StoriesState.testLoading());
     final response = await _getStoriesUsecase.call(NoParams());
     response.fold(
-      (failure) => emit(StoriesState.getMyStoriesError(failure.getMessage())),
+      (failure) => emit(StoriesState.testError(failure.getMessage())),
+      // emit(StoriesState.getMyStoriesError(failure.getMessage())),
       (snapshots) {
-        snapshots.listen((event) async {
+        snapshots.listen((event) {
           List<StoryModel> myStories = [];
           for (var doc in event.docs) {
             final story = StoryModel.fromJson(doc.data());
             if (DateTime.now()
-                    .toUtc()
-                    .difference(DateTime.parse(story.date!))
-                    .inHours <
-                24) {
+                .toUtc()
+                .isBefore(DateTime.parse(story.validateTo!))) {
               myStories.add(story);
             }
           }
@@ -244,6 +255,7 @@ class StoriesCubit extends Cubit<StoriesState> {
     bool isDeleted = false,
   }) {
     storyController = StoryController();
+    storyItems = [];
     handleStoryItems(stories: stories);
     emit(const StoriesState.initStoryView());
   }
@@ -255,7 +267,6 @@ class StoriesCubit extends Cubit<StoriesState> {
   }
 
   void handleStoryItems({required List<StoryModel> stories}) {
-    storyItems = [];
     for (int i = 0; i < stories.length; i++) {
       if (stories[i].media != "") {
         if (stories[i].isImage == true) {
@@ -311,20 +322,16 @@ class StoriesCubit extends Cubit<StoriesState> {
         List<String> viewsDateTime = [];
         for (var viewer in viewers) {
           final viewerModel = ViewerModel.fromJson(viewer);
-          UserData? userData = users
-              .firstWhereOrNull((element) => element.uId == viewerModel.id);
-          if (userData != null) {
-            users.add(userData);
-          } else {
-            UserData notContactUser = UserData(
-              uId: viewerModel.id,
-              name: viewerModel.phoneNumber,
-              phone: viewerModel.phoneNumber,
-              image: "",
-            );
-            users.add(notContactUser);
-            viewsDateTime.add(viewerModel.dateTime!);
-          }
+          UserData userData = di<HomeCubit>().users.firstWhereOrNull(
+                  (element) => element.uId == viewerModel.id) ??
+              UserData(
+                uId: viewerModel.id,
+                name: viewerModel.phoneNumber,
+                phone: viewerModel.phoneNumber,
+                image: "",
+              );
+          users.add(userData);
+          viewsDateTime.add(viewerModel.dateTime!);
         }
         return ViewersBottomSheet(
           users: users,
@@ -339,10 +346,7 @@ class StoriesCubit extends Cubit<StoriesState> {
     final response = await _deleteStoryUsecase.call(storyId);
     response.fold(
       (failure) => emit(StoriesState.deleteStoryError(failure.getMessage())),
-      (result) {
-        myStories.removeWhere((element) => element.id == storyId);
-        emit(const StoriesState.deleteStory());
-      },
+      (result) => emit(const StoriesState.deleteStory()),
     );
   }
 
@@ -357,34 +361,36 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.openContactStory());
   }
 
-  void getContactsCurrentStories(
-      {required List<UserData> users, bool? isStream}) async {
-    if (isStream != true) {
+  Future<void> getContactsCurrentStories({bool loading = false}) async {
+    if (loading) {
       emit(const StoriesState.getContactsCurrentStoriesLoading());
     }
-    final response = await _getContactsCurrentStoriesUsecase.call(users);
+    final response =
+        await _getContactsCurrentStoriesUsecase.call(di<HomeCubit>().users);
     response.fold(
-      (failure) => emit(
-          StoriesState.getContactsCurrentStoriesError(failure.getMessage())),
+      (failure) => emit(StoriesState.testSuccess(
+          myStories, contactsStories, failure.getMessage())),
       (stories) {
-        contactsStories = stories!;
         viewedStories = [];
         recentStories = [];
-        for (var contactStory in stories) {
-          final validStories = contactStory.stories!
-              .where((element) => (DateTime.now()
-                      .toUtc()
-                      .difference(DateTime.parse(element.date!))
-                      .inHours <
-                  24))
-              .toList();
-          if (validStories.isNotEmpty) {
-            if (validStories.last.viewersPhones!
-                .contains(_userStorage.getData()!.phone)) {
-              viewedStories.add(contactStory.copyWith(stories: validStories));
-            } else {
-              recentStories.add(contactStory.copyWith(stories: validStories));
-            }
+        contactsStories = stories == null
+            ? []
+            : stories
+                .where((e) => e.stories!
+                    .where((element) => (DateTime.now()
+                        .toUtc()
+                        .isBefore(DateTime.parse(element.validateTo!))))
+                    .toList()
+                    .isNotEmpty)
+                .toList();
+        for (var contactStory in contactsStories) {
+          if (contactStory.stories!.last.viewersPhones!
+              .contains(_userStorage.getData()!.phone)) {
+            viewedStories
+                .add(contactStory.copyWith(stories: contactStory.stories!));
+          } else {
+            recentStories
+                .add(contactStory.copyWith(stories: contactStory.stories!));
           }
         }
         viewedStories.sort(
@@ -399,24 +405,31 @@ class StoriesCubit extends Cubit<StoriesState> {
 
         recentStories = recentStories.reversed.toList();
         viewedStories = viewedStories.reversed.toList();
-
-        emit(const StoriesState.getContactsCurrentStories());
+        emit(StoriesState.testSuccess(myStories, contactsStories, null));
       },
     );
   }
 
-  void contactsStoriesChanged() async {
+  Future<void> getContactsStories() async {
     final response = await _getContactsLastStoriesUsecase.call(NoParams());
     response.fold(
-      (failure) =>
-          emit(StoriesState.contactsStoriesChangedError(failure.getMessage())),
+      (failure) => emit(StoriesState.testSuccess(
+        myStories,
+        contactsStories,
+        failure.getMessage(),
+      )),
       (stream) {
         stream.listen((event) {
-          getContactsCurrentStories(
-              users: di<HomeCubit>().users, isStream: true);
+          getContactsCurrentStories(loading: false);
         });
       },
     );
+  }
+
+  bool refreshButton = false;
+  void showRefreshButton({required bool refreshButton}) {
+    this.refreshButton = refreshButton;
+    emit(const StoriesState.showRefreshButton());
   }
 
   TextEditingController? replyController;
@@ -445,21 +458,18 @@ class StoriesCubit extends Cubit<StoriesState> {
       (failure) => null,
       (result) {
         emit(const StoriesState.viewContactStory());
-        contactsStoriesChanged();
+        getContactsStories();
         // emit(const StoriesState.viewContactStory());
       },
     );
   }
 
-  void replyToStory({
-    required UserData user,
-    required StoryModel story,
-  }) async {
+  void replyToStory() async {
     emit(const StoriesState.replyToStoryLoading());
 
     MessageModel messageModel = MessageModel(
       senderId: _userStorage.getData()!.uId,
-      receiverId: user.uId,
+      receiverId: contactStoryModel!.user!.uId,
       message: replyController!.text,
       date: DateTime.now().toUtc().toString(),
       media: "",
@@ -467,15 +477,15 @@ class StoriesCubit extends Cubit<StoriesState> {
       isVideo: false,
       isDoc: false,
       isStoryReply: true,
-      storyText: story.text,
-      storyMedia: story.media,
-      storyDate: story.date,
-      isStoryImageReply: story.isImage,
+      storyText: contactStoryModel!.stories![storyIndex].text,
+      storyMedia: contactStoryModel!.stories![storyIndex].media,
+      storyDate: contactStoryModel!.stories![storyIndex].date,
+      isStoryImageReply: contactStoryModel!.stories![storyIndex].isImage,
     );
 
     LastMessageModel lastMessageModel = LastMessageModel(
-      token: user.token,
-      image: user.image,
+      token: contactStoryModel!.user!.token,
+      image: contactStoryModel!.user!.image,
       senderID: messageModel.senderId,
       receiverID: messageModel.receiverId,
       message: messageModel.message,
@@ -490,7 +500,7 @@ class StoriesCubit extends Cubit<StoriesState> {
 
     final response = await _sendMessageUsecase.call(
       SendMessageParams(
-        phoneNumber: user.phone!,
+        phoneNumber: contactStoryModel!.user!.phone!,
         lastMessageModel: lastMessageModel,
         messageModel: messageModel,
       ),
@@ -499,6 +509,7 @@ class StoriesCubit extends Cubit<StoriesState> {
     response.fold(
       (failure) => emit(StoriesState.replyToStoryError(failure.getMessage())),
       (result) {
+        di<StoriesCubit>().replyController!.clear();
         emit(const StoriesState.replyToStory());
       },
     );

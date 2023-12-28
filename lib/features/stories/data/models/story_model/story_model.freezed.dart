@@ -22,6 +22,7 @@ StoryModel _$StoryModelFromJson(Map<String, dynamic> json) {
 mixin _$StoryModel {
   String? get id => throw _privateConstructorUsedError;
   String? get date => throw _privateConstructorUsedError;
+  String? get validateTo => throw _privateConstructorUsedError;
   bool? get isImage => throw _privateConstructorUsedError;
   bool? get isRead => throw _privateConstructorUsedError;
   bool? get isVideo => throw _privateConstructorUsedError;
@@ -48,6 +49,7 @@ abstract class $StoryModelCopyWith<$Res> {
   $Res call(
       {String? id,
       String? date,
+      String? validateTo,
       bool? isImage,
       bool? isRead,
       bool? isVideo,
@@ -75,6 +77,7 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
   $Res call({
     Object? id = freezed,
     Object? date = freezed,
+    Object? validateTo = freezed,
     Object? isImage = freezed,
     Object? isRead = freezed,
     Object? isVideo = freezed,
@@ -94,6 +97,10 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      validateTo: freezed == validateTo
+          ? _value.validateTo
+          : validateTo // ignore: cast_nullable_to_non_nullable
               as String?,
       isImage: freezed == isImage
           ? _value.isImage
@@ -150,6 +157,7 @@ abstract class _$$StoryModelImplCopyWith<$Res>
   $Res call(
       {String? id,
       String? date,
+      String? validateTo,
       bool? isImage,
       bool? isRead,
       bool? isVideo,
@@ -175,6 +183,7 @@ class __$$StoryModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? date = freezed,
+    Object? validateTo = freezed,
     Object? isImage = freezed,
     Object? isRead = freezed,
     Object? isVideo = freezed,
@@ -194,6 +203,10 @@ class __$$StoryModelImplCopyWithImpl<$Res>
       date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
+              as String?,
+      validateTo: freezed == validateTo
+          ? _value.validateTo
+          : validateTo // ignore: cast_nullable_to_non_nullable
               as String?,
       isImage: freezed == isImage
           ? _value.isImage
@@ -245,6 +258,7 @@ class _$StoryModelImpl implements _StoryModel {
   _$StoryModelImpl(
       {this.id,
       this.date,
+      this.validateTo,
       this.isImage,
       this.isRead,
       this.isVideo,
@@ -263,6 +277,8 @@ class _$StoryModelImpl implements _StoryModel {
   final String? id;
   @override
   final String? date;
+  @override
+  final String? validateTo;
   @override
   final bool? isImage;
   @override
@@ -286,7 +302,7 @@ class _$StoryModelImpl implements _StoryModel {
 
   @override
   String toString() {
-    return 'StoryModel(id: $id, date: $date, isImage: $isImage, isRead: $isRead, isVideo: $isVideo, videoDuration: $videoDuration, media: $media, phone: $phone, text: $text, viewers: $viewers, viewersPhones: $viewersPhones, canView: $canView)';
+    return 'StoryModel(id: $id, date: $date, validateTo: $validateTo, isImage: $isImage, isRead: $isRead, isVideo: $isVideo, videoDuration: $videoDuration, media: $media, phone: $phone, text: $text, viewers: $viewers, viewersPhones: $viewersPhones, canView: $canView)';
   }
 
   @override
@@ -296,6 +312,8 @@ class _$StoryModelImpl implements _StoryModel {
             other is _$StoryModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.date, date) || other.date == date) &&
+            (identical(other.validateTo, validateTo) ||
+                other.validateTo == validateTo) &&
             (identical(other.isImage, isImage) || other.isImage == isImage) &&
             (identical(other.isRead, isRead) || other.isRead == isRead) &&
             (identical(other.isVideo, isVideo) || other.isVideo == isVideo) &&
@@ -316,6 +334,7 @@ class _$StoryModelImpl implements _StoryModel {
       runtimeType,
       id,
       date,
+      validateTo,
       isImage,
       isRead,
       isVideo,
@@ -345,6 +364,7 @@ abstract class _StoryModel implements StoryModel {
   factory _StoryModel(
       {final String? id,
       final String? date,
+      final String? validateTo,
       final bool? isImage,
       final bool? isRead,
       final bool? isVideo,
@@ -363,6 +383,8 @@ abstract class _StoryModel implements StoryModel {
   String? get id;
   @override
   String? get date;
+  @override
+  String? get validateTo;
   @override
   bool? get isImage;
   @override

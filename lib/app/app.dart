@@ -49,7 +49,9 @@ class MyApp extends StatelessWidget {
               BlocProvider(
                 create: (BuildContext context) => di<EditProfileCubit>(),
               ),
-              BlocProvider(create: (BuildContext context) => di<StoriesCubit>()
+              BlocProvider(
+                  create: (BuildContext context) =>
+                      di<StoriesCubit>()..executeAsyncFunctions()
                   // ..getPhones(
                   //   HomeCubit.get(context).phones.keys.toList(),
                   //   HomeCubit.get(context).users,
@@ -68,11 +70,12 @@ class MyApp extends StatelessWidget {
             child: MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme(),
-              home: di<UserStorage>().getData() != null
-                  ? const HomeScreen()
-                  : const LoginScreen(),
-              // const HomeScreen(),
-              // const LoginScreen(),
+              home:
+                  //  di<UserStorage>().getData() != null
+                  //     ? const HomeScreen()
+                  //     : const LoginScreen(),
+                  // const HomeScreen(),
+                  const LoginScreen(),
             ),
           );
         });

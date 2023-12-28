@@ -5,8 +5,6 @@ import 'package:nuntius_/core/shared_widgets/text.dart';
 import 'package:nuntius_/core/utils/app_fonts.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/features/contacts/presentation/widgets/contacts/user_image.dart';
-import 'package:nuntius_/features/stories/cubit/stories_cubit.dart';
-import 'package:nuntius_/features/stories/data/models/story_model/story_model.dart';
 import 'package:nuntius_/features/stories/presentation/widgets/stories/contact_story/story_date.dart';
 
 import '../../../../auth/data/models/user_data/user_data.dart';

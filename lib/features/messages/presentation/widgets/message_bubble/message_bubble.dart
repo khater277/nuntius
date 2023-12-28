@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nuntius_/app/injector.dart';
+import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/utils/app_colors.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/features/messages/cubit/messages_cubit.dart';
@@ -30,7 +31,8 @@ class MessageBubble extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppWidth.w2),
       child: GestureDetector(
-        onLongPress: () => message.isDeleted == true
+        onLongPress: () => message.isDeleted == true ||
+                message.senderId != di<UserStorage>().getData()!.uId
             ? null
             : di<MessagesCubit>().showDeleteMessageBottomSheet(
                 context: context,
