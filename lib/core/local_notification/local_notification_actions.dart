@@ -1,8 +1,10 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:nuntius_/config/navigation.dart';
 import 'package:nuntius_/core/local_notification/streams/select_notification_stream.dart';
+import 'package:nuntius_/features/messages/presentation/screens/messages_screen.dart';
 
 abstract class LocalNotificationActions {
-  void click();
+  void click({required BuildContext context});
 }
 
 class LocalNotificationActionsImpl implements LocalNotificationActions {
@@ -12,9 +14,10 @@ class LocalNotificationActionsImpl implements LocalNotificationActions {
   }) : _selectNotificationStream = selectNotificationStream;
 
   @override
-  void click() {
-    _selectNotificationStream.stream.listen((String? payload) {
-      debugPrint("payload============>$payload");
+  void click({required BuildContext context}) {
+    _selectNotificationStream.stream.listen((String? phoneNumber) {
+      Go.to(
+          context: context, screen: MessagesScreen(phoneNumber: phoneNumber!));
     });
   }
 }

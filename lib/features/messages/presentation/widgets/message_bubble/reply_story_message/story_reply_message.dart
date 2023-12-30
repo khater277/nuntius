@@ -35,7 +35,7 @@ class StoryReplyMessage extends StatelessWidget {
                           ? "${di<MessagesCubit>().user!.name}'s"
                           : "My",
                   text: messageModel.storyText ?? "empty",
-                  storyType: messageModel.media!.isEmpty
+                  storyType: messageModel.storyMedia!.isEmpty
                       ? MessageType.text
                       : messageModel.isStoryImageReply == true
                           ? MessageType.image
@@ -45,14 +45,7 @@ class StoryReplyMessage extends StatelessWidget {
                 // LargeHeadText(text: messageModel.media!),
                 if (messageModel.storyMedia!.isNotEmpty)
                   StoryImage(
-                    media:
-                        // messageModel.isStoryImageReply == true
-                        // ?
-                        messageModel.storyMedia!,
-                    // : MessagesCubit.get(context).videosThumbnails.isEmpty
-                    //     ? ""
-                    //     : MessagesCubit.get(context)
-                    //         .videosThumbnails[messageModel.messageId]!,
+                    media: messageModel.storyMedia!,
                     mediaType: messageModel.isStoryImageReply == true
                         ? MessageType.image
                         : MessageType.video,

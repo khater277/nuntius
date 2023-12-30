@@ -32,43 +32,42 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-          child: Scaffold(
-            body: Padding(
-              padding: EdgeInsets.only(
-                top: AppHeight.h8,
-                right: AppWidth.w10,
-              ),
-              child: Column(
+      child: Scaffold(
+        body: Padding(
+          padding: EdgeInsets.only(
+            top: AppHeight.h8,
+            right: AppWidth.w10,
+          ),
+          child: Column(
+            children: [
+              const Row(
                 children: [
-                  const Row(
-                    children: [
-                      CustomBackButton(),
-                      SearchTextField(),
-                    ],
-                  ),
-                  BlocBuilder<SearchCubit, SearchState>(
-                    builder: (context, state) {
-                      return Expanded(
-                        child: di<SearchCubit>().searchController!.text.isEmpty
-                            ? const NoItemsFounded(
-                                icon: IconBroken.Search,
-                                text: 'search now for your friends.',
-                              )
-                            : di<SearchCubit>().searchResult.isEmpty
-                                ? const NoItemsFounded(
-                                    icon: IconBroken.User1,
-                                    text: 'there is no matching results.',
-                                  )
-                                : SearchResult(
-                                    searchResult:
-                                        di<SearchCubit>().searchResult),
-                      );
-                    },
-                  ),
+                  CustomBackButton(),
+                  SearchTextField(),
                 ],
               ),
-            ),
+              BlocBuilder<SearchCubit, SearchState>(
+                builder: (context, state) {
+                  return Expanded(
+                    child: di<SearchCubit>().searchController!.text.isEmpty
+                        ? const NoItemsFounded(
+                            icon: IconBroken.Search,
+                            text: 'search now for your friends.',
+                          )
+                        : di<SearchCubit>().searchResult.isEmpty
+                            ? const NoItemsFounded(
+                                icon: IconBroken.User1,
+                                text: 'there is no matching results.',
+                              )
+                            : SearchResult(
+                                searchResult: di<SearchCubit>().searchResult),
+                  );
+                },
+              ),
+            ],
           ),
-        );
+        ),
+      ),
+    );
   }
 }

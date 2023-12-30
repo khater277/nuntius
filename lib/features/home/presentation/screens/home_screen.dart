@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntius_/app/injector.dart';
+import 'package:nuntius_/core/firebase/fcm/fcm_helper.dart';
 import 'package:nuntius_/core/local_notification/local_notification_actions.dart';
 import 'package:nuntius_/core/local_notification/local_notification_permissions.dart';
 import 'package:nuntius_/core/local_notification/streams/did_receive_local_notification_stream.dart';
@@ -20,18 +21,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    // FcmHelper.handleForegroundNotification(
-    //     homeCubit: HomeCubit.get(context), context: context);
-    // FcmHelper.handelBackgroundNotification(
-    //     homeCubit: HomeCubit.get(context), context: context);
     di<LocalNotificationPermissions>().isAndroidPermissionGranted();
     di<LocalNotificationPermissions>().requestPermissions();
-    di<LocalNotificationActions>().click();
-    // NotificationsHelper.configureDidReceiveLocalNotificationSubject(context);
-    // NotificationsHelper.configureSelectNotificationSubject(
-    //   ChatsCubit.get(context),
-    //   context,
-    // );
+    di<LocalNotificationActions>().click(context: context);
+    di<FcmHelper>().onBackgroundMessage(context: context);
+    di<FcmHelper>().onForegroundMessage();
     super.initState();
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/shared_widgets/back_button.dart';
@@ -8,7 +9,6 @@ import 'package:nuntius_/core/utils/app_fonts.dart';
 import 'package:nuntius_/core/utils/app_values.dart';
 import 'package:nuntius_/features/messages/cubit/messages_cubit.dart';
 import 'package:nuntius_/features/messages/presentation/widgets/app_bar/call_button.dart';
-import 'package:flutter/material.dart';
 
 class MessagesAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MessagesAppBar({super.key});
@@ -31,16 +31,12 @@ class MessagesAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         builder: (context, state) {
           return LargeHeadText(
-            text: di<MessagesCubit>().user!.token!,
+            text: di<MessagesCubit>().user!.name!,
             size: FontSize.s15,
           );
         },
       ),
-      leading: Builder(builder: (context) {
-        // di<MessagesCubit>()
-        //     .readMessage(lastMessages: ChatsCubit.get(context).lastMessages);
-        return const CustomBackButton();
-      }),
+      leading: const CustomBackButton(),
       actions: [
         Padding(
             padding: EdgeInsets.symmetric(horizontal: AppWidth.w5),

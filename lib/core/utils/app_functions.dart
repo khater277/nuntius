@@ -2,6 +2,7 @@ import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/utils/app_enums.dart';
 import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
+import 'package:nuntius_/features/home/data/models/notification_data/notification_data.dart';
 import 'package:uuid/uuid.dart';
 
 class AppFunctions {
@@ -39,17 +40,17 @@ class AppFunctions {
       "priority": "high",
       "notification": {
         "title": "New Message",
-        "body": "$name sent you new message",
+        "body": "$name sent you new message.",
         "sound": "default"
       },
-      "data": {
-        "type": "message",
-        "id":
-            "${di<UserStorage>().getData()!.uId!}${user.uId!}${DateTime.now().millisecondsSinceEpoch}",
-        "senderID": di<UserStorage>().getData()!.uId!,
-        "phoneNumber": di<UserStorage>().getData()!.phone!,
-        "click_action": "FLUTTER_NOTIFICATION_CLICK"
-      }
+      "data": NotificationData(
+              name: name,
+              type: "message",
+              id: "${di<UserStorage>().getData()!.uId!}${user.uId!}${DateTime.now().millisecondsSinceEpoch}",
+              senderId: di<UserStorage>().getData()!.uId!,
+              phoneNumber: di<UserStorage>().getData()!.phone!,
+              clickAction: "FLUTTER_NOTIFICATION_CLICK")
+          .toJson(),
     };
   }
 

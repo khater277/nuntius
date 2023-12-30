@@ -7,6 +7,7 @@ import 'package:nuntius_/core/apis/agora/agora_end_points.dart';
 import 'package:nuntius_/core/apis/fcm/fcm_api.dart';
 import 'package:nuntius_/core/apis/fcm/fcm_end_points.dart';
 import 'package:nuntius_/core/firebase/auth/auth.dart';
+import 'package:nuntius_/core/firebase/fcm/fcm_helper.dart';
 import 'package:nuntius_/core/firebase/firestore/calls_database.dart';
 import 'package:nuntius_/core/firebase/firestore/chats_database.dart';
 import 'package:nuntius_/core/firebase/firestore/messages_database.dart';
@@ -123,6 +124,7 @@ void setupGetIt() {
         chatsCubit: di(),
       ));
   di.registerLazySingleton<MessagesCubit>(() => MessagesCubit(
+        chatsCubit: di(),
         userStorage: di(),
         callsRepository: di(),
         getUserStreamUsecase: di(),
@@ -299,6 +301,10 @@ void setupGetIt() {
   /// FIREBASE
   di.registerLazySingleton<AuthViaFirebase>(() => AuthViaFirebaseImpl());
   di.registerLazySingleton<FirebaseMedia>(() => FirebaseMediaImpl());
+  di.registerLazySingleton<FcmHelper>(() => FcmHelperImpl(
+        messagesCubit: di(),
+        displayLocalNotification: di(),
+      ));
   di.registerLazySingleton<UsersDatabase>(
       () => UsersDatabaseImpl(userStorage: di()));
   di.registerLazySingleton<ChatsDatabase>(

@@ -8,13 +8,11 @@ import 'package:nuntius_/features/messages/presentation/widgets/message_text_fie
 import 'package:nuntius_/features/messages/presentation/widgets/messages_list.dart';
 
 class MessagesScreen extends StatefulWidget {
-  // final UserData user;
   final String phoneNumber;
   final bool fromNotification;
   const MessagesScreen({
     super.key,
     required this.phoneNumber,
-    // required this.user,
     this.fromNotification = false,
   });
 
@@ -28,16 +26,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
   @override
   void initState() {
     di<MessagesCubit>().initMessages(phoneNumber: widget.phoneNumber);
-    // MessagesCubit.get(context)
-    //     .readMessage(lastMessages: ChatsCubit.get(context).lastMessages);
     super.initState();
   }
 
   @override
   void dispose() {
-    if (widget.fromNotification == false) {
-      di<MessagesCubit>().disposeMessages();
-    }
+    di<MessagesCubit>().disposeMessages();
     super.dispose();
   }
 

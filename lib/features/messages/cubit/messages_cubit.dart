@@ -18,6 +18,7 @@ import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
 import 'package:nuntius_/features/auth/domain/parameters/upload_file_to_storage_params.dart';
 import 'package:nuntius_/features/auth/domain/usecases/upload_file_to_storage_usecase.dart';
 import 'package:nuntius_/features/calls/data/repositories/calls_repository.dart';
+import 'package:nuntius_/features/chats/cubit/chats_cubit.dart';
 import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 import 'package:nuntius_/features/messages/data/models/last_message/last_message_model.dart';
 import 'package:nuntius_/features/messages/data/models/message/message_model.dart';
@@ -41,6 +42,7 @@ part 'messages_cubit.freezed.dart';
 part 'messages_state.dart';
 
 class MessagesCubit extends Cubit<MessagesState> {
+  final ChatsCubit _chatsCubit;
   final UserStorage _userStorage;
   final CallsRepository _callsRepository;
   final GetUserStreamUsecase _getUserStreamUsecase;
@@ -52,6 +54,7 @@ class MessagesCubit extends Cubit<MessagesState> {
   final SeeMessageUsecase _seeMessageUsecase;
   final UploadFileToStorageUsecase _uploadFileToStorageUsecase;
   MessagesCubit({
+    required ChatsCubit chatsCubit,
     required UserStorage userStorage,
     required CallsRepository callsRepository,
     required GetUserStreamUsecase getUserStreamUsecase,
@@ -62,7 +65,8 @@ class MessagesCubit extends Cubit<MessagesState> {
     required DeleteLastMessageUsecase deleteLastMessageUsecase,
     required SeeMessageUsecase seeMessageUsecase,
     required UploadFileToStorageUsecase uploadFileToStorageUsecase,
-  })  : _userStorage = userStorage,
+  })  : _chatsCubit = chatsCubit,
+        _userStorage = userStorage,
         _callsRepository = callsRepository,
         _getUserStreamUsecase = getUserStreamUsecase,
         _sendMessageUsecase = sendMessageUsecase,
@@ -92,6 +96,8 @@ class MessagesCubit extends Cubit<MessagesState> {
     videosThumbnails = {};
     messageType = null;
     file = null;
+    user = null;
+    readMessage(lastMessages: _chatsCubit.lastMessages);
     emit(const MessagesState.disposeControllers());
   }
 
@@ -105,21 +111,6 @@ class MessagesCubit extends Cubit<MessagesState> {
         emit(MessagesState.getUser(user!));
       },
       (stream) {
-        // await for (final event in stream) {
-        //   final existedUser = di<HomeCubit>()
-        //       .users
-        //       .firstWhereOrNull((element) => element.phone == phoneNumber);
-        //   if (existedUser != null) {
-        //     user = existedUser.copyWith(
-        //       token: UserData.fromJson(event.data()!).token,
-        //       inCall: UserData.fromJson(event.data()!).inCall,
-        //     );
-        //   } else {
-        //     user = UserData.fromJson(event.data()!)
-        //         .copyWith(name: UserData.fromJson(event.data()!).phone);
-        //   }
-        //   emit(MessagesState.getUser(user!));
-        // }
         stream.listen((event) {
           final existedUser = di<HomeCubit>()
               .users

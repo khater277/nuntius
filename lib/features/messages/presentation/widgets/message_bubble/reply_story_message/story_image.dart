@@ -30,10 +30,10 @@ class StoryImage extends StatelessWidget {
             height: AppSize.s40,
             child: mediaType == MessageType.image
                 ? CachedNetworkImage(imageUrl: media)
-                : media.isEmpty || di<MessagesCubit>().videosThumbnails.isEmpty
-                    ? const SizedBox()
-                    : Image.file(
-                        File(di<MessagesCubit>().videosThumbnails[messageId]!)),
+                // : media.isEmpty || di<MessagesCubit>().videosThumbnails.isEmpty
+                //     ? const SizedBox()
+                : Image.file(
+                    File(di<MessagesCubit>().videosThumbnails[messageId]!)),
           ),
         ),
       ),
