@@ -28,37 +28,47 @@ class MessagesList extends StatelessWidget {
             reverse: true,
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
-            itemCount: di<MessagesCubit>().messages.length,
+            itemCount: di<MessagesCubit>().chat!.messages!.length,
             itemBuilder: (BuildContext context, int index) => Column(
               children: [
-                if (index == di<MessagesCubit>().messages.length - 1 ||
+                if (index == di<MessagesCubit>().chat!.messages!.length - 1 ||
                     DateFormat.yMMMEd().format(
                           DateTime.parse(
-                              di<MessagesCubit>().messages[index].date!),
+                              di<MessagesCubit>().chat!.messages![index].date!),
                         ) !=
                         DateFormat.yMMMEd().format(
-                          DateTime.parse(
-                              di<MessagesCubit>().messages[index + 1].date!),
+                          DateTime.parse(di<MessagesCubit>()
+                              .chat!
+                              .messages![index + 1]
+                              .date!),
                         ))
-                  DayDate(date: di<MessagesCubit>().messages[index].date!),
+                  DayDate(
+                      date: di<MessagesCubit>().chat!.messages![index].date!),
                 Row(
                   children: [
                     Flexible(
                       child: MessageBubble(
-                        message: di<MessagesCubit>().messages[index],
-                        isLastMessage:
-                            index == di<MessagesCubit>().messages.length - 1,
+                        message: di<MessagesCubit>().chat!.messages![index],
+                        isLastMessage: index ==
+                            di<MessagesCubit>().chat!.messages!.length - 1,
                         loadingCondition: state ==
                             MessagesState.deleteMessageLoading(
-                                di<MessagesCubit>().messages[index].messageId!),
-                        isMyMessage:
-                            di<MessagesCubit>().messages[index].senderId ==
-                                di<UserStorage>().getData()!.uId,
+                                di<MessagesCubit>()
+                                    .chat!
+                                    .messages![index]
+                                    .messageId!),
+                        isMyMessage: di<MessagesCubit>()
+                                .chat!
+                                .messages![index]
+                                .senderId ==
+                            di<UserStorage>().getUser()!.uId,
                       ),
                     ),
                     if (state ==
-                        MessagesState.openDocMessageLoading(
-                            di<MessagesCubit>().messages[index].messageId!))
+                        MessagesState.openDocMessageLoading(di<MessagesCubit>()
+                            .chat!
+                            .messages![index]
+                            .messageId!))
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: AppWidth.w5),
                         child: CustomCircleIndicator(

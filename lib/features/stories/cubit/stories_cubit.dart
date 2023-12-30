@@ -143,7 +143,7 @@ class StoriesCubit extends Cubit<StoriesState> {
       isRead: false,
       videoDuration: videoDuration,
       media: media ?? "",
-      phone: _userStorage.getData()!.phone,
+      phone: _userStorage.getUser()!.phone,
       text: storyTextController!.text,
       viewers: [],
       viewersPhones: [],
@@ -385,7 +385,7 @@ class StoriesCubit extends Cubit<StoriesState> {
                 .toList();
         for (var contactStory in contactsStories) {
           if (contactStory.stories!.last.viewersPhones!
-              .contains(_userStorage.getData()!.phone)) {
+              .contains(_userStorage.getUser()!.phone)) {
             viewedStories
                 .add(contactStory.copyWith(stories: contactStory.stories!));
           } else {
@@ -441,12 +441,12 @@ class StoriesCubit extends Cubit<StoriesState> {
   void viewContactStory({required StoryModel storyModel}) async {
     emit(const StoriesState.viewContactStoryLoading());
     storyModel.viewers!.add(ViewerModel(
-      id: _userStorage.getData()!.uId,
-      phoneNumber: _userStorage.getData()!.phone,
+      id: _userStorage.getUser()!.uId,
+      phoneNumber: _userStorage.getUser()!.phone,
       dateTime: DateTime.now().toString(),
     ).toJson());
 
-    storyModel.viewersPhones!.add(_userStorage.getData()!.phone!);
+    storyModel.viewersPhones!.add(_userStorage.getUser()!.phone!);
 
     // print("=========>${storyModel.toJson()}");
     final response = await _updateStoryUsecase.call(UpdateStoryParams(
@@ -468,7 +468,7 @@ class StoriesCubit extends Cubit<StoriesState> {
     emit(const StoriesState.replyToStoryLoading());
 
     MessageModel messageModel = MessageModel(
-      senderId: _userStorage.getData()!.uId,
+      senderId: _userStorage.getUser()!.uId,
       receiverId: contactStoryModel!.user!.uId,
       message: replyController!.text,
       date: DateTime.now().toUtc().toString(),

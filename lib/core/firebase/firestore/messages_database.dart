@@ -37,7 +37,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
     /// add message to my database
     await _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.chats)
         .doc(sendMessageParams.phoneNumber)
         .set(
@@ -45,7 +45,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
 
     await _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.chats)
         .doc(sendMessageParams.phoneNumber)
         .collection(Collections.messages)
@@ -58,13 +58,13 @@ class MessagesDatabaseImpl implements MessagesDatabase {
         .collection(Collections.users)
         .doc(sendMessageParams.phoneNumber)
         .collection(Collections.chats)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .set(sendMessageParams.lastMessageModel.toJson());
     await _db
         .collection(Collections.users)
         .doc(sendMessageParams.phoneNumber)
         .collection(Collections.chats)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.messages)
         .doc(id)
         .set(sendMessageParams.messageModel.copyWith(messageId: id).toJson());
@@ -75,7 +75,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
       {required String phoneNumber}) {
     return _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.chats)
         .doc(phoneNumber)
         .collection(Collections.messages)
@@ -88,7 +88,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
       {required DeleteMessageParams deleteMessageParams}) async {
     await _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.chats)
         .doc(deleteMessageParams.userPhone)
         .collection(Collections.messages)
@@ -99,7 +99,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
         .collection(Collections.users)
         .doc(deleteMessageParams.userPhone)
         .collection(Collections.chats)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.messages)
         .doc(deleteMessageParams.messageId)
         .update({"isDeleted": true});
@@ -111,7 +111,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
   }) async {
     await _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.chats)
         .doc(userPhone)
         .update({"isDeleted": true});
@@ -120,7 +120,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
         .collection(Collections.users)
         .doc(userPhone)
         .collection(Collections.chats)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .update({"isDeleted": true});
   }
 
@@ -128,7 +128,7 @@ class MessagesDatabaseImpl implements MessagesDatabase {
   Future<void> seeMessage({required String phoneNumber}) async {
     _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.chats)
         .doc(phoneNumber)
         .update({"isRead": true});

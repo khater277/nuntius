@@ -38,18 +38,15 @@ class _ChatsScreenState extends State<ChatsScreen> {
           return state.maybeWhen(
             getChatsLoading: () => const Center(child: CustomCircleIndicator()),
             orElse: () => SliverScrollableView(
-              isScrollable: di<ChatsCubit>().users.isNotEmpty,
+              isScrollable: di<ChatsCubit>().chats.isNotEmpty,
               child: Center(
-                child: di<ChatsCubit>().users.isEmpty
+                child: di<ChatsCubit>().chats.isEmpty
                     ? const NoItemsFounded(
                         text:
                             "no chats founded , start now new chats with your friends.",
                         icon: IconBroken.Chat,
                       )
-                    : ChatsItems(
-                        users: di<ChatsCubit>().users,
-                        lastMessages: di<ChatsCubit>().lastMessages,
-                      ),
+                    : ChatsItems(chats: di<ChatsCubit>().chats),
               ),
             ),
           );

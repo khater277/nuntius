@@ -20,17 +20,29 @@ LastMessageModel _$LastMessageModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LastMessageModel {
+  @HiveField(0)
   String? get token => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get image => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get senderID => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get receiverID => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get message => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get date => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get media => throw _privateConstructorUsedError;
+  @HiveField(7)
   bool? get isImage => throw _privateConstructorUsedError;
+  @HiveField(8)
   bool? get isVideo => throw _privateConstructorUsedError;
+  @HiveField(9)
   bool? get isDoc => throw _privateConstructorUsedError;
+  @HiveField(10)
   bool? get isDeleted => throw _privateConstructorUsedError;
+  @HiveField(11)
   bool? get isRead => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -46,18 +58,18 @@ abstract class $LastMessageModelCopyWith<$Res> {
       _$LastMessageModelCopyWithImpl<$Res, LastMessageModel>;
   @useResult
   $Res call(
-      {String? token,
-      String? image,
-      String? senderID,
-      String? receiverID,
-      String? message,
-      String? date,
-      String? media,
-      bool? isImage,
-      bool? isVideo,
-      bool? isDoc,
-      bool? isDeleted,
-      bool? isRead});
+      {@HiveField(0) String? token,
+      @HiveField(1) String? image,
+      @HiveField(2) String? senderID,
+      @HiveField(3) String? receiverID,
+      @HiveField(4) String? message,
+      @HiveField(5) String? date,
+      @HiveField(6) String? media,
+      @HiveField(7) bool? isImage,
+      @HiveField(8) bool? isVideo,
+      @HiveField(9) bool? isDoc,
+      @HiveField(10) bool? isDeleted,
+      @HiveField(11) bool? isRead});
 }
 
 /// @nodoc
@@ -148,18 +160,18 @@ abstract class _$$LastMessageModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? token,
-      String? image,
-      String? senderID,
-      String? receiverID,
-      String? message,
-      String? date,
-      String? media,
-      bool? isImage,
-      bool? isVideo,
-      bool? isDoc,
-      bool? isDeleted,
-      bool? isRead});
+      {@HiveField(0) String? token,
+      @HiveField(1) String? image,
+      @HiveField(2) String? senderID,
+      @HiveField(3) String? receiverID,
+      @HiveField(4) String? message,
+      @HiveField(5) String? date,
+      @HiveField(6) String? media,
+      @HiveField(7) bool? isImage,
+      @HiveField(8) bool? isVideo,
+      @HiveField(9) bool? isDoc,
+      @HiveField(10) bool? isDeleted,
+      @HiveField(11) bool? isRead});
 }
 
 /// @nodoc
@@ -243,45 +255,57 @@ class __$$LastMessageModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LastMessageModelImpl implements _LastMessageModel {
   _$LastMessageModelImpl(
-      {this.token,
-      this.image,
-      this.senderID,
-      this.receiverID,
-      this.message,
-      this.date,
-      this.media,
-      this.isImage,
-      this.isVideo,
-      this.isDoc,
-      this.isDeleted,
-      this.isRead});
+      {@HiveField(0) this.token,
+      @HiveField(1) this.image,
+      @HiveField(2) this.senderID,
+      @HiveField(3) this.receiverID,
+      @HiveField(4) this.message,
+      @HiveField(5) this.date,
+      @HiveField(6) this.media,
+      @HiveField(7) this.isImage,
+      @HiveField(8) this.isVideo,
+      @HiveField(9) this.isDoc,
+      @HiveField(10) this.isDeleted,
+      @HiveField(11) this.isRead});
 
   factory _$LastMessageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$LastMessageModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final String? token;
   @override
+  @HiveField(1)
   final String? image;
   @override
+  @HiveField(2)
   final String? senderID;
   @override
+  @HiveField(3)
   final String? receiverID;
   @override
+  @HiveField(4)
   final String? message;
   @override
+  @HiveField(5)
   final String? date;
   @override
+  @HiveField(6)
   final String? media;
   @override
+  @HiveField(7)
   final bool? isImage;
   @override
+  @HiveField(8)
   final bool? isVideo;
   @override
+  @HiveField(9)
   final bool? isDoc;
   @override
+  @HiveField(10)
   final bool? isDeleted;
   @override
+  @HiveField(11)
   final bool? isRead;
 
   @override
@@ -345,45 +369,57 @@ class _$LastMessageModelImpl implements _LastMessageModel {
 
 abstract class _LastMessageModel implements LastMessageModel {
   factory _LastMessageModel(
-      {final String? token,
-      final String? image,
-      final String? senderID,
-      final String? receiverID,
-      final String? message,
-      final String? date,
-      final String? media,
-      final bool? isImage,
-      final bool? isVideo,
-      final bool? isDoc,
-      final bool? isDeleted,
-      final bool? isRead}) = _$LastMessageModelImpl;
+      {@HiveField(0) final String? token,
+      @HiveField(1) final String? image,
+      @HiveField(2) final String? senderID,
+      @HiveField(3) final String? receiverID,
+      @HiveField(4) final String? message,
+      @HiveField(5) final String? date,
+      @HiveField(6) final String? media,
+      @HiveField(7) final bool? isImage,
+      @HiveField(8) final bool? isVideo,
+      @HiveField(9) final bool? isDoc,
+      @HiveField(10) final bool? isDeleted,
+      @HiveField(11) final bool? isRead}) = _$LastMessageModelImpl;
 
   factory _LastMessageModel.fromJson(Map<String, dynamic> json) =
       _$LastMessageModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   String? get token;
   @override
+  @HiveField(1)
   String? get image;
   @override
+  @HiveField(2)
   String? get senderID;
   @override
+  @HiveField(3)
   String? get receiverID;
   @override
+  @HiveField(4)
   String? get message;
   @override
+  @HiveField(5)
   String? get date;
   @override
+  @HiveField(6)
   String? get media;
   @override
+  @HiveField(7)
   bool? get isImage;
   @override
+  @HiveField(8)
   bool? get isVideo;
   @override
+  @HiveField(9)
   bool? get isDoc;
   @override
+  @HiveField(10)
   bool? get isDeleted;
   @override
+  @HiveField(11)
   bool? get isRead;
   @override
   @JsonKey(ignore: true)

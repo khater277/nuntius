@@ -69,7 +69,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
     return BlocBuilder<MessagesCubit, MessagesState>(
       buildWhen: (previous, current) => current.maybeWhen(
         getUserLoading: () => true,
-        getUser: (user) => true,
+        getMessages: (messages) => true,
         orElse: () => false,
       ),
       builder: (context, state) {
@@ -79,27 +79,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
               child: CustomCircleIndicator(),
             ),
           ),
-          orElse: () => Scaffold(
-            appBar: const MessagesAppBar(),
-            body: BlocBuilder<MessagesCubit, MessagesState>(
-              buildWhen: (previous, current) => current.maybeWhen(
-                getMessagesLoading: () => true,
-                getMessages: (messages) => true,
-                orElse: () => false,
-              ),
-              builder: (context, state) {
-                return Center(
-                  child: state.maybeWhen(
-                    getMessagesLoading: () => const CustomCircleIndicator(),
-                    orElse: () => const Column(
-                      children: [
-                        MessagesList(),
-                        SendMessageTextField(),
-                      ],
-                    ),
-                  ),
-                );
-              },
+          orElse: () => const Scaffold(
+            appBar: MessagesAppBar(),
+            body: Column(
+              children: [
+                MessagesList(),
+                SendMessageTextField(),
+              ],
             ),
           ),
         );

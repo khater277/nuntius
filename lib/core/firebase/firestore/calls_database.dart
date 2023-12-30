@@ -33,7 +33,7 @@ class CallsDatabaseImpl implements CallsDatabase {
     final dateTime = DateTime.now().toUtc().toString();
     _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.calls)
         .doc(callId)
         .set(CallModel(
@@ -51,7 +51,7 @@ class CallsDatabaseImpl implements CallsDatabase {
         .doc(callId)
         .set(CallModel(
           callId: callId,
-          phoneNumber: userStorage.getData()!.phone!,
+          phoneNumber: userStorage.getUser()!.phone!,
           callType: callType,
           callStatus: CallStatus.inComingNoResponse,
           dateTime: dateTime,
@@ -65,7 +65,7 @@ class CallsDatabaseImpl implements CallsDatabase {
   }) async {
     _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.calls)
         .doc(callId)
         .update({"callStatus": CallStatus.outComing.name});
@@ -82,7 +82,7 @@ class CallsDatabaseImpl implements CallsDatabase {
   Stream<QuerySnapshot<Map<String, dynamic>>> getCalls() {
     return _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.calls)
         .orderBy('dateTime', descending: true)
         .snapshots();

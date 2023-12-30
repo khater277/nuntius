@@ -32,7 +32,7 @@ class MessageBubble extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppWidth.w2),
       child: GestureDetector(
         onLongPress: () => message.isDeleted == true ||
-                message.senderId != di<UserStorage>().getData()!.uId
+                message.senderId != di<UserStorage>().getUser()!.uId
             ? null
             : di<MessagesCubit>().showDeleteMessageBottomSheet(
                 context: context,

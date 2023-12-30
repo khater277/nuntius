@@ -34,7 +34,7 @@ class MyStory extends StatelessWidget {
                   context: context,
                   screen: StoryViewScreen(
                     stories: di<StoriesCubit>().myStories,
-                    user: di<UserStorage>().getData()!,
+                    user: di<UserStorage>().getUser()!,
                   ));
             } else {
               di<StoriesCubit>().pickStoryMedia(type: MessageType.image);

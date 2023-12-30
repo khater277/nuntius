@@ -32,7 +32,7 @@ class StoryViewBody extends StatelessWidget {
                 di<StoriesCubit>().changeStoryIndex(index: index);
                 final storyModel = stories[index];
                 if (!storyModel.viewersPhones!
-                        .contains(di<UserStorage>().getData()!.phone) &&
+                        .contains(di<UserStorage>().getUser()!.phone) &&
                     di<StoriesCubit>().contactStoryModel != null &&
                     !myStory) {
                   di<StoriesCubit>().viewContactStory(storyModel: storyModel);

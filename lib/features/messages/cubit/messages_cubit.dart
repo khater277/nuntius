@@ -10,6 +10,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/firebase/collections_keys.dart';
+import 'package:nuntius_/core/local_storage/chats_storage.dart';
 import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/shared_preferences/shared_pref_helper.dart';
 import 'package:nuntius_/core/utils/app_enums.dart';
@@ -19,6 +20,7 @@ import 'package:nuntius_/features/auth/domain/parameters/upload_file_to_storage_
 import 'package:nuntius_/features/auth/domain/usecases/upload_file_to_storage_usecase.dart';
 import 'package:nuntius_/features/calls/data/repositories/calls_repository.dart';
 import 'package:nuntius_/features/chats/cubit/chats_cubit.dart';
+import 'package:nuntius_/features/chats/data/models/chats_model.dart';
 import 'package:nuntius_/features/home/cubit/home_cubit.dart';
 import 'package:nuntius_/features/messages/data/models/last_message/last_message_model.dart';
 import 'package:nuntius_/features/messages/data/models/message/message_model.dart';
@@ -42,8 +44,8 @@ part 'messages_cubit.freezed.dart';
 part 'messages_state.dart';
 
 class MessagesCubit extends Cubit<MessagesState> {
-  final ChatsCubit _chatsCubit;
   final UserStorage _userStorage;
+  final ChatsStorage _chatsStorage;
   final CallsRepository _callsRepository;
   final GetUserStreamUsecase _getUserStreamUsecase;
   final SendMessageUsecase _sendMessageUsecase;
@@ -54,8 +56,8 @@ class MessagesCubit extends Cubit<MessagesState> {
   final SeeMessageUsecase _seeMessageUsecase;
   final UploadFileToStorageUsecase _uploadFileToStorageUsecase;
   MessagesCubit({
-    required ChatsCubit chatsCubit,
     required UserStorage userStorage,
+    required ChatsStorage chatsStorage,
     required CallsRepository callsRepository,
     required GetUserStreamUsecase getUserStreamUsecase,
     required SendMessageUsecase sendMessageUsecase,
@@ -65,8 +67,8 @@ class MessagesCubit extends Cubit<MessagesState> {
     required DeleteLastMessageUsecase deleteLastMessageUsecase,
     required SeeMessageUsecase seeMessageUsecase,
     required UploadFileToStorageUsecase uploadFileToStorageUsecase,
-  })  : _chatsCubit = chatsCubit,
-        _userStorage = userStorage,
+  })  : _userStorage = userStorage,
+        _chatsStorage = chatsStorage,
         _callsRepository = callsRepository,
         _getUserStreamUsecase = getUserStreamUsecase,
         _sendMessageUsecase = sendMessageUsecase,
@@ -93,11 +95,11 @@ class MessagesCubit extends Cubit<MessagesState> {
 
   void disposeMessages() {
     scrollController!.dispose();
+    readMessage();
+    user = null;
     videosThumbnails = {};
     messageType = null;
     file = null;
-    user = null;
-    readMessage(lastMessages: _chatsCubit.lastMessages);
     emit(const MessagesState.disposeControllers());
   }
 
@@ -107,7 +109,7 @@ class MessagesCubit extends Cubit<MessagesState> {
     final response = await _getUserStreamUsecase.call(phoneNumber);
     response.fold(
       (failure) {
-        user = di<UserStorage>().getData()!;
+        user = _userStorage.getUser()!;
         emit(MessagesState.getUser(user!));
       },
       (stream) {
@@ -130,12 +132,13 @@ class MessagesCubit extends Cubit<MessagesState> {
     );
   }
 
-  List<MessageModel> messages = [];
+  ChatsModel? chat;
   Future<void> getMessages({required String phoneNumber}) async {
     emit(const MessagesState.getMessagesLoading());
     final response = await _getMessagesUsecase.call(phoneNumber);
     response.fold(
       (failure) {
+        chat = _chatsStorage.getChat(phone: phoneNumber);
         emit(MessagesState.getMessagesError(failure.getMessage()));
       },
       (snapshots) {
@@ -145,7 +148,7 @@ class MessagesCubit extends Cubit<MessagesState> {
           for (var doc in event.docs) {
             messages.add(MessageModel.fromJson(doc.data()));
           }
-          this.messages = messages;
+
           final replyToStoryVideoMessages = messages
               .where((element) =>
                   (element.isStoryReply == true &&
@@ -155,9 +158,17 @@ class MessagesCubit extends Cubit<MessagesState> {
               .toList();
           createVideosThumbnails(
               replyToStoryVideoMessages: replyToStoryVideoMessages);
+
+          final chat = _chatsStorage
+              .getChat(phone: phoneNumber)!
+              .copyWith(messages: messages);
+
+          this.chat = chat;
+          _chatsStorage.saveChat(chatsModel: chat);
+
           emit(MessagesState.getMessages(messages));
           // if (messages.isNotEmpty &&
-          //     messages.last.senderId != _userStorage.getData()!.uId) {
+          //     messages.last.senderId != _userStorage.getUser()!.uId) {
           //   emit(const MessagesState.receiveMessage());
           // } else {
           //   emit(MessagesState.getMessages(messages));
@@ -240,7 +251,7 @@ class MessagesCubit extends Cubit<MessagesState> {
         file = null;
         emit(const MessagesState.sendMessage());
 
-        if (user!.token != _userStorage.getData()!.token) {
+        if (user!.token != _userStorage.getUser()!.token) {
           final pushNotification = await _pushNotificationUsecase(
               AppFunctions.getMessageNotificationFcmBody(user: user!));
           pushNotification.fold((l) => print("NOT SENT"), (r) => print("SENT"));
@@ -405,7 +416,7 @@ class MessagesCubit extends Cubit<MessagesState> {
     response.fold(
       (failure) => emit(MessagesState.deleteMessageError(failure.getMessage())),
       (result) async {
-        if (messageId == messages.last.messageId) {
+        if (messageId == chat!.messages!.last.messageId) {
           final response = await _deleteLastMessageUsecase.call(user!.phone!);
           response.fold(
             (failure) =>
@@ -446,9 +457,8 @@ class MessagesCubit extends Cubit<MessagesState> {
     );
   }
 
-  void readMessage({required List<LastMessageModel> lastMessages}) {
-    final lastMessage = lastMessages.firstWhereOrNull(
-        (lastMessageModel) => lastMessageModel.senderID == user!.uId);
+  void readMessage() {
+    final lastMessage = chat!.lastMessage;
     if (lastMessage != null && lastMessage.isRead != true) {
       seeMessage(phoneNumber: user!.phone!);
     }

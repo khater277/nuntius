@@ -8,6 +8,7 @@ import 'package:nuntius_/app/bloc_observer.dart';
 import 'package:nuntius_/app/injector.dart';
 import 'package:nuntius_/core/local_notification/local_notification_initializer.dart';
 import 'package:nuntius_/core/local_storage/all_users_storage.dart';
+import 'package:nuntius_/core/local_storage/chats_storage.dart';
 import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/shared_preferences/shared_pref_helper.dart';
 import 'package:nuntius_/features/home/data/models/notification_data/notification_data.dart';
@@ -32,6 +33,7 @@ void main() async {
   await Hive.initFlutter();
   await di<UserStorage>().init();
   await di<AllUsersStorage>().init();
+  await di<ChatsStorage>().init();
   await Permission.contacts.request();
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   Bloc.observer = MyBlocObserver();

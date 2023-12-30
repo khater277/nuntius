@@ -30,7 +30,7 @@ class CallsCubit extends Cubit<CallsState> {
   static CallsCubit get(context) => BlocProvider.of(context);
 
   List<UserData> users = di<AllUsersStorage>().hasData()
-      ? di<AllUsersStorage>().getData()!.users ?? []
+      ? di<AllUsersStorage>().getAllUsers()!.users ?? []
       : [];
   void initCalls({required List<UserData> users}) {
     this.users = users;
@@ -76,7 +76,7 @@ class CallsCubit extends Cubit<CallsState> {
           showMessage(
               "Local user uid:${connection.localUid} joined the channel");
           isJoined = true;
-          if (!receiveCall && userToken != userStorage.getData()!.token) {
+          if (!receiveCall && userToken != userStorage.getUser()!.token) {
             pushCallNotification(
               callType: callType,
               userToken: userToken,
@@ -165,9 +165,9 @@ class CallsCubit extends Cubit<CallsState> {
       "priority": "high",
       "data": {
         "type": "cancel-call",
-        "userToken": userStorage.getData()!.token!,
-        "senderID": userStorage.getData()!.uId!,
-        "phoneNumber": userStorage.getData()!.phone!,
+        "userToken": userStorage.getUser()!.token!,
+        "senderID": userStorage.getUser()!.uId!,
+        "phoneNumber": userStorage.getUser()!.phone!,
       }
     };
     final response = await callsRepository.pushNotification(fcmBody: fcmBody);

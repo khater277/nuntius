@@ -30,7 +30,7 @@ class ImageMessage extends StatelessWidget {
           context: context,
           screen: ShowMessageImageScreen(
             imageUrl: message.media!,
-            name: message.senderId == di<UserStorage>().getData()!.uId
+            name: message.senderId == di<UserStorage>().getUser()!.uId
                 ? "You"
                 : di<MessagesCubit>().user!.name!,
             date: message.date!,

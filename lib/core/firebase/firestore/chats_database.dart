@@ -15,7 +15,7 @@ class ChatsDatabaseImpl implements ChatsDatabase {
   Stream<QuerySnapshot<Map<String, dynamic>>> getChats() {
     return _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone!)
+        .doc(userStorage.getUser()!.phone!)
         .collection(Collections.chats)
         .orderBy('date', descending: true)
         .snapshots();

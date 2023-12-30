@@ -24,7 +24,7 @@ class AddMyStoryProfileImage extends StatelessWidget {
         orElse: () => false,
       ),
       builder: (context, state) {
-        final image = di<UserStorage>().getData()!.image ?? "";
+        final image = di<UserStorage>().getUser()!.image ?? "";
         if (image == "" && stories.isEmpty) {
           return SizedBox(
               width: AppSize.s40,

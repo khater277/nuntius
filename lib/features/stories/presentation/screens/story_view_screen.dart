@@ -64,7 +64,7 @@ class _StoryViewScreenState extends State<StoryViewScreen> {
                 ),
                 StoryViewBody(
                   stories: widget.stories,
-                  myStory: widget.user.uId == di<UserStorage>().getData()!.uId,
+                  myStory: widget.user.uId == di<UserStorage>().getUser()!.uId,
                 ),
               ],
             ),

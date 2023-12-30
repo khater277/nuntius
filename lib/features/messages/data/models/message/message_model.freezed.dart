@@ -20,20 +20,35 @@ MessageModel _$MessageModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MessageModel {
+  @HiveField(0)
   String? get senderId => throw _privateConstructorUsedError;
+  @HiveField(1)
   String? get receiverId => throw _privateConstructorUsedError;
+  @HiveField(2)
   String? get message => throw _privateConstructorUsedError;
+  @HiveField(3)
   String? get messageId => throw _privateConstructorUsedError;
+  @HiveField(4)
   String? get date => throw _privateConstructorUsedError;
+  @HiveField(5)
   bool? get isDeleted => throw _privateConstructorUsedError;
+  @HiveField(6)
   String? get media => throw _privateConstructorUsedError;
+  @HiveField(7)
   bool? get isImage => throw _privateConstructorUsedError;
+  @HiveField(8)
   bool? get isVideo => throw _privateConstructorUsedError;
+  @HiveField(9)
   bool? get isDoc => throw _privateConstructorUsedError;
+  @HiveField(10)
   bool? get isStoryReply => throw _privateConstructorUsedError;
+  @HiveField(11)
   String? get storyText => throw _privateConstructorUsedError;
+  @HiveField(12)
   String? get storyMedia => throw _privateConstructorUsedError;
+  @HiveField(13)
   String? get storyDate => throw _privateConstructorUsedError;
+  @HiveField(14)
   bool? get isStoryImageReply => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -49,21 +64,21 @@ abstract class $MessageModelCopyWith<$Res> {
       _$MessageModelCopyWithImpl<$Res, MessageModel>;
   @useResult
   $Res call(
-      {String? senderId,
-      String? receiverId,
-      String? message,
-      String? messageId,
-      String? date,
-      bool? isDeleted,
-      String? media,
-      bool? isImage,
-      bool? isVideo,
-      bool? isDoc,
-      bool? isStoryReply,
-      String? storyText,
-      String? storyMedia,
-      String? storyDate,
-      bool? isStoryImageReply});
+      {@HiveField(0) String? senderId,
+      @HiveField(1) String? receiverId,
+      @HiveField(2) String? message,
+      @HiveField(3) String? messageId,
+      @HiveField(4) String? date,
+      @HiveField(5) bool? isDeleted,
+      @HiveField(6) String? media,
+      @HiveField(7) bool? isImage,
+      @HiveField(8) bool? isVideo,
+      @HiveField(9) bool? isDoc,
+      @HiveField(10) bool? isStoryReply,
+      @HiveField(11) String? storyText,
+      @HiveField(12) String? storyMedia,
+      @HiveField(13) String? storyDate,
+      @HiveField(14) bool? isStoryImageReply});
 }
 
 /// @nodoc
@@ -169,21 +184,21 @@ abstract class _$$MessageModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? senderId,
-      String? receiverId,
-      String? message,
-      String? messageId,
-      String? date,
-      bool? isDeleted,
-      String? media,
-      bool? isImage,
-      bool? isVideo,
-      bool? isDoc,
-      bool? isStoryReply,
-      String? storyText,
-      String? storyMedia,
-      String? storyDate,
-      bool? isStoryImageReply});
+      {@HiveField(0) String? senderId,
+      @HiveField(1) String? receiverId,
+      @HiveField(2) String? message,
+      @HiveField(3) String? messageId,
+      @HiveField(4) String? date,
+      @HiveField(5) bool? isDeleted,
+      @HiveField(6) String? media,
+      @HiveField(7) bool? isImage,
+      @HiveField(8) bool? isVideo,
+      @HiveField(9) bool? isDoc,
+      @HiveField(10) bool? isStoryReply,
+      @HiveField(11) String? storyText,
+      @HiveField(12) String? storyMedia,
+      @HiveField(13) String? storyDate,
+      @HiveField(14) bool? isStoryImageReply});
 }
 
 /// @nodoc
@@ -282,54 +297,69 @@ class __$$MessageModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$MessageModelImpl implements _MessageModel {
   _$MessageModelImpl(
-      {this.senderId,
-      this.receiverId,
-      this.message,
-      this.messageId,
-      this.date,
-      this.isDeleted,
-      this.media,
-      this.isImage,
-      this.isVideo,
-      this.isDoc,
-      this.isStoryReply,
-      this.storyText,
-      this.storyMedia,
-      this.storyDate,
-      this.isStoryImageReply});
+      {@HiveField(0) this.senderId,
+      @HiveField(1) this.receiverId,
+      @HiveField(2) this.message,
+      @HiveField(3) this.messageId,
+      @HiveField(4) this.date,
+      @HiveField(5) this.isDeleted,
+      @HiveField(6) this.media,
+      @HiveField(7) this.isImage,
+      @HiveField(8) this.isVideo,
+      @HiveField(9) this.isDoc,
+      @HiveField(10) this.isStoryReply,
+      @HiveField(11) this.storyText,
+      @HiveField(12) this.storyMedia,
+      @HiveField(13) this.storyDate,
+      @HiveField(14) this.isStoryImageReply});
 
   factory _$MessageModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$MessageModelImplFromJson(json);
 
   @override
+  @HiveField(0)
   final String? senderId;
   @override
+  @HiveField(1)
   final String? receiverId;
   @override
+  @HiveField(2)
   final String? message;
   @override
+  @HiveField(3)
   final String? messageId;
   @override
+  @HiveField(4)
   final String? date;
   @override
+  @HiveField(5)
   final bool? isDeleted;
   @override
+  @HiveField(6)
   final String? media;
   @override
+  @HiveField(7)
   final bool? isImage;
   @override
+  @HiveField(8)
   final bool? isVideo;
   @override
+  @HiveField(9)
   final bool? isDoc;
   @override
+  @HiveField(10)
   final bool? isStoryReply;
   @override
+  @HiveField(11)
   final String? storyText;
   @override
+  @HiveField(12)
   final String? storyMedia;
   @override
+  @HiveField(13)
   final String? storyDate;
   @override
+  @HiveField(14)
   final bool? isStoryImageReply;
 
   @override
@@ -404,54 +434,69 @@ class _$MessageModelImpl implements _MessageModel {
 
 abstract class _MessageModel implements MessageModel {
   factory _MessageModel(
-      {final String? senderId,
-      final String? receiverId,
-      final String? message,
-      final String? messageId,
-      final String? date,
-      final bool? isDeleted,
-      final String? media,
-      final bool? isImage,
-      final bool? isVideo,
-      final bool? isDoc,
-      final bool? isStoryReply,
-      final String? storyText,
-      final String? storyMedia,
-      final String? storyDate,
-      final bool? isStoryImageReply}) = _$MessageModelImpl;
+      {@HiveField(0) final String? senderId,
+      @HiveField(1) final String? receiverId,
+      @HiveField(2) final String? message,
+      @HiveField(3) final String? messageId,
+      @HiveField(4) final String? date,
+      @HiveField(5) final bool? isDeleted,
+      @HiveField(6) final String? media,
+      @HiveField(7) final bool? isImage,
+      @HiveField(8) final bool? isVideo,
+      @HiveField(9) final bool? isDoc,
+      @HiveField(10) final bool? isStoryReply,
+      @HiveField(11) final String? storyText,
+      @HiveField(12) final String? storyMedia,
+      @HiveField(13) final String? storyDate,
+      @HiveField(14) final bool? isStoryImageReply}) = _$MessageModelImpl;
 
   factory _MessageModel.fromJson(Map<String, dynamic> json) =
       _$MessageModelImpl.fromJson;
 
   @override
+  @HiveField(0)
   String? get senderId;
   @override
+  @HiveField(1)
   String? get receiverId;
   @override
+  @HiveField(2)
   String? get message;
   @override
+  @HiveField(3)
   String? get messageId;
   @override
+  @HiveField(4)
   String? get date;
   @override
+  @HiveField(5)
   bool? get isDeleted;
   @override
+  @HiveField(6)
   String? get media;
   @override
+  @HiveField(7)
   bool? get isImage;
   @override
+  @HiveField(8)
   bool? get isVideo;
   @override
+  @HiveField(9)
   bool? get isDoc;
   @override
+  @HiveField(10)
   bool? get isStoryReply;
   @override
+  @HiveField(11)
   String? get storyText;
   @override
+  @HiveField(12)
   String? get storyMedia;
   @override
+  @HiveField(13)
   String? get storyDate;
   @override
+  @HiveField(14)
   bool? get isStoryImageReply;
   @override
   @JsonKey(ignore: true)

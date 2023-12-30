@@ -45,7 +45,7 @@ class UsersDatabaseImpl implements UsersDatabase {
   Future<void> updateUserData({required Map<String, dynamic> data}) async {
     _db
         .collection(Collections.users)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .update(data);
   }
 }

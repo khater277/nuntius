@@ -1,37 +1,36 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nuntius_/core/local_storage/keys.dart';
-import 'package:nuntius_/core/local_storage/local_storage.dart';
 import 'package:nuntius_/features/auth/data/models/user_data/user_data.dart';
 
-class UserStorage implements LocalStorage<UserData?> {
+abstract class UserStorage {
+  Future<void> init();
+  bool hasData();
+  UserData? getUser();
+  Future<void> saveUser({required UserData? user});
+}
+
+class UserStorageImpl implements UserStorage {
   Box<UserData?>? _box;
 
-  @override
-  String key() => HiveKeys.currentUser;
+  final key = HiveKeys.currentUser;
 
   @override
   Future<void> init() async {
     if (!Hive.isAdapterRegistered(UserDataAdapter().typeId)) {
       Hive.registerAdapter(UserDataAdapter());
     }
-    _box = await Hive.openBox(key());
+    _box = await Hive.openBox(key);
   }
 
   @override
   bool hasData() => _box!.isNotEmpty;
 
   @override
-  UserData? getData() => _box!.get(key());
+  UserData? getUser() => _box!.get(key);
 
   @override
-  List<UserData?> getAllData() => _box!.values.toList();
-
-  @override
-  Future<void> saveData({required UserData? data}) async {
-    await _box!.put(key(), data);
+  Future<void> saveUser({required UserData? user}) async {
+    await _box!.put(key, user);
     await _box!.flush();
   }
-
-  @override
-  Future<void> delete() => _box!.delete(key());
 }

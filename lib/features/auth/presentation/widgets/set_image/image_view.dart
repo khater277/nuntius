@@ -22,9 +22,9 @@ class ImageView extends StatelessWidget {
               radius: AppSize.s60,
               backgroundImage: di<AuthCubit>().profileImage != null
                   ? FileImage(di<AuthCubit>().profileImage!)
-                  : di<UserStorage>().getData() != null &&
-                          di<UserStorage>().getData()!.image != ""
-                      ? NetworkImage(di<UserStorage>().getData()!.image!)
+                  : di<UserStorage>().getUser() != null &&
+                          di<UserStorage>().getUser()!.image != ""
+                      ? NetworkImage(di<UserStorage>().getUser()!.image!)
                           as ImageProvider
                       : const AssetImage(
                           AppImages.user,

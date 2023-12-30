@@ -34,7 +34,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   TextEditingController nameController = TextEditingController();
 
   void initEditProfileScreen() {
-    nameController = TextEditingController(text: _userStorage.getData()!.name!);
+    nameController = TextEditingController(text: _userStorage.getUser()!.name!);
     emit(const EditProfileState.initEditProfileScreen());
   }
 
@@ -109,15 +109,15 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       (result) {
         profileImage = null;
         profileImagePercentage = null;
-        _userStorage.saveData(
-            data: _userStorage.getData()!.copyWith(image: image));
+        _userStorage.saveUser(
+            user: _userStorage.getUser()!.copyWith(image: image));
         emit(const EditProfileState.updateProfileImage());
       },
     );
   }
 
   void updateProfileName() async {
-    if (nameController.text != _userStorage.getData()!.name) {
+    if (nameController.text != _userStorage.getUser()!.name) {
       emit(const EditProfileState.updateProfileNameLoading());
       final response =
           await _updateProfileDataUsecase.call({"name": nameController.text});
@@ -125,9 +125,9 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         (failure) =>
             emit(EditProfileState.updateProfileNameError(failure.getMessage())),
         (result) {
-          _userStorage.saveData(
-              data:
-                  _userStorage.getData()!.copyWith(name: nameController.text));
+          _userStorage.saveUser(
+              user:
+                  _userStorage.getUser()!.copyWith(name: nameController.text));
           emit(const EditProfileState.updateProfileName());
         },
       );

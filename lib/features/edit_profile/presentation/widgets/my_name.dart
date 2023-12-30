@@ -36,7 +36,7 @@ class MyName extends StatelessWidget {
                 BlocBuilder<EditProfileCubit, EditProfileState>(
                   builder: (context, state) {
                     return LargeHeadText(
-                        text: di<UserStorage>().getData()!.name!,
+                        text: di<UserStorage>().getUser()!.name!,
                         size: FontSize.s13,
                         color: Colors.blue);
                   },

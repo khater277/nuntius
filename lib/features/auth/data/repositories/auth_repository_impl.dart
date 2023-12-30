@@ -64,8 +64,8 @@ class AuthRepositoryImpl implements AuthRepository {
         final result = await getUserFromFirestore(
             phoneNumber: response.user!.phoneNumber!);
         result.fold(
-          (failure) => userStorage.saveData(data: null),
-          (user) => userStorage.saveData(data: user),
+          (failure) => userStorage.saveUser(user: null),
+          (user) => userStorage.saveUser(user: user),
         );
         return Right(response);
       } on FirebaseAuthException catch (error) {
@@ -172,7 +172,7 @@ class AuthRepositoryImpl implements AuthRepository {
     if (await networkInfo.connected()) {
       try {
         final response = await authRemoteDataSource.getAllUsersFromFirestore();
-        allUsersStorage.saveData(data: AllUsersModel(users: response));
+        allUsersStorage.saveAllUsers(allUsers: AllUsersModel(users: response));
         return Right(response);
       } on FirebaseException catch (error) {
         return Left(

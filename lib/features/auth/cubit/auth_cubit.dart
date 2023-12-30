@@ -74,9 +74,9 @@ class AuthCubit extends Cubit<AuthState> {
 
   void initNameController() {
     bool condition =
-        _userStorage.getData() != null && _userStorage.getData()!.name != "";
+        _userStorage.getUser() != null && _userStorage.getUser()!.name != "";
     nameController = TextEditingController(
-        text: condition ? _userStorage.getData()!.name : null);
+        text: condition ? _userStorage.getUser()!.name : null);
     emit(const AuthState.initController());
   }
 
@@ -225,8 +225,8 @@ class AuthCubit extends Cubit<AuthState> {
         uId: await SharedPrefHelper.getUid(),
         phone: "+2${phoneController!.text}",
         image: image ??
-            (_userStorage.getData() != null
-                ? _userStorage.getData()!.image
+            (_userStorage.getUser() != null
+                ? _userStorage.getUser()!.image
                 : ""),
         inCall: false,
         contacts: phones,
@@ -237,7 +237,7 @@ class AuthCubit extends Cubit<AuthState> {
           emit(AuthState.addUserToFirestoreError(failure.getMessage()));
         },
         (result) async {
-          await _userStorage.saveData(data: user);
+          await _userStorage.saveUser(user: user);
           emit(const AuthState.addUserToFirestore());
         },
       );
@@ -276,7 +276,7 @@ class AuthCubit extends Cubit<AuthState> {
     response.fold(
       (failure) {
         users = _allUsersStorage.hasData()
-            ? _allUsersStorage.getData()!.users ?? []
+            ? _allUsersStorage.getAllUsers()!.users ?? []
             : [];
         if (users.isNotEmpty) {
           users.sort(
@@ -304,7 +304,7 @@ class AuthCubit extends Cubit<AuthState> {
             }
           }
         }
-        _allUsersStorage.saveData(data: AllUsersModel(users: users));
+        _allUsersStorage.saveAllUsers(allUsers: AllUsersModel(users: users));
         if (users.isNotEmpty) {
           users.sort(
             (a, b) => a.name!.toLowerCase().compareTo(b.name!.toLowerCase()),
@@ -323,8 +323,8 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthState.updateUserTokenError(failure.getMessage()));
       },
       (result) async {
-        _userStorage.saveData(
-            data: _userStorage.getData()!.copyWith(token: token));
+        _userStorage.saveUser(
+            user: _userStorage.getUser()!.copyWith(token: token));
         emit(const AuthState.updateUserToken());
       },
     );

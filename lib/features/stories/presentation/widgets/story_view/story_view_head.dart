@@ -35,7 +35,7 @@ class StoryViewHead extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               LargeHeadText(
-                text: user == di<UserStorage>().getData()
+                text: user == di<UserStorage>().getUser()
                     ? "My story"
                     : user.name!,
                 size: FontSize.s14,

@@ -31,7 +31,7 @@ class StoriesDatabaseImpl implements StoriesDatabase {
   Future<void> sendStory({required StoryModel storyModel}) async {
     _db
         .collection(Collections.stories)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.currentStories)
         .doc(storyModel.id)
         .set(storyModel.toJson());
@@ -52,7 +52,7 @@ class StoriesDatabaseImpl implements StoriesDatabase {
   Future<void> deleteStory({required String storyId}) async {
     _db
         .collection(Collections.stories)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.currentStories)
         .doc(storyId)
         .delete();
@@ -62,7 +62,7 @@ class StoriesDatabaseImpl implements StoriesDatabase {
   Future<void> setLastStory({required StoryModel storyModel}) async {
     _db
         .collection(Collections.stories)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .set(storyModel.toJson());
   }
 
@@ -70,7 +70,7 @@ class StoriesDatabaseImpl implements StoriesDatabase {
   Future<void> updateLastStory({required StoryModel storyModel}) async {
     _db
         .collection(Collections.stories)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .update(storyModel.toJson());
   }
 
@@ -78,7 +78,7 @@ class StoriesDatabaseImpl implements StoriesDatabase {
   Future<void> deleteLastStory() async {
     _db
         .collection(Collections.stories)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .delete();
   }
 
@@ -86,7 +86,7 @@ class StoriesDatabaseImpl implements StoriesDatabase {
   Stream<QuerySnapshot<Map<String, dynamic>>> getStories() {
     return _db
         .collection(Collections.stories)
-        .doc(userStorage.getData()!.phone)
+        .doc(userStorage.getUser()!.phone)
         .collection(Collections.currentStories)
         .orderBy('date')
         .snapshots();
@@ -119,10 +119,10 @@ class StoriesDatabaseImpl implements StoriesDatabase {
           for (var element in docs) {
             final storyModel = StoryModel.fromJson(element.data());
             // print("=============>${storyModel.toString()}");
-            if (storyModel.canView!.contains(userStorage.getData()!.phone)) {
+            if (storyModel.canView!.contains(userStorage.getUser()!.phone)) {
               stories.add(storyModel);
               // print(
-              //     "canView====>${storyModel.canView} ----- myPhone====>${userStorage.getData()!.phone}");
+              //     "canView====>${storyModel.canView} ----- myPhone====>${userStorage.getUser()!.phone}");
             }
           }
         }

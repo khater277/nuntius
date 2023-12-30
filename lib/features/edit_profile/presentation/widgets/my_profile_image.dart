@@ -35,12 +35,12 @@ class MyProfileImage extends StatelessWidget {
                     backgroundImage:
                         FileImage(di<EditProfileCubit>().profileImage!),
                   )
-                else if (di<UserStorage>().getData()!.image!.isNotEmpty)
+                else if (di<UserStorage>().getUser()!.image!.isNotEmpty)
                   CircleAvatar(
                     radius: AppSize.s60,
                     backgroundColor: AppColors.lightBlack,
                     backgroundImage: CachedNetworkImageProvider(
-                        di<UserStorage>().getData()!.image!),
+                        di<UserStorage>().getUser()!.image!),
                   )
                 else
                   CircleAvatar(

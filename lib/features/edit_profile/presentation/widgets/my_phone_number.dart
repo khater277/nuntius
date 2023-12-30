@@ -34,7 +34,7 @@ class MyPhoneNumber extends StatelessWidget {
                     color: Colors.white),
                 SizedBox(height: AppHeight.h1),
                 LargeHeadText(
-                    text: di<UserStorage>().getData()!.phone!,
+                    text: di<UserStorage>().getUser()!.phone!,
                     size: FontSize.s12,
                     color: AppColors.blue),
               ],

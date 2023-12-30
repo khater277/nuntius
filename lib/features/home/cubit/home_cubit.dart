@@ -71,7 +71,7 @@ class HomeCubit extends Cubit<HomeState> {
       await _handleContacts();
       await _handleUsers();
       final response = await _addUserToFirestoreUsecase
-          .call(_userStorage.getData()!.copyWith(contacts: phones));
+          .call(_userStorage.getUser()!.copyWith(contacts: phones));
       response.fold(
         (failure) {
           print("==========>${failure.getMessage()}");
@@ -83,7 +83,7 @@ class HomeCubit extends Cubit<HomeState> {
       print(contacts.length);
     } catch (error) {
       users = _allUsersStorage.hasData()
-          ? _allUsersStorage.getData()!.users ?? []
+          ? _allUsersStorage.getAllUsers()!.users ?? []
           : [];
       emit(const HomeState.getContactsError());
     }
@@ -116,7 +116,7 @@ class HomeCubit extends Cubit<HomeState> {
     response.fold(
       (failure) {
         users = _allUsersStorage.hasData()
-            ? _allUsersStorage.getData()!.users ?? []
+            ? _allUsersStorage.getAllUsers()!.users ?? []
             : [];
         users.sort(
           (a, b) => a.name!.toLowerCase().compareTo(b.name!.toLowerCase()),
@@ -135,7 +135,7 @@ class HomeCubit extends Cubit<HomeState> {
             if (existedUser == null &&
                 (contacts[i].phones!.first.value != null) &&
                 (contacts[i].phones!.first.value !=
-                    _userStorage.getData()!.phone)) {
+                    _userStorage.getUser()!.phone)) {
               users.add(user.copyWith(name: contacts[i].displayName));
               phones[contacts[i].phones!.first.value!] =
                   contacts[i].displayName!;
@@ -145,7 +145,8 @@ class HomeCubit extends Cubit<HomeState> {
         users.sort(
           (a, b) => a.name!.toLowerCase().compareTo(b.name!.toLowerCase()),
         );
-        await _allUsersStorage.saveData(data: AllUsersModel(users: users));
+        await _allUsersStorage.saveAllUsers(
+            allUsers: AllUsersModel(users: users));
       },
     );
   }

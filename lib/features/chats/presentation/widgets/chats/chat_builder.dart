@@ -69,7 +69,7 @@ class ChatBuilder extends StatelessWidget {
                                             : MessageType.text,
                             message: lastMessage.message!,
                             isMyMessage: lastMessage.senderID ==
-                                di<UserStorage>().getData()!.uId,
+                                di<UserStorage>().getUser()!.uId,
                             isRead: lastMessage.isRead!,
                           ),
                         ],

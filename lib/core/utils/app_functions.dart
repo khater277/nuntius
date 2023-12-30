@@ -31,9 +31,9 @@ class AppFunctions {
       {required UserData user}) {
     late String name;
     try {
-      name = user.contacts![di<UserStorage>().getData()!.phone!]!;
+      name = user.contacts![di<UserStorage>().getUser()!.phone!]!;
     } catch (error) {
-      name = di<UserStorage>().getData()!.phone!;
+      name = di<UserStorage>().getUser()!.phone!;
     }
     return {
       "to": user.token!,
@@ -46,9 +46,9 @@ class AppFunctions {
       "data": NotificationData(
               name: name,
               type: "message",
-              id: "${di<UserStorage>().getData()!.uId!}${user.uId!}${DateTime.now().millisecondsSinceEpoch}",
-              senderId: di<UserStorage>().getData()!.uId!,
-              phoneNumber: di<UserStorage>().getData()!.phone!,
+              id: "${di<UserStorage>().getUser()!.uId!}${user.uId!}${DateTime.now().millisecondsSinceEpoch}",
+              senderId: di<UserStorage>().getUser()!.uId!,
+              phoneNumber: di<UserStorage>().getUser()!.phone!,
               clickAction: "FLUTTER_NOTIFICATION_CLICK")
           .toJson(),
     };
@@ -69,10 +69,10 @@ class AppFunctions {
         "callType": callType == CallType.voice ? "voice" : "video",
         "callId": callId,
         "token": rtcToken,
-        "userToken": di<UserStorage>().getData()!.token!,
+        "userToken": di<UserStorage>().getUser()!.token!,
         "channelName": channelName,
-        "senderID": di<UserStorage>().getData()!.uId,
-        "phoneNumber": di<UserStorage>().getData()!.phone,
+        "senderID": di<UserStorage>().getUser()!.uId,
+        "phoneNumber": di<UserStorage>().getUser()!.phone,
         "click_action": "FLUTTER_NOTIFICATION_CLICK"
       }
     };

@@ -22,6 +22,7 @@ import 'package:nuntius_/core/local_notification/local_notification_platforms_in
 import 'package:nuntius_/core/local_notification/streams/did_receive_local_notification_stream.dart';
 import 'package:nuntius_/core/local_notification/streams/select_notification_stream.dart';
 import 'package:nuntius_/core/local_storage/all_users_storage.dart';
+import 'package:nuntius_/core/local_storage/chats_storage.dart';
 import 'package:nuntius_/core/local_storage/user_storage.dart';
 import 'package:nuntius_/core/network/network_info.dart';
 import 'package:nuntius_/features/auth/cubit/auth_cubit.dart';
@@ -104,6 +105,7 @@ void setupGetIt() {
   di.registerLazySingleton<ChatsCubit>(() => ChatsCubit(
         getChatsUsecase: di(),
         homeCubit: di(),
+        chatsStorage: di(),
       ));
   di.registerLazySingleton<StoriesCubit>(() => StoriesCubit(
         sendStoryUsecase: di(),
@@ -124,8 +126,8 @@ void setupGetIt() {
         chatsCubit: di(),
       ));
   di.registerLazySingleton<MessagesCubit>(() => MessagesCubit(
-        chatsCubit: di(),
         userStorage: di(),
+        chatsStorage: di(),
         callsRepository: di(),
         getUserStreamUsecase: di(),
         sendMessageUsecase: di(),
@@ -264,8 +266,9 @@ void setupGetIt() {
       () => GetContactsLastStoriesUsecase(storiesRepository: di()));
 
   ///LOCAL STORAGE
-  di.registerLazySingleton<UserStorage>(() => UserStorage());
-  di.registerLazySingleton<AllUsersStorage>(() => AllUsersStorage());
+  di.registerLazySingleton<UserStorage>(() => UserStorageImpl());
+  di.registerLazySingleton<AllUsersStorage>(() => AllUsersStorageImpl());
+  di.registerLazySingleton<ChatsStorage>(() => ChatsStorageImpl());
 
   ///LOCAL NOTIFICATION SERVICE
   di.registerLazySingleton<FlutterLocalNotificationsPlugin>(
@@ -361,7 +364,7 @@ void setupGetIt() {
       ..headers = {
         'Content-Type': 'application/json',
         'Authorization':
-            "key=AAAAtA396zI:APA91bF7St3PW9Au3T7cuudgMsua-9UUKl9dlyYjngO9m5QcHVz_qLbULTicQ7eBvAOw9bwUYhnm8kj4jHf9yxVK-KEsTI19DF6cayVmCTHXH5cKybobLWy40-ZXdjLh9ZKAzOWx3xM1"
+            "key=AAAAdm4qWw8:APA91bEDXxk1nAzpSzUkmHMUffGZcXbFXzN8k-OqOFnkhlvSJczc4s1wSO532SSBAEwA2xX0tu94tTJi0ySD76KiKZaRyONX57MPc5UcsI7lROWQYxm_bh8ucg2I2UvpOasBgmeIXfff"
       }
       ..connectTimeout = const Duration(seconds: 20)
       ..followRedirects = false;

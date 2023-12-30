@@ -31,7 +31,7 @@ class StoryReplyMessage extends StatelessWidget {
               children: [
                 StoryUserNameAndText(
                   name:
-                      messageModel.senderId == di<UserStorage>().getData()!.uId
+                      messageModel.senderId == di<UserStorage>().getUser()!.uId
                           ? "${di<MessagesCubit>().user!.name}'s"
                           : "My",
                   text: messageModel.storyText ?? "empty",
