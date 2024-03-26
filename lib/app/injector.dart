@@ -48,6 +48,7 @@ import 'package:nuntius/features/calls/domain/usecases/update_in_call_usecase.da
 import 'package:nuntius/features/chats/data/datasources/chats_remote_data_source.dart';
 import 'package:nuntius/features/chats/data/repositories/chats_repository_impl.dart';
 import 'package:nuntius/features/chats/domain/repositories/chats_repository.dart';
+import 'package:nuntius/features/chats/domain/usecases/delete_chat_usecase.dart';
 import 'package:nuntius/features/chats/domain/usecases/get_chats_usecase.dart';
 import 'package:nuntius/features/contacts/cubit/contacts_cubit.dart';
 import 'package:nuntius/features/edit_profile/cubit/edit_profile_cubit.dart';
@@ -120,6 +121,7 @@ void setupGetIt() {
       ));
   di.registerLazySingleton<ChatsCubit>(() => ChatsCubit(
         getChatsUsecase: di(),
+        deleteChatUsecase: di(),
         homeCubit: di(),
         chatsStorage: di(),
       ));
@@ -268,6 +270,8 @@ void setupGetIt() {
   /// CHATS
   di.registerLazySingleton<GetChatsUsecase>(
       () => GetChatsUsecase(chatsRepository: di()));
+  di.registerLazySingleton<DeleteChatUsecase>(
+      () => DeleteChatUsecase(chatsRepository: di()));
 
   /// EDIT PROFILE
   di.registerLazySingleton<UpdateProfileDataUsecase>(

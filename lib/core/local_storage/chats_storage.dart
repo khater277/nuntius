@@ -11,6 +11,7 @@ abstract class ChatsStorage {
   ChatsModel? getChat({required String phone});
   List<ChatsModel> getAllChats();
   Future<void> saveChat({required ChatsModel chatsModel});
+  Future<void> deleteChat({required String phone});
   Future<void> deleteAll();
 }
 
@@ -53,4 +54,9 @@ class ChatsStorageImpl implements ChatsStorage {
 
   @override
   Future<void> deleteAll() => _box!.deleteAll(_box!.keys);
+
+  @override
+  Future<void> deleteChat({required String phone}) {
+    return _box!.delete(phone);
+  }
 }

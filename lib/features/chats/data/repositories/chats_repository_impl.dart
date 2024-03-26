@@ -22,4 +22,28 @@ class ChatsRepositoryImpl implements ChatsRepository {
           ServerFailure(error: error, type: NetworkErrorTypes.firestore));
     }
   }
+
+  @override
+  Future<Either<Failure, void>> deleteChat(
+      {required String phoneNumber}) async {
+    if (await networkInfo.connected()) {
+      try {
+        final response =
+            await chatsRemoteDataSource.deleteChat(phoneNumber: phoneNumber);
+        return Right(response);
+      } on FirebaseException catch (error) {
+        return Left(
+          ServerFailure(
+            error: error,
+            type: NetworkErrorTypes.firestore,
+          ),
+        );
+      }
+    } else {
+      return Left(ServerFailure(
+        error: NoInternetConnection(),
+        type: NetworkErrorTypes.api,
+      ));
+    }
+  }
 }

@@ -3,6 +3,7 @@ import 'package:nuntius/core/firebase/firestore/chats_database.dart';
 
 abstract class ChatsRemoteDataSource {
   Stream<QuerySnapshot<Map<String, dynamic>>> getChats();
+  Future<void> deleteChat({required String phoneNumber});
 }
 
 class ChatsRemoteDataSourceImpl implements ChatsRemoteDataSource {
@@ -12,5 +13,10 @@ class ChatsRemoteDataSourceImpl implements ChatsRemoteDataSource {
   @override
   Stream<QuerySnapshot<Map<String, dynamic>>> getChats() {
     return chatsDatabase.getChats();
+  }
+
+  @override
+  Future<void> deleteChat({required String phoneNumber}) async {
+    return chatsDatabase.deleteChat(phoneNumber: phoneNumber);
   }
 }

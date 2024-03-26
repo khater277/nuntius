@@ -7,6 +7,7 @@ import 'package:nuntius/core/shared_preferences/shared_pref_helper.dart';
 import 'package:nuntius/features/auth/data/models/user_data/user_data.dart';
 import 'package:nuntius/features/auth/domain/parameters/no_params.dart';
 import 'package:nuntius/features/chats/data/models/chats_model.dart';
+import 'package:nuntius/features/chats/domain/usecases/delete_chat_usecase.dart';
 import 'package:nuntius/features/chats/domain/usecases/get_chats_usecase.dart';
 import 'package:nuntius/features/home/cubit/home_cubit.dart';
 import 'package:nuntius/features/messages/data/models/last_message/last_message_model.dart';
@@ -16,13 +17,16 @@ part 'chats_state.dart';
 
 class ChatsCubit extends Cubit<ChatsState> {
   final GetChatsUsecase _getChatsUsecase;
+  final DeleteChatUsecase _deleteChatUsecase;
   final HomeCubit _homeCubit;
   final ChatsStorage _chatsStorage;
   ChatsCubit({
     required GetChatsUsecase getChatsUsecase,
+    required DeleteChatUsecase deleteChatUsecase,
     required HomeCubit homeCubit,
     required ChatsStorage chatsStorage,
   })  : _getChatsUsecase = getChatsUsecase,
+        _deleteChatUsecase = deleteChatUsecase,
         _homeCubit = homeCubit,
         _chatsStorage = chatsStorage,
         super(const ChatsState.initial());
@@ -71,6 +75,21 @@ class ChatsCubit extends Cubit<ChatsState> {
             emit(ChatsState.getChats(lastMessages, users));
           });
         }
+      },
+    );
+  }
+
+  void deleteChat({required String phoneNumber}) async {
+    emit(ChatsState.deleteChatLoading(phoneNumber));
+    final response = await _deleteChatUsecase.call(phoneNumber);
+    response.fold(
+      (failure) => emit(ChatsState.deleteChatError(failure.getMessage())),
+      (result) async {
+        await _chatsStorage.deleteChat(phone: phoneNumber);
+        final chat = chats
+            .firstWhereOrNull((element) => element.user!.phone == phoneNumber);
+         chats.remove(chat);
+        emit(ChatsState.deleteChat(phoneNumber));
       },
     );
   }

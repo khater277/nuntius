@@ -25,6 +25,9 @@ mixin _$ChatsState {
             List<LastMessageModel> lastMessages, List<UserData> users)
         getChats,
     required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +39,9 @@ mixin _$ChatsState {
             List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,6 +52,9 @@ mixin _$ChatsState {
     TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +65,9 @@ mixin _$ChatsState {
     required TResult Function(_GetChatsLoading value) getChatsLoading,
     required TResult Function(_GetChats value) getChats,
     required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +77,9 @@ mixin _$ChatsState {
     TResult? Function(_GetChatsLoading value)? getChatsLoading,
     TResult? Function(_GetChats value)? getChats,
     TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +89,9 @@ mixin _$ChatsState {
     TResult Function(_GetChatsLoading value)? getChatsLoading,
     TResult Function(_GetChats value)? getChats,
     TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -142,6 +160,9 @@ class _$InitialImpl implements _Initial {
             List<LastMessageModel> lastMessages, List<UserData> users)
         getChats,
     required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
   }) {
     return initial();
   }
@@ -156,6 +177,9 @@ class _$InitialImpl implements _Initial {
             List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
   }) {
     return initial?.call();
   }
@@ -169,6 +193,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -185,6 +212,9 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_GetChatsLoading value) getChatsLoading,
     required TResult Function(_GetChats value) getChats,
     required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
   }) {
     return initial(this);
   }
@@ -197,6 +227,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_GetChatsLoading value)? getChatsLoading,
     TResult? Function(_GetChats value)? getChats,
     TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
   }) {
     return initial?.call(this);
   }
@@ -209,6 +242,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_GetChatsLoading value)? getChatsLoading,
     TResult Function(_GetChats value)? getChats,
     TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -267,6 +303,9 @@ class _$InitChatsImpl implements _InitChats {
             List<LastMessageModel> lastMessages, List<UserData> users)
         getChats,
     required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
   }) {
     return initChats();
   }
@@ -281,6 +320,9 @@ class _$InitChatsImpl implements _InitChats {
             List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
   }) {
     return initChats?.call();
   }
@@ -294,6 +336,9 @@ class _$InitChatsImpl implements _InitChats {
     TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
     required TResult orElse(),
   }) {
     if (initChats != null) {
@@ -310,6 +355,9 @@ class _$InitChatsImpl implements _InitChats {
     required TResult Function(_GetChatsLoading value) getChatsLoading,
     required TResult Function(_GetChats value) getChats,
     required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
   }) {
     return initChats(this);
   }
@@ -322,6 +370,9 @@ class _$InitChatsImpl implements _InitChats {
     TResult? Function(_GetChatsLoading value)? getChatsLoading,
     TResult? Function(_GetChats value)? getChats,
     TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
   }) {
     return initChats?.call(this);
   }
@@ -334,6 +385,9 @@ class _$InitChatsImpl implements _InitChats {
     TResult Function(_GetChatsLoading value)? getChatsLoading,
     TResult Function(_GetChats value)? getChats,
     TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
     required TResult orElse(),
   }) {
     if (initChats != null) {
@@ -392,6 +446,9 @@ class _$GetChatsLoadingImpl implements _GetChatsLoading {
             List<LastMessageModel> lastMessages, List<UserData> users)
         getChats,
     required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
   }) {
     return getChatsLoading();
   }
@@ -406,6 +463,9 @@ class _$GetChatsLoadingImpl implements _GetChatsLoading {
             List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
   }) {
     return getChatsLoading?.call();
   }
@@ -419,6 +479,9 @@ class _$GetChatsLoadingImpl implements _GetChatsLoading {
     TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
     required TResult orElse(),
   }) {
     if (getChatsLoading != null) {
@@ -435,6 +498,9 @@ class _$GetChatsLoadingImpl implements _GetChatsLoading {
     required TResult Function(_GetChatsLoading value) getChatsLoading,
     required TResult Function(_GetChats value) getChats,
     required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
   }) {
     return getChatsLoading(this);
   }
@@ -447,6 +513,9 @@ class _$GetChatsLoadingImpl implements _GetChatsLoading {
     TResult? Function(_GetChatsLoading value)? getChatsLoading,
     TResult? Function(_GetChats value)? getChats,
     TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
   }) {
     return getChatsLoading?.call(this);
   }
@@ -459,6 +528,9 @@ class _$GetChatsLoadingImpl implements _GetChatsLoading {
     TResult Function(_GetChatsLoading value)? getChatsLoading,
     TResult Function(_GetChats value)? getChats,
     TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
     required TResult orElse(),
   }) {
     if (getChatsLoading != null) {
@@ -569,6 +641,9 @@ class _$GetChatsImpl implements _GetChats {
             List<LastMessageModel> lastMessages, List<UserData> users)
         getChats,
     required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
   }) {
     return getChats(lastMessages, users);
   }
@@ -583,6 +658,9 @@ class _$GetChatsImpl implements _GetChats {
             List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
   }) {
     return getChats?.call(lastMessages, users);
   }
@@ -596,6 +674,9 @@ class _$GetChatsImpl implements _GetChats {
     TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
     required TResult orElse(),
   }) {
     if (getChats != null) {
@@ -612,6 +693,9 @@ class _$GetChatsImpl implements _GetChats {
     required TResult Function(_GetChatsLoading value) getChatsLoading,
     required TResult Function(_GetChats value) getChats,
     required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
   }) {
     return getChats(this);
   }
@@ -624,6 +708,9 @@ class _$GetChatsImpl implements _GetChats {
     TResult? Function(_GetChatsLoading value)? getChatsLoading,
     TResult? Function(_GetChats value)? getChats,
     TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
   }) {
     return getChats?.call(this);
   }
@@ -636,6 +723,9 @@ class _$GetChatsImpl implements _GetChats {
     TResult Function(_GetChatsLoading value)? getChatsLoading,
     TResult Function(_GetChats value)? getChats,
     TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
     required TResult orElse(),
   }) {
     if (getChats != null) {
@@ -728,6 +818,9 @@ class _$GetChatsErrorImpl implements _GetChatsError {
             List<LastMessageModel> lastMessages, List<UserData> users)
         getChats,
     required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
   }) {
     return getChatsError(errorMsg);
   }
@@ -742,6 +835,9 @@ class _$GetChatsErrorImpl implements _GetChatsError {
             List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
   }) {
     return getChatsError?.call(errorMsg);
   }
@@ -755,6 +851,9 @@ class _$GetChatsErrorImpl implements _GetChatsError {
     TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
         getChats,
     TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
     required TResult orElse(),
   }) {
     if (getChatsError != null) {
@@ -771,6 +870,9 @@ class _$GetChatsErrorImpl implements _GetChatsError {
     required TResult Function(_GetChatsLoading value) getChatsLoading,
     required TResult Function(_GetChats value) getChats,
     required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
   }) {
     return getChatsError(this);
   }
@@ -783,6 +885,9 @@ class _$GetChatsErrorImpl implements _GetChatsError {
     TResult? Function(_GetChatsLoading value)? getChatsLoading,
     TResult? Function(_GetChats value)? getChats,
     TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
   }) {
     return getChatsError?.call(this);
   }
@@ -795,6 +900,9 @@ class _$GetChatsErrorImpl implements _GetChatsError {
     TResult Function(_GetChatsLoading value)? getChatsLoading,
     TResult Function(_GetChats value)? getChats,
     TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
     required TResult orElse(),
   }) {
     if (getChatsError != null) {
@@ -810,5 +918,533 @@ abstract class _GetChatsError implements ChatsState {
   String get errorMsg;
   @JsonKey(ignore: true)
   _$$GetChatsErrorImplCopyWith<_$GetChatsErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteChatLoadingImplCopyWith<$Res> {
+  factory _$$DeleteChatLoadingImplCopyWith(_$DeleteChatLoadingImpl value,
+          $Res Function(_$DeleteChatLoadingImpl) then) =
+      __$$DeleteChatLoadingImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phoneNumber});
+}
+
+/// @nodoc
+class __$$DeleteChatLoadingImplCopyWithImpl<$Res>
+    extends _$ChatsStateCopyWithImpl<$Res, _$DeleteChatLoadingImpl>
+    implements _$$DeleteChatLoadingImplCopyWith<$Res> {
+  __$$DeleteChatLoadingImplCopyWithImpl(_$DeleteChatLoadingImpl _value,
+      $Res Function(_$DeleteChatLoadingImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+  }) {
+    return _then(_$DeleteChatLoadingImpl(
+      null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteChatLoadingImpl implements _DeleteChatLoading {
+  const _$DeleteChatLoadingImpl(this.phoneNumber);
+
+  @override
+  final String phoneNumber;
+
+  @override
+  String toString() {
+    return 'ChatsState.deleteChatLoading(phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteChatLoadingImpl &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phoneNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteChatLoadingImplCopyWith<_$DeleteChatLoadingImpl> get copyWith =>
+      __$$DeleteChatLoadingImplCopyWithImpl<_$DeleteChatLoadingImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initChats,
+    required TResult Function() getChatsLoading,
+    required TResult Function(
+            List<LastMessageModel> lastMessages, List<UserData> users)
+        getChats,
+    required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
+  }) {
+    return deleteChatLoading(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initChats,
+    TResult? Function()? getChatsLoading,
+    TResult? Function(
+            List<LastMessageModel> lastMessages, List<UserData> users)?
+        getChats,
+    TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
+  }) {
+    return deleteChatLoading?.call(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initChats,
+    TResult Function()? getChatsLoading,
+    TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
+        getChats,
+    TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
+    required TResult orElse(),
+  }) {
+    if (deleteChatLoading != null) {
+      return deleteChatLoading(phoneNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitChats value) initChats,
+    required TResult Function(_GetChatsLoading value) getChatsLoading,
+    required TResult Function(_GetChats value) getChats,
+    required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
+  }) {
+    return deleteChatLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitChats value)? initChats,
+    TResult? Function(_GetChatsLoading value)? getChatsLoading,
+    TResult? Function(_GetChats value)? getChats,
+    TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
+  }) {
+    return deleteChatLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitChats value)? initChats,
+    TResult Function(_GetChatsLoading value)? getChatsLoading,
+    TResult Function(_GetChats value)? getChats,
+    TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
+    required TResult orElse(),
+  }) {
+    if (deleteChatLoading != null) {
+      return deleteChatLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteChatLoading implements ChatsState {
+  const factory _DeleteChatLoading(final String phoneNumber) =
+      _$DeleteChatLoadingImpl;
+
+  String get phoneNumber;
+  @JsonKey(ignore: true)
+  _$$DeleteChatLoadingImplCopyWith<_$DeleteChatLoadingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteChatImplCopyWith<$Res> {
+  factory _$$DeleteChatImplCopyWith(
+          _$DeleteChatImpl value, $Res Function(_$DeleteChatImpl) then) =
+      __$$DeleteChatImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String phoneNumber});
+}
+
+/// @nodoc
+class __$$DeleteChatImplCopyWithImpl<$Res>
+    extends _$ChatsStateCopyWithImpl<$Res, _$DeleteChatImpl>
+    implements _$$DeleteChatImplCopyWith<$Res> {
+  __$$DeleteChatImplCopyWithImpl(
+      _$DeleteChatImpl _value, $Res Function(_$DeleteChatImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? phoneNumber = null,
+  }) {
+    return _then(_$DeleteChatImpl(
+      null == phoneNumber
+          ? _value.phoneNumber
+          : phoneNumber // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteChatImpl implements _DeleteChat {
+  const _$DeleteChatImpl(this.phoneNumber);
+
+  @override
+  final String phoneNumber;
+
+  @override
+  String toString() {
+    return 'ChatsState.deleteChat(phoneNumber: $phoneNumber)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteChatImpl &&
+            (identical(other.phoneNumber, phoneNumber) ||
+                other.phoneNumber == phoneNumber));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, phoneNumber);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteChatImplCopyWith<_$DeleteChatImpl> get copyWith =>
+      __$$DeleteChatImplCopyWithImpl<_$DeleteChatImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initChats,
+    required TResult Function() getChatsLoading,
+    required TResult Function(
+            List<LastMessageModel> lastMessages, List<UserData> users)
+        getChats,
+    required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
+  }) {
+    return deleteChat(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initChats,
+    TResult? Function()? getChatsLoading,
+    TResult? Function(
+            List<LastMessageModel> lastMessages, List<UserData> users)?
+        getChats,
+    TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
+  }) {
+    return deleteChat?.call(phoneNumber);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initChats,
+    TResult Function()? getChatsLoading,
+    TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
+        getChats,
+    TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
+    required TResult orElse(),
+  }) {
+    if (deleteChat != null) {
+      return deleteChat(phoneNumber);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitChats value) initChats,
+    required TResult Function(_GetChatsLoading value) getChatsLoading,
+    required TResult Function(_GetChats value) getChats,
+    required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
+  }) {
+    return deleteChat(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitChats value)? initChats,
+    TResult? Function(_GetChatsLoading value)? getChatsLoading,
+    TResult? Function(_GetChats value)? getChats,
+    TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
+  }) {
+    return deleteChat?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitChats value)? initChats,
+    TResult Function(_GetChatsLoading value)? getChatsLoading,
+    TResult Function(_GetChats value)? getChats,
+    TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
+    required TResult orElse(),
+  }) {
+    if (deleteChat != null) {
+      return deleteChat(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteChat implements ChatsState {
+  const factory _DeleteChat(final String phoneNumber) = _$DeleteChatImpl;
+
+  String get phoneNumber;
+  @JsonKey(ignore: true)
+  _$$DeleteChatImplCopyWith<_$DeleteChatImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeleteChatErrorImplCopyWith<$Res> {
+  factory _$$DeleteChatErrorImplCopyWith(_$DeleteChatErrorImpl value,
+          $Res Function(_$DeleteChatErrorImpl) then) =
+      __$$DeleteChatErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorMsg});
+}
+
+/// @nodoc
+class __$$DeleteChatErrorImplCopyWithImpl<$Res>
+    extends _$ChatsStateCopyWithImpl<$Res, _$DeleteChatErrorImpl>
+    implements _$$DeleteChatErrorImplCopyWith<$Res> {
+  __$$DeleteChatErrorImplCopyWithImpl(
+      _$DeleteChatErrorImpl _value, $Res Function(_$DeleteChatErrorImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorMsg = null,
+  }) {
+    return _then(_$DeleteChatErrorImpl(
+      null == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeleteChatErrorImpl implements _DeleteChatError {
+  const _$DeleteChatErrorImpl(this.errorMsg);
+
+  @override
+  final String errorMsg;
+
+  @override
+  String toString() {
+    return 'ChatsState.deleteChatError(errorMsg: $errorMsg)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteChatErrorImpl &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, errorMsg);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteChatErrorImplCopyWith<_$DeleteChatErrorImpl> get copyWith =>
+      __$$DeleteChatErrorImplCopyWithImpl<_$DeleteChatErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() initChats,
+    required TResult Function() getChatsLoading,
+    required TResult Function(
+            List<LastMessageModel> lastMessages, List<UserData> users)
+        getChats,
+    required TResult Function(String errorMsg) getChatsError,
+    required TResult Function(String phoneNumber) deleteChatLoading,
+    required TResult Function(String phoneNumber) deleteChat,
+    required TResult Function(String errorMsg) deleteChatError,
+  }) {
+    return deleteChatError(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? initChats,
+    TResult? Function()? getChatsLoading,
+    TResult? Function(
+            List<LastMessageModel> lastMessages, List<UserData> users)?
+        getChats,
+    TResult? Function(String errorMsg)? getChatsError,
+    TResult? Function(String phoneNumber)? deleteChatLoading,
+    TResult? Function(String phoneNumber)? deleteChat,
+    TResult? Function(String errorMsg)? deleteChatError,
+  }) {
+    return deleteChatError?.call(errorMsg);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? initChats,
+    TResult Function()? getChatsLoading,
+    TResult Function(List<LastMessageModel> lastMessages, List<UserData> users)?
+        getChats,
+    TResult Function(String errorMsg)? getChatsError,
+    TResult Function(String phoneNumber)? deleteChatLoading,
+    TResult Function(String phoneNumber)? deleteChat,
+    TResult Function(String errorMsg)? deleteChatError,
+    required TResult orElse(),
+  }) {
+    if (deleteChatError != null) {
+      return deleteChatError(errorMsg);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_InitChats value) initChats,
+    required TResult Function(_GetChatsLoading value) getChatsLoading,
+    required TResult Function(_GetChats value) getChats,
+    required TResult Function(_GetChatsError value) getChatsError,
+    required TResult Function(_DeleteChatLoading value) deleteChatLoading,
+    required TResult Function(_DeleteChat value) deleteChat,
+    required TResult Function(_DeleteChatError value) deleteChatError,
+  }) {
+    return deleteChatError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_InitChats value)? initChats,
+    TResult? Function(_GetChatsLoading value)? getChatsLoading,
+    TResult? Function(_GetChats value)? getChats,
+    TResult? Function(_GetChatsError value)? getChatsError,
+    TResult? Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult? Function(_DeleteChat value)? deleteChat,
+    TResult? Function(_DeleteChatError value)? deleteChatError,
+  }) {
+    return deleteChatError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_InitChats value)? initChats,
+    TResult Function(_GetChatsLoading value)? getChatsLoading,
+    TResult Function(_GetChats value)? getChats,
+    TResult Function(_GetChatsError value)? getChatsError,
+    TResult Function(_DeleteChatLoading value)? deleteChatLoading,
+    TResult Function(_DeleteChat value)? deleteChat,
+    TResult Function(_DeleteChatError value)? deleteChatError,
+    required TResult orElse(),
+  }) {
+    if (deleteChatError != null) {
+      return deleteChatError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteChatError implements ChatsState {
+  const factory _DeleteChatError(final String errorMsg) = _$DeleteChatErrorImpl;
+
+  String get errorMsg;
+  @JsonKey(ignore: true)
+  _$$DeleteChatErrorImplCopyWith<_$DeleteChatErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

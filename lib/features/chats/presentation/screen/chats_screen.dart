@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nuntius/app/injector.dart';
+import 'package:nuntius/config/navigation.dart';
 import 'package:nuntius/core/shared_widgets/circle_indicator.dart';
 import 'package:nuntius/core/shared_widgets/no_items_founded.dart';
 import 'package:nuntius/core/shared_widgets/sliver_scrollable_view.dart';
@@ -20,6 +21,11 @@ class ChatsScreen extends StatelessWidget {
           state.maybeWhen(
             getChatsError: (errorMsg) =>
                 errorSnackBar(context: context, errorMsg: errorMsg),
+            deleteChat: (phoneNumber) => Go.back(context: context),
+            deleteChatError: (errorMsg) {
+              Go.back(context: context);
+              errorSnackBar(context: context, errorMsg: errorMsg);
+            },
             orElse: () {},
           );
         },

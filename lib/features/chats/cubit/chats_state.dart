@@ -10,4 +10,8 @@ class ChatsState with _$ChatsState {
     List<UserData> users,
   ) = _GetChats;
   const factory ChatsState.getChatsError(String errorMsg) = _GetChatsError;
+  const factory ChatsState.deleteChatLoading(String phoneNumber) =
+      _DeleteChatLoading;
+  const factory ChatsState.deleteChat(String phoneNumber) = _DeleteChat;
+  const factory ChatsState.deleteChatError(String errorMsg) = _DeleteChatError;
 }

@@ -27,9 +27,16 @@ class ChatBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: ValueKey(user.uId),
-      startActionPane:
-          swipeToDelete(context: context, rightPadding: AppWidth.w10),
-      endActionPane: swipeToDelete(context: context, leftPadding: AppWidth.w10),
+      startActionPane: swipeToDelete(
+        name: user.name!,
+        phoneNumber: user.phone!,
+        rightPadding: AppWidth.w10,
+      ),
+      endActionPane: swipeToDelete(
+        name: user.name!,
+        phoneNumber: user.phone!,
+        leftPadding: AppWidth.w10,
+      ),
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: AppHeight.h10),
         child: Column(
