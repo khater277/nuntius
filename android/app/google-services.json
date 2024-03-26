@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "508654410511",
+    "firebase_url": "https://nuntius-b9cca-default-rtdb.firebaseio.com",
+    "project_id": "nuntius-b9cca",
+    "storage_bucket": "nuntius-b9cca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508654410511:android:15143cb5177ed33ce5bc7a",
+        "android_client_info": {
+          "package_name": "com.example.nuntius"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEDyvOOGq38bx2E2Hg63Fs50qpTBlaFDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508654410511:android:785fd84aadc2b0a5e5bc7a",
+        "android_client_info": {
+          "package_name": "com.khaterCS.nuntius"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEDyvOOGq38bx2E2Hg63Fs50qpTBlaFDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
