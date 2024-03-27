@@ -34,11 +34,13 @@ class SetImageNextButton extends StatelessWidget {
             valueListenable: di<AuthCubit>().nameController!,
             builder: (BuildContext context, value, Widget? child) {
               return AuthFloatingButton(
-                visibleCondition: (di<AuthCubit>().profileImage != null ||
-                    (di<UserStorage>().getUser() != null &&
-                        value.text != di<UserStorage>().getUser()!.name) ||
-                    state == const AuthState.addUserToFirestoreLoading() ||
-                    state == const AuthState.uploadImageToStorageLoading()),
+                visibleCondition: state.maybeWhen(
+                  uploadImageToStorageLoading: () =>
+                      (di<AuthCubit>().profileImage != null ||
+                          (di<UserStorage>().getUser() != null &&
+                              value.text != di<UserStorage>().getUser()!.name)),
+                  orElse: () => false,
+                ),
                 loadingCondition: state.maybeWhen(
                   addUserToFirestoreLoading: () => true,
                   uploadImageToStorageLoading: () => true,
