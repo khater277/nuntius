@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nuntius/core/utils/app_colors.dart';
 import 'package:nuntius/core/utils/app_values.dart';
 import 'package:nuntius/core/utils/font_styles.dart';
+import 'package:intl/intl.dart' as intl;
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -36,29 +37,34 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      obscureText: obscureText,
-      keyboardType: inputType,
-      // onTapOutside: (event) => FocusScope.of(context).unfocus(),
-      maxLength: maxlength,
-      style: getSemiBoldStyle(
-          fontColor: Theme.of(context).textTheme.bodyLarge!.color!),
-      validator: validator,
-      onChanged: onChange,
-      onFieldSubmitted: onFelidSubmitted,
-      onTap: onTap,
-      readOnly: readOnly,
-      decoration: InputDecoration(
-        hintText: hintText,
-        prefixIcon: prefixIcon != null
-            ? Icon(
-                prefixIcon,
-                color: AppColors.blue,
-                size: AppSize.s20,
-              )
-            : null,
-        suffixIcon: suffixIcon,
+    return Directionality(
+      textDirection: intl.Bidi.detectRtlDirectionality(controller.text)
+          ? TextDirection.rtl
+          : TextDirection.ltr,
+      child: TextFormField(
+        controller: controller,
+        obscureText: obscureText,
+        keyboardType: inputType,
+        // onTapOutside: (event) => FocusScope.of(context).unfocus(),
+        maxLength: maxlength,
+        style: getSemiBoldStyle(
+            fontColor: Theme.of(context).textTheme.bodyLarge!.color!),
+        validator: validator,
+        onChanged: onChange,
+        onFieldSubmitted: onFelidSubmitted,
+        onTap: onTap,
+        readOnly: readOnly,
+        decoration: InputDecoration(
+          hintText: hintText,
+          prefixIcon: prefixIcon != null
+              ? Icon(
+                  prefixIcon,
+                  color: AppColors.blue,
+                  size: AppSize.s20,
+                )
+              : null,
+          suffixIcon: suffixIcon,
+        ),
       ),
     );
   }

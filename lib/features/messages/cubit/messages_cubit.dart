@@ -97,7 +97,6 @@ class MessagesCubit extends Cubit<MessagesState> {
 
   void disposeMessages() {
     scrollController!.dispose();
-    readMessage();
     user = null;
     videosThumbnails = {};
     file = null;
@@ -148,47 +147,42 @@ class MessagesCubit extends Cubit<MessagesState> {
         emit(MessagesState.getMessagesError(failure.getMessage()));
       },
       (snapshots) async {
-        if (await snapshots.isEmpty == false) {
-          bool first = true;
-          snapshots.listen((event) async {
-            List<MessageModel> messages = [];
-            for (var doc in event.docs) {
-              messages.add(MessageModel.fromJson(doc.data()));
-            }
-            final docMessages =
-                messages.where((element) => element.isDoc == true).toList();
-            await handleDocMessages(docMessages: docMessages);
+        snapshots.listen((event) async {
+          List<MessageModel> messages = [];
+          for (var doc in event.docs) {
+            messages.add(MessageModel.fromJson(doc.data()));
+          }
+          final docMessages =
+              messages.where((element) => element.isDoc == true).toList();
+          await handleDocMessages(docMessages: docMessages);
 
-            final replyToStoryVideoMessages = messages
-                .where((element) =>
-                    (element.isStoryReply == true &&
-                        element.storyMedia!.isNotEmpty &&
-                        element.isStoryImageReply != true) &&
-                    (!videosThumbnails.containsKey(element.messageId)))
-                .toList();
-            createVideosThumbnails(
-                replyToStoryVideoMessages: replyToStoryVideoMessages);
-            if (_chatsStorage.getChat(phone: phoneNumber) != null) {
-              final chat = _chatsStorage
-                  .getChat(phone: phoneNumber)!
-                  .copyWith(messages: messages);
-              this.chat = chat;
-              _chatsStorage.saveChat(chatsModel: chat);
-            } else {
-              chat = ChatsModel(
-                user: user!,
-                messages: messages,
-              );
-            }
-
-            if (first) {
-              debugPrint("=======>READ MESSAGE");
-              readMessage();
-              first = false;
-            }
-            emit(MessagesState.getMessages(messages));
-          });
-        }
+          final replyToStoryVideoMessages = messages
+              .where((element) =>
+                  (element.isStoryReply == true &&
+                      element.storyMedia!.isNotEmpty &&
+                      element.isStoryImageReply != true) &&
+                  (!videosThumbnails.containsKey(element.messageId)))
+              .toList();
+          createVideosThumbnails(
+              replyToStoryVideoMessages: replyToStoryVideoMessages);
+          if (_chatsStorage.getChat(phone: phoneNumber) != null) {
+            final chat = _chatsStorage
+                .getChat(phone: phoneNumber)!
+                .copyWith(messages: messages);
+            this.chat = chat;
+            _chatsStorage.saveChat(chatsModel: chat);
+          } else {
+            chat = ChatsModel(
+              user: user!,
+              messages: messages,
+            );
+          }
+          if (messages.last.senderId != _userStorage.getUser()!.uId &&
+              chat!.lastMessage!.isRead == false) {
+            readMessage();
+          }
+          emit(MessagesState.getMessages(messages));
+        });
       },
     );
   }

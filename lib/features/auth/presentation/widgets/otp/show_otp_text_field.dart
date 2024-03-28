@@ -41,7 +41,7 @@ class ShowOtpTextField extends StatelessWidget {
       enableActiveFill: true,
       onCompleted: (smsCode) {
         di<AuthCubit>().submitOtp(smsCode);
-        Focus.of(context).unfocus();
+
         // setState(() {
         //   otp = smsCode;
         // });

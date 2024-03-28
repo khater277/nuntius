@@ -68,6 +68,7 @@ class OtpScreen extends StatelessWidget {
                       state.maybeWhen(
                         submitOtp: () {
                           if (deleteAccount) {
+                            Focus.of(context).unfocus();
                             showAlertDialog(
                               context: context,
                               text:
