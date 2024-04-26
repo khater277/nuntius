@@ -70,7 +70,7 @@ class AppFunctions {
       "data": NotificationData(
               type: notificationType,
               notificationDate: DateTime.now()
-                  .add(const Duration(seconds: 30))
+                  .add(const Duration(seconds: 60))
                   .toUtc()
                   .toString(),
               notificationId: const Uuid().v4(),

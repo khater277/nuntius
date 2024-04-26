@@ -177,10 +177,9 @@ class MessagesCubit extends Cubit<MessagesState> {
               messages: messages,
             );
           }
-          if (messages.last.senderId != _userStorage.getUser()!.uId &&
-              chat!.lastMessage!.isRead == false) {
-            readMessage();
-          }
+
+          readMessage();
+
           emit(MessagesState.getMessages(messages));
         });
       },
@@ -509,13 +508,15 @@ class MessagesCubit extends Cubit<MessagesState> {
     final response = await _seeMessageUsecase.call(phoneNumber);
     response.fold(
       (failure) => null,
-      (result) => debugPrint("====================>See Message Done"),
+      (result) => null,
     );
   }
 
   void readMessage() {
     final lastMessage = chat!.lastMessage;
     if (lastMessage != null && lastMessage.isRead != true) {
+      debugPrint(
+          "====================>See Message Done ${lastMessage.message}");
       seeMessage(phoneNumber: user!.phone!);
     }
   }

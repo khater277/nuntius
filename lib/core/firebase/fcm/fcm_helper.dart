@@ -1,3 +1,5 @@
+// ignore: depend_on_referenced_packages
+import 'package:collection/collection.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
@@ -15,8 +17,6 @@ import 'package:nuntius/features/home/cubit/home_cubit.dart';
 import 'package:nuntius/features/home/data/models/notification_data/notification_data.dart';
 import 'package:nuntius/features/messages/cubit/messages_cubit.dart';
 import 'package:nuntius/features/messages/presentation/screens/messages_screen.dart';
-// ignore: depend_on_referenced_packages
-import 'package:collection/collection.dart';
 
 abstract class FcmHelper {
   void onForegroundMessage({required BuildContext context});
@@ -99,6 +99,10 @@ class FcmHelperImpl implements FcmHelper {
 
   Future<void> _onReceiveNewMessage(RemoteMessage message) async {
     final data = NotificationData.fromJson(message.data);
+    final user = di<HomeCubit>()
+        .users
+        .firstWhereOrNull((element) => element.uId == data.senderID);
+    final name = user != null ? user.name! : data.senderName;
     if (messagesCubit.user != null) {
       if (messagesCubit.user!.uId == data.senderID) {
         final receiveMessagePlayer = AudioPlayer();
@@ -109,7 +113,7 @@ class FcmHelperImpl implements FcmHelper {
           receivedNotification: ReceivedNotification(
             id: (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
             title: "New Message",
-            body: "${data.senderName} sent you new message.",
+            body: "$name sent you new message.",
             payload: data.phoneNumber,
           ),
         );
@@ -119,7 +123,7 @@ class FcmHelperImpl implements FcmHelper {
         receivedNotification: ReceivedNotification(
           id: (DateTime.now().millisecondsSinceEpoch / 1000).floor(),
           title: "New Message",
-          body: "${data.senderName} sent you new message.",
+          body: "$name sent you new message.",
           payload: data.phoneNumber,
         ),
       );

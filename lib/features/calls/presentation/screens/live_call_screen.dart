@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:nuntius/app/injector.dart';
 import 'package:nuntius/config/navigation.dart';
-import 'package:nuntius/core/shared_widgets/snack_bar.dart';
 import 'package:nuntius/core/utils/app_sounds.dart';
 import 'package:nuntius/features/calls/cubit/calls_cubit.dart';
 import 'package:nuntius/features/calls/data/models/call_type/call_type.dart';
@@ -46,6 +45,16 @@ class _LiveCallScreenState extends State<LiveCallScreen> {
       await callingPlayer.setAsset(AppSounds.calling);
       await callingPlayer.setLoopMode(LoopMode.all);
     });
+    if (widget.liveCallData.receiveCall) {
+      final duration =
+          widget.liveCallData.receiveCallEndDate!.difference(DateTime.now());
+
+      Future.delayed(duration).then((value) {
+        if (mounted) {
+          Go.back(context: context);
+        }
+      });
+    }
     WakelockPlus.enable();
     super.initState();
   }
@@ -64,11 +73,10 @@ class _LiveCallScreenState extends State<LiveCallScreen> {
       listener: (context, state) {
         state.maybeWhen(
           onJoinChannelSuccess: () async {
-            errorSnackBar(context: context, errorMsg: "errorMsg");
             await connectingPlayer.stop();
             if (di<CallsCubit>().remoteUid == null) {
               callingPlayer.play();
-              Future.delayed(const Duration(seconds: 30)).then((value) async {
+              Future.delayed(const Duration(seconds: 60)).then((value) async {
                 if (di<CallsCubit>().remoteUid == null) {
                   await callingPlayer.stop();
                   if (context.mounted) {
