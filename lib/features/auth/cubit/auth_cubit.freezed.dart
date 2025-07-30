@@ -220,6 +220,9 @@ class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -236,6 +239,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -487,6 +493,9 @@ class __$$InitControllerImplCopyWithImpl<$Res>
   __$$InitControllerImplCopyWithImpl(
       _$InitControllerImpl _value, $Res Function(_$InitControllerImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -738,6 +747,9 @@ class __$$DisposeControllerImplCopyWithImpl<$Res>
   __$$DisposeControllerImplCopyWithImpl(_$DisposeControllerImpl _value,
       $Res Function(_$DisposeControllerImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -991,6 +1003,9 @@ class __$$SignInWithPhoneNumberLoadingImplCopyWithImpl<$Res>
       _$SignInWithPhoneNumberLoadingImpl _value,
       $Res Function(_$SignInWithPhoneNumberLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1245,6 +1260,9 @@ class __$$CodeSentImplCopyWithImpl<$Res>
   __$$CodeSentImplCopyWithImpl(
       _$CodeSentImpl _value, $Res Function(_$CodeSentImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1496,6 +1514,9 @@ class __$$SubmitOtpLoadingImplCopyWithImpl<$Res>
   __$$SubmitOtpLoadingImplCopyWithImpl(_$SubmitOtpLoadingImpl _value,
       $Res Function(_$SubmitOtpLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1747,6 +1768,9 @@ class __$$SubmitOtpImplCopyWithImpl<$Res>
   __$$SubmitOtpImplCopyWithImpl(
       _$SubmitOtpImpl _value, $Res Function(_$SubmitOtpImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1999,6 +2023,9 @@ class __$$VerificationCompletedImplCopyWithImpl<$Res>
   __$$VerificationCompletedImplCopyWithImpl(_$VerificationCompletedImpl _value,
       $Res Function(_$VerificationCompletedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2254,6 +2281,8 @@ class __$$ErrorStateImplCopyWithImpl<$Res>
       _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2293,7 +2322,9 @@ class _$ErrorStateImpl implements _ErrorState {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
@@ -2515,7 +2546,10 @@ abstract class _ErrorState implements AuthState {
   const factory _ErrorState(final String errorMsg) = _$ErrorStateImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2536,6 +2570,9 @@ class __$$PickProfileImageLoadingImplCopyWithImpl<$Res>
       _$PickProfileImageLoadingImpl _value,
       $Res Function(_$PickProfileImageLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2788,6 +2825,9 @@ class __$$PickProfileImageImplCopyWithImpl<$Res>
   __$$PickProfileImageImplCopyWithImpl(_$PickProfileImageImpl _value,
       $Res Function(_$PickProfileImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3043,6 +3083,8 @@ class __$$PickProfileImageErrorImplCopyWithImpl<$Res>
       $Res Function(_$PickProfileImageErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3082,7 +3124,9 @@ class _$PickProfileImageErrorImpl implements _PickProfileImageError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PickProfileImageErrorImplCopyWith<_$PickProfileImageErrorImpl>
@@ -3306,7 +3350,10 @@ abstract class _PickProfileImageError implements AuthState {
       _$PickProfileImageErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PickProfileImageErrorImplCopyWith<_$PickProfileImageErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3327,6 +3374,9 @@ class __$$UploadImageToStorageLoadingImplCopyWithImpl<$Res>
       _$UploadImageToStorageLoadingImpl _value,
       $Res Function(_$UploadImageToStorageLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3581,6 +3631,9 @@ class __$$UploadImageToStorageImplCopyWithImpl<$Res>
   __$$UploadImageToStorageImplCopyWithImpl(_$UploadImageToStorageImpl _value,
       $Res Function(_$UploadImageToStorageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3838,6 +3891,8 @@ class __$$UploadImageToStorageErrorImplCopyWithImpl<$Res>
       $Res Function(_$UploadImageToStorageErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3877,7 +3932,9 @@ class _$UploadImageToStorageErrorImpl implements _UploadImageToStorageError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UploadImageToStorageErrorImplCopyWith<_$UploadImageToStorageErrorImpl>
@@ -4101,7 +4158,10 @@ abstract class _UploadImageToStorageError implements AuthState {
       _$UploadImageToStorageErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UploadImageToStorageErrorImplCopyWith<_$UploadImageToStorageErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4122,6 +4182,9 @@ class __$$AddUserToFirestoreLoadingImplCopyWithImpl<$Res>
       _$AddUserToFirestoreLoadingImpl _value,
       $Res Function(_$AddUserToFirestoreLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4374,6 +4437,9 @@ class __$$AddUserToFirestoreImplCopyWithImpl<$Res>
   __$$AddUserToFirestoreImplCopyWithImpl(_$AddUserToFirestoreImpl _value,
       $Res Function(_$AddUserToFirestoreImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4630,6 +4696,8 @@ class __$$AddUserToFirestoreErrorImplCopyWithImpl<$Res>
       $Res Function(_$AddUserToFirestoreErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4669,7 +4737,9 @@ class _$AddUserToFirestoreErrorImpl implements _AddUserToFirestoreError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddUserToFirestoreErrorImplCopyWith<_$AddUserToFirestoreErrorImpl>
@@ -4893,7 +4963,10 @@ abstract class _AddUserToFirestoreError implements AuthState {
       _$AddUserToFirestoreErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddUserToFirestoreErrorImplCopyWith<_$AddUserToFirestoreErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -4914,6 +4987,9 @@ class __$$UpdateUserTokenLoadingImplCopyWithImpl<$Res>
       _$UpdateUserTokenLoadingImpl _value,
       $Res Function(_$UpdateUserTokenLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5166,6 +5242,9 @@ class __$$UpdateUserTokenImplCopyWithImpl<$Res>
   __$$UpdateUserTokenImplCopyWithImpl(
       _$UpdateUserTokenImpl _value, $Res Function(_$UpdateUserTokenImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5420,6 +5499,8 @@ class __$$UpdateUserTokenErrorImplCopyWithImpl<$Res>
       $Res Function(_$UpdateUserTokenErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5459,7 +5540,9 @@ class _$UpdateUserTokenErrorImpl implements _UpdateUserTokenError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateUserTokenErrorImplCopyWith<_$UpdateUserTokenErrorImpl>
@@ -5684,7 +5767,10 @@ abstract class _UpdateUserTokenError implements AuthState {
       _$UpdateUserTokenErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UpdateUserTokenErrorImplCopyWith<_$UpdateUserTokenErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -5703,6 +5789,9 @@ class __$$GetContactsLoadingImplCopyWithImpl<$Res>
   __$$GetContactsLoadingImplCopyWithImpl(_$GetContactsLoadingImpl _value,
       $Res Function(_$GetContactsLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5954,6 +6043,9 @@ class __$$GetContactsImplCopyWithImpl<$Res>
   __$$GetContactsImplCopyWithImpl(
       _$GetContactsImpl _value, $Res Function(_$GetContactsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -6208,6 +6300,8 @@ class __$$GetContactsErrorImplCopyWithImpl<$Res>
       $Res Function(_$GetContactsErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -6247,7 +6341,9 @@ class _$GetContactsErrorImpl implements _GetContactsError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetContactsErrorImplCopyWith<_$GetContactsErrorImpl> get copyWith =>
@@ -6471,7 +6567,10 @@ abstract class _GetContactsError implements AuthState {
       _$GetContactsErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetContactsErrorImplCopyWith<_$GetContactsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

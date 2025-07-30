@@ -27,8 +27,12 @@ mixin _$CallInfo {
   @HiveField(2)
   String? get image => throw _privateConstructorUsedError;
 
+  /// Serializes this CallInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CallInfoCopyWith<CallInfo> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,6 +60,8 @@ class _$CallInfoCopyWithImpl<$Res, $Val extends CallInfo>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CallInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +85,8 @@ class _$CallInfoCopyWithImpl<$Res, $Val extends CallInfo>
     ) as $Val);
   }
 
+  /// Create a copy of CallInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CallModelCopyWith<$Res>? get callModel {
@@ -117,6 +125,8 @@ class __$$CallInfoImplCopyWithImpl<$Res>
       _$CallInfoImpl _value, $Res Function(_$CallInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,11 +188,13 @@ class _$CallInfoImpl implements _CallInfo {
             (identical(other.image, image) || other.image == image));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, callModel, name, image);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CallInfoImplCopyWith<_$CallInfoImpl> get copyWith =>
@@ -214,8 +226,11 @@ abstract class _CallInfo implements CallInfo {
   @override
   @HiveField(2)
   String? get image;
+
+  /// Create a copy of CallInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CallInfoImplCopyWith<_$CallInfoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

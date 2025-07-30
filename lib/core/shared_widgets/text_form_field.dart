@@ -54,6 +54,7 @@ class CustomTextField extends StatelessWidget {
         onFieldSubmitted: onFelidSubmitted,
         onTap: onTap,
         readOnly: readOnly,
+        cursorColor: AppColors.blue,
         decoration: InputDecoration(
           hintText: hintText,
           prefixIcon: prefixIcon != null

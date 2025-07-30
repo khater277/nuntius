@@ -346,7 +346,7 @@ void setupGetIt() {
   di.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(connectionChecker: di()));
   di.registerLazySingleton<InternetConnectionChecker>(
-      () => InternetConnectionChecker());
+      () => InternetConnectionChecker.createInstance());
 
   /// FIREBASE
   di.registerLazySingleton<AuthViaFirebase>(() => AuthViaFirebaseImpl());

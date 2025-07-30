@@ -27,8 +27,12 @@ mixin _$ChatsModel {
   @HiveField(2)
   List<MessageModel>? get messages => throw _privateConstructorUsedError;
 
+  /// Serializes this ChatsModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ChatsModelCopyWith<ChatsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$ChatsModelCopyWithImpl<$Res, $Val extends ChatsModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class _$ChatsModelCopyWithImpl<$Res, $Val extends ChatsModel>
     ) as $Val);
   }
 
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res>? get user {
@@ -93,6 +101,8 @@ class _$ChatsModelCopyWithImpl<$Res, $Val extends ChatsModel>
     });
   }
 
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LastMessageModelCopyWith<$Res>? get lastMessage {
@@ -133,6 +143,8 @@ class __$$ChatsModelImplCopyWithImpl<$Res>
       _$ChatsModelImpl _value, $Res Function(_$ChatsModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,12 +214,14 @@ class _$ChatsModelImpl implements _ChatsModel {
             const DeepCollectionEquality().equals(other._messages, _messages));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, user, lastMessage,
       const DeepCollectionEquality().hash(_messages));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChatsModelImplCopyWith<_$ChatsModelImpl> get copyWith =>
@@ -239,8 +253,11 @@ abstract class _ChatsModel implements ChatsModel {
   @override
   @HiveField(2)
   List<MessageModel>? get messages;
+
+  /// Create a copy of ChatsModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChatsModelImplCopyWith<_$ChatsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

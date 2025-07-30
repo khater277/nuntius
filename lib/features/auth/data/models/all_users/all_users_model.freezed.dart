@@ -23,8 +23,12 @@ mixin _$AllUsersModel {
   @HiveField(0)
   List<UserData>? get users => throw _privateConstructorUsedError;
 
+  /// Serializes this AllUsersModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AllUsersModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AllUsersModelCopyWith<AllUsersModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$AllUsersModelCopyWithImpl<$Res, $Val extends AllUsersModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AllUsersModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$AllUsersModelImplCopyWithImpl<$Res>
       _$AllUsersModelImpl _value, $Res Function(_$AllUsersModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AllUsersModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,12 +136,14 @@ class _$AllUsersModelImpl implements _AllUsersModel {
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_users));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AllUsersModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AllUsersModelImplCopyWith<_$AllUsersModelImpl> get copyWith =>
@@ -157,8 +167,11 @@ abstract class _AllUsersModel implements AllUsersModel {
   @override
   @HiveField(0)
   List<UserData>? get users;
+
+  /// Create a copy of AllUsersModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AllUsersModelImplCopyWith<_$AllUsersModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

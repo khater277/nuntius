@@ -30,7 +30,12 @@ class UserStorageImpl implements UserStorage {
 
   @override
   Future<void> saveUser({required UserData? user}) async {
-    await _box!.put(key, user);
-    await _box!.flush();
+    try {
+      await _box!.put(key, user);
+      await _box!.flush();
+      print("=====> ${user.toString()}");
+    } catch (e) {
+      print("=====> ${e.toString()}");
+    }
   }
 }

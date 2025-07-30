@@ -14,10 +14,6 @@ abstract class CallsRemoteDataSource {
   Future<AgoraTokenModel> generateToken(
       {required GenerateTokenParams generateTokenParams});
 
-  Future<Map<String, dynamic>> pushNotification({
-    required Map<String, dynamic> fcmBody,
-  });
-
   Future<void> addNewCall({required AddNewCallParams addNewCallParams});
 
   Future<void> updateCall({required UpdateCallParams updateCallParams});
@@ -46,12 +42,6 @@ class CallsRemoteDataSourceImpl implements CallsRemoteDataSource {
       {required GenerateTokenParams generateTokenParams}) {
     return agoraApi.generateToken(
         generateTokenParams.channel, generateTokenParams.uid);
-  }
-
-  @override
-  Future<Map<String, dynamic>> pushNotification(
-      {required Map<String, dynamic> fcmBody}) {
-    return fcmApi.pushNotification(fcmBody: fcmBody);
   }
 
   @override

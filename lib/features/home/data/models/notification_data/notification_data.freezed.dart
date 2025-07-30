@@ -34,8 +34,12 @@ mixin _$NotificationData {
   @JsonKey(name: 'click_action')
   String? get clickAction => throw _privateConstructorUsedError;
 
+  /// Serializes this NotificationData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of NotificationData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NotificationDataCopyWith<NotificationData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -71,6 +75,8 @@ class _$NotificationDataCopyWithImpl<$Res, $Val extends NotificationData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NotificationData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,6 +177,8 @@ class __$$NotificationDataImplCopyWithImpl<$Res>
       $Res Function(_$NotificationDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NotificationData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -319,7 +327,7 @@ class _$NotificationDataImpl implements _NotificationData {
                 other.clickAction == clickAction));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -336,7 +344,9 @@ class _$NotificationDataImpl implements _NotificationData {
       channelName,
       clickAction);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NotificationData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NotificationDataImplCopyWith<_$NotificationDataImpl> get copyWith =>
@@ -395,8 +405,11 @@ abstract class _NotificationData implements NotificationData {
   @override
   @JsonKey(name: 'click_action')
   String? get clickAction;
+
+  /// Create a copy of NotificationData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NotificationDataImplCopyWith<_$NotificationDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

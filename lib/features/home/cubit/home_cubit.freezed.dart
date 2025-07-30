@@ -107,6 +107,9 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -123,6 +126,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -261,6 +267,9 @@ class __$$ChangeNavBarLoadingImplCopyWithImpl<$Res>
   __$$ChangeNavBarLoadingImplCopyWithImpl(_$ChangeNavBarLoadingImpl _value,
       $Res Function(_$ChangeNavBarLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -403,6 +412,8 @@ class __$$ChangeNavBarImplCopyWithImpl<$Res>
       _$ChangeNavBarImpl _value, $Res Function(_$ChangeNavBarImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -441,7 +452,9 @@ class _$ChangeNavBarImpl implements _ChangeNavBar {
   @override
   int get hashCode => Object.hash(runtimeType, index);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ChangeNavBarImplCopyWith<_$ChangeNavBarImpl> get copyWith =>
@@ -550,7 +563,10 @@ abstract class _ChangeNavBar implements HomeState {
   const factory _ChangeNavBar(final int index) = _$ChangeNavBarImpl;
 
   int get index;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ChangeNavBarImplCopyWith<_$ChangeNavBarImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -569,6 +585,9 @@ class __$$GetContactsLoadingImplCopyWithImpl<$Res>
   __$$GetContactsLoadingImplCopyWithImpl(_$GetContactsLoadingImpl _value,
       $Res Function(_$GetContactsLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -707,6 +726,9 @@ class __$$GetContactsImplCopyWithImpl<$Res>
   __$$GetContactsImplCopyWithImpl(
       _$GetContactsImpl _value, $Res Function(_$GetContactsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -845,6 +867,9 @@ class __$$GetContactsErrorImplCopyWithImpl<$Res>
   __$$GetContactsErrorImplCopyWithImpl(_$GetContactsErrorImpl _value,
       $Res Function(_$GetContactsErrorImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -988,6 +1013,8 @@ class __$$ListenToMyDataImplCopyWithImpl<$Res>
       _$ListenToMyDataImpl _value, $Res Function(_$ListenToMyDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1001,6 +1028,8 @@ class __$$ListenToMyDataImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res>? get myData {
@@ -1038,7 +1067,9 @@ class _$ListenToMyDataImpl implements _ListenToMyData {
   @override
   int get hashCode => Object.hash(runtimeType, myData);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ListenToMyDataImplCopyWith<_$ListenToMyDataImpl> get copyWith =>
@@ -1148,7 +1179,10 @@ abstract class _ListenToMyData implements HomeState {
   const factory _ListenToMyData(final UserData? myData) = _$ListenToMyDataImpl;
 
   UserData? get myData;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ListenToMyDataImplCopyWith<_$ListenToMyDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1167,6 +1201,9 @@ class __$$DisposeUserImplCopyWithImpl<$Res>
   __$$DisposeUserImplCopyWithImpl(
       _$DisposeUserImpl _value, $Res Function(_$DisposeUserImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of HomeState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

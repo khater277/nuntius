@@ -175,6 +175,9 @@ class _$FirestoreExceptionHandlerCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -191,6 +194,9 @@ class __$$AbortedImplCopyWithImpl<$Res>
   __$$AbortedImplCopyWithImpl(
       _$AbortedImpl _value, $Res Function(_$AbortedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -395,6 +401,9 @@ class __$$AlreadyExistsImplCopyWithImpl<$Res>
   __$$AlreadyExistsImplCopyWithImpl(
       _$AlreadyExistsImpl _value, $Res Function(_$AlreadyExistsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -599,6 +608,9 @@ class __$$CancelledImplCopyWithImpl<$Res>
   __$$CancelledImplCopyWithImpl(
       _$CancelledImpl _value, $Res Function(_$CancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -803,6 +815,9 @@ class __$$DataLossImplCopyWithImpl<$Res>
   __$$DataLossImplCopyWithImpl(
       _$DataLossImpl _value, $Res Function(_$DataLossImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1008,6 +1023,9 @@ class __$$DeadLineExceededImplCopyWithImpl<$Res>
   __$$DeadLineExceededImplCopyWithImpl(_$DeadLineExceededImpl _value,
       $Res Function(_$DeadLineExceededImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1213,6 +1231,9 @@ class __$$FailedPreconditionImplCopyWithImpl<$Res>
   __$$FailedPreconditionImplCopyWithImpl(_$FailedPreconditionImpl _value,
       $Res Function(_$FailedPreconditionImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1417,6 +1438,9 @@ class __$$InternalImplCopyWithImpl<$Res>
   __$$InternalImplCopyWithImpl(
       _$InternalImpl _value, $Res Function(_$InternalImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1621,6 +1645,9 @@ class __$$InvalidArgumentImplCopyWithImpl<$Res>
   __$$InvalidArgumentImplCopyWithImpl(
       _$InvalidArgumentImpl _value, $Res Function(_$InvalidArgumentImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1825,6 +1852,9 @@ class __$$NotFoundImplCopyWithImpl<$Res>
   __$$NotFoundImplCopyWithImpl(
       _$NotFoundImpl _value, $Res Function(_$NotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2027,6 +2057,9 @@ class __$$OkImplCopyWithImpl<$Res>
     implements _$$OkImplCopyWith<$Res> {
   __$$OkImplCopyWithImpl(_$OkImpl _value, $Res Function(_$OkImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2231,6 +2264,9 @@ class __$$OutOfRangeImplCopyWithImpl<$Res>
   __$$OutOfRangeImplCopyWithImpl(
       _$OutOfRangeImpl _value, $Res Function(_$OutOfRangeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2436,6 +2472,9 @@ class __$$PermissionDeniedImplCopyWithImpl<$Res>
   __$$PermissionDeniedImplCopyWithImpl(_$PermissionDeniedImpl _value,
       $Res Function(_$PermissionDeniedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2641,6 +2680,9 @@ class __$$ResourceExhaustedImplCopyWithImpl<$Res>
   __$$ResourceExhaustedImplCopyWithImpl(_$ResourceExhaustedImpl _value,
       $Res Function(_$ResourceExhaustedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2845,6 +2887,9 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   __$$UnauthenticatedImplCopyWithImpl(
       _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3049,6 +3094,9 @@ class __$$UnavailableImplCopyWithImpl<$Res>
   __$$UnavailableImplCopyWithImpl(
       _$UnavailableImpl _value, $Res Function(_$UnavailableImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3253,6 +3301,9 @@ class __$$UnimplementedImplCopyWithImpl<$Res>
   __$$UnimplementedImplCopyWithImpl(
       _$UnimplementedImpl _value, $Res Function(_$UnimplementedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3457,6 +3508,9 @@ class __$$UnknownImplCopyWithImpl<$Res>
   __$$UnknownImplCopyWithImpl(
       _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3661,6 +3715,9 @@ class __$$UndefinedImplCopyWithImpl<$Res>
   __$$UndefinedImplCopyWithImpl(
       _$UndefinedImpl _value, $Res Function(_$UndefinedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3865,6 +3922,9 @@ class __$$TimeoutImplCopyWithImpl<$Res>
   __$$TimeoutImplCopyWithImpl(
       _$TimeoutImpl _value, $Res Function(_$TimeoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of FirestoreExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

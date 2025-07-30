@@ -1,8 +1,8 @@
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:nuntius/core/local_storage/all_users_storage.dart';
 import 'package:nuntius/core/local_storage/calls_storage.dart';
@@ -110,7 +110,8 @@ class HomeCubit extends Cubit<HomeState> {
     }
 
     try {
-      contacts = await ContactsService.getContacts(withThumbnails: false);
+      contacts = await FlutterContacts.getContacts(withProperties: true);
+      print("==============>${contacts.length}");
       await _handleContacts();
       await _handleUsers();
       final response = await _addUserToFirestoreUsecase
@@ -135,20 +136,21 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> _handleContacts() async {
     for (int i = 0; i < contacts.length; i++) {
       final oldContact = contacts[i];
-      if (oldContact.phones!.isNotEmpty) {
-        if (!oldContact.phones!.first.value!.startsWith('+2')) {
+      if (oldContact.phones.isNotEmpty) {
+        oldContact.phones[0].number.replaceAll(' ', '');
+        if (!oldContact.phones.first.number.startsWith('+2')) {
           final Contact newContact = Contact(
             displayName: oldContact.displayName,
             emails: oldContact.emails,
-            company: oldContact.company,
+            organizations: oldContact.organizations,
             phones: [
-              Item(
-                label: oldContact.phones![0].label,
-                value: "+2${oldContact.phones![0].value!.replaceAll(' ', '')}",
+              Phone(
+                "+2${oldContact.phones[0].number.replaceAll(' ', '')}",
               )
             ],
           );
           contacts[i] = newContact;
+          print(contacts[i].phones.first.number);
         }
       }
     }
@@ -169,19 +171,17 @@ class HomeCubit extends Cubit<HomeState> {
       (usersData) async {
         for (int i = 0; i < contacts.length; i++) {
           final user = usersData.firstWhereOrNull((element) =>
-              contacts[i].phones!.isNotEmpty
-                  ? element.phone == contacts[i].phones!.first.value
+              contacts[i].phones.isNotEmpty
+                  ? element.phone == contacts[i].phones.first.number
                   : false);
           if (user != null) {
             final existedUser = users
                 .firstWhereOrNull((element) => element.phone == user.phone);
             if (existedUser == null &&
-                (contacts[i].phones!.first.value != null) &&
-                (contacts[i].phones!.first.value !=
+                (contacts[i].phones.first.number !=
                     _userStorage.getUser()!.phone)) {
               users.add(user.copyWith(name: contacts[i].displayName));
-              phones[contacts[i].phones!.first.value!] =
-                  contacts[i].displayName!;
+              phones[contacts[i].phones.first.number] = contacts[i].displayName;
             }
           }
         }

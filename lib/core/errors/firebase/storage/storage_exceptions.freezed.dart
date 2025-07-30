@@ -163,6 +163,9 @@ class _$StorageExceptionHandlerCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -179,6 +182,9 @@ class __$$UnknownImplCopyWithImpl<$Res>
   __$$UnknownImplCopyWithImpl(
       _$UnknownImpl _value, $Res Function(_$UnknownImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -371,6 +377,9 @@ class __$$ObjectNotFoundImplCopyWithImpl<$Res>
   __$$ObjectNotFoundImplCopyWithImpl(
       _$ObjectNotFoundImpl _value, $Res Function(_$ObjectNotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -563,6 +572,9 @@ class __$$BucketNotFoundImplCopyWithImpl<$Res>
   __$$BucketNotFoundImplCopyWithImpl(
       _$BucketNotFoundImpl _value, $Res Function(_$BucketNotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -755,6 +767,9 @@ class __$$ProjectNotFoundImplCopyWithImpl<$Res>
   __$$ProjectNotFoundImplCopyWithImpl(
       _$ProjectNotFoundImpl _value, $Res Function(_$ProjectNotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -947,6 +962,9 @@ class __$$QuotaExceededImplCopyWithImpl<$Res>
   __$$QuotaExceededImplCopyWithImpl(
       _$QuotaExceededImpl _value, $Res Function(_$QuotaExceededImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1139,6 +1157,9 @@ class __$$UnauthenticatedImplCopyWithImpl<$Res>
   __$$UnauthenticatedImplCopyWithImpl(
       _$UnauthenticatedImpl _value, $Res Function(_$UnauthenticatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1331,6 +1352,9 @@ class __$$UnauthorizedImplCopyWithImpl<$Res>
   __$$UnauthorizedImplCopyWithImpl(
       _$UnauthorizedImpl _value, $Res Function(_$UnauthorizedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1524,6 +1548,9 @@ class __$$RetryLimitExceededImplCopyWithImpl<$Res>
   __$$RetryLimitExceededImplCopyWithImpl(_$RetryLimitExceededImpl _value,
       $Res Function(_$RetryLimitExceededImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1716,6 +1743,9 @@ class __$$InvalidChecksumImplCopyWithImpl<$Res>
   __$$InvalidChecksumImplCopyWithImpl(
       _$InvalidChecksumImpl _value, $Res Function(_$InvalidChecksumImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1908,6 +1938,9 @@ class __$$CancelledImplCopyWithImpl<$Res>
   __$$CancelledImplCopyWithImpl(
       _$CancelledImpl _value, $Res Function(_$CancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2100,6 +2133,9 @@ class __$$InvalidEventNameImplCopyWithImpl<$Res>
   __$$InvalidEventNameImplCopyWithImpl(_$InvalidEventNameImpl _value,
       $Res Function(_$InvalidEventNameImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2292,6 +2328,9 @@ class __$$InvalidUrlImplCopyWithImpl<$Res>
   __$$InvalidUrlImplCopyWithImpl(
       _$InvalidUrlImpl _value, $Res Function(_$InvalidUrlImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2484,6 +2523,9 @@ class __$$InvalidArgumentImplCopyWithImpl<$Res>
   __$$InvalidArgumentImplCopyWithImpl(
       _$InvalidArgumentImpl _value, $Res Function(_$InvalidArgumentImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2676,6 +2718,9 @@ class __$$NoDefaultBucketImplCopyWithImpl<$Res>
   __$$NoDefaultBucketImplCopyWithImpl(
       _$NoDefaultBucketImpl _value, $Res Function(_$NoDefaultBucketImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2868,6 +2913,9 @@ class __$$CannotSliceBlobImplCopyWithImpl<$Res>
   __$$CannotSliceBlobImplCopyWithImpl(
       _$CannotSliceBlobImpl _value, $Res Function(_$CannotSliceBlobImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3061,6 +3109,9 @@ class __$$ServerFileWrongSizeImplCopyWithImpl<$Res>
   __$$ServerFileWrongSizeImplCopyWithImpl(_$ServerFileWrongSizeImpl _value,
       $Res Function(_$ServerFileWrongSizeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3254,6 +3305,9 @@ class __$$TimeoutImplCopyWithImpl<$Res>
   __$$TimeoutImplCopyWithImpl(
       _$TimeoutImpl _value, $Res Function(_$TimeoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of StorageExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

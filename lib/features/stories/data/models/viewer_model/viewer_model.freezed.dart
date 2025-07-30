@@ -24,8 +24,12 @@ mixin _$ViewerModel {
   String? get phoneNumber => throw _privateConstructorUsedError;
   String? get dateTime => throw _privateConstructorUsedError;
 
+  /// Serializes this ViewerModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ViewerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ViewerModelCopyWith<ViewerModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$ViewerModelCopyWithImpl<$Res, $Val extends ViewerModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ViewerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ViewerModelImplCopyWithImpl<$Res>
       _$ViewerModelImpl _value, $Res Function(_$ViewerModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ViewerModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -148,11 +156,13 @@ class _$ViewerModelImpl implements _ViewerModel {
                 other.dateTime == dateTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, phoneNumber, dateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ViewerModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ViewerModelImplCopyWith<_$ViewerModelImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _ViewerModel implements ViewerModel {
   String? get phoneNumber;
   @override
   String? get dateTime;
+
+  /// Create a copy of ViewerModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ViewerModelImplCopyWith<_$ViewerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

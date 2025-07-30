@@ -571,7 +571,7 @@ class StoriesCubit extends Cubit<StoriesState> {
             debugPrint("===========>Error in get video thumbnail");
           }
 
-          videosThumbnails[story.id!] = videoThumbnail!;
+          videosThumbnails[story.id!] = videoThumbnail ?? '';
         }
       }
     }

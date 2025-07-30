@@ -15,7 +15,9 @@ class CustomNetworkImage extends StatelessWidget {
 
   Future<bool> checkInternet() async {
     bool? result;
-    InternetConnectionChecker().hasConnection.then((value) => result = value);
+    InternetConnectionChecker.createInstance()
+        .hasConnection
+        .then((value) => result = value);
     return result!;
     // return await InternetConnectionChecker().hasConnection;
   }

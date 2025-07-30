@@ -91,6 +91,9 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -107,6 +110,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -228,6 +234,9 @@ class __$$InitControllersImplCopyWithImpl<$Res>
   __$$InitControllersImplCopyWithImpl(
       _$InitControllersImpl _value, $Res Function(_$InitControllersImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -349,6 +358,9 @@ class __$$DisposeControllersImplCopyWithImpl<$Res>
   __$$DisposeControllersImplCopyWithImpl(_$DisposeControllersImpl _value,
       $Res Function(_$DisposeControllersImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -475,6 +487,8 @@ class __$$OnChangeSearchTextFieldImplCopyWithImpl<$Res>
       $Res Function(_$OnChangeSearchTextFieldImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -513,7 +527,9 @@ class _$OnChangeSearchTextFieldImpl implements _OnChangeSearchTextField {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnChangeSearchTextFieldImplCopyWith<_$OnChangeSearchTextFieldImpl>
@@ -607,7 +623,10 @@ abstract class _OnChangeSearchTextField implements SearchState {
       _$OnChangeSearchTextFieldImpl;
 
   String get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnChangeSearchTextFieldImplCopyWith<_$OnChangeSearchTextFieldImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -626,6 +645,9 @@ class __$$ClearSearchTextFieldImplCopyWithImpl<$Res>
   __$$ClearSearchTextFieldImplCopyWithImpl(_$ClearSearchTextFieldImpl _value,
       $Res Function(_$ClearSearchTextFieldImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SearchState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

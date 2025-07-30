@@ -171,6 +171,9 @@ class _$EditProfileStateCopyWithImpl<$Res, $Val extends EditProfileState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -187,6 +190,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -395,6 +401,9 @@ class __$$initEditProfileScreenImplCopyWithImpl<$Res>
   __$$initEditProfileScreenImplCopyWithImpl(_$initEditProfileScreenImpl _value,
       $Res Function(_$initEditProfileScreenImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -608,6 +617,9 @@ class __$$DisposeEditProfileScreenImplCopyWithImpl<$Res>
       _$DisposeEditProfileScreenImpl _value,
       $Res Function(_$DisposeEditProfileScreenImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -821,6 +833,9 @@ class __$$PickProfileImageLoadingImplCopyWithImpl<$Res>
       _$PickProfileImageLoadingImpl _value,
       $Res Function(_$PickProfileImageLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1032,6 +1047,9 @@ class __$$PickProfileImageImplCopyWithImpl<$Res>
   __$$PickProfileImageImplCopyWithImpl(_$PickProfileImageImpl _value,
       $Res Function(_$PickProfileImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1246,6 +1264,8 @@ class __$$PickProfileImageErrorImplCopyWithImpl<$Res>
       $Res Function(_$PickProfileImageErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1296,7 +1316,9 @@ class _$PickProfileImageErrorImpl
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PickProfileImageErrorImplCopyWith<_$PickProfileImageErrorImpl>
@@ -1470,7 +1492,10 @@ abstract class _PickProfileImageError implements EditProfileState {
       _$PickProfileImageErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PickProfileImageErrorImplCopyWith<_$PickProfileImageErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1495,6 +1520,8 @@ class __$$GetProfileImagePercentageImplCopyWithImpl<$Res>
       $Res Function(_$GetProfileImagePercentageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1545,7 +1572,9 @@ class _$GetProfileImagePercentageImpl
   @override
   int get hashCode => Object.hash(runtimeType, percentage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetProfileImagePercentageImplCopyWith<_$GetProfileImagePercentageImpl>
@@ -1719,7 +1748,10 @@ abstract class _GetProfileImagePercentage implements EditProfileState {
       _$GetProfileImagePercentageImpl;
 
   double? get percentage;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetProfileImagePercentageImplCopyWith<_$GetProfileImagePercentageImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1741,6 +1773,9 @@ class __$$updateProfileImageLoadingImplCopyWithImpl<$Res>
       _$updateProfileImageLoadingImpl _value,
       $Res Function(_$updateProfileImageLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1952,6 +1987,9 @@ class __$$updateProfileImageImplCopyWithImpl<$Res>
   __$$updateProfileImageImplCopyWithImpl(_$updateProfileImageImpl _value,
       $Res Function(_$updateProfileImageImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2167,6 +2205,8 @@ class __$$updateProfileImageErrorImplCopyWithImpl<$Res>
       $Res Function(_$updateProfileImageErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2217,7 +2257,9 @@ class _$updateProfileImageErrorImpl
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateProfileImageErrorImplCopyWith<_$updateProfileImageErrorImpl>
@@ -2391,7 +2433,10 @@ abstract class _updateProfileImageError implements EditProfileState {
       _$updateProfileImageErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateProfileImageErrorImplCopyWith<_$updateProfileImageErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2412,6 +2457,9 @@ class __$$updateProfileNameLoadingImplCopyWithImpl<$Res>
       _$updateProfileNameLoadingImpl _value,
       $Res Function(_$updateProfileNameLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2623,6 +2671,9 @@ class __$$updateProfileNameImplCopyWithImpl<$Res>
   __$$updateProfileNameImplCopyWithImpl(_$updateProfileNameImpl _value,
       $Res Function(_$updateProfileNameImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2838,6 +2889,8 @@ class __$$updateProfileNameErrorImplCopyWithImpl<$Res>
       $Res Function(_$updateProfileNameErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2888,7 +2941,9 @@ class _$updateProfileNameErrorImpl
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$updateProfileNameErrorImplCopyWith<_$updateProfileNameErrorImpl>
@@ -3062,7 +3117,10 @@ abstract class _updateProfileNameError implements EditProfileState {
       _$updateProfileNameErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$updateProfileNameErrorImplCopyWith<_$updateProfileNameErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -3081,6 +3139,9 @@ class __$$DeleteAccountLoadingImplCopyWithImpl<$Res>
   __$$DeleteAccountLoadingImplCopyWithImpl(_$DeleteAccountLoadingImpl _value,
       $Res Function(_$DeleteAccountLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3292,6 +3353,9 @@ class __$$DeleteAccountImplCopyWithImpl<$Res>
   __$$DeleteAccountImplCopyWithImpl(
       _$DeleteAccountImpl _value, $Res Function(_$DeleteAccountImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3505,6 +3569,8 @@ class __$$DeleteAccountErrorImplCopyWithImpl<$Res>
       $Res Function(_$DeleteAccountErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -3554,7 +3620,9 @@ class _$DeleteAccountErrorImpl
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DeleteAccountErrorImplCopyWith<_$DeleteAccountErrorImpl> get copyWith =>
@@ -3728,7 +3796,10 @@ abstract class _DeleteAccountError implements EditProfileState {
       _$DeleteAccountErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EditProfileState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DeleteAccountErrorImplCopyWith<_$DeleteAccountErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
