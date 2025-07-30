@@ -29,8 +29,12 @@ mixin _$MessageNotificationData {
   @JsonKey(name: 'click_action')
   String? get clickAction => throw _privateConstructorUsedError;
 
+  /// Serializes this MessageNotificationData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MessageNotificationData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MessageNotificationDataCopyWith<MessageNotificationData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$MessageNotificationDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MessageNotificationData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,6 +134,8 @@ class __$$MessageNotificationDataImplCopyWithImpl<$Res>
       $Res Function(_$MessageNotificationDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MessageNotificationData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,12 +224,14 @@ class _$MessageNotificationDataImpl implements _MessageNotificationData {
                 other.clickAction == clickAction));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, name, phoneNumber, senderId, type, clickAction);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MessageNotificationData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MessageNotificationDataImplCopyWith<_$MessageNotificationDataImpl>
@@ -262,8 +272,11 @@ abstract class _MessageNotificationData implements MessageNotificationData {
   @override
   @JsonKey(name: 'click_action')
   String? get clickAction;
+
+  /// Create a copy of MessageNotificationData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MessageNotificationDataImplCopyWith<_$MessageNotificationDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

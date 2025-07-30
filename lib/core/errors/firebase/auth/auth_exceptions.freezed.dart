@@ -148,6 +148,9 @@ class _$AuthExceptionHandlerCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -164,6 +167,9 @@ class __$$WrongPasswordImplCopyWithImpl<$Res>
   __$$WrongPasswordImplCopyWithImpl(
       _$WrongPasswordImpl _value, $Res Function(_$WrongPasswordImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -341,6 +347,9 @@ class __$$EmailAlreadyInUseImplCopyWithImpl<$Res>
   __$$EmailAlreadyInUseImplCopyWithImpl(_$EmailAlreadyInUseImpl _value,
       $Res Function(_$EmailAlreadyInUseImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -518,6 +527,9 @@ class __$$WeakPasswordImplCopyWithImpl<$Res>
   __$$WeakPasswordImplCopyWithImpl(
       _$WeakPasswordImpl _value, $Res Function(_$WeakPasswordImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -695,6 +707,9 @@ class __$$InvalidEmailImplCopyWithImpl<$Res>
   __$$InvalidEmailImplCopyWithImpl(
       _$InvalidEmailImpl _value, $Res Function(_$InvalidEmailImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -872,6 +887,9 @@ class __$$UserNotFoundImplCopyWithImpl<$Res>
   __$$UserNotFoundImplCopyWithImpl(
       _$UserNotFoundImpl _value, $Res Function(_$UserNotFoundImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1049,6 +1067,9 @@ class __$$UserDisabledImplCopyWithImpl<$Res>
   __$$UserDisabledImplCopyWithImpl(
       _$UserDisabledImpl _value, $Res Function(_$UserDisabledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1226,6 +1247,9 @@ class __$$OperationNotAllowedImplCopyWithImpl<$Res>
   __$$OperationNotAllowedImplCopyWithImpl(_$OperationNotAllowedImpl _value,
       $Res Function(_$OperationNotAllowedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1404,6 +1428,9 @@ class __$$ExpiredActionCodeImplCopyWithImpl<$Res>
   __$$ExpiredActionCodeImplCopyWithImpl(_$ExpiredActionCodeImpl _value,
       $Res Function(_$ExpiredActionCodeImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1581,6 +1608,9 @@ class __$$NetworkRequestFailedImplCopyWithImpl<$Res>
   __$$NetworkRequestFailedImplCopyWithImpl(_$NetworkRequestFailedImpl _value,
       $Res Function(_$NetworkRequestFailedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1759,6 +1789,9 @@ class __$$TooManyRequestsImplCopyWithImpl<$Res>
   __$$TooManyRequestsImplCopyWithImpl(
       _$TooManyRequestsImpl _value, $Res Function(_$TooManyRequestsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1936,6 +1969,9 @@ class __$$RequestCancelledImplCopyWithImpl<$Res>
   __$$RequestCancelledImplCopyWithImpl(_$RequestCancelledImpl _value,
       $Res Function(_$RequestCancelledImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2116,6 +2152,9 @@ class __$$EmailExistsWithDifferentCredentialImplCopyWithImpl<$Res>
       _$EmailExistsWithDifferentCredentialImpl _value,
       $Res Function(_$EmailExistsWithDifferentCredentialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2297,6 +2336,9 @@ class __$$TimeoutImplCopyWithImpl<$Res>
   __$$TimeoutImplCopyWithImpl(
       _$TimeoutImpl _value, $Res Function(_$TimeoutImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2474,6 +2516,9 @@ class __$$UndefinedImplCopyWithImpl<$Res>
   __$$UndefinedImplCopyWithImpl(
       _$UndefinedImpl _value, $Res Function(_$UndefinedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of AuthExceptionHandler
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

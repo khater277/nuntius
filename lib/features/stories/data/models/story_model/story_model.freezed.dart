@@ -34,8 +34,12 @@ mixin _$StoryModel {
   List<String>? get viewersPhones => throw _privateConstructorUsedError;
   List<String>? get canView => throw _privateConstructorUsedError;
 
+  /// Serializes this StoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of StoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StoryModelCopyWith<StoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +76,8 @@ class _$StoryModelCopyWithImpl<$Res, $Val extends StoryModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -178,6 +184,8 @@ class __$$StoryModelImplCopyWithImpl<$Res>
       _$StoryModelImpl _value, $Res Function(_$StoryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -328,7 +336,7 @@ class _$StoryModelImpl implements _StoryModel {
             const DeepCollectionEquality().equals(other.canView, canView));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -346,7 +354,9 @@ class _$StoryModelImpl implements _StoryModel {
       const DeepCollectionEquality().hash(viewersPhones),
       const DeepCollectionEquality().hash(canView));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StoryModelImplCopyWith<_$StoryModelImpl> get copyWith =>
@@ -405,8 +415,11 @@ abstract class _StoryModel implements StoryModel {
   List<String>? get viewersPhones;
   @override
   List<String>? get canView;
+
+  /// Create a copy of StoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StoryModelImplCopyWith<_$StoryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

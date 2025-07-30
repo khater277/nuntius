@@ -206,6 +206,9 @@ class _$CallsStateCopyWithImpl<$Res, $Val extends CallsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -222,6 +225,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -458,6 +464,9 @@ class __$$InitCallsImplCopyWithImpl<$Res>
   __$$InitCallsImplCopyWithImpl(
       _$InitCallsImpl _value, $Res Function(_$InitCallsImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -694,6 +703,9 @@ class __$$GenerateTokenLoadingImplCopyWithImpl<$Res>
   __$$GenerateTokenLoadingImplCopyWithImpl(_$GenerateTokenLoadingImpl _value,
       $Res Function(_$GenerateTokenLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -934,6 +946,8 @@ class __$$GenerateTokenSuccessImplCopyWithImpl<$Res>
       $Res Function(_$GenerateTokenSuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -972,7 +986,9 @@ class _$GenerateTokenSuccessImpl implements _GenerateTokenSuccess {
   @override
   int get hashCode => Object.hash(runtimeType, token);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GenerateTokenSuccessImplCopyWith<_$GenerateTokenSuccessImpl>
@@ -1182,7 +1198,10 @@ abstract class _GenerateTokenSuccess implements CallsState {
       _$GenerateTokenSuccessImpl;
 
   String get token;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GenerateTokenSuccessImplCopyWith<_$GenerateTokenSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1204,6 +1223,8 @@ class __$$GenerateTokenErrorImplCopyWithImpl<$Res>
       $Res Function(_$GenerateTokenErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1243,7 +1264,9 @@ class _$GenerateTokenErrorImpl implements _GenerateTokenError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GenerateTokenErrorImplCopyWith<_$GenerateTokenErrorImpl> get copyWith =>
@@ -1452,7 +1475,10 @@ abstract class _GenerateTokenError implements CallsState {
       _$GenerateTokenErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GenerateTokenErrorImplCopyWith<_$GenerateTokenErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1471,6 +1497,9 @@ class __$$SetupSDKEngineImplCopyWithImpl<$Res>
   __$$SetupSDKEngineImplCopyWithImpl(
       _$SetupSDKEngineImpl _value, $Res Function(_$SetupSDKEngineImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -1711,6 +1740,8 @@ class __$$PushNotificationErrorImplCopyWithImpl<$Res>
       $Res Function(_$PushNotificationErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1750,7 +1781,9 @@ class _$PushNotificationErrorImpl implements _PushNotificationError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PushNotificationErrorImplCopyWith<_$PushNotificationErrorImpl>
@@ -1959,7 +1992,10 @@ abstract class _PushNotificationError implements CallsState {
       _$PushNotificationErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PushNotificationErrorImplCopyWith<_$PushNotificationErrorImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1978,6 +2014,9 @@ class __$$JoinCallLoadingImplCopyWithImpl<$Res>
   __$$JoinCallLoadingImplCopyWithImpl(
       _$JoinCallLoadingImpl _value, $Res Function(_$JoinCallLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2214,6 +2253,9 @@ class __$$OnJoinChannelSuccessImplCopyWithImpl<$Res>
   __$$OnJoinChannelSuccessImplCopyWithImpl(_$OnJoinChannelSuccessImpl _value,
       $Res Function(_$OnJoinChannelSuccessImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -2454,6 +2496,8 @@ class __$$OnLeaveChannelImplCopyWithImpl<$Res>
       _$OnLeaveChannelImpl _value, $Res Function(_$OnLeaveChannelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2492,7 +2536,9 @@ class _$OnLeaveChannelImpl implements _OnLeaveChannel {
   @override
   int get hashCode => Object.hash(runtimeType, callId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnLeaveChannelImplCopyWith<_$OnLeaveChannelImpl> get copyWith =>
@@ -2700,7 +2746,10 @@ abstract class _OnLeaveChannel implements CallsState {
   const factory _OnLeaveChannel(final String callId) = _$OnLeaveChannelImpl;
 
   String get callId;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnLeaveChannelImplCopyWith<_$OnLeaveChannelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2722,6 +2771,8 @@ class __$$OnUserJoinedImplCopyWithImpl<$Res>
       _$OnUserJoinedImpl _value, $Res Function(_$OnUserJoinedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2761,7 +2812,9 @@ class _$OnUserJoinedImpl implements _OnUserJoined {
   @override
   int get hashCode => Object.hash(runtimeType, remoteUid);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OnUserJoinedImplCopyWith<_$OnUserJoinedImpl> get copyWith =>
@@ -2968,7 +3021,10 @@ abstract class _OnUserJoined implements CallsState {
   const factory _OnUserJoined(final int remoteUid) = _$OnUserJoinedImpl;
 
   int get remoteUid;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OnUserJoinedImplCopyWith<_$OnUserJoinedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -2987,6 +3043,9 @@ class __$$OnUserOfflineImplCopyWithImpl<$Res>
   __$$OnUserOfflineImplCopyWithImpl(
       _$OnUserOfflineImpl _value, $Res Function(_$OnUserOfflineImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3223,6 +3282,9 @@ class __$$MyVideoViewCreatedImplCopyWithImpl<$Res>
   __$$MyVideoViewCreatedImplCopyWithImpl(_$MyVideoViewCreatedImpl _value,
       $Res Function(_$MyVideoViewCreatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3461,6 +3523,9 @@ class __$$FriendVideoViewCreatedImplCopyWithImpl<$Res>
       _$FriendVideoViewCreatedImpl _value,
       $Res Function(_$FriendVideoViewCreatedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3698,6 +3763,9 @@ class __$$LeaveCallLoadingImplCopyWithImpl<$Res>
   __$$LeaveCallLoadingImplCopyWithImpl(_$LeaveCallLoadingImpl _value,
       $Res Function(_$LeaveCallLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -3934,6 +4002,9 @@ class __$$LeaveCallImplCopyWithImpl<$Res>
   __$$LeaveCallImplCopyWithImpl(
       _$LeaveCallImpl _value, $Res Function(_$LeaveCallImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4170,6 +4241,9 @@ class __$$CancelCallLoadingImplCopyWithImpl<$Res>
   __$$CancelCallLoadingImplCopyWithImpl(_$CancelCallLoadingImpl _value,
       $Res Function(_$CancelCallLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4406,6 +4480,9 @@ class __$$CancelCallImplCopyWithImpl<$Res>
   __$$CancelCallImplCopyWithImpl(
       _$CancelCallImpl _value, $Res Function(_$CancelCallImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -4645,6 +4722,8 @@ class __$$CancelCallErrorImplCopyWithImpl<$Res>
       _$CancelCallErrorImpl _value, $Res Function(_$CancelCallErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -4684,7 +4763,9 @@ class _$CancelCallErrorImpl implements _CancelCallError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CancelCallErrorImplCopyWith<_$CancelCallErrorImpl> get copyWith =>
@@ -4892,7 +4973,10 @@ abstract class _CancelCallError implements CallsState {
   const factory _CancelCallError(final String errorMsg) = _$CancelCallErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CancelCallErrorImplCopyWith<_$CancelCallErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -4911,6 +4995,9 @@ class __$$GetCallsLoadingImplCopyWithImpl<$Res>
   __$$GetCallsLoadingImplCopyWithImpl(
       _$GetCallsLoadingImpl _value, $Res Function(_$GetCallsLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -5150,6 +5237,8 @@ class __$$GetCallsImplCopyWithImpl<$Res>
       _$GetCallsImpl _value, $Res Function(_$GetCallsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5194,7 +5283,9 @@ class _$GetCallsImpl implements _GetCalls {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_calls));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCallsImplCopyWith<_$GetCallsImpl> get copyWith =>
@@ -5401,7 +5492,10 @@ abstract class _GetCalls implements CallsState {
   const factory _GetCalls(final List<CallInfo> calls) = _$GetCallsImpl;
 
   List<CallInfo> get calls;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCallsImplCopyWith<_$GetCallsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5423,6 +5517,8 @@ class __$$GetCallsErrorImplCopyWithImpl<$Res>
       _$GetCallsErrorImpl _value, $Res Function(_$GetCallsErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5462,7 +5558,9 @@ class _$GetCallsErrorImpl implements _GetCallsError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCallsErrorImplCopyWith<_$GetCallsErrorImpl> get copyWith =>
@@ -5669,7 +5767,10 @@ abstract class _GetCallsError implements CallsState {
   const factory _GetCallsError(final String errorMsg) = _$GetCallsErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCallsErrorImplCopyWith<_$GetCallsErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5691,6 +5792,8 @@ class __$$ToggleMuteImplCopyWithImpl<$Res>
       _$ToggleMuteImpl _value, $Res Function(_$ToggleMuteImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5729,7 +5832,9 @@ class _$ToggleMuteImpl implements _ToggleMute {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ToggleMuteImplCopyWith<_$ToggleMuteImpl> get copyWith =>
@@ -5936,7 +6041,10 @@ abstract class _ToggleMute implements CallsState {
   const factory _ToggleMute(final bool value) = _$ToggleMuteImpl;
 
   bool get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ToggleMuteImplCopyWith<_$ToggleMuteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -5958,6 +6066,8 @@ class __$$ToggleSpeakerImplCopyWithImpl<$Res>
       _$ToggleSpeakerImpl _value, $Res Function(_$ToggleSpeakerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -5996,7 +6106,9 @@ class _$ToggleSpeakerImpl implements _ToggleSpeaker {
   @override
   int get hashCode => Object.hash(runtimeType, value);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ToggleSpeakerImplCopyWith<_$ToggleSpeakerImpl> get copyWith =>
@@ -6203,7 +6315,10 @@ abstract class _ToggleSpeaker implements CallsState {
   const factory _ToggleSpeaker(final bool value) = _$ToggleSpeakerImpl;
 
   bool get value;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ToggleSpeakerImplCopyWith<_$ToggleSpeakerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

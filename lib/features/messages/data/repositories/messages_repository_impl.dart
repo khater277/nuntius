@@ -8,6 +8,8 @@ import 'package:nuntius/features/messages/domain/parameters/delete_message_param
 import 'package:nuntius/features/messages/domain/parameters/send_message_params.dart';
 import 'package:nuntius/features/messages/domain/repository/messages_repository.dart';
 
+import '../../../../core/apis/fcm/oauth_token.dart';
+
 class MessagesRepositoryImpl implements MessagesRepository {
   final MessagesRemoteDataSource messagesRemoteDataSource;
   final NetworkInfo networkInfo;
@@ -50,12 +52,21 @@ class MessagesRepositoryImpl implements MessagesRepository {
   }
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> pushNotification(
+  Future<Either<Failure, String>> pushNotification(
       {required Map<String, dynamic> fcmBody}) async {
     try {
-      final response =
-          await messagesRemoteDataSource.pushNotification(fcmBody: fcmBody);
-      return Right(response);
+      try {
+        final token = await FirebaseAccessToken.getToken();
+        final response = await messagesRemoteDataSource.pushNotification(
+          fcmBody: fcmBody,
+          token: token,
+        );
+        return Right(response);
+      } catch (error) {
+        print("===========> ${error.toString()}");
+        return Left(ServerFailure(
+            error: Exception('error'), type: NetworkErrorTypes.api));
+      }
     } on DioException catch (error) {
       return Left(ServerFailure(error: error, type: NetworkErrorTypes.api));
     }

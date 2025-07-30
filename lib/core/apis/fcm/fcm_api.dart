@@ -9,7 +9,9 @@ abstract class FcmApi {
   factory FcmApi(Dio dio, {String baseUrl}) = _FcmApi;
 
   @POST('')
-  Future<Map<String, dynamic>> pushNotification({
+  Future<String> pushNotification({
     @Body() required Map<String, dynamic> fcmBody,
+    @Header('Authorization') required String token,
+    @Header('Accept') String accept = "Application/json",
   });
 }

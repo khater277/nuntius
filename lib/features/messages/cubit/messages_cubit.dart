@@ -214,7 +214,7 @@ class MessagesCubit extends Cubit<MessagesState> {
         videoThumbnail = "";
         debugPrint("===========>Error in get video thumbnail");
       }
-      videosThumbnails[message.messageId!] = videoThumbnail!;
+      videosThumbnails[message.messageId!] = videoThumbnail ?? '';
     }
     // emit(const MessagesState.createVideosThumbnails());
   }
@@ -277,7 +277,9 @@ class MessagesCubit extends Cubit<MessagesState> {
           final pushNotification = await _pushNotificationUsecase(
               AppFunctions.getMessageNotificationFcmBody(user: user!));
           pushNotification.fold(
-              (l) => debugPrint("NOT SENT"), (r) => debugPrint("SENT"));
+            (l) => debugPrint("NOT SENT"),
+            (r) => debugPrint("SENT"),
+          );
         }
       },
     );

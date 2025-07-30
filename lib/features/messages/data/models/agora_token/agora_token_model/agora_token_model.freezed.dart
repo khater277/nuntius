@@ -22,8 +22,12 @@ AgoraTokenModel _$AgoraTokenModelFromJson(Map<String, dynamic> json) {
 mixin _$AgoraTokenModel {
   String? get rtcToken => throw _privateConstructorUsedError;
 
+  /// Serializes this AgoraTokenModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AgoraTokenModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AgoraTokenModelCopyWith<AgoraTokenModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$AgoraTokenModelCopyWithImpl<$Res, $Val extends AgoraTokenModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AgoraTokenModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$AgoraTokenModelImplCopyWithImpl<$Res>
       _$AgoraTokenModelImpl _value, $Res Function(_$AgoraTokenModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AgoraTokenModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,11 +127,13 @@ class _$AgoraTokenModelImpl implements _AgoraTokenModel {
                 other.rtcToken == rtcToken));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, rtcToken);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AgoraTokenModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AgoraTokenModelImplCopyWith<_$AgoraTokenModelImpl> get copyWith =>
@@ -146,8 +156,11 @@ abstract class _AgoraTokenModel implements AgoraTokenModel {
 
   @override
   String? get rtcToken;
+
+  /// Create a copy of AgoraTokenModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AgoraTokenModelImplCopyWith<_$AgoraTokenModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

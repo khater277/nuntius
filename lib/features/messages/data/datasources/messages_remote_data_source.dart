@@ -13,8 +13,9 @@ abstract class MessagesRemoteDataSource {
   Stream<QuerySnapshot<Map<String, dynamic>>> getMessages(
       {required String phoneNumber});
 
-  Future<Map<String, dynamic>> pushNotification({
+  Future<String> pushNotification({
     required Map<String, dynamic> fcmBody,
+    required String token,
   });
 
   Future<void> deleteMessage(
@@ -50,9 +51,14 @@ class MessagesRemoteDataSourceImpl implements MessagesRemoteDataSource {
   }
 
   @override
-  Future<Map<String, dynamic>> pushNotification(
-      {required Map<String, dynamic> fcmBody}) {
-    return fcmApi.pushNotification(fcmBody: fcmBody);
+  Future<String> pushNotification({
+    required Map<String, dynamic> fcmBody,
+    required String token,
+  }) {
+    return fcmApi.pushNotification(
+      fcmBody: fcmBody,
+      token: "Bearer $token",
+    );
   }
 
   @override

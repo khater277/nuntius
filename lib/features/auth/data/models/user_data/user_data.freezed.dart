@@ -35,8 +35,12 @@ mixin _$UserData {
   @HiveField(6)
   Map<String, String>? get contacts => throw _privateConstructorUsedError;
 
+  /// Serializes this UserData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UserData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserDataCopyWith<UserData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -66,6 +70,8 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,6 +142,8 @@ class __$$UserDataImplCopyWithImpl<$Res>
       _$UserDataImpl _value, $Res Function(_$UserDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -244,12 +252,14 @@ class _$UserDataImpl implements _UserData {
             const DeepCollectionEquality().equals(other._contacts, _contacts));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, token, name, uId, phone, image,
       inCall, const DeepCollectionEquality().hash(_contacts));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
@@ -297,8 +307,11 @@ abstract class _UserData implements UserData {
   @override
   @HiveField(6)
   Map<String, String>? get contacts;
+
+  /// Create a copy of UserData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

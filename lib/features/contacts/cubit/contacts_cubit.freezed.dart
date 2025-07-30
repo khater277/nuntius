@@ -96,6 +96,9 @@ class _$ContactsStateCopyWithImpl<$Res, $Val extends ContactsState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +115,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -238,6 +244,9 @@ class __$$InitControllersImplCopyWithImpl<$Res>
   __$$InitControllersImplCopyWithImpl(
       _$InitControllersImpl _value, $Res Function(_$InitControllersImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -364,6 +373,9 @@ class __$$DisposeControllersImplCopyWithImpl<$Res>
   __$$DisposeControllersImplCopyWithImpl(_$DisposeControllersImpl _value,
       $Res Function(_$DisposeControllersImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -490,6 +502,9 @@ class __$$AddContactLoadingImplCopyWithImpl<$Res>
   __$$AddContactLoadingImplCopyWithImpl(_$AddContactLoadingImpl _value,
       $Res Function(_$AddContactLoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -616,6 +631,9 @@ class __$$AddContactImplCopyWithImpl<$Res>
   __$$AddContactImplCopyWithImpl(
       _$AddContactImpl _value, $Res Function(_$AddContactImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -745,6 +763,8 @@ class __$$AddContactErrorImplCopyWithImpl<$Res>
       _$AddContactErrorImpl _value, $Res Function(_$AddContactErrorImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -784,7 +804,9 @@ class _$AddContactErrorImpl implements _AddContactError {
   @override
   int get hashCode => Object.hash(runtimeType, errorMsg);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddContactErrorImplCopyWith<_$AddContactErrorImpl> get copyWith =>
@@ -882,7 +904,10 @@ abstract class _AddContactError implements ContactsState {
   const factory _AddContactError(final String errorMsg) = _$AddContactErrorImpl;
 
   String get errorMsg;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ContactsState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddContactErrorImplCopyWith<_$AddContactErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

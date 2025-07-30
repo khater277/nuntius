@@ -2,12 +2,12 @@ import 'dart:io';
 
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
-import 'package:contacts_service/contacts_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_contacts/flutter_contacts.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:nuntius/core/firebase/collections_keys.dart';
@@ -205,7 +205,7 @@ class AuthCubit extends Cubit<AuthState> {
     bool condition = image == null;
     if (condition) emit(const AuthState.addUserToFirestoreLoading());
     try {
-      contacts = await ContactsService.getContacts(withThumbnails: false);
+      contacts = await FlutterContacts.getContacts(withProperties: true);
       await _handleContacts();
       await _handleUsers();
       final token = await FirebaseMessaging.instance.getToken();
@@ -241,16 +241,16 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> _handleContacts() async {
     for (int i = 0; i < contacts.length; i++) {
       final oldContact = contacts[i];
-      if (oldContact.phones!.isNotEmpty) {
-        if (!oldContact.phones!.first.value!.startsWith('+2')) {
+      if (oldContact.phones.isNotEmpty) {
+        if (!oldContact.phones.first.number.startsWith('+2')) {
           final Contact newContact = Contact(
             displayName: oldContact.displayName,
             emails: oldContact.emails,
-            company: oldContact.company,
+            organizations: oldContact.organizations,
             phones: [
-              Item(
-                label: oldContact.phones![0].label,
-                value: "+2${oldContact.phones![0].value!.replaceAll(' ', '')}",
+              Phone(
+                "+2${oldContact.phones[0].number.replaceAll(' ', '')}",
+                label: oldContact.phones[0].label,
               )
             ],
           );
@@ -277,20 +277,18 @@ class AuthCubit extends Cubit<AuthState> {
       (usersData) {
         for (int i = 0; i < contacts.length; i++) {
           final user = usersData.firstWhereOrNull((element) =>
-              contacts[i].phones!.isNotEmpty
-                  ? element.phone == contacts[i].phones!.first.value
+              contacts[i].phones.isNotEmpty
+                  ? element.phone == contacts[i].phones.first.number
                   : false);
 
           if (user != null) {
             final existedUser = users
                 .firstWhereOrNull((element) => element.phone == user.phone);
             if (existedUser == null &&
-                (contacts[i].phones!.first.value != null) &&
-                (contacts[i].phones!.first.value !=
+                (contacts[i].phones.first.number !=
                     "+2${phoneController!.text}")) {
               users.add(user.copyWith(name: contacts[i].displayName));
-              phones[contacts[i].phones!.first.value!] =
-                  contacts[i].displayName!;
+              phones[contacts[i].phones.first.number] = contacts[i].displayName;
             }
           }
         }

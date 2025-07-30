@@ -13,7 +13,7 @@ abstract class MessagesRepository {
   Future<Either<Failure, Stream<QuerySnapshot<Map<String, dynamic>>>>>
       getMessages({required String phoneNumber});
 
-  Future<Either<Failure, Map<String, dynamic>>> pushNotification({
+  Future<Either<Failure, String>> pushNotification({
     required Map<String, dynamic> fcmBody,
   });
 

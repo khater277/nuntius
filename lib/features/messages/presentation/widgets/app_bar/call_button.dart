@@ -9,6 +9,8 @@ import 'package:nuntius/core/utils/icons_broken.dart';
 import 'package:nuntius/features/calls/data/models/call_type/call_type.dart';
 import 'package:nuntius/features/messages/cubit/messages_cubit.dart';
 
+import '../../../../../core/apis/fcm/oauth_token.dart';
+
 class CallButton extends StatelessWidget {
   final CallType callType;
 
@@ -26,7 +28,9 @@ class CallButton extends StatelessWidget {
       ),
       builder: (context, state) {
         return IconButton(
-          onPressed: () {
+          onPressed: () async {
+            final token = await FirebaseAccessToken.getToken();
+            // print("=============> $token");
             if (di<MessagesCubit>().user!.inCall == true) {
               showSnackBar(
                 context: context,

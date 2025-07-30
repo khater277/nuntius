@@ -1,5 +1,4 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:nuntius/core/local_notification/received_notification_model.dart';
 import 'package:nuntius/core/local_notification/streams/did_receive_local_notification_stream.dart';
 
 abstract class LocalNotificationPlatformInitialization {
@@ -28,17 +27,6 @@ class LocalNotificationPlatformInitializationImpl
       requestAlertPermission: false,
       requestBadgePermission: false,
       requestSoundPermission: false,
-      onDidReceiveLocalNotification:
-          (int id, String? title, String? body, String? payload) async {
-        _didReceiveLocalNotificationStream.addToStream(
-          ReceivedNotification(
-            id: id,
-            title: title,
-            body: body,
-            payload: payload,
-          ),
-        );
-      },
       notificationCategories: [
         DarwinNotificationCategory(
           'textCategory',

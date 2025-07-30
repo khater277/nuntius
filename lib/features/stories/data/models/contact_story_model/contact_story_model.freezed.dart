@@ -24,8 +24,12 @@ mixin _$ContactStoryModel {
   List<StoryModel>? get stories => throw _privateConstructorUsedError;
   StoryModel? get lastStoryModel => throw _privateConstructorUsedError;
 
+  /// Serializes this ContactStoryModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ContactStoryModelCopyWith<ContactStoryModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ContactStoryModelCopyWithImpl<$Res, $Val extends ContactStoryModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,6 +82,8 @@ class _$ContactStoryModelCopyWithImpl<$Res, $Val extends ContactStoryModel>
     ) as $Val);
   }
 
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res>? get user {
@@ -88,6 +96,8 @@ class _$ContactStoryModelCopyWithImpl<$Res, $Val extends ContactStoryModel>
     });
   }
 
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $StoryModelCopyWith<$Res>? get lastStoryModel {
@@ -126,6 +136,8 @@ class __$$ContactStoryModelImplCopyWithImpl<$Res>
       $Res Function(_$ContactStoryModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -191,12 +203,14 @@ class _$ContactStoryModelImpl implements _ContactStoryModel {
                 other.lastStoryModel == lastStoryModel));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, user,
       const DeepCollectionEquality().hash(_stories), lastStoryModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ContactStoryModelImplCopyWith<_$ContactStoryModelImpl> get copyWith =>
@@ -226,8 +240,11 @@ abstract class _ContactStoryModel implements ContactStoryModel {
   List<StoryModel>? get stories;
   @override
   StoryModel? get lastStoryModel;
+
+  /// Create a copy of ContactStoryModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ContactStoryModelImplCopyWith<_$ContactStoryModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -51,8 +51,12 @@ mixin _$MessageModel {
   @HiveField(14)
   bool? get isStoryImageReply => throw _privateConstructorUsedError;
 
+  /// Serializes this MessageModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MessageModelCopyWith<MessageModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -91,6 +95,8 @@ class _$MessageModelCopyWithImpl<$Res, $Val extends MessageModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -209,6 +215,8 @@ class __$$MessageModelImplCopyWithImpl<$Res>
       _$MessageModelImpl _value, $Res Function(_$MessageModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -398,7 +406,7 @@ class _$MessageModelImpl implements _MessageModel {
                 other.isStoryImageReply == isStoryImageReply));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -418,7 +426,9 @@ class _$MessageModelImpl implements _MessageModel {
       storyDate,
       isStoryImageReply);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MessageModelImplCopyWith<_$MessageModelImpl> get copyWith =>
@@ -498,8 +508,11 @@ abstract class _MessageModel implements MessageModel {
   @override
   @HiveField(14)
   bool? get isStoryImageReply;
+
+  /// Create a copy of MessageModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MessageModelImplCopyWith<_$MessageModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -37,22 +37,22 @@ class AppFunctions {
       name = di<UserStorage>().getUser()!.phone!;
     }
     return {
-      "to": user.token!,
-      "priority": "high",
-      "notification": {
-        "title": "New Message",
-        "body": "$name sent you new message.",
-        "sound": "default"
-      },
-      "data": NotificationData(
-              senderName: name,
-              type: NotificationType.message,
-              notificationDate: DateTime.now().toUtc().toString(),
-              notificationId: const Uuid().v4(),
-              senderID: di<UserStorage>().getUser()!.uId!,
-              phoneNumber: di<UserStorage>().getUser()!.phone!,
-              clickAction: "FLUTTER_NOTIFICATION_CLICK")
-          .toJson(),
+      "message": {
+        "token": user.token!,
+        "notification": {
+          "title": "New Message",
+          "body": "$name sent you new message."
+        },
+        "data": NotificationData(
+                senderName: name,
+                type: NotificationType.message,
+                notificationDate: DateTime.now().toUtc().toString(),
+                notificationId: const Uuid().v4(),
+                senderID: di<UserStorage>().getUser()!.uId!,
+                phoneNumber: di<UserStorage>().getUser()!.phone!,
+                clickAction: "FLUTTER_NOTIFICATION_CLICK")
+            .toJson(),
+      }
     };
   }
 

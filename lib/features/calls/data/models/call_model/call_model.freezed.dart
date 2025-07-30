@@ -31,8 +31,12 @@ mixin _$CallModel {
   @HiveField(4)
   String? get dateTime => throw _privateConstructorUsedError;
 
+  /// Serializes this CallModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CallModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CallModelCopyWith<CallModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$CallModelCopyWithImpl<$Res, $Val extends CallModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CallModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -118,6 +124,8 @@ class __$$CallModelImplCopyWithImpl<$Res>
       _$CallModelImpl _value, $Res Function(_$CallModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CallModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,12 +210,14 @@ class _$CallModelImpl implements _CallModel {
                 other.dateTime == dateTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, callId, phoneNumber, callType, callStatus, dateTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CallModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CallModelImplCopyWith<_$CallModelImpl> get copyWith =>
@@ -247,8 +257,11 @@ abstract class _CallModel implements CallModel {
   @override
   @HiveField(4)
   String? get dateTime;
+
+  /// Create a copy of CallModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CallModelImplCopyWith<_$CallModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
